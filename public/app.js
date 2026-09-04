@@ -904,20 +904,82 @@ async function renderGrowthChart() {
 
     growthChartInstance.setOption(option, true);
 
-    // Track active hovered plugin for responsive and reliable click handling
+    // Track active hovered plugin and milestone for instant line hover tooltips
     let hoveredPlugin = null;
+    let lastTipSeries = -1;
+    let lastTipDataIdx = -1;
 
+    function triggerLineTip(params) {
+      if (!params || params.componentType !== 'series' || params.seriesType !== 'line') return;
+      const sIndex = params.seriesIndex;
+      if (sIndex === undefined || !seriesList[sIndex]) return;
+
+      hoveredPlugin = seriesList[sIndex];
+
+      // If hovering the line curve (not an explicit milestone point), calculate nearest week milestone
+      if (params.dataIndex === undefined || params.dataIndex < 0) {
+        const ev = params.event;
+        const offsetX = ev?.offsetX ?? ev?.event?.offsetX;
+        const offsetY = ev?.offsetY ?? ev?.event?.offsetY;
+
+        if (offsetX !== undefined && offsetY !== undefined) {
+          let dataIdx = weeks.length - 1;
+          try {
+            const pt = growthChartInstance.convertFromPixel({ seriesIndex: sIndex }, [offsetX, offsetY]);
+            if (pt && !isNaN(pt[0])) {
+              dataIdx = Math.round(pt[0]);
+              dataIdx = Math.max(0, Math.min(weeks.length - 1, dataIdx));
+            }
+          } catch (err) {}
+
+          // Update tooltip and line highlight immediately as the cursor moves over the line
+          if (lastTipSeries !== sIndex || lastTipDataIdx !== dataIdx) {
+            lastTipSeries = sIndex;
+            lastTipDataIdx = dataIdx;
+            growthChartInstance.dispatchAction({
+              type: 'showTip',
+              seriesIndex: sIndex,
+              dataIndex: dataIdx,
+              x: offsetX,
+              y: offsetY
+            });
+            growthChartInstance.dispatchAction({
+              type: 'highlight',
+              seriesIndex: sIndex
+            });
+          }
+        }
+      } else {
+        lastTipSeries = params.seriesIndex;
+        lastTipDataIdx = params.dataIndex;
+      }
+    }
+
+    // Trigger tooltip as soon as the line is touched or cursor moves along it
     growthChartInstance.off('mouseover');
-    growthChartInstance.on('mouseover', (params) => {
-      if (params && params.seriesIndex !== undefined && seriesList[params.seriesIndex]) {
-        hoveredPlugin = seriesList[params.seriesIndex];
-      } else if (params && params.seriesName) {
-        hoveredPlugin = seriesList.find(item => item.name === params.seriesName) || hoveredPlugin;
+    growthChartInstance.on('mouseover', triggerLineTip);
+
+    growthChartInstance.off('mousemove');
+    growthChartInstance.on('mousemove', triggerLineTip);
+
+    // When cursor leaves a series curve
+    growthChartInstance.off('mouseout');
+    growthChartInstance.on('mouseout', (params) => {
+      if (params && params.componentType === 'series') {
+        lastTipSeries = -1;
+        lastTipDataIdx = -1;
+        growthChartInstance.dispatchAction({ type: 'downplay', seriesIndex: params.seriesIndex });
+        growthChartInstance.dispatchAction({ type: 'hideTip' });
+        hoveredPlugin = null;
       }
     });
 
     growthChartInstance.off('globalout');
     growthChartInstance.on('globalout', () => {
+      lastTipSeries = -1;
+      lastTipDataIdx = -1;
+      growthChartInstance.dispatchAction({ type: 'downplay' });
+      growthChartInstance.dispatchAction({ type: 'hideTip' });
       hoveredPlugin = null;
     });
 
