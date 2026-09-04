@@ -81,6 +81,12 @@ a {
   font-size: 1.15rem;
   font-weight: 800;
   color: var(--ink);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.brand-text {
+  white-space: nowrap;
 }
 
 .ram-icon {
@@ -94,16 +100,87 @@ a {
   border-radius: var(--radius-sm);
   font-size: 1rem;
   font-weight: 900;
+  flex-shrink: 0;
 }
 
 .nav-tag {
   font-family: var(--mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   background: var(--spot-glow);
   color: var(--spot);
   border: 1px solid var(--spot);
-  padding: 0.15rem 0.5rem;
+  padding: 0.2rem 0.65rem;
   border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.2;
+}
+
+/* Multi-breakpoint responsive labels for nav-tag */
+.nav-tag .nav-tag-full {
+  display: inline;
+}
+.nav-tag .nav-tag-medium {
+  display: none;
+}
+.nav-tag .nav-tag-short {
+  display: none;
+}
+
+@media (max-width: 1280px) {
+  .nav-tag .nav-tag-full {
+    display: none;
+  }
+  .nav-tag .nav-tag-medium {
+    display: inline;
+  }
+  .nav-tag .nav-tag-short {
+    display: none;
+  }
+}
+
+@media (max-width: 1040px) {
+  .nav-tag .nav-tag-full {
+    display: none;
+  }
+  .nav-tag .nav-tag-medium {
+    display: none;
+  }
+  .nav-tag .nav-tag-short {
+    display: inline;
+  }
+}
+
+@media (max-width: 960px) {
+  .hd-nav {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.75rem var(--gut);
+  }
+  .nav-links {
+    width: 100%;
+    overflow-x: auto;
+    gap: 0.75rem;
+    padding-bottom: 2px;
+    font-size: 0.82rem;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 640px) {
+  .hd-brand {
+    font-size: 1.0rem;
+    gap: 0.45rem;
+  }
+  .brand-text {
+    font-size: 0.95rem;
+  }
+  .nav-tag {
+    font-size: 0.68rem;
+    padding: 0.15rem 0.5rem;
+  }
 }
 
 .nav-links {
@@ -112,6 +189,7 @@ a {
   margin-left: auto;
   font-family: var(--mono);
   font-size: 0.85rem;
+  white-space: nowrap;
 }
 
 .nav-link {
