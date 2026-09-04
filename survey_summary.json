@@ -1,0 +1,322 @@
+{
+  "total_plugins": 903,
+  "total_loc": 8716978,
+  "total_stars": 22006,
+  "total_forks": 1783,
+  "categories": [
+    {
+      "broad_category": "Developer Workflow & Utilities",
+      "cnt": 295
+    },
+    {
+      "broad_category": "Session & Workspace Management",
+      "cnt": 235
+    },
+    {
+      "broad_category": "Window, Tab & Layout Automation",
+      "cnt": 73
+    },
+    {
+      "broad_category": "Code Review & Diff Inspection",
+      "cnt": 72
+    },
+    {
+      "broad_category": "Terminal UI & Navigation",
+      "cnt": 53
+    },
+    {
+      "broad_category": "Remote Access & Mobile Control",
+      "cnt": 50
+    },
+    {
+      "broad_category": "Usage, Cost & Quota Monitoring",
+      "cnt": 41
+    },
+    {
+      "broad_category": "Task & Project Management",
+      "cnt": 35
+    },
+    {
+      "broad_category": "Agent Orchestration & Swarms",
+      "cnt": 34
+    },
+    {
+      "broad_category": "Web & Browser Integration",
+      "cnt": 15
+    }
+  ],
+  "languages": [
+    {
+      "primary_language": "Rust",
+      "cnt": 208,
+      "loc": 2665426
+    },
+    {
+      "primary_language": "Shell",
+      "cnt": 199,
+      "loc": 532141
+    },
+    {
+      "primary_language": "Python",
+      "cnt": 150,
+      "loc": 727182
+    },
+    {
+      "primary_language": "JavaScript",
+      "cnt": 125,
+      "loc": 383314
+    },
+    {
+      "primary_language": "Go",
+      "cnt": 103,
+      "loc": 2369832
+    },
+    {
+      "primary_language": "TypeScript",
+      "cnt": 82,
+      "loc": 1533082
+    },
+    {
+      "primary_language": "Lua",
+      "cnt": 8,
+      "loc": 25561
+    },
+    {
+      "primary_language": "PowerShell",
+      "cnt": 8,
+      "loc": 8440
+    },
+    {
+      "primary_language": "Swift",
+      "cnt": 6,
+      "loc": 11968
+    },
+    {
+      "primary_language": "HTML",
+      "cnt": 4,
+      "loc": 31055
+    },
+    {
+      "primary_language": "Dart",
+      "cnt": 3,
+      "loc": 31462
+    },
+    {
+      "primary_language": "Unknown",
+      "cnt": 3,
+      "loc": 1506
+    },
+    {
+      "primary_language": "C",
+      "cnt": 1,
+      "loc": 395803
+    },
+    {
+      "primary_language": "PHP",
+      "cnt": 1,
+      "loc": 106
+    },
+    {
+      "primary_language": "Perl",
+      "cnt": 1,
+      "loc": 88
+    },
+    {
+      "primary_language": "Zig",
+      "cnt": 1,
+      "loc": 12
+    }
+  ],
+  "features": {
+    "comms": 242,
+    "tui": 725,
+    "mobile": 203,
+    "web": 384,
+    "worktree": 307,
+    "direct_ai": 153,
+    "mcp": 53,
+    "token_opt": 9,
+    "quota_mgr": 131,
+    "modal_popup": 257,
+    "startup_hook": 222,
+    "build_steps": 417,
+    "cross_platform": 129,
+    "ssh": 136,
+    "mosh": 7,
+    "vpn": 30,
+    "port_mapping": 14,
+    "router": 38,
+    "vps": 91,
+    "remote_infra": 219,
+    "tests": 589,
+    "ci": 391
+  },
+  "agents": [
+    {
+      "agent_name": "opencode",
+      "cnt": 763
+    },
+    {
+      "agent_name": "amp",
+      "cnt": 620
+    },
+    {
+      "agent_name": "codex",
+      "cnt": 339
+    },
+    {
+      "agent_name": "cursor",
+      "cnt": 329
+    },
+    {
+      "agent_name": "claude-code",
+      "cnt": 291
+    },
+    {
+      "agent_name": "grok",
+      "cnt": 81
+    },
+    {
+      "agent_name": "cline",
+      "cnt": 73
+    },
+    {
+      "agent_name": "copilot",
+      "cnt": 58
+    },
+    {
+      "agent_name": "agy",
+      "cnt": 52
+    },
+    {
+      "agent_name": "devin",
+      "cnt": 34
+    },
+    {
+      "agent_name": "aider",
+      "cnt": 14
+    },
+    {
+      "agent_name": "pi",
+      "cnt": 14
+    },
+    {
+      "agent_name": "moshi",
+      "cnt": 5
+    },
+    {
+      "agent_name": "windsurf",
+      "cnt": 5
+    }
+  ],
+  "top_endpoints": [
+    {
+      "endpoint": "cli:plugin install",
+      "cnt": 837
+    },
+    {
+      "endpoint": "cli:plugin link",
+      "cnt": 724
+    },
+    {
+      "endpoint": "cli:plugin action",
+      "cnt": 547
+    },
+    {
+      "endpoint": "cli:server reload-config",
+      "cnt": 404
+    },
+    {
+      "endpoint": "cli:plugin config-dir",
+      "cnt": 355
+    },
+    {
+      "endpoint": "cli:plugin log",
+      "cnt": 288
+    },
+    {
+      "endpoint": "cli:0",
+      "cnt": 262
+    },
+    {
+      "endpoint": "cli:plugin list",
+      "cnt": 260
+    },
+    {
+      "endpoint": "cli:plugin pane",
+      "cnt": 260
+    },
+    {
+      "endpoint": "pane.agent_status_changed",
+      "cnt": 218
+    },
+    {
+      "endpoint": "pane.focus",
+      "cnt": 199
+    },
+    {
+      "endpoint": "cli:plugin uninstall",
+      "cnt": 190
+    },
+    {
+      "endpoint": "cli:plugin",
+      "cnt": 184
+    },
+    {
+      "endpoint": "pane.close",
+      "cnt": 167
+    },
+    {
+      "endpoint": "cli:pane",
+      "cnt": 166
+    },
+    {
+      "endpoint": "cli:plugin unlink",
+      "cnt": 162
+    },
+    {
+      "endpoint": "workspace.focus",
+      "cnt": 148
+    },
+    {
+      "endpoint": "cli:pane list",
+      "cnt": 144
+    },
+    {
+      "endpoint": "cli:server",
+      "cnt": 136
+    },
+    {
+      "endpoint": "event:pane.agent_status_changed",
+      "cnt": 136
+    }
+  ],
+  "tunnels": [
+    {
+      "tunnel_service": "tailscale",
+      "cnt": 21
+    },
+    {
+      "tunnel_service": "cloudflare",
+      "cnt": 13
+    },
+    {
+      "tunnel_service": "ngrok",
+      "cnt": 1
+    }
+  ],
+  "storage": [
+    {
+      "state_storage_type": "json",
+      "cnt": 771
+    },
+    {
+      "state_storage_type": "sqlite",
+      "cnt": 69
+    },
+    {
+      "state_storage_type": "toml",
+      "cnt": 53
+    }
+  ]
+}

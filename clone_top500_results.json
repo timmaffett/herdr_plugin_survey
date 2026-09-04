@@ -1,0 +1,5420 @@
+[
+  {
+    "name": "AltanS/collie",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/AltanS__collie"
+  },
+  {
+    "name": "yuk1ty/herdr-spreader",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/yuk1ty__herdr-spreader"
+  },
+  {
+    "name": "andrewchng/herdr-sessionizer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/andrewchng__herdr-sessionizer"
+  },
+  {
+    "name": "levi-qiao/herdr-agent-quota",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/levi-qiao__herdr-agent-quota"
+  },
+  {
+    "name": "NathanFlurry/herdr-plugin-jj-workspace",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/NathanFlurry__herdr-plugin-jj-workspace"
+  },
+  {
+    "name": "JonasBaeumer/herdr-file-annotator",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/JonasBaeumer__herdr-file-annotator"
+  },
+  {
+    "name": "iurysza/herdr-tab-smart-rename",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/iurysza__herdr-tab-smart-rename"
+  },
+  {
+    "name": "qu8n/herdr-automatic-rename",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/qu8n__herdr-automatic-rename"
+  },
+  {
+    "name": "cloudmanic/herdr-plus",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/cloudmanic__herdr-plus"
+  },
+  {
+    "name": "iurysza/termscope",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/iurysza__termscope"
+  },
+  {
+    "name": "plannotator/herdr-annotate",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/plannotator__herdr-annotate"
+  },
+  {
+    "name": "thanhdat77/herdr-navigator",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/thanhdat77__herdr-navigator"
+  },
+  {
+    "name": "osolmaz/ghzinga",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/osolmaz__ghzinga"
+  },
+  {
+    "name": "jhochenbaum/herdr-hunk-diff",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jhochenbaum__herdr-hunk-diff"
+  },
+  {
+    "name": "nicosuave/memex",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/nicosuave__memex"
+  },
+  {
+    "name": "lararosekelley/dotfiles",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/lararosekelley__dotfiles"
+  },
+  {
+    "name": "nelsonPires5/herdr-board",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/nelsonPires5__herdr-board"
+  },
+  {
+    "name": "paulbkim-dev/vim-herdr-navigation",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/paulbkim-dev__vim-herdr-navigation"
+  },
+  {
+    "name": "dcolinmorgan/herdr-remote",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/dcolinmorgan__herdr-remote"
+  },
+  {
+    "name": "JanTvrdik/herdr-command-palette",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/JanTvrdik__herdr-command-palette"
+  },
+  {
+    "name": "0cv/herdr-mobile-relay",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/0cv__herdr-mobile-relay"
+  },
+  {
+    "name": "openclaw/crabbox",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/openclaw__crabbox"
+  },
+  {
+    "name": "aemrebarut/herdr-dagr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/aemrebarut__herdr-dagr"
+  },
+  {
+    "name": "zenbu-labs/terminal-code",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/zenbu-labs__terminal-code"
+  },
+  {
+    "name": "nikok6/herdr-mirror",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/nikok6__herdr-mirror"
+  },
+  {
+    "name": "kryptamine/herdr-auto-title",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/kryptamine__herdr-auto-title"
+  },
+  {
+    "name": "smarzban/herdr-file-viewer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/smarzban__herdr-file-viewer"
+  },
+  {
+    "name": "rjyo/herdr-window-title-sync",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/rjyo__herdr-window-title-sync"
+  },
+  {
+    "name": "alvinunreal/oh-my-opencode-slim",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/alvinunreal__oh-my-opencode-slim"
+  },
+  {
+    "name": "lmilojevicc/herdr-splits.nvim",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/lmilojevicc__herdr-splits.nvim"
+  },
+  {
+    "name": "uwuclxdy/clauth",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/uwuclxdy__clauth"
+  },
+  {
+    "name": "persiyanov/herdr-reviewr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/persiyanov__herdr-reviewr"
+  },
+  {
+    "name": "alexarthurs/herdr-sidebar",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/alexarthurs__herdr-sidebar"
+  },
+  {
+    "name": "aigorahub/herdr-lantern",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/aigorahub__herdr-lantern"
+  },
+  {
+    "name": "fullerzz/herdr-plugin-sesh",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/fullerzz__herdr-plugin-sesh"
+  },
+  {
+    "name": "zenbu-labs/terminal-browser",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/zenbu-labs__terminal-browser"
+  },
+  {
+    "name": "osolmaz/pi-workflows",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/osolmaz__pi-workflows"
+  },
+  {
+    "name": "devashish2203/herdr-worktrunk",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/devashish2203__herdr-worktrunk"
+  },
+  {
+    "name": "ChmaraX/herdr-nvim",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ChmaraX__herdr-nvim"
+  },
+  {
+    "name": "razajamil/herdr-plugin-workspace-manager",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/razajamil__herdr-plugin-workspace-manager"
+  },
+  {
+    "name": "fkiene/llmtrim-herdr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/fkiene__llmtrim-herdr"
+  },
+  {
+    "name": "jeffarese/herdr-bar",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jeffarese__herdr-bar"
+  },
+  {
+    "name": "madarco/agentbox-herdr-plugin",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/madarco__agentbox-herdr-plugin"
+  },
+  {
+    "name": "ragamo/herdr-flock",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ragamo__herdr-flock"
+  },
+  {
+    "name": "Tyru5/herdr-floax",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Tyru5__herdr-floax"
+  },
+  {
+    "name": "ntindle/herdr-resurrect",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ntindle__herdr-resurrect"
+  },
+  {
+    "name": "natori-hrj/herdr-lazy",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/natori-hrj__herdr-lazy"
+  },
+  {
+    "name": "rmarganti/herdr-pluck",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/rmarganti__herdr-pluck"
+  },
+  {
+    "name": "caioniehues/herdmates",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/caioniehues__herdmates"
+  },
+  {
+    "name": "speardragon/herdr-plugin-manager",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/speardragon__herdr-plugin-manager"
+  },
+  {
+    "name": "plannotator/herdr-plannotator",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/plannotator__herdr-plannotator"
+  },
+  {
+    "name": "Unayung/herdr-watch",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Unayung__herdr-watch"
+  },
+  {
+    "name": "aorumbayev/herdr-workflows",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/aorumbayev__herdr-workflows"
+  },
+  {
+    "name": "tdi/herdr-worktree-setup",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/tdi__herdr-worktree-setup"
+  },
+  {
+    "name": "wyattjoh/herdr-plugin-gh-pr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/wyattjoh__herdr-plugin-gh-pr"
+  },
+  {
+    "name": "senna-lang/herdr-agent-usage",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/senna-lang__herdr-agent-usage"
+  },
+  {
+    "name": "aimdevlee/herdr-nvim-nav",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/aimdevlee__herdr-nvim-nav"
+  },
+  {
+    "name": "yankewei/herdr-focus-notify",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/yankewei__herdr-focus-notify"
+  },
+  {
+    "name": "taxueseek/session-digger",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/taxueseek__session-digger"
+  },
+  {
+    "name": "edmundmiller/herdr-plugin-hunk",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/edmundmiller__herdr-plugin-hunk"
+  },
+  {
+    "name": "speardragon/herdr-yazi",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/speardragon__herdr-yazi"
+  },
+  {
+    "name": "mo-arvan/herdr-claude-auto-retry",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/mo-arvan__herdr-claude-auto-retry"
+  },
+  {
+    "name": "ezcorp-org/herdr-pc-ram-and-cpu-usage-overlay",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ezcorp-org__herdr-pc-ram-and-cpu-usage-overlay"
+  },
+  {
+    "name": "ribbons-digital/pi-herd",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ribbons-digital__pi-herd"
+  },
+  {
+    "name": "ivanarama/PromptPilot",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ivanarama__PromptPilot"
+  },
+  {
+    "name": "ogulcancelik/herdr-plugin-github-start",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ogulcancelik__herdr-plugin-github-start"
+  },
+  {
+    "name": "miiraheart/herdr-beads",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/miiraheart__herdr-beads"
+  },
+  {
+    "name": "Davidcreador/herdr-token-dashboard",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Davidcreador__herdr-token-dashboard"
+  },
+  {
+    "name": "0xGosu/herdr-auto-pilot",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/0xGosu__herdr-auto-pilot"
+  },
+  {
+    "name": "Resetnak/herdr-logbook",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Resetnak__herdr-logbook"
+  },
+  {
+    "name": "tdi/herdr-worktree-from-linear",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/tdi__herdr-worktree-from-linear"
+  },
+  {
+    "name": "DIodide/herdr-telemetry",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/DIodide__herdr-telemetry"
+  },
+  {
+    "name": "AVGVSTVS96/herdr-drovr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/AVGVSTVS96__herdr-drovr"
+  },
+  {
+    "name": "StructuPath/herdr-browser",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/StructuPath__herdr-browser"
+  },
+  {
+    "name": "sanirudh17/herdr-agent-handoff",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/sanirudh17__herdr-agent-handoff"
+  },
+  {
+    "name": "wyattjoh/herdr-plugin-renamer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/wyattjoh__herdr-plugin-renamer"
+  },
+  {
+    "name": "third774/herdr-last-workspace",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/third774__herdr-last-workspace"
+  },
+  {
+    "name": "Matovidlo/herdr-pr-tracker",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Matovidlo__herdr-pr-tracker"
+  },
+  {
+    "name": "Crokily/herdr-lazygit",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Crokily__herdr-lazygit"
+  },
+  {
+    "name": "ythx-101/herdr-social-glass",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ythx-101__herdr-social-glass"
+  },
+  {
+    "name": "tomasvarga/herdr-pickr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/tomasvarga__herdr-pickr"
+  },
+  {
+    "name": "iviaxpow3r/herdr-session-parker",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/iviaxpow3r__herdr-session-parker"
+  },
+  {
+    "name": "dwarvesf/herdr-quicklook",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/dwarvesf__herdr-quicklook"
+  },
+  {
+    "name": "vercel-labs/herdr-vercel-sandbox-plugin",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/vercel-labs__herdr-vercel-sandbox-plugin"
+  },
+  {
+    "name": "hmu332233/herdr-f1",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/hmu332233__herdr-f1"
+  },
+  {
+    "name": "osamahbeig/herdr-pane-mover",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/osamahbeig__herdr-pane-mover"
+  },
+  {
+    "name": "beyondlex/herdr-recent-navigator",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/beyondlex__herdr-recent-navigator"
+  },
+  {
+    "name": "Tomyail/herdr-connect",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Tomyail__herdr-connect"
+  },
+  {
+    "name": "second-state/vibetty",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/second-state__vibetty"
+  },
+  {
+    "name": "a2u/herdr-jira",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/a2u__herdr-jira"
+  },
+  {
+    "name": "speardragon/herdr-command-center",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/speardragon__herdr-command-center"
+  },
+  {
+    "name": "ezcorp-org/herdr-git-status",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ezcorp-org__herdr-git-status"
+  },
+  {
+    "name": "mrcndz/herdr-routines",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/mrcndz__herdr-routines"
+  },
+  {
+    "name": "ChmaraX/herdr-gitview",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ChmaraX__herdr-gitview"
+  },
+  {
+    "name": "douglascorrea/herdr-agent-inbox",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/douglascorrea__herdr-agent-inbox"
+  },
+  {
+    "name": "diegopzz/herdr-updater",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/diegopzz__herdr-updater"
+  },
+  {
+    "name": "alexarthurs/herdr-notes",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/alexarthurs__herdr-notes"
+  },
+  {
+    "name": "wilbeibi/herdr-catchup",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/wilbeibi__herdr-catchup"
+  },
+  {
+    "name": "neon-solutions/neon-herdr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/neon-solutions__neon-herdr"
+  },
+  {
+    "name": "den-tanui/herdr-zoxide",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/den-tanui__herdr-zoxide"
+  },
+  {
+    "name": "joelhooks/herdr-pings",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/joelhooks__herdr-pings"
+  },
+  {
+    "name": "ramarivera/herdr-palette",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ramarivera__herdr-palette"
+  },
+  {
+    "name": "luminexord/herdres",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/luminexord__herdres"
+  },
+  {
+    "name": "briankeegan1/herdkit",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/briankeegan1__herdkit"
+  },
+  {
+    "name": "lmilojevicc/seshagy",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/lmilojevicc__seshagy"
+  },
+  {
+    "name": "benkraus/herdr-plugin-mobile-relay",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/benkraus__herdr-plugin-mobile-relay"
+  },
+  {
+    "name": "aorumbayev/herdr-canvas",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/aorumbayev__herdr-canvas"
+  },
+  {
+    "name": "EzraCerpac/jj-waltz",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/EzraCerpac__jj-waltz"
+  },
+  {
+    "name": "quaywin/agys",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/quaywin__agys"
+  },
+  {
+    "name": "neyham/herdr-paddock",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/neyham__herdr-paddock"
+  },
+  {
+    "name": "Phoobobo/herdr-workboard",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Phoobobo__herdr-workboard"
+  },
+  {
+    "name": "walcew/herdr-assist",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/walcew__herdr-assist"
+  },
+  {
+    "name": "TheMetalStorm/herdr-commandcode-plugin",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/TheMetalStorm__herdr-commandcode-plugin"
+  },
+  {
+    "name": "getpipher/herdr-sysmon",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/getpipher__herdr-sysmon"
+  },
+  {
+    "name": "hotchpotch/herdr-tiny-fingers",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/hotchpotch__herdr-tiny-fingers"
+  },
+  {
+    "name": "Poor-Plebs/herdr-remote-panes",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Poor-Plebs__herdr-remote-panes"
+  },
+  {
+    "name": "ryonakae/shepherd",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ryonakae__shepherd"
+  },
+  {
+    "name": "thuanlm215/herdr-grid",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/thuanlm215__herdr-grid"
+  },
+  {
+    "name": "horn553/herdr-ntfy",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/horn553__herdr-ntfy"
+  },
+  {
+    "name": "vjeantet/herdr-palette",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/vjeantet__herdr-palette"
+  },
+  {
+    "name": "ImArtisann/zed-herdr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ImArtisann__zed-herdr"
+  },
+  {
+    "name": "StructuPath/herdr-swarm",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/StructuPath__herdr-swarm"
+  },
+  {
+    "name": "makyinmars/herdr-context.nvim",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/makyinmars__herdr-context.nvim"
+  },
+  {
+    "name": "husniadil/herdr-swipe",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/husniadil__herdr-swipe"
+  },
+  {
+    "name": "dcolinmorgan/herdr-push",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/dcolinmorgan__herdr-push"
+  },
+  {
+    "name": "azizuysal/herdr-workbench",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/azizuysal__herdr-workbench"
+  },
+  {
+    "name": "sohanemon/herdr-helpr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/sohanemon__herdr-helpr"
+  },
+  {
+    "name": "natori-hrj/herdr-triage",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/natori-hrj__herdr-triage"
+  },
+  {
+    "name": "bcihanc/herdr-claude-session-title",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/bcihanc__herdr-claude-session-title"
+  },
+  {
+    "name": "tdi/herdr-worktree-from-pr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/tdi__herdr-worktree-from-pr"
+  },
+  {
+    "name": "zom-2018/herdr-ntfy-notify",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/zom-2018__herdr-ntfy-notify"
+  },
+  {
+    "name": "catoncat/herdr-trail",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/catoncat__herdr-trail"
+  },
+  {
+    "name": "dot/herdr-terminal-notifier",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/dot__herdr-terminal-notifier"
+  },
+  {
+    "name": "jasonrr/herdr-tally",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jasonrr__herdr-tally"
+  },
+  {
+    "name": "ShankyJS/herdr-space-scoped-agents",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ShankyJS__herdr-space-scoped-agents"
+  },
+  {
+    "name": "lachieh/herdr-plugin-cmux",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/lachieh__herdr-plugin-cmux"
+  },
+  {
+    "name": "JacquesvanWyk/herdr-linear",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/JacquesvanWyk__herdr-linear"
+  },
+  {
+    "name": "maro114510/herdr-toggle-popup",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/maro114510__herdr-toggle-popup"
+  },
+  {
+    "name": "aashishd/herdr-agent-messenger",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/aashishd__herdr-agent-messenger"
+  },
+  {
+    "name": "andybarilla/herdr-scuttlebutt",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/andybarilla__herdr-scuttlebutt"
+  },
+  {
+    "name": "Phoobobo/herdr-agent-config-manager",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Phoobobo__herdr-agent-config-manager"
+  },
+  {
+    "name": "allmight-ai/herdr-pet",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/allmight-ai__herdr-pet"
+  },
+  {
+    "name": "bojackduy/nvim-herdr-navigation",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/bojackduy__nvim-herdr-navigation"
+  },
+  {
+    "name": "July24/pier",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/July24__pier"
+  },
+  {
+    "name": "natori-hrj/herdr-hail",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/natori-hrj__herdr-hail"
+  },
+  {
+    "name": "moneycaringcoder/herdr-tether",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/moneycaringcoder__herdr-tether"
+  },
+  {
+    "name": "LoneExile/merino",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/LoneExile__merino"
+  },
+  {
+    "name": "e2b-dev/herdr-e2b-sandbox",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/e2b-dev__herdr-e2b-sandbox"
+  },
+  {
+    "name": "aarsh21/herdr-tab-title",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/aarsh21__herdr-tab-title"
+  },
+  {
+    "name": "zlxlabs/herdweb",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/zlxlabs__herdweb"
+  },
+  {
+    "name": "freethinkel/herdr-plugin-git-worktree-hooks",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/freethinkel__herdr-plugin-git-worktree-hooks"
+  },
+  {
+    "name": "osuki-dev/muqun-gateway",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/osuki-dev__muqun-gateway"
+  },
+  {
+    "name": "sudoeren/herdr-lazydocker",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/sudoeren__herdr-lazydocker"
+  },
+  {
+    "name": "vjeantet/herdr-scratchpad",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/vjeantet__herdr-scratchpad"
+  },
+  {
+    "name": "dmnkf/herdr-omnisearch",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/dmnkf__herdr-omnisearch"
+  },
+  {
+    "name": "winoooops/herdr-agent-watcher",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/winoooops__herdr-agent-watcher"
+  },
+  {
+    "name": "gokay-ai/sheep",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/gokay-ai__sheep"
+  },
+  {
+    "name": "crafts69guy/herdr-switchboard",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/crafts69guy__herdr-switchboard"
+  },
+  {
+    "name": "Razz21/herdr-devserver-status",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Razz21__herdr-devserver-status"
+  },
+  {
+    "name": "coryshaw1/herdr-cliamp",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/coryshaw1__herdr-cliamp"
+  },
+  {
+    "name": "shibayu36/herdr-equalize-panes",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/shibayu36__herdr-equalize-panes"
+  },
+  {
+    "name": "qintmb/herdr-icon-agent-ui",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/qintmb__herdr-icon-agent-ui"
+  },
+  {
+    "name": "htlin222/herdr-gamepad",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/htlin222__herdr-gamepad"
+  },
+  {
+    "name": "eliasstravik/herdr-call",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/eliasstravik__herdr-call"
+  },
+  {
+    "name": "enekos/herdr-quick-actions",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/enekos__herdr-quick-actions"
+  },
+  {
+    "name": "wjarka/herdr-ghostty-tab-title",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/wjarka__herdr-ghostty-tab-title"
+  },
+  {
+    "name": "vonzelle-vzt/herdr-extensions",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/vonzelle-vzt__herdr-extensions"
+  },
+  {
+    "name": "jeph/herdr-pane-balancer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jeph__herdr-pane-balancer"
+  },
+  {
+    "name": "eyalev/herdr-web",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/eyalev__herdr-web"
+  },
+  {
+    "name": "kaar/nvim-herdr-navigator",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/kaar__nvim-herdr-navigator"
+  },
+  {
+    "name": "jlimas/herdr-worktree-seed",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jlimas__herdr-worktree-seed"
+  },
+  {
+    "name": "salkhalil/herdr-sessionizer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/salkhalil__herdr-sessionizer"
+  },
+  {
+    "name": "devskale/herdr-flist",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/devskale__herdr-flist"
+  },
+  {
+    "name": "KokiKono/herdr-kanban",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/KokiKono__herdr-kanban"
+  },
+  {
+    "name": "scott306lr/herdr-plugin-hunk-autodiff",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/scott306lr__herdr-plugin-hunk-autodiff"
+  },
+  {
+    "name": "krystof018/herdr-git-status",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/krystof018__herdr-git-status"
+  },
+  {
+    "name": "barnuri/herdr-web",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/barnuri__herdr-web"
+  },
+  {
+    "name": "DnzzL/herdr-automations",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/DnzzL__herdr-automations"
+  },
+  {
+    "name": "qintmb/herdr-theme-picker",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/qintmb__herdr-theme-picker"
+  },
+  {
+    "name": "mvallebr/herdr-telegram-plugin",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/mvallebr__herdr-telegram-plugin"
+  },
+  {
+    "name": "crierr/herdr-arrange",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/crierr__herdr-arrange"
+  },
+  {
+    "name": "AkashJana18/herdr-scratch",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/AkashJana18__herdr-scratch"
+  },
+  {
+    "name": "kukv/herdr-plugin-github-dash",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/kukv__herdr-plugin-github-dash"
+  },
+  {
+    "name": "thomasschafer/herdr-kiosk",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/thomasschafer__herdr-kiosk"
+  },
+  {
+    "name": "kakigakki/herdr-auto-namer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/kakigakki__herdr-auto-namer"
+  },
+  {
+    "name": "Zamua/openloc.nvim",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Zamua__openloc.nvim"
+  },
+  {
+    "name": "mr04vv/herdr-pane-navigator",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/mr04vv__herdr-pane-navigator"
+  },
+  {
+    "name": "talent-factory/herdr-linear",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/talent-factory__herdr-linear"
+  },
+  {
+    "name": "Northern-Lighthouse/herdr-fleet",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Northern-Lighthouse__herdr-fleet"
+  },
+  {
+    "name": "alasano/house-of-herdr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/alasano__house-of-herdr"
+  },
+  {
+    "name": "gambtho/herdr-devcontainer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/gambtho__herdr-devcontainer"
+  },
+  {
+    "name": "The-Dave-Stack/herdr-keymap",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/The-Dave-Stack__herdr-keymap"
+  },
+  {
+    "name": "miko-misa/herdr-portfwd",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/miko-misa__herdr-portfwd"
+  },
+  {
+    "name": "Efeguclu1/herdr-town",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Efeguclu1__herdr-town"
+  },
+  {
+    "name": "lmilojevicc/herdr-last",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/lmilojevicc__herdr-last"
+  },
+  {
+    "name": "cokekitten/herdr-telegram-bridge",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/cokekitten__herdr-telegram-bridge"
+  },
+  {
+    "name": "lmilojevicc/herdr-tab-rename",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/lmilojevicc__herdr-tab-rename"
+  },
+  {
+    "name": "GavinTomlins/herdr-oh-my-agent",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/GavinTomlins__herdr-oh-my-agent"
+  },
+  {
+    "name": "KonstantinKai/herdr-harpoon",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/KonstantinKai__herdr-harpoon"
+  },
+  {
+    "name": "Hanyang-Li/herdr-espresso",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Hanyang-Li__herdr-espresso"
+  },
+  {
+    "name": "afogel/shepherdr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/afogel__shepherdr"
+  },
+  {
+    "name": "aclima01/herdr-notify-windows",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/aclima01__herdr-notify-windows"
+  },
+  {
+    "name": "takemo101/wave-tui",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/takemo101__wave-tui"
+  },
+  {
+    "name": "Volpestyle/herdr-plugin-mermaid-preview",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Volpestyle__herdr-plugin-mermaid-preview"
+  },
+  {
+    "name": "HexSleeves/herdr-warp",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/HexSleeves__herdr-warp"
+  },
+  {
+    "name": "JYasha11/herdr-in-your-face",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/JYasha11__herdr-in-your-face"
+  },
+  {
+    "name": "arvindparmar-me/herdr-markdown-viewer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/arvindparmar-me__herdr-markdown-viewer"
+  },
+  {
+    "name": "timofey-TK/herdr-worktree-hooks",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/timofey-TK__herdr-worktree-hooks"
+  },
+  {
+    "name": "rvalledorjr/herdr-fresh",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/rvalledorjr__herdr-fresh"
+  },
+  {
+    "name": "hmu332233/herdr-symlink-worktree",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/hmu332233__herdr-symlink-worktree"
+  },
+  {
+    "name": "jagzmz/herdr-annotations",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jagzmz__herdr-annotations"
+  },
+  {
+    "name": "hitaishi2222/herdr-fingers",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/hitaishi2222__herdr-fingers"
+  },
+  {
+    "name": "darjss/herdr-orchestrate",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/darjss__herdr-orchestrate"
+  },
+  {
+    "name": "tanshio/herdr-worktreeinclude",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/tanshio__herdr-worktreeinclude"
+  },
+  {
+    "name": "markhuot/herdr-equalize-splits",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/markhuot__herdr-equalize-splits"
+  },
+  {
+    "name": "milkyskies/herdr-attention",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/milkyskies__herdr-attention"
+  },
+  {
+    "name": "willfish/herdr-navigator",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/willfish__herdr-navigator"
+  },
+  {
+    "name": "marcoskichel/herdr-muster",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/marcoskichel__herdr-muster"
+  },
+  {
+    "name": "persiyanov/herdr-fresh-worktree",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/persiyanov__herdr-fresh-worktree"
+  },
+  {
+    "name": "0x5c0f/herdr-insight",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/0x5c0f__herdr-insight"
+  },
+  {
+    "name": "bayoudhi/herdr-shell-progress",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/bayoudhi__herdr-shell-progress"
+  },
+  {
+    "name": "elKei24/herdr-co-review",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/elKei24__herdr-co-review"
+  },
+  {
+    "name": "tifandotme/dotfiles",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/tifandotme__dotfiles"
+  },
+  {
+    "name": "cdowell09/herdr-pr-board",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/cdowell09__herdr-pr-board"
+  },
+  {
+    "name": "youguanxinqing/herdr-flash",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/youguanxinqing__herdr-flash"
+  },
+  {
+    "name": "go-min/herdr-fwd",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/go-min__herdr-fwd"
+  },
+  {
+    "name": "AltanS/herdr-cache-alert",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/AltanS__herdr-cache-alert"
+  },
+  {
+    "name": "vjeantet/herdr-mission-control",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/vjeantet__herdr-mission-control"
+  },
+  {
+    "name": "jwkicklighter/herdr-prompt-library",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jwkicklighter__herdr-prompt-library"
+  },
+  {
+    "name": "VilfredSikker/easy-review",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/VilfredSikker__easy-review"
+  },
+  {
+    "name": "flupke/herdr-progressive-reviewer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/flupke__herdr-progressive-reviewer"
+  },
+  {
+    "name": "jorge07RD/herdr-ssh-manager",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jorge07RD__herdr-ssh-manager"
+  },
+  {
+    "name": "mcuste/herdr-workspacer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/mcuste__herdr-workspacer"
+  },
+  {
+    "name": "aliou/herdr-cast",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/aliou__herdr-cast"
+  },
+  {
+    "name": "voodootikigod/adlc-herdr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/voodootikigod__adlc-herdr"
+  },
+  {
+    "name": "IsaiasZc/herdr-a2a",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/IsaiasZc__herdr-a2a"
+  },
+  {
+    "name": "crierr/herdr-tmux-layout",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/crierr__herdr-tmux-layout"
+  },
+  {
+    "name": "nikok6/herdr-pet",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/nikok6__herdr-pet"
+  },
+  {
+    "name": "thuanlm215/advanced-herdr-file-viewer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/thuanlm215__advanced-herdr-file-viewer"
+  },
+  {
+    "name": "itisbryan/herdr-gh-checks",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/itisbryan__herdr-gh-checks"
+  },
+  {
+    "name": "bsorescu/herdr-mobile",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/bsorescu__herdr-mobile"
+  },
+  {
+    "name": "nhclink16/herdr-announcer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/nhclink16__herdr-announcer"
+  },
+  {
+    "name": "hamidi-dev/herdr-opentab",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/hamidi-dev__herdr-opentab"
+  },
+  {
+    "name": "yuuta1219/herdr-gekiatsu-plugin",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/yuuta1219__herdr-gekiatsu-plugin"
+  },
+  {
+    "name": "playsthisgame/herdr-x",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/playsthisgame__herdr-x"
+  },
+  {
+    "name": "wraithyy/herdr-openr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/wraithyy__herdr-openr"
+  },
+  {
+    "name": "ramarivera/herdr-pretty-which",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ramarivera__herdr-pretty-which"
+  },
+  {
+    "name": "revanp/herdr-discord-presence",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/revanp__herdr-discord-presence"
+  },
+  {
+    "name": "Only-Moon/herdr-yazi-windows",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Only-Moon__herdr-yazi-windows"
+  },
+  {
+    "name": "cesarferreira/herdr-palette",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/cesarferreira__herdr-palette"
+  },
+  {
+    "name": "jeffory/herdr-walkietalkie",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jeffory__herdr-walkietalkie"
+  },
+  {
+    "name": "opsydyn/herdr-questmancer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/opsydyn__herdr-questmancer"
+  },
+  {
+    "name": "jatingargiitk/herdr-memory",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jatingargiitk__herdr-memory"
+  },
+  {
+    "name": "plotarmordev/tendwire",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/plotarmordev__tendwire"
+  },
+  {
+    "name": "ismaelosuna7824/herdr-file-viewer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ismaelosuna7824__herdr-file-viewer"
+  },
+  {
+    "name": "edouard-andrei/herdr-layout-tools",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/edouard-andrei__herdr-layout-tools"
+  },
+  {
+    "name": "amurru/herdr-whistle",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/amurru__herdr-whistle"
+  },
+  {
+    "name": "qq88976321/herdr-copy-search",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/qq88976321__herdr-copy-search"
+  },
+  {
+    "name": "rohankewal/herdr-nerd-font-tab-name",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/rohankewal__herdr-nerd-font-tab-name"
+  },
+  {
+    "name": "timofey-TK/herdr-open-in-editor",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/timofey-TK__herdr-open-in-editor"
+  },
+  {
+    "name": "jsmenzies/mergr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jsmenzies__mergr"
+  },
+  {
+    "name": "mejiasd3v/herdr-farm",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/mejiasd3v__herdr-farm"
+  },
+  {
+    "name": "dzwduan/herdr-convo-index",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/dzwduan__herdr-convo-index"
+  },
+  {
+    "name": "osolmaz/herdr-branch-cleanup",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/osolmaz__herdr-branch-cleanup"
+  },
+  {
+    "name": "calebcauthon/herdr-theos-settler",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/calebcauthon__herdr-theos-settler"
+  },
+  {
+    "name": "Tomatio13/herdr-google-gmail",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Tomatio13__herdr-google-gmail"
+  },
+  {
+    "name": "alejodelosrios/herdr-claude-usage",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/alejodelosrios__herdr-claude-usage"
+  },
+  {
+    "name": "jeromychu23/herdr-popupx",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jeromychu23__herdr-popupx"
+  },
+  {
+    "name": "iurysza/herdr-pane-layouts",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/iurysza__herdr-pane-layouts"
+  },
+  {
+    "name": "ugurtarlig/herdr-agent-recency",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ugurtarlig__herdr-agent-recency"
+  },
+  {
+    "name": "JoanGil/herdr-unread-marker",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/JoanGil__herdr-unread-marker"
+  },
+  {
+    "name": "cinco/herdr-grep-nvim",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/cinco__herdr-grep-nvim"
+  },
+  {
+    "name": "JacquesvanWyk/herdr-hunk",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/JacquesvanWyk__herdr-hunk"
+  },
+  {
+    "name": "JacquesvanWyk/herdr-lazygit",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/JacquesvanWyk__herdr-lazygit"
+  },
+  {
+    "name": "ditwrd/herdr-remote-worktrunk",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ditwrd__herdr-remote-worktrunk"
+  },
+  {
+    "name": "iikjl/herdr-spotify",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/iikjl__herdr-spotify"
+  },
+  {
+    "name": "poweroutlet2/herdr-confirm-close-pane",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/poweroutlet2__herdr-confirm-close-pane"
+  },
+  {
+    "name": "yoshiori/herdr-configurable-picker",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/yoshiori__herdr-configurable-picker"
+  },
+  {
+    "name": "cdc-lst/herdr-wait",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/cdc-lst__herdr-wait"
+  },
+  {
+    "name": "kkckkc/herdr-plugin-gh-workflow",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/kkckkc__herdr-plugin-gh-workflow"
+  },
+  {
+    "name": "maayanyosef/herdr-aws-ssm",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/maayanyosef__herdr-aws-ssm"
+  },
+  {
+    "name": "qdentity/herdr-worktree-lifecycle",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/qdentity__herdr-worktree-lifecycle"
+  },
+  {
+    "name": "shizlie/herdr-setup-bootstrap",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/shizlie__herdr-setup-bootstrap"
+  },
+  {
+    "name": "funsaized/herdr-mise",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/funsaized__herdr-mise"
+  },
+  {
+    "name": "kiitosu/herdr-jira-board",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/kiitosu__herdr-jira-board"
+  },
+  {
+    "name": "ShoMasegi/herdr-worktree-nav",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ShoMasegi__herdr-worktree-nav"
+  },
+  {
+    "name": "j0urneyk/herdrctx",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/j0urneyk__herdrctx"
+  },
+  {
+    "name": "IvoryHeart/herdr-world",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/IvoryHeart__herdr-world"
+  },
+  {
+    "name": "napalmpapalam/herdr-quotr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/napalmpapalam__herdr-quotr"
+  },
+  {
+    "name": "moneycaringcoder/herdr-redact",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/moneycaringcoder__herdr-redact"
+  },
+  {
+    "name": "ardasevinc/herdr-codex-bridge",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ardasevinc__herdr-codex-bridge"
+  },
+  {
+    "name": "joo-was-already-taken/herdr-prevtab",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/joo-was-already-taken__herdr-prevtab"
+  },
+  {
+    "name": "vishnutskumar/herdr-memex-analytics",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/vishnutskumar__herdr-memex-analytics"
+  },
+  {
+    "name": "moneycaringcoder/herdr-shear",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/moneycaringcoder__herdr-shear"
+  },
+  {
+    "name": "abhishek944/herdr-pets",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/abhishek944__herdr-pets"
+  },
+  {
+    "name": "TinocoAI/scp-explorer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/TinocoAI__scp-explorer"
+  },
+  {
+    "name": "neospeed83/herdr-standup",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/neospeed83__herdr-standup"
+  },
+  {
+    "name": "to4iki/herdr-unread-jump",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/to4iki__herdr-unread-jump"
+  },
+  {
+    "name": "sazardev/herdr-code-board",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/sazardev__herdr-code-board"
+  },
+  {
+    "name": "wavrin/herdr-ferry",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/wavrin__herdr-ferry"
+  },
+  {
+    "name": "jakekroon/herdr-pr-tracker",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jakekroon__herdr-pr-tracker"
+  },
+  {
+    "name": "scott-the-programmer/vscode-devcontainers-herdr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/scott-the-programmer__vscode-devcontainers-herdr"
+  },
+  {
+    "name": "mikedclarke/herdr-shepherd",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/mikedclarke__herdr-shepherd"
+  },
+  {
+    "name": "danilolucasmd/herdr-clone-layout",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/danilolucasmd__herdr-clone-layout"
+  },
+  {
+    "name": "iuhoay/herdr-break-pane",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/iuhoay__herdr-break-pane"
+  },
+  {
+    "name": "anhnd3005-infinity/herdr-worker-orchestrator",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/anhnd3005-infinity__herdr-worker-orchestrator"
+  },
+  {
+    "name": "kosuketut/herdr-remotedownloder",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/kosuketut__herdr-remotedownloder"
+  },
+  {
+    "name": "the-inconvenience-store/herdr-tilt",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/the-inconvenience-store__herdr-tilt"
+  },
+  {
+    "name": "bigbug16/herdr-topbar",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/bigbug16__herdr-topbar"
+  },
+  {
+    "name": "cpcloud/herdr-agentsview",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/cpcloud__herdr-agentsview"
+  },
+  {
+    "name": "StructuPath/herdr-conductor",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/StructuPath__herdr-conductor"
+  },
+  {
+    "name": "kvkenyon/herdr-quota",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/kvkenyon__herdr-quota"
+  },
+  {
+    "name": "marcvermeeren/chatter",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/marcvermeeren__chatter"
+  },
+  {
+    "name": "StructuPath/herdr-guard",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/StructuPath__herdr-guard"
+  },
+  {
+    "name": "Pimpmuckl/herdr-streamdeck",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Pimpmuckl__herdr-streamdeck"
+  },
+  {
+    "name": "iiii1224/herdr-statusline",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/iiii1224__herdr-statusline"
+  },
+  {
+    "name": "shadowfax92/herdr-comments",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/shadowfax92__herdr-comments"
+  },
+  {
+    "name": "CristianPeralta/herdr-api-credit-bar",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/CristianPeralta__herdr-api-credit-bar"
+  },
+  {
+    "name": "davidolrik/herdr-titles",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/davidolrik__herdr-titles"
+  },
+  {
+    "name": "A1exthegreat/herdr-agent-notify",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/A1exthegreat__herdr-agent-notify"
+  },
+  {
+    "name": "ronly2460/herdr-pane-mover",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ronly2460__herdr-pane-mover"
+  },
+  {
+    "name": "maedana/herdr-agents-status",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/maedana__herdr-agents-status"
+  },
+  {
+    "name": "jwarykowski/shepherd",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jwarykowski__shepherd"
+  },
+  {
+    "name": "blaxel-ai/herdr-blaxel-sandbox-plugin",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/blaxel-ai__herdr-blaxel-sandbox-plugin"
+  },
+  {
+    "name": "Yemeni/herdr-agent-timer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Yemeni__herdr-agent-timer"
+  },
+  {
+    "name": "RenKoya1/herdr-approve-all",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/RenKoya1__herdr-approve-all"
+  },
+  {
+    "name": "candypoets/buzzr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/candypoets__buzzr"
+  },
+  {
+    "name": "maedana/herdr-whereami",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/maedana__herdr-whereami"
+  },
+  {
+    "name": "matheus3301/herdr-phone",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/matheus3301__herdr-phone"
+  },
+  {
+    "name": "quan-meng/herdr-slurm",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/quan-meng__herdr-slurm"
+  },
+  {
+    "name": "gejiliang/herdr-openclaw",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/gejiliang__herdr-openclaw"
+  },
+  {
+    "name": "OliverGilan/herdr-jj",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/OliverGilan__herdr-jj"
+  },
+  {
+    "name": "cyperx84/herdr-loop",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/cyperx84__herdr-loop"
+  },
+  {
+    "name": "cyperx84/herdr-sesh-bro",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/cyperx84__herdr-sesh-bro"
+  },
+  {
+    "name": "wraithyy/herdr-waypoint",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/wraithyy__herdr-waypoint"
+  },
+  {
+    "name": "happyeric77/agent-webhook-notify",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/happyeric77__agent-webhook-notify"
+  },
+  {
+    "name": "mikeyobrien/herdr-agent-profiles",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/mikeyobrien__herdr-agent-profiles"
+  },
+  {
+    "name": "y-hirakaw/herdr-launcher-pane",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/y-hirakaw__herdr-launcher-pane"
+  },
+  {
+    "name": "dmangla3/herdr-fork-from-message",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/dmangla3__herdr-fork-from-message"
+  },
+  {
+    "name": "Javamomma/herdr-scribe",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Javamomma__herdr-scribe"
+  },
+  {
+    "name": "hexsprite/herdr-beads",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/hexsprite__herdr-beads"
+  },
+  {
+    "name": "toyamarinyon/herdr-thread-to-tab",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/toyamarinyon__herdr-thread-to-tab"
+  },
+  {
+    "name": "hkdom/herdr-telegram-gate",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/hkdom__herdr-telegram-gate"
+  },
+  {
+    "name": "nytafar/herdr-cache-ttl",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/nytafar__herdr-cache-ttl"
+  },
+  {
+    "name": "Tyru5/herdr-agent-state",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Tyru5__herdr-agent-state"
+  },
+  {
+    "name": "quantk/herdr-review",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/quantk__herdr-review"
+  },
+  {
+    "name": "jattento/herdr-multirepo",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jattento__herdr-multirepo"
+  },
+  {
+    "name": "bengemine/herdr-hibernate",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/bengemine__herdr-hibernate"
+  },
+  {
+    "name": "kenchan/herdr-ghq-open-agent",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/kenchan__herdr-ghq-open-agent"
+  },
+  {
+    "name": "mdetweil/herdr-lazytask",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/mdetweil__herdr-lazytask"
+  },
+  {
+    "name": "haphamdev/herdr-simple-switcher",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/haphamdev__herdr-simple-switcher"
+  },
+  {
+    "name": "ddfonseca/herdr-paste-image",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ddfonseca__herdr-paste-image"
+  },
+  {
+    "name": "ndom91/herdr-ai-tab-name",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ndom91__herdr-ai-tab-name"
+  },
+  {
+    "name": "mroth/herdr-jj-status",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/mroth__herdr-jj-status"
+  },
+  {
+    "name": "ppggff/herdr-plugin",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ppggff__herdr-plugin"
+  },
+  {
+    "name": "4Born/herdr-pane-id-labeler",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/4Born__herdr-pane-id-labeler"
+  },
+  {
+    "name": "jeffarese/herdr-newtab-plus",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jeffarese__herdr-newtab-plus"
+  },
+  {
+    "name": "suisya-systems/herdr-agent-office",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/suisya-systems__herdr-agent-office"
+  },
+  {
+    "name": "iamhouser/herdr-claude-usage-multi",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/iamhouser__herdr-claude-usage-multi"
+  },
+  {
+    "name": "speardragon/herdr-ask-inbox",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/speardragon__herdr-ask-inbox"
+  },
+  {
+    "name": "sf1tzp/herdr-pane-orientation-switcher",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/sf1tzp__herdr-pane-orientation-switcher"
+  },
+  {
+    "name": "calebcauthon/herdr-agent-copy-paste-fork",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/calebcauthon__herdr-agent-copy-paste-fork"
+  },
+  {
+    "name": "calebcauthon/herdr-birdseye",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/calebcauthon__herdr-birdseye"
+  },
+  {
+    "name": "serhii-chernenko/herdr-worktreeinclude",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/serhii-chernenko__herdr-worktreeinclude"
+  },
+  {
+    "name": "Tomatio13/herdr-google-calendar",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Tomatio13__herdr-google-calendar"
+  },
+  {
+    "name": "TheMetalStorm/herdr-freebuff-plugin",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/TheMetalStorm__herdr-freebuff-plugin"
+  },
+  {
+    "name": "meerzulee/herdr-float",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/meerzulee__herdr-float"
+  },
+  {
+    "name": "elliotekj/herdr-easymotion",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/elliotekj__herdr-easymotion"
+  },
+  {
+    "name": "yuucu/herdr-hunk",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/yuucu__herdr-hunk"
+  },
+  {
+    "name": "speardragon/herdr-agents-history",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/speardragon__herdr-agents-history"
+  },
+  {
+    "name": "tomasvarga/herdr-e2b",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/tomasvarga__herdr-e2b"
+  },
+  {
+    "name": "usrivastava92/herdr-wakeup",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/usrivastava92__herdr-wakeup"
+  },
+  {
+    "name": "ImArtisann/herdr-workspace-launcher",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ImArtisann__herdr-workspace-launcher"
+  },
+  {
+    "name": "jagzmz/herdr-s3-clipboard",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jagzmz__herdr-s3-clipboard"
+  },
+  {
+    "name": "carsonjones/herdr-agent-dashboard",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/carsonjones__herdr-agent-dashboard"
+  },
+  {
+    "name": "devoc09/herdr-equalize-vsplit",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/devoc09__herdr-equalize-vsplit"
+  },
+  {
+    "name": "LeonardoTrapani/herdr-js-worktree-bootstrap",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/LeonardoTrapani__herdr-js-worktree-bootstrap"
+  },
+  {
+    "name": "malone-c/herdr-keybind-search",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/malone-c__herdr-keybind-search"
+  },
+  {
+    "name": "tomasvarga/herdr-sniffr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/tomasvarga__herdr-sniffr"
+  },
+  {
+    "name": "furuhashin/herdr-synchronize-panes",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/furuhashin__herdr-synchronize-panes"
+  },
+  {
+    "name": "ismaelosuna7824/herdr-recent-workspaces",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ismaelosuna7824__herdr-recent-workspaces"
+  },
+  {
+    "name": "JYasha11/herdr-shame-report",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/JYasha11__herdr-shame-report"
+  },
+  {
+    "name": "arjenblokzijl/herdr-launcher",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/arjenblokzijl__herdr-launcher"
+  },
+  {
+    "name": "gw31415/herdr-amphetamine-macos",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/gw31415__herdr-amphetamine-macos"
+  },
+  {
+    "name": "GranamyrBR/herdr-english-coach",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/GranamyrBR__herdr-english-coach"
+  },
+  {
+    "name": "kamaaina/herdr_sync",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/kamaaina__herdr_sync"
+  },
+  {
+    "name": "CodyBontecou/herdr-telemetry-bridge",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/CodyBontecou__herdr-telemetry-bridge"
+  },
+  {
+    "name": "alon-z/herdr-devup",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/alon-z__herdr-devup"
+  },
+  {
+    "name": "alon-z/herdr-command-palette",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/alon-z__herdr-command-palette"
+  },
+  {
+    "name": "KarthusLorin/herdr-turn-coordinator",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/KarthusLorin__herdr-turn-coordinator"
+  },
+  {
+    "name": "momentohq/mo-herdr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/momentohq__mo-herdr"
+  },
+  {
+    "name": "cantona/herdr-triggers",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/cantona__herdr-triggers"
+  },
+  {
+    "name": "AltanS/herdr-pouch",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/AltanS__herdr-pouch"
+  },
+  {
+    "name": "nengqi/herdr-session-sync",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/nengqi__herdr-session-sync"
+  },
+  {
+    "name": "chris-yyau/hermes-herdr-auto-reconcile",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/chris-yyau__hermes-herdr-auto-reconcile"
+  },
+  {
+    "name": "mgh3326/scopefuel",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/mgh3326__scopefuel"
+  },
+  {
+    "name": "guidodinello/herdr-routines",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/guidodinello__herdr-routines"
+  },
+  {
+    "name": "moneycaringcoder/herdr-standup",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/moneycaringcoder__herdr-standup"
+  },
+  {
+    "name": "bon5co/bermuda",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/bon5co__bermuda"
+  },
+  {
+    "name": "danieljvdm/herdr-composer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/danieljvdm__herdr-composer"
+  },
+  {
+    "name": "LZHcode1986/herdr-link",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/LZHcode1986__herdr-link"
+  },
+  {
+    "name": "wazum/herdr-polyglot",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/wazum__herdr-polyglot"
+  },
+  {
+    "name": "moneycaringcoder/herdr-collide",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/moneycaringcoder__herdr-collide"
+  },
+  {
+    "name": "HikaruEgashira/say-hook",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/HikaruEgashira__say-hook"
+  },
+  {
+    "name": "ukwhatn/taskherd",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ukwhatn__taskherd"
+  },
+  {
+    "name": "moneycaringcoder/herdr-pulse",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/moneycaringcoder__herdr-pulse"
+  },
+  {
+    "name": "cyperx84/herdr-tab-jump",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/cyperx84__herdr-tab-jump"
+  },
+  {
+    "name": "yoyoyeti/multitrunk-herdr-plugin",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/yoyoyeti__multitrunk-herdr-plugin"
+  },
+  {
+    "name": "dev-town/harbr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/dev-town__harbr"
+  },
+  {
+    "name": "rcosteira79/herdr-autocontinue",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/rcosteira79__herdr-autocontinue"
+  },
+  {
+    "name": "neospeed83/herdr-tournament",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/neospeed83__herdr-tournament"
+  },
+  {
+    "name": "husniadil/herdr-dispatch",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/husniadil__herdr-dispatch"
+  },
+  {
+    "name": "terry-li-hm/herdr-model-lanes",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/terry-li-hm__herdr-model-lanes"
+  },
+  {
+    "name": "husniadil/herdr-sched",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/husniadil__herdr-sched"
+  },
+  {
+    "name": "husniadil/herdr-tasks",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/husniadil__herdr-tasks"
+  },
+  {
+    "name": "dev-shimada/herdr-auto-tab-name",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/dev-shimada__herdr-auto-tab-name"
+  },
+  {
+    "name": "teasec4/herdr-mobile-app",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/teasec4__herdr-mobile-app"
+  },
+  {
+    "name": "yelsed/herdr-pr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/yelsed__herdr-pr"
+  },
+  {
+    "name": "tigorlazuardi/herdr-web-tui",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/tigorlazuardi__herdr-web-tui"
+  },
+  {
+    "name": "neospeed83/herdr-replay",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/neospeed83__herdr-replay"
+  },
+  {
+    "name": "alastairsounds/herdr-plugins",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/alastairsounds__herdr-plugins"
+  },
+  {
+    "name": "joshuadavidthomas/hrd",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/joshuadavidthomas__hrd"
+  },
+  {
+    "name": "macintacos/herdr-scratch",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/macintacos__herdr-scratch"
+  },
+  {
+    "name": "rcosteira79/herdr-account-switch",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/rcosteira79__herdr-account-switch"
+  },
+  {
+    "name": "iamgp/herdr-overview",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/iamgp__herdr-overview"
+  },
+  {
+    "name": "black-atom-industries/helm.herdr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/black-atom-industries__helm.herdr"
+  },
+  {
+    "name": "tkmct/herdr-wsl-notify",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/tkmct__herdr-wsl-notify"
+  },
+  {
+    "name": "42lizard/herdr-dwm-layout",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/42lizard__herdr-dwm-layout"
+  },
+  {
+    "name": "42lizard/herdr-sessionizer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/42lizard__herdr-sessionizer"
+  },
+  {
+    "name": "ivorpad/herdr-tunnel",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ivorpad__herdr-tunnel"
+  },
+  {
+    "name": "tmn73/herdr-claude-tab-title",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/tmn73__herdr-claude-tab-title"
+  },
+  {
+    "name": "hasuwini77/herdr-spinner",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/hasuwini77__herdr-spinner"
+  },
+  {
+    "name": "silverwolfdoc/herdr-usage-bar",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/silverwolfdoc__herdr-usage-bar"
+  },
+  {
+    "name": "arvmaan/herdr-glance",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/arvmaan__herdr-glance"
+  },
+  {
+    "name": "steig/worktender",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/steig__worktender"
+  },
+  {
+    "name": "susomejias/herdr-awake",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/susomejias__herdr-awake"
+  },
+  {
+    "name": "zhenyufu/herdr-cadence",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/zhenyufu__herdr-cadence"
+  },
+  {
+    "name": "jerryfane/herdr-plan-approve",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jerryfane__herdr-plan-approve"
+  },
+  {
+    "name": "zackshen/herdr-translate",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/zackshen__herdr-translate"
+  },
+  {
+    "name": "m-mohamed/sheprd",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/m-mohamed__sheprd"
+  },
+  {
+    "name": "hmu332233/herdr-plugins-labs",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/hmu332233__herdr-plugins-labs"
+  },
+  {
+    "name": "raghu-nandan-bs/herdr-deck-navigation",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/raghu-nandan-bs__herdr-deck-navigation"
+  },
+  {
+    "name": "agentience/herdr-plugin-ide-jump",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/agentience__herdr-plugin-ide-jump"
+  },
+  {
+    "name": "ctbaum/herdr-deck",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ctbaum__herdr-deck"
+  },
+  {
+    "name": "giacolees/herdr-openlogi",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/giacolees__herdr-openlogi"
+  },
+  {
+    "name": "andschneider/roboherd",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/andschneider__roboherd"
+  },
+  {
+    "name": "alex-devdone/herdr-hub",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/alex-devdone__herdr-hub"
+  },
+  {
+    "name": "rcosteira79/herdr-readpending",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/rcosteira79__herdr-readpending"
+  },
+  {
+    "name": "zackshen/herdr-workspace",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/zackshen__herdr-workspace"
+  },
+  {
+    "name": "maedana/herdr-normal-mode",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/maedana__herdr-normal-mode"
+  },
+  {
+    "name": "ZingerLittleBee/herdr-agent-pins",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ZingerLittleBee__herdr-agent-pins"
+  },
+  {
+    "name": "EmmetZ/herdr-tab-smart-rename-rs",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/EmmetZ__herdr-tab-smart-rename-rs"
+  },
+  {
+    "name": "asumaran/herdr-goto",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/asumaran__herdr-goto"
+  },
+  {
+    "name": "KadenThomp36/herdr-plugin-switcher",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/KadenThomp36__herdr-plugin-switcher"
+  },
+  {
+    "name": "neospark-sol/agentflock",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/neospark-sol__agentflock"
+  },
+  {
+    "name": "tareqmlx/herdr-hunk-viewer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/tareqmlx__herdr-hunk-viewer"
+  },
+  {
+    "name": "devops-fj/herdr-handoff",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/devops-fj__herdr-handoff"
+  },
+  {
+    "name": "woshahua/herdr-github-pr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/woshahua__herdr-github-pr"
+  },
+  {
+    "name": "xheisenbugx/herdr-sesh",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/xheisenbugx__herdr-sesh"
+  },
+  {
+    "name": "xlinx/herdr-auto-yes-sir",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/xlinx__herdr-auto-yes-sir"
+  },
+  {
+    "name": "KoalaVim/herdr-nvim-aware",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/KoalaVim__herdr-nvim-aware"
+  },
+  {
+    "name": "zackshen/herdr-telescope",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/zackshen__herdr-telescope"
+  },
+  {
+    "name": "winoooops/herdr-agent-title-sync",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/winoooops__herdr-agent-title-sync"
+  },
+  {
+    "name": "shadowfax92/herdr-talon",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/shadowfax92__herdr-talon"
+  },
+  {
+    "name": "shadowfax92/herdr-ferry",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/shadowfax92__herdr-ferry"
+  },
+  {
+    "name": "chandrasekharan98/herdr-workspace-save",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/chandrasekharan98__herdr-workspace-save"
+  },
+  {
+    "name": "hota911/herdr-command-palette",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/hota911__herdr-command-palette"
+  },
+  {
+    "name": "y4m3/herdr-zen",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/y4m3__herdr-zen"
+  },
+  {
+    "name": "phin-tech/herdr-phin-util",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/phin-tech__herdr-phin-util"
+  },
+  {
+    "name": "Slimydog21/herdr-nixos-vm",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Slimydog21__herdr-nixos-vm"
+  },
+  {
+    "name": "haisi/herdr-plugin-command-palette",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/haisi__herdr-plugin-command-palette"
+  },
+  {
+    "name": "Angel-O/herdr-labels",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Angel-O__herdr-labels"
+  },
+  {
+    "name": "mikhail-angelov/herdr-review-loop",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/mikhail-angelov__herdr-review-loop"
+  },
+  {
+    "name": "gdli6177/herdr-agent-team",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/gdli6177__herdr-agent-team"
+  },
+  {
+    "name": "GNURub/herdr-prompt-bucket",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/GNURub__herdr-prompt-bucket"
+  },
+  {
+    "name": "dio16/herdr-auto-update",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/dio16__herdr-auto-update"
+  },
+  {
+    "name": "cyperx84/herdr-notes",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/cyperx84__herdr-notes"
+  },
+  {
+    "name": "fraction12/herdr-rainfrog",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/fraction12__herdr-rainfrog"
+  },
+  {
+    "name": "tkuchiki/herdr-plugin-k8s-context",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/tkuchiki__herdr-plugin-k8s-context"
+  },
+  {
+    "name": "maedana/herdr-agents-preview",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/maedana__herdr-agents-preview"
+  },
+  {
+    "name": "bredebjorhovd/herdr-board",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/bredebjorhovd__herdr-board"
+  },
+  {
+    "name": "TheThoughtagen/attic",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/TheThoughtagen__attic"
+  },
+  {
+    "name": "third774/herdr-sidepulse",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/third774__herdr-sidepulse"
+  },
+  {
+    "name": "tareqmlx/herdr-lazygit-viewer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/tareqmlx__herdr-lazygit-viewer"
+  },
+  {
+    "name": "bfreed/herdr-corral",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/bfreed__herdr-corral"
+  },
+  {
+    "name": "ram4-dev/herdr-automations",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ram4-dev__herdr-automations"
+  },
+  {
+    "name": "aleslanger/herdr-strays",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/aleslanger__herdr-strays"
+  },
+  {
+    "name": "pjs-0457/herdr-yazi-explorer",
+    "status": "success",
+    "duration": 1.23,
+    "path": "repos/pjs-0457__herdr-yazi-explorer"
+  },
+  {
+    "name": "happyeric77/agent-keep-awake",
+    "status": "success",
+    "duration": 1.24,
+    "path": "repos/happyeric77__agent-keep-awake"
+  },
+  {
+    "name": "ryanlewis/herdr-tab-renamer",
+    "status": "success",
+    "duration": 1.27,
+    "path": "repos/ryanlewis__herdr-tab-renamer"
+  },
+  {
+    "name": "wraithyy/herdr-hintr",
+    "status": "success",
+    "duration": 1.27,
+    "path": "repos/wraithyy__herdr-hintr"
+  },
+  {
+    "name": "disintegrator/trunkr",
+    "status": "success",
+    "duration": 1.27,
+    "path": "repos/disintegrator__trunkr"
+  },
+  {
+    "name": "WillowMist/herdr-bitwarden",
+    "status": "success",
+    "duration": 1.24,
+    "path": "repos/WillowMist__herdr-bitwarden"
+  },
+  {
+    "name": "tamdogood/herdr-orc",
+    "status": "success",
+    "duration": 1.27,
+    "path": "repos/tamdogood__herdr-orc"
+  },
+  {
+    "name": "maedana/herdr-hint",
+    "status": "success",
+    "duration": 1.28,
+    "path": "repos/maedana__herdr-hint"
+  },
+  {
+    "name": "shadowfax92/herdr-scratch",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/shadowfax92__herdr-scratch"
+  },
+  {
+    "name": "danbuhler/herdr-pane-topic-sync",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/danbuhler__herdr-pane-topic-sync"
+  },
+  {
+    "name": "dantehemerson/herdr-last-tab",
+    "status": "success",
+    "duration": 1.41,
+    "path": "repos/dantehemerson__herdr-last-tab"
+  },
+  {
+    "name": "szrenwei/herdr-agent-metrics",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/szrenwei__herdr-agent-metrics"
+  },
+  {
+    "name": "Only-Moon/herdr-nerd-font-tab-name-windows",
+    "status": "success",
+    "duration": 1.44,
+    "path": "repos/Only-Moon__herdr-nerd-font-tab-name-windows"
+  },
+  {
+    "name": "sebcbi1/herdr-edge-nav",
+    "status": "success",
+    "duration": 1.45,
+    "path": "repos/sebcbi1__herdr-edge-nav"
+  },
+  {
+    "name": "bayoudhi/herdr-prayer-times",
+    "status": "success",
+    "duration": 1.7,
+    "path": "repos/bayoudhi__herdr-prayer-times"
+  },
+  {
+    "name": "Royal-lobster/herdr-spinup",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/Royal-lobster__herdr-spinup"
+  },
+  {
+    "name": "playsthisgame/herdr-api-client",
+    "status": "success",
+    "duration": 0.99,
+    "path": "repos/playsthisgame__herdr-api-client"
+  },
+  {
+    "name": "szrenwei/herdr-traex",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/szrenwei__herdr-traex"
+  },
+  {
+    "name": "brianh20/herdr-stagr",
+    "status": "success",
+    "duration": 1.05,
+    "path": "repos/brianh20__herdr-stagr"
+  },
+  {
+    "name": "szrenwei/herdr-space-tab-metadata",
+    "status": "success",
+    "duration": 0.88,
+    "path": "repos/szrenwei__herdr-space-tab-metadata"
+  },
+  {
+    "name": "narumiruna/herdr-plugins",
+    "status": "success",
+    "duration": 2.32,
+    "path": "repos/narumiruna__herdr-plugins"
+  },
+  {
+    "name": "lucasleon2107/herdr-tab-title-sync",
+    "status": "success",
+    "duration": 0.97,
+    "path": "repos/lucasleon2107__herdr-tab-title-sync"
+  },
+  {
+    "name": "RizRiyz/pixtui",
+    "status": "success",
+    "duration": 1.21,
+    "path": "repos/RizRiyz__pixtui"
+  },
+  {
+    "name": "omerturhan/herdr-touchbar",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/omerturhan__herdr-touchbar"
+  },
+  {
+    "name": "ArteenHD/herdr-cache-timer",
+    "status": "success",
+    "duration": 1.28,
+    "path": "repos/ArteenHD__herdr-cache-timer"
+  },
+  {
+    "name": "btorresgil/herdr-hermes-session-title",
+    "status": "success",
+    "duration": 1.27,
+    "path": "repos/btorresgil__herdr-hermes-session-title"
+  },
+  {
+    "name": "kay-ws/herdr-island",
+    "status": "success",
+    "duration": 1.08,
+    "path": "repos/kay-ws__herdr-island"
+  },
+  {
+    "name": "victor-software-house/herdr-stash",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/victor-software-house__herdr-stash"
+  },
+  {
+    "name": "3mmdrew/herdr-layout",
+    "status": "success",
+    "duration": 1.52,
+    "path": "repos/3mmdrew__herdr-layout"
+  },
+  {
+    "name": "m4salah/herdr-plugin-last",
+    "status": "success",
+    "duration": 0.95,
+    "path": "repos/m4salah__herdr-plugin-last"
+  },
+  {
+    "name": "retroaalto/herdr-smartnav",
+    "status": "success",
+    "duration": 1.04,
+    "path": "repos/retroaalto__herdr-smartnav"
+  },
+  {
+    "name": "ablause/herdr-flutter",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ablause__herdr-flutter"
+  },
+  {
+    "name": "aneym/herdr-voice",
+    "status": "success",
+    "duration": 1.1,
+    "path": "repos/aneym__herdr-voice"
+  },
+  {
+    "name": "joshka0/herdr-watcher",
+    "status": "success",
+    "duration": 1.21,
+    "path": "repos/joshka0__herdr-watcher"
+  },
+  {
+    "name": "Soemii/herdr-jetbrains",
+    "status": "success",
+    "duration": 3.45,
+    "path": "repos/Soemii__herdr-jetbrains"
+  },
+  {
+    "name": "baotran01/herdr-agent-diff",
+    "status": "success",
+    "duration": 1.28,
+    "path": "repos/baotran01__herdr-agent-diff"
+  },
+  {
+    "name": "yxhta/herdr-agents-picker",
+    "status": "success",
+    "duration": 1.19,
+    "path": "repos/yxhta__herdr-agents-picker"
+  },
+  {
+    "name": "matheus3301/herdr-shortcut",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/matheus3301__herdr-shortcut"
+  },
+  {
+    "name": "Numbered-com/herdr-ports",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/Numbered-com__herdr-ports"
+  },
+  {
+    "name": "pedroloch/herdr-undo-close",
+    "status": "success",
+    "duration": 1.07,
+    "path": "repos/pedroloch__herdr-undo-close"
+  },
+  {
+    "name": "benkraus/herdr-plugin-codex-subs",
+    "status": "success",
+    "duration": 1.24,
+    "path": "repos/benkraus__herdr-plugin-codex-subs"
+  },
+  {
+    "name": "kaar/herdr-fzf-url",
+    "status": "success",
+    "duration": 1.06,
+    "path": "repos/kaar__herdr-fzf-url"
+  },
+  {
+    "name": "nwarwick/herdr-caffeinate",
+    "status": "success",
+    "duration": 1.11,
+    "path": "repos/nwarwick__herdr-caffeinate"
+  },
+  {
+    "name": "crexi/herdr-worktree-copy",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/crexi__herdr-worktree-copy"
+  },
+  {
+    "name": "chouxcreams/herdr-dashboard",
+    "status": "success",
+    "duration": 1.02,
+    "path": "repos/chouxcreams__herdr-dashboard"
+  },
+  {
+    "name": "kbrdn1/herdr-plugin-gwm",
+    "status": "success",
+    "duration": 1.0,
+    "path": "repos/kbrdn1__herdr-plugin-gwm"
+  },
+  {
+    "name": "usrivastava92/herdr-rovo-dev",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/usrivastava92__herdr-rovo-dev"
+  },
+  {
+    "name": "yigitkg/herdr-open-local-paths",
+    "status": "success",
+    "duration": 1.04,
+    "path": "repos/yigitkg__herdr-open-local-paths"
+  },
+  {
+    "name": "chouxcreams/herdr-url-picker",
+    "status": "success",
+    "duration": 0.82,
+    "path": "repos/chouxcreams__herdr-url-picker"
+  },
+  {
+    "name": "IgorWarzocha/herdr-annotations",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/IgorWarzocha__herdr-annotations"
+  },
+  {
+    "name": "saeedrahimi/herdr-notify-wsl",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/saeedrahimi__herdr-notify-wsl"
+  },
+  {
+    "name": "ugurtarlig/herdr-pane-picker",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/ugurtarlig__herdr-pane-picker"
+  },
+  {
+    "name": "natori-hrj/herdr-standup",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/natori-hrj__herdr-standup"
+  },
+  {
+    "name": "mattyan1053/herdr-compose",
+    "status": "success",
+    "duration": 1.11,
+    "path": "repos/mattyan1053__herdr-compose"
+  },
+  {
+    "name": "aclima01/herdr-edit-windows",
+    "status": "success",
+    "duration": 1.14,
+    "path": "repos/aclima01__herdr-edit-windows"
+  },
+  {
+    "name": "martin-ro/herdr-next-agent",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/martin-ro__herdr-next-agent"
+  },
+  {
+    "name": "jomarmontuya/herdr-file-viewer",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/jomarmontuya__herdr-file-viewer"
+  },
+  {
+    "name": "RooseveltAdvisors/herdr-leap",
+    "status": "success",
+    "duration": 1.12,
+    "path": "repos/RooseveltAdvisors__herdr-leap"
+  },
+  {
+    "name": "aclima01/herdr-todos-windows",
+    "status": "success",
+    "duration": 0.96,
+    "path": "repos/aclima01__herdr-todos-windows"
+  },
+  {
+    "name": "abrose/herdr-url-picker",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/abrose__herdr-url-picker"
+  },
+  {
+    "name": "aclima01/herdr-powershell-title-sync",
+    "status": "success",
+    "duration": 0.84,
+    "path": "repos/aclima01__herdr-powershell-title-sync"
+  },
+  {
+    "name": "rotemb-wond/herdr-copy-hints",
+    "status": "success",
+    "duration": 1.15,
+    "path": "repos/rotemb-wond__herdr-copy-hints"
+  },
+  {
+    "name": "agustinvalencia/herdr-jump",
+    "status": "success",
+    "duration": 1.32,
+    "path": "repos/agustinvalencia__herdr-jump"
+  },
+  {
+    "name": "anrunt/herdr-pi-reloader",
+    "status": "success",
+    "duration": 1.01,
+    "path": "repos/anrunt__herdr-pi-reloader"
+  },
+  {
+    "name": "uuie/reasonix-herdr",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/uuie__reasonix-herdr"
+  },
+  {
+    "name": "blurname/herdr-git-tab-name",
+    "status": "success",
+    "duration": 0.85,
+    "path": "repos/blurname__herdr-git-tab-name"
+  },
+  {
+    "name": "Sawakee/herdr-imebox",
+    "status": "success",
+    "duration": 1.09,
+    "path": "repos/Sawakee__herdr-imebox"
+  },
+  {
+    "name": "jugyo/herdr-nav-history",
+    "status": "success",
+    "duration": 1.02,
+    "path": "repos/jugyo__herdr-nav-history"
+  },
+  {
+    "name": "shoaibkhanz/herdr-nav-plus",
+    "status": "success",
+    "duration": 1.24,
+    "path": "repos/shoaibkhanz__herdr-nav-plus"
+  },
+  {
+    "name": "Feasy01/herdr-allow",
+    "status": "success",
+    "duration": 0.95,
+    "path": "repos/Feasy01__herdr-allow"
+  },
+  {
+    "name": "BowlOfSoup/herdr-stoplight",
+    "status": "success",
+    "duration": 1.15,
+    "path": "repos/BowlOfSoup__herdr-stoplight"
+  },
+  {
+    "name": "ChrisPachulski/session-sounds",
+    "status": "success",
+    "duration": 1.56,
+    "path": "repos/ChrisPachulski__session-sounds"
+  },
+  {
+    "name": "gabrielbarretoo/herdr-medieval",
+    "status": "success",
+    "duration": 4.79,
+    "path": "repos/gabrielbarretoo__herdr-medieval"
+  },
+  {
+    "name": "Elio2000/herdr-peer-review",
+    "status": "success",
+    "duration": 1.53,
+    "path": "repos/Elio2000__herdr-peer-review"
+  },
+  {
+    "name": "robert-flo/herdr-terminal-file-manager",
+    "status": "success",
+    "duration": 1.54,
+    "path": "repos/robert-flo__herdr-terminal-file-manager"
+  },
+  {
+    "name": "jorge-huxley/herdr-git-graph",
+    "status": "success",
+    "duration": 1.8,
+    "path": "repos/jorge-huxley__herdr-git-graph"
+  },
+  {
+    "name": "alexjsp/herdr-scrollback-capture",
+    "status": "success",
+    "duration": 0.88,
+    "path": "repos/alexjsp__herdr-scrollback-capture"
+  },
+  {
+    "name": "edmundmiller/herdr-plugin-dotfiles-github-link-preview",
+    "status": "success",
+    "duration": 0.86,
+    "path": "repos/edmundmiller__herdr-plugin-dotfiles-github-link-preview"
+  },
+  {
+    "name": "astkaasa/herdr-tokscale-dashboard",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/astkaasa__herdr-tokscale-dashboard"
+  },
+  {
+    "name": "x0d7x/herdr-fzf-url",
+    "status": "success",
+    "duration": 0.95,
+    "path": "repos/x0d7x__herdr-fzf-url"
+  },
+  {
+    "name": "carsonjones/herdr-plugin-tiles",
+    "status": "success",
+    "duration": 0.84,
+    "path": "repos/carsonjones__herdr-plugin-tiles"
+  },
+  {
+    "name": "tiny-send/tinysend-herdr",
+    "status": "success",
+    "duration": 0.94,
+    "path": "repos/tiny-send__tinysend-herdr"
+  },
+  {
+    "name": "jefflau/herdr-webhook",
+    "status": "success",
+    "duration": 0.8,
+    "path": "repos/jefflau__herdr-webhook"
+  },
+  {
+    "name": "mike-bronner/herdr-plugin-project-picker",
+    "status": "success",
+    "duration": 0.85,
+    "path": "repos/mike-bronner__herdr-plugin-project-picker"
+  },
+  {
+    "name": "mike-bronner/herdr-plugin-recent-spaces",
+    "status": "success",
+    "duration": 0.83,
+    "path": "repos/mike-bronner__herdr-plugin-recent-spaces"
+  },
+  {
+    "name": "enisbu/herdr-swipe-linux",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/enisbu__herdr-swipe-linux"
+  },
+  {
+    "name": "fulanto/herdr-oncall",
+    "status": "success",
+    "duration": 0.85,
+    "path": "repos/fulanto__herdr-oncall"
+  },
+  {
+    "name": "JacquesvanWyk/herdr-keys",
+    "status": "success",
+    "duration": 2.46,
+    "path": "repos/JacquesvanWyk__herdr-keys"
+  },
+  {
+    "name": "mikedclarke/herdr-workspaces",
+    "status": "success",
+    "duration": 0.86,
+    "path": "repos/mikedclarke__herdr-workspaces"
+  },
+  {
+    "name": "utahta/herdr-hop",
+    "status": "success",
+    "duration": 1.06,
+    "path": "repos/utahta__herdr-hop"
+  },
+  {
+    "name": "viko16/herdr-git-dirty",
+    "status": "success",
+    "duration": 0.8,
+    "path": "repos/viko16__herdr-git-dirty"
+  },
+  {
+    "name": "daocoding/herdr-claude-lifecycle",
+    "status": "success",
+    "duration": 0.84,
+    "path": "repos/daocoding__herdr-claude-lifecycle"
+  },
+  {
+    "name": "ubuntudroid/herdr-coder-sessions",
+    "status": "success",
+    "duration": 0.91,
+    "path": "repos/ubuntudroid__herdr-coder-sessions"
+  },
+  {
+    "name": "peria-ai/precc-herdr-plugin",
+    "status": "success",
+    "duration": 0.96,
+    "path": "repos/peria-ai__precc-herdr-plugin"
+  },
+  {
+    "name": "lurepos/herdr-vscode-tasks",
+    "status": "success",
+    "duration": 1.01,
+    "path": "repos/lurepos__herdr-vscode-tasks"
+  },
+  {
+    "name": "huketo/herdr-cron",
+    "status": "success",
+    "duration": 1.22,
+    "path": "repos/huketo__herdr-cron"
+  },
+  {
+    "name": "caner-akca/herdr-plugin-atomic-workflows",
+    "status": "success",
+    "duration": 0.94,
+    "path": "repos/caner-akca__herdr-plugin-atomic-workflows"
+  },
+  {
+    "name": "lancodev/herdr-jump",
+    "status": "success",
+    "duration": 0.77,
+    "path": "repos/lancodev__herdr-jump"
+  },
+  {
+    "name": "anyaachan/herdr-claude-usage",
+    "status": "success",
+    "duration": 0.79,
+    "path": "repos/anyaachan__herdr-claude-usage"
+  },
+  {
+    "name": "bkarpinos/herdr-locksmith",
+    "status": "success",
+    "duration": 0.79,
+    "path": "repos/bkarpinos__herdr-locksmith"
+  },
+  {
+    "name": "langtind/gren-herdr",
+    "status": "success",
+    "duration": 0.85,
+    "path": "repos/langtind__gren-herdr"
+  },
+  {
+    "name": "jovylle/herdr-pane-mark",
+    "status": "success",
+    "duration": 0.86,
+    "path": "repos/jovylle__herdr-pane-mark"
+  },
+  {
+    "name": "herdr-go/herdr-go",
+    "status": "success",
+    "duration": 1.83,
+    "path": "repos/herdr-go__herdr-go"
+  },
+  {
+    "name": "huketo/herdr-hitl",
+    "status": "success",
+    "duration": 1.73,
+    "path": "repos/huketo__herdr-hitl"
+  },
+  {
+    "name": "kewah/herdr-tab-titles",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/kewah__herdr-tab-titles"
+  },
+  {
+    "name": "barnuri/herdr-telegram-notifications",
+    "status": "success",
+    "duration": 1.0,
+    "path": "repos/barnuri__herdr-telegram-notifications"
+  },
+  {
+    "name": "elKei24/herdr-title-sync",
+    "status": "success",
+    "duration": 0.77,
+    "path": "repos/elKei24__herdr-title-sync"
+  },
+  {
+    "name": "caoool/herdr-sidebar-plugin",
+    "status": "success",
+    "duration": 0.98,
+    "path": "repos/caoool__herdr-sidebar-plugin"
+  },
+  {
+    "name": "NachoPal/herdr-pane-agent-unread",
+    "status": "success",
+    "duration": 0.85,
+    "path": "repos/NachoPal__herdr-pane-agent-unread"
+  },
+  {
+    "name": "m1sk9/herdr-worktree-hooks-plugin",
+    "status": "success",
+    "duration": 0.88,
+    "path": "repos/m1sk9__herdr-worktree-hooks-plugin"
+  },
+  {
+    "name": "solidsnakedev/herdr-pane-tools",
+    "status": "success",
+    "duration": 0.84,
+    "path": "repos/solidsnakedev__herdr-pane-tools"
+  },
+  {
+    "name": "barnuri/herdr-command-palette",
+    "status": "success",
+    "duration": 1.31,
+    "path": "repos/barnuri__herdr-command-palette"
+  },
+  {
+    "name": "JefeLabs/herdr-web-broker",
+    "status": "success",
+    "duration": 1.37,
+    "path": "repos/JefeLabs__herdr-web-broker"
+  },
+  {
+    "name": "DillonWall/herdr-agent-numbers",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/DillonWall__herdr-agent-numbers"
+  },
+  {
+    "name": "solidsnakedev/herdr-jump",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/solidsnakedev__herdr-jump"
+  },
+  {
+    "name": "asermax/herdr-tab-command",
+    "status": "success",
+    "duration": 0.84,
+    "path": "repos/asermax__herdr-tab-command"
+  },
+  {
+    "name": "zqkra/cbds",
+    "status": "success",
+    "duration": 1.14,
+    "path": "repos/zqkra__cbds"
+  },
+  {
+    "name": "aorumbayev/herdr-hyprland",
+    "status": "success",
+    "duration": 1.37,
+    "path": "repos/aorumbayev__herdr-hyprland"
+  },
+  {
+    "name": "Phoobobo/herdr-bot",
+    "status": "success",
+    "duration": 1.05,
+    "path": "repos/Phoobobo__herdr-bot"
+  },
+  {
+    "name": "jtnovellis/herdr-nvim",
+    "status": "success",
+    "duration": 1.18,
+    "path": "repos/jtnovellis__herdr-nvim"
+  },
+  {
+    "name": "softwarecrafts/herdr-tab-new",
+    "status": "success",
+    "duration": 1.13,
+    "path": "repos/softwarecrafts__herdr-tab-new"
+  },
+  {
+    "name": "tmastalirsch/herdr-claude-safe-compact",
+    "status": "success",
+    "duration": 0.88,
+    "path": "repos/tmastalirsch__herdr-claude-safe-compact"
+  },
+  {
+    "name": "huketo/herdr-sheep",
+    "status": "success",
+    "duration": 1.04,
+    "path": "repos/huketo__herdr-sheep"
+  },
+  {
+    "name": "ryus1234/provider-usage",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/ryus1234__provider-usage"
+  },
+  {
+    "name": "skellleks/lasso",
+    "status": "success",
+    "duration": 1.07,
+    "path": "repos/skellleks__lasso"
+  },
+  {
+    "name": "WillHeather/herdr-grid",
+    "status": "success",
+    "duration": 1.18,
+    "path": "repos/WillHeather__herdr-grid"
+  },
+  {
+    "name": "terry-li-hm/herdr-group-chat",
+    "status": "success",
+    "duration": 1.3,
+    "path": "repos/terry-li-hm__herdr-group-chat"
+  },
+  {
+    "name": "AlexSamarsky/herdr-simple-prompts",
+    "status": "success",
+    "duration": 1.54,
+    "path": "repos/AlexSamarsky__herdr-simple-prompts"
+  },
+  {
+    "name": "phine-apps/mux-prompter",
+    "status": "success",
+    "duration": 1.38,
+    "path": "repos/phine-apps__mux-prompter"
+  },
+  {
+    "name": "thesimonharms/herdr-cmd-agent-plugin",
+    "status": "success",
+    "duration": 1.38,
+    "path": "repos/thesimonharms__herdr-cmd-agent-plugin"
+  },
+  {
+    "name": "1Morganmore/herdr-activity-age",
+    "status": "success",
+    "duration": 0.98,
+    "path": "repos/1Morganmore__herdr-activity-age"
+  },
+  {
+    "name": "juezhong/herdr-positional-tabs",
+    "status": "success",
+    "duration": 0.95,
+    "path": "repos/juezhong__herdr-positional-tabs"
+  },
+  {
+    "name": "yojahny55/herdr-space-groups",
+    "status": "success",
+    "duration": 0.83,
+    "path": "repos/yojahny55__herdr-space-groups"
+  },
+  {
+    "name": "kwanwooi25/herdr-plugin-agent-quota",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/kwanwooi25__herdr-plugin-agent-quota"
+  },
+  {
+    "name": "chenyao0910/herdr-jetbrains",
+    "status": "success",
+    "duration": 1.09,
+    "path": "repos/chenyao0910__herdr-jetbrains"
+  },
+  {
+    "name": "ponko2/herdr-equalize-panes",
+    "status": "success",
+    "duration": 1.19,
+    "path": "repos/ponko2__herdr-equalize-panes"
+  },
+  {
+    "name": "Anthodev/herdr-context",
+    "status": "success",
+    "duration": 1.4,
+    "path": "repos/Anthodev__herdr-context"
+  },
+  {
+    "name": "andthezhang/herdr-dynamic-workflow",
+    "status": "success",
+    "duration": 1.2,
+    "path": "repos/andthezhang__herdr-dynamic-workflow"
+  },
+  {
+    "name": "AlexanderMakarov/herdr-preview",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/AlexanderMakarov__herdr-preview"
+  },
+  {
+    "name": "jtnovellis/herdr-worktree-setup",
+    "status": "success",
+    "duration": 1.03,
+    "path": "repos/jtnovellis__herdr-worktree-setup"
+  },
+  {
+    "name": "gwelican/herdr-keybinds",
+    "status": "success",
+    "duration": 1.61,
+    "path": "repos/gwelican__herdr-keybinds"
+  },
+  {
+    "name": "ubuntudroid/herdr-git-stack",
+    "status": "success",
+    "duration": 1.3,
+    "path": "repos/ubuntudroid__herdr-git-stack"
+  },
+  {
+    "name": "husniadil/herdr-mail",
+    "status": "success",
+    "duration": 1.37,
+    "path": "repos/husniadil__herdr-mail"
+  },
+  {
+    "name": "KennethWKZ/herdr-ccs",
+    "status": "success",
+    "duration": 0.85,
+    "path": "repos/KennethWKZ__herdr-ccs"
+  },
+  {
+    "name": "shrivatsas/herdr-model-capacity",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/shrivatsas__herdr-model-capacity"
+  },
+  {
+    "name": "polidog/herdr-gh-issue-label",
+    "status": "success",
+    "duration": 0.88,
+    "path": "repos/polidog__herdr-gh-issue-label"
+  },
+  {
+    "name": "DecampsRenan/herdr-plugin-env-sync",
+    "status": "success",
+    "duration": 0.95,
+    "path": "repos/DecampsRenan__herdr-plugin-env-sync"
+  },
+  {
+    "name": "macintacos/herdr-reshape",
+    "status": "success",
+    "duration": 1.05,
+    "path": "repos/macintacos__herdr-reshape"
+  },
+  {
+    "name": "hasuwini77/herdr-tab-git",
+    "status": "success",
+    "duration": 0.78,
+    "path": "repos/hasuwini77__herdr-tab-git"
+  },
+  {
+    "name": "liamwh/herdr-rich-notifications",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/liamwh__herdr-rich-notifications"
+  },
+  {
+    "name": "42lizard/workspace-basename",
+    "status": "success",
+    "duration": 0.82,
+    "path": "repos/42lizard__workspace-basename"
+  },
+  {
+    "name": "MarlonPassos-git/herdr-ai-memory",
+    "status": "success",
+    "duration": 0.89,
+    "path": "repos/MarlonPassos-git__herdr-ai-memory"
+  },
+  {
+    "name": "aneym/unblock",
+    "status": "success",
+    "duration": 1.46,
+    "path": "repos/aneym__unblock"
+  },
+  {
+    "name": "DeepRuparel/herdr-spotify",
+    "status": "success",
+    "duration": 1.12,
+    "path": "repos/DeepRuparel__herdr-spotify"
+  },
+  {
+    "name": "jovylle/herdr-session-title-name",
+    "status": "success",
+    "duration": 1.25,
+    "path": "repos/jovylle__herdr-session-title-name"
+  },
+  {
+    "name": "ivorpad/herdr-ports",
+    "status": "success",
+    "duration": 0.85,
+    "path": "repos/ivorpad__herdr-ports"
+  },
+  {
+    "name": "speardragon/herdr-status-ui-bar",
+    "status": "success",
+    "duration": 1.2,
+    "path": "repos/speardragon__herdr-status-ui-bar"
+  },
+  {
+    "name": "ivorpad/herdr-reap",
+    "status": "success",
+    "duration": 0.82,
+    "path": "repos/ivorpad__herdr-reap"
+  },
+  {
+    "name": "kazimshah39/herdr-suffix-agent-filter",
+    "status": "success",
+    "duration": 0.84,
+    "path": "repos/kazimshah39__herdr-suffix-agent-filter"
+  },
+  {
+    "name": "scoussens-nthplusio/herdr-worktree-include",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/scoussens-nthplusio__herdr-worktree-include"
+  },
+  {
+    "name": "egemenyildiz/herdr-slack",
+    "status": "success",
+    "duration": 1.2,
+    "path": "repos/egemenyildiz__herdr-slack"
+  },
+  {
+    "name": "elkraps/herdr-telegram-notify",
+    "status": "success",
+    "duration": 0.89,
+    "path": "repos/elkraps__herdr-telegram-notify"
+  },
+  {
+    "name": "0xfelixli/herdr-notes",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/0xfelixli__herdr-notes"
+  },
+  {
+    "name": "tmastalirsch/herdr-workspace-board",
+    "status": "success",
+    "duration": 1.22,
+    "path": "repos/tmastalirsch__herdr-workspace-board"
+  },
+  {
+    "name": "codingfragments/herdr-nav",
+    "status": "success",
+    "duration": 1.27,
+    "path": "repos/codingfragments__herdr-nav"
+  },
+  {
+    "name": "gurronen/herdr-looper",
+    "status": "success",
+    "duration": 0.89,
+    "path": "repos/gurronen__herdr-looper"
+  },
+  {
+    "name": "chano-gpt/setnet",
+    "status": "success",
+    "duration": 3.34,
+    "path": "repos/chano-gpt__setnet"
+  },
+  {
+    "name": "codingfragments/herdr-flash",
+    "status": "success",
+    "duration": 1.06,
+    "path": "repos/codingfragments__herdr-flash"
+  },
+  {
+    "name": "gustavocaiano/herdr-desktop-switcher",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/gustavocaiano__herdr-desktop-switcher"
+  },
+  {
+    "name": "TheBrunoPetkovic/herdr-context-display",
+    "status": "success",
+    "duration": 0.83,
+    "path": "repos/TheBrunoPetkovic__herdr-context-display"
+  },
+  {
+    "name": "tmastalirsch/herdr-claude-context-meter",
+    "status": "success",
+    "duration": 1.29,
+    "path": "repos/tmastalirsch__herdr-claude-context-meter"
+  },
+  {
+    "name": "bleedingfight/herdr-agent-manager",
+    "status": "success",
+    "duration": 1.32,
+    "path": "repos/bleedingfight__herdr-agent-manager"
+  },
+  {
+    "name": "kokatsu/herdr-tab-numbers",
+    "status": "success",
+    "duration": 1.28,
+    "path": "repos/kokatsu__herdr-tab-numbers"
+  },
+  {
+    "name": "rcosteira79/herdr-idle-shell-badge",
+    "status": "success",
+    "duration": 0.84,
+    "path": "repos/rcosteira79__herdr-idle-shell-badge"
+  },
+  {
+    "name": "w784415/pi-agent-usage",
+    "status": "success",
+    "duration": 0.78,
+    "path": "repos/w784415__pi-agent-usage"
+  },
+  {
+    "name": "choplin/herdr-agent-metadata",
+    "status": "success",
+    "duration": 1.02,
+    "path": "repos/choplin__herdr-agent-metadata"
+  },
+  {
+    "name": "nkwork9999/ayatsumugi",
+    "status": "success",
+    "duration": 1.51,
+    "path": "repos/nkwork9999__ayatsumugi"
+  },
+  {
+    "name": "eduardoborges/herdr-claude-title-hook",
+    "status": "success",
+    "duration": 0.91,
+    "path": "repos/eduardoborges__herdr-claude-title-hook"
+  },
+  {
+    "name": "barnuri/herdr-project-manager",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/barnuri__herdr-project-manager"
+  },
+  {
+    "name": "radres/herdr-plugin-call-me",
+    "status": "success",
+    "duration": 0.82,
+    "path": "repos/radres__herdr-plugin-call-me"
+  },
+  {
+    "name": "barnuri/herdr-auto-update",
+    "status": "success",
+    "duration": 0.83,
+    "path": "repos/barnuri__herdr-auto-update"
+  },
+  {
+    "name": "christiangroth/herdr-tab-title-from-terminal",
+    "status": "success",
+    "duration": 0.84,
+    "path": "repos/christiangroth__herdr-tab-title-from-terminal"
+  },
+  {
+    "name": "goofansu/herdr-hunk",
+    "status": "success",
+    "duration": 0.82,
+    "path": "repos/goofansu__herdr-hunk"
+  },
+  {
+    "name": "reobin/herdr-close-other-panes",
+    "status": "success",
+    "duration": 0.82,
+    "path": "repos/reobin__herdr-close-other-panes"
+  },
+  {
+    "name": "Dimon94/herdr-context-locator",
+    "status": "success",
+    "duration": 1.27,
+    "path": "repos/Dimon94__herdr-context-locator"
+  },
+  {
+    "name": "Andreslvc/herdr_plugin",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/Andreslvc__herdr_plugin"
+  },
+  {
+    "name": "VoidAxon/herdr-lens",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/VoidAxon__herdr-lens"
+  },
+  {
+    "name": "imtim/herdr-pane-id",
+    "status": "success",
+    "duration": 0.82,
+    "path": "repos/imtim__herdr-pane-id"
+  },
+  {
+    "name": "hidekingerz/herdr-plugin-mado",
+    "status": "success",
+    "duration": 0.88,
+    "path": "repos/hidekingerz__herdr-plugin-mado"
+  },
+  {
+    "name": "spiritsack/herdr-jira-worktree",
+    "status": "success",
+    "duration": 0.79,
+    "path": "repos/spiritsack__herdr-jira-worktree"
+  },
+  {
+    "name": "MorganCollins/herdr-last-used",
+    "status": "success",
+    "duration": 0.85,
+    "path": "repos/MorganCollins__herdr-last-used"
+  },
+  {
+    "name": "Efeguclu1/herdr-process-guard",
+    "status": "success",
+    "duration": 1.26,
+    "path": "repos/Efeguclu1__herdr-process-guard"
+  },
+  {
+    "name": "vigneshwerv/herdr-golden-ratio",
+    "status": "success",
+    "duration": 1.28,
+    "path": "repos/vigneshwerv__herdr-golden-ratio"
+  },
+  {
+    "name": "waynewu411/herdr-event-log",
+    "status": "success",
+    "duration": 0.84,
+    "path": "repos/waynewu411__herdr-event-log"
+  },
+  {
+    "name": "BjoernSchotte/herdr-worktree-picker",
+    "status": "success",
+    "duration": 1.22,
+    "path": "repos/BjoernSchotte__herdr-worktree-picker"
+  },
+  {
+    "name": "choplin/herdr-next-agent",
+    "status": "success",
+    "duration": 1.18,
+    "path": "repos/choplin__herdr-next-agent"
+  },
+  {
+    "name": "choplin/herdr-split-pane",
+    "status": "success",
+    "duration": 1.03,
+    "path": "repos/choplin__herdr-split-pane"
+  },
+  {
+    "name": "choplin/herdr-quickselect",
+    "status": "success",
+    "duration": 1.19,
+    "path": "repos/choplin__herdr-quickselect"
+  },
+  {
+    "name": "astwys/herdr-quick-prompt",
+    "status": "success",
+    "duration": 1.62,
+    "path": "repos/astwys__herdr-quick-prompt"
+  },
+  {
+    "name": "gbaeke/hrdr-azure-plugin",
+    "status": "success",
+    "duration": 0.82,
+    "path": "repos/gbaeke__hrdr-azure-plugin"
+  },
+  {
+    "name": "wine-fall/herdr-copy-pane-id",
+    "status": "success",
+    "duration": 1.5,
+    "path": "repos/wine-fall__herdr-copy-pane-id"
+  },
+  {
+    "name": "choplin/herdr-repository-identity",
+    "status": "success",
+    "duration": 1.46,
+    "path": "repos/choplin__herdr-repository-identity"
+  },
+  {
+    "name": "andischerer/herdr-plugin-echo",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/andischerer__herdr-plugin-echo"
+  },
+  {
+    "name": "gridness/herdr-random-sounds",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/gridness__herdr-random-sounds"
+  },
+  {
+    "name": "alex-devdone/herdr-cursor-open",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/alex-devdone__herdr-cursor-open"
+  },
+  {
+    "name": "eliasstravik/herdr-chat",
+    "status": "success",
+    "duration": 1.11,
+    "path": "repos/eliasstravik__herdr-chat"
+  },
+  {
+    "name": "asumaran/herdr-confirm-close",
+    "status": "success",
+    "duration": 1.01,
+    "path": "repos/asumaran__herdr-confirm-close"
+  },
+  {
+    "name": "k-narusawa/herdr-last-tab",
+    "status": "success",
+    "duration": 0.72,
+    "path": "repos/k-narusawa__herdr-last-tab"
+  },
+  {
+    "name": "jordanhawkes/herdr-metrics",
+    "status": "success",
+    "duration": 0.82,
+    "path": "repos/jordanhawkes__herdr-metrics"
+  },
+  {
+    "name": "asumaran/gotopr",
+    "status": "success",
+    "duration": 0.99,
+    "path": "repos/asumaran__gotopr"
+  },
+  {
+    "name": "leonho/herdr-idle-panes",
+    "status": "success",
+    "duration": 0.89,
+    "path": "repos/leonho__herdr-idle-panes"
+  },
+  {
+    "name": "jackfrancisdalton/herdr-chromatic-spaces",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/jackfrancisdalton__herdr-chromatic-spaces"
+  },
+  {
+    "name": "Efeguclu1/herdr-usage",
+    "status": "success",
+    "duration": 0.78,
+    "path": "repos/Efeguclu1__herdr-usage"
+  },
+  {
+    "name": "jackfrancisdalton/herdr-turbo-palette",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/jackfrancisdalton__herdr-turbo-palette"
+  },
+  {
+    "name": "hassox/herdr-kanban",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/hassox__herdr-kanban"
+  },
+  {
+    "name": "0xthc/herdr-plugin-worktree-bootstrap",
+    "status": "success",
+    "duration": 0.84,
+    "path": "repos/0xthc__herdr-plugin-worktree-bootstrap"
+  },
+  {
+    "name": "sd2k/herdr-thumbs",
+    "status": "success",
+    "duration": 0.8,
+    "path": "repos/sd2k__herdr-thumbs"
+  },
+  {
+    "name": "BASHBOP/otito-herdr-plugin",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/BASHBOP__otito-herdr-plugin"
+  },
+  {
+    "name": "abelfubu/herdr-popup",
+    "status": "success",
+    "duration": 0.75,
+    "path": "repos/abelfubu__herdr-popup"
+  },
+  {
+    "name": "adamwangxx/herdr-codex-resume",
+    "status": "success",
+    "duration": 0.74,
+    "path": "repos/adamwangxx__herdr-codex-resume"
+  },
+  {
+    "name": "aoprisan/hird",
+    "status": "success",
+    "duration": 1.15,
+    "path": "repos/aoprisan__hird"
+  },
+  {
+    "name": "spywhere/herdr-now-playing",
+    "status": "success",
+    "duration": 1.28,
+    "path": "repos/spywhere__herdr-now-playing"
+  },
+  {
+    "name": "gabriel-laet/herdr-cursor",
+    "status": "success",
+    "duration": 0.82,
+    "path": "repos/gabriel-laet__herdr-cursor"
+  },
+  {
+    "name": "m2selfA/herdr-alias-setter",
+    "status": "success",
+    "duration": 1.04,
+    "path": "repos/m2selfA__herdr-alias-setter"
+  },
+  {
+    "name": "timjonez/herdr-agent-notes",
+    "status": "success",
+    "duration": 0.83,
+    "path": "repos/timjonez__herdr-agent-notes"
+  },
+  {
+    "name": "yersonargotev/tabby",
+    "status": "success",
+    "duration": 1.08,
+    "path": "repos/yersonargotev__tabby"
+  },
+  {
+    "name": "H3xept/git-shepherd",
+    "status": "success",
+    "duration": 1.24,
+    "path": "repos/H3xept__git-shepherd"
+  },
+  {
+    "name": "goofansu/herdr-notebook",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/goofansu__herdr-notebook"
+  },
+  {
+    "name": "Yukaii/herdr-kakoune-popup",
+    "status": "success",
+    "duration": 0.8,
+    "path": "repos/Yukaii__herdr-kakoune-popup"
+  },
+  {
+    "name": "0xthc/herdr-plugin-pr-board",
+    "status": "success",
+    "duration": 1.23,
+    "path": "repos/0xthc__herdr-plugin-pr-board"
+  },
+  {
+    "name": "simoncrypta/herdr-dev-layout",
+    "status": "success",
+    "duration": 1.26,
+    "path": "repos/simoncrypta__herdr-dev-layout"
+  },
+  {
+    "name": "shanefully-done/herdr-pane-equalizer",
+    "status": "success",
+    "duration": 0.8,
+    "path": "repos/shanefully-done__herdr-pane-equalizer"
+  },
+  {
+    "name": "dleen/herdr-agents",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/dleen__herdr-agents"
+  },
+  {
+    "name": "edouard-andrei/herdr-smart-rename",
+    "status": "success",
+    "duration": 1.24,
+    "path": "repos/edouard-andrei__herdr-smart-rename"
+  },
+  {
+    "name": "AgentTeamsRun/herdr",
+    "status": "success",
+    "duration": 0.77,
+    "path": "repos/AgentTeamsRun__herdr"
+  },
+  {
+    "name": "AZenking/herdr-nodejs-center",
+    "status": "success",
+    "duration": 1.18,
+    "path": "repos/AZenking__herdr-nodejs-center"
+  },
+  {
+    "name": "txmed82/herdr-code-review",
+    "status": "success",
+    "duration": 0.76,
+    "path": "repos/txmed82__herdr-code-review"
+  },
+  {
+    "name": "wynemo/herdr-agent-topic",
+    "status": "success",
+    "duration": 1.42,
+    "path": "repos/wynemo__herdr-agent-topic"
+  },
+  {
+    "name": "rytkmt/herdr-diff-review.nvim",
+    "status": "success",
+    "duration": 0.88,
+    "path": "repos/rytkmt__herdr-diff-review.nvim"
+  },
+  {
+    "name": "wenPKtalk/herdr-translate",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/wenPKtalk__herdr-translate"
+  },
+  {
+    "name": "smanickam01/herdr-atuin-plugin",
+    "status": "success",
+    "duration": 0.8,
+    "path": "repos/smanickam01__herdr-atuin-plugin"
+  },
+  {
+    "name": "limars874/herdr-pane-id-metadata",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/limars874__herdr-pane-id-metadata"
+  },
+  {
+    "name": "codingfragments/herdr-zextract",
+    "status": "success",
+    "duration": 1.03,
+    "path": "repos/codingfragments__herdr-zextract"
+  },
+  {
+    "name": "princejoogie/herdr-repo-picker",
+    "status": "success",
+    "duration": 0.96,
+    "path": "repos/princejoogie__herdr-repo-picker"
+  },
+  {
+    "name": "maxBRT/herdr-omarchy-theme-sync",
+    "status": "success",
+    "duration": 0.85,
+    "path": "repos/maxBRT__herdr-omarchy-theme-sync"
+  },
+  {
+    "name": "cedrus-8864/herdr-prompt-reply",
+    "status": "success",
+    "duration": 1.31,
+    "path": "repos/cedrus-8864__herdr-prompt-reply"
+  },
+  {
+    "name": "oppenheimor/herdr-prompts",
+    "status": "success",
+    "duration": 1.34,
+    "path": "repos/oppenheimor__herdr-prompts"
+  },
+  {
+    "name": "terafin/herdr-restart-always",
+    "status": "success",
+    "duration": 0.89,
+    "path": "repos/terafin__herdr-restart-always"
+  },
+  {
+    "name": "go-min/herdr-pane-name",
+    "status": "success",
+    "duration": 1.18,
+    "path": "repos/go-min__herdr-pane-name"
+  },
+  {
+    "name": "chantlong/herdr-habitat",
+    "status": "success",
+    "duration": 1.27,
+    "path": "repos/chantlong__herdr-habitat"
+  },
+  {
+    "name": "mariotmc/herdr-source-control",
+    "status": "success",
+    "duration": 1.06,
+    "path": "repos/mariotmc__herdr-source-control"
+  },
+  {
+    "name": "qapquiz/herdr-sidekick",
+    "status": "success",
+    "duration": 0.98,
+    "path": "repos/qapquiz__herdr-sidekick"
+  },
+  {
+    "name": "donghaolicd/herdr-teams-notify",
+    "status": "success",
+    "duration": 1.0,
+    "path": "repos/donghaolicd__herdr-teams-notify"
+  },
+  {
+    "name": "Brutheron/Renderd",
+    "status": "success",
+    "duration": 1.16,
+    "path": "repos/Brutheron__Renderd"
+  },
+  {
+    "name": "sushidesu/herdr-tabpick",
+    "status": "success",
+    "duration": 1.16,
+    "path": "repos/sushidesu__herdr-tabpick"
+  },
+  {
+    "name": "damianpoole/herdr-opencode-sessions",
+    "status": "success",
+    "duration": 1.1,
+    "path": "repos/damianpoole__herdr-opencode-sessions"
+  },
+  {
+    "name": "WerrySs/herdr-cmux-cwd-sync",
+    "status": "success",
+    "duration": 1.02,
+    "path": "repos/WerrySs__herdr-cmux-cwd-sync"
+  },
+  {
+    "name": "malone-c/herdr-agent-smart-rename",
+    "status": "success",
+    "duration": 1.02,
+    "path": "repos/malone-c__herdr-agent-smart-rename"
+  },
+  {
+    "name": "kevinWangSheng/herdr-kit",
+    "status": "success",
+    "duration": 1.06,
+    "path": "repos/kevinWangSheng__herdr-kit"
+  },
+  {
+    "name": "neilwashere/herdr-unrecoverable",
+    "status": "success",
+    "duration": 1.01,
+    "path": "repos/neilwashere__herdr-unrecoverable"
+  },
+  {
+    "name": "khatriafaz/herdr-plugin-auto-rename",
+    "status": "success",
+    "duration": 0.91,
+    "path": "repos/khatriafaz__herdr-plugin-auto-rename"
+  },
+  {
+    "name": "tjg184/herdr-worktree",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/tjg184__herdr-worktree"
+  },
+  {
+    "name": "connerohnesorge/herdr-vaultr",
+    "status": "success",
+    "duration": 0.86,
+    "path": "repos/connerohnesorge__herdr-vaultr"
+  },
+  {
+    "name": "hasuwini77/herdr-follow-cwd",
+    "status": "success",
+    "duration": 0.89,
+    "path": "repos/hasuwini77__herdr-follow-cwd"
+  },
+  {
+    "name": "tp6gw94/herdr-jump",
+    "status": "success",
+    "duration": 2.62,
+    "path": "repos/tp6gw94__herdr-jump"
+  },
+  {
+    "name": "tajdien/herdr-confirm-close",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/tajdien__herdr-confirm-close"
+  },
+  {
+    "name": "noviadi/herdr-layout",
+    "status": "success",
+    "duration": 0.85,
+    "path": "repos/noviadi__herdr-layout"
+  },
+  {
+    "name": "a-curious-coder/herdr-plugin-manager",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/a-curious-coder__herdr-plugin-manager"
+  },
+  {
+    "name": "marcjfj-vmlyr/quickTUI",
+    "status": "success",
+    "duration": 0.88,
+    "path": "repos/marcjfj-vmlyr__quickTUI"
+  },
+  {
+    "name": "cdpath/herdr-warp",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/cdpath__herdr-warp"
+  },
+  {
+    "name": "themuuln/herdr-ghostty-theme-sync",
+    "status": "success",
+    "duration": 0.86,
+    "path": "repos/themuuln__herdr-ghostty-theme-sync"
+  },
+  {
+    "name": "klukacin/herdr-hub-worktrees",
+    "status": "success",
+    "duration": 0.76,
+    "path": "repos/klukacin__herdr-hub-worktrees"
+  },
+  {
+    "name": "carellano/herdr-dev-servers",
+    "status": "success",
+    "duration": 0.95,
+    "path": "repos/carellano__herdr-dev-servers"
+  },
+  {
+    "name": "nimrc/herdr-git-pull",
+    "status": "success",
+    "duration": 1.18,
+    "path": "repos/nimrc__herdr-git-pull"
+  },
+  {
+    "name": "ram4-dev/herdr-notify-center",
+    "status": "success",
+    "duration": 1.93,
+    "path": "repos/ram4-dev__herdr-notify-center"
+  },
+  {
+    "name": "Angel-O/herdr-agent-resume",
+    "status": "success",
+    "duration": 2.57,
+    "path": "repos/Angel-O__herdr-agent-resume"
+  },
+  {
+    "name": "Joxtacy/herdr-plugin-vault",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/Joxtacy__herdr-plugin-vault"
+  },
+  {
+    "name": "wg1k/live-sync-panes",
+    "status": "success",
+    "duration": 0.88,
+    "path": "repos/wg1k__live-sync-panes"
+  },
+  {
+    "name": "samuelbaldwin05/herdr-burn",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/samuelbaldwin05__herdr-burn"
+  },
+  {
+    "name": "clawsouls/clawsouls-herdr-plugin",
+    "status": "success",
+    "duration": 0.8,
+    "path": "repos/clawsouls__clawsouls-herdr-plugin"
+  },
+  {
+    "name": "GHJQ/capslock-herdr-prefix",
+    "status": "success",
+    "duration": 0.78,
+    "path": "repos/GHJQ__capslock-herdr-prefix"
+  },
+  {
+    "name": "iskwyuki/herdr-control-panel",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/iskwyuki__herdr-control-panel"
+  },
+  {
+    "name": "zap0xfce2/herdr-pane-restart",
+    "status": "success",
+    "duration": 0.75,
+    "path": "repos/zap0xfce2__herdr-pane-restart"
+  },
+  {
+    "name": "tyler-jewell/herdr-plugins",
+    "status": "success",
+    "duration": 0.86,
+    "path": "repos/tyler-jewell__herdr-plugins"
+  },
+  {
+    "name": "skinp/herdr-cwd-control",
+    "status": "success",
+    "duration": 0.74,
+    "path": "repos/skinp__herdr-cwd-control"
+  },
+  {
+    "name": "GranamyrBR/ezdras-herdr",
+    "status": "success",
+    "duration": 0.96,
+    "path": "repos/GranamyrBR__ezdras-herdr"
+  },
+  {
+    "name": "lfsmoura/led-agent-status",
+    "status": "success",
+    "duration": 0.77,
+    "path": "repos/lfsmoura__led-agent-status"
+  },
+  {
+    "name": "fabiogaliano/herdr-command-palette",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/fabiogaliano__herdr-command-palette"
+  },
+  {
+    "name": "Idan-Levin/herdr-implement-review",
+    "status": "success",
+    "duration": 0.76,
+    "path": "repos/Idan-Levin__herdr-implement-review"
+  },
+  {
+    "name": "AsgardMuninn/herdr-plugin-orbstack",
+    "status": "success",
+    "duration": 1.26,
+    "path": "repos/AsgardMuninn__herdr-plugin-orbstack"
+  },
+  {
+    "name": "klukacin/herdr-finder-reveal",
+    "status": "success",
+    "duration": 0.83,
+    "path": "repos/klukacin__herdr-finder-reveal"
+  },
+  {
+    "name": "capt-marbles/herdr-jcode-integration",
+    "status": "success",
+    "duration": 0.8,
+    "path": "repos/capt-marbles__herdr-jcode-integration"
+  },
+  {
+    "name": "tamdogood/herdr-pr-workflow",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/tamdogood__herdr-pr-workflow"
+  },
+  {
+    "name": "potatoQi/herdr-focused-codex-fork",
+    "status": "success",
+    "duration": 0.77,
+    "path": "repos/potatoQi__herdr-focused-codex-fork"
+  },
+  {
+    "name": "oullin/herdr-plugins",
+    "status": "success",
+    "duration": 0.99,
+    "path": "repos/oullin__herdr-plugins"
+  },
+  {
+    "name": "rstacruz/herdr-workspace-description",
+    "status": "success",
+    "duration": 0.77,
+    "path": "repos/rstacruz__herdr-workspace-description"
+  },
+  {
+    "name": "dgnsrekt/herdr-yoke",
+    "status": "success",
+    "duration": 1.2,
+    "path": "repos/dgnsrekt__herdr-yoke"
+  },
+  {
+    "name": "doggyfish/herdr-tuple-plugin",
+    "status": "success",
+    "duration": 0.78,
+    "path": "repos/doggyfish__herdr-tuple-plugin"
+  },
+  {
+    "name": "ycros/herdr-compass",
+    "status": "success",
+    "duration": 0.8,
+    "path": "repos/ycros__herdr-compass"
+  },
+  {
+    "name": "ryanlewis/herdr-workspace-renamer",
+    "status": "success",
+    "duration": 1.22,
+    "path": "repos/ryanlewis__herdr-workspace-renamer"
+  },
+  {
+    "name": "Gareth-Rouse/herdr-plugin-session-pruner",
+    "status": "success",
+    "duration": 0.79,
+    "path": "repos/Gareth-Rouse__herdr-plugin-session-pruner"
+  },
+  {
+    "name": "malone-c/herdr-pane-balancer",
+    "status": "success",
+    "duration": 0.89,
+    "path": "repos/malone-c__herdr-pane-balancer"
+  },
+  {
+    "name": "a-curious-coder/herdr-iris",
+    "status": "success",
+    "duration": 0.95,
+    "path": "repos/a-curious-coder__herdr-iris"
+  },
+  {
+    "name": "amiramay/herdr-layout-cycle",
+    "status": "success",
+    "duration": 1.22,
+    "path": "repos/amiramay__herdr-layout-cycle"
+  },
+  {
+    "name": "eabadim/herdr-context-namer",
+    "status": "success",
+    "duration": 0.89,
+    "path": "repos/eabadim__herdr-context-namer"
+  },
+  {
+    "name": "atomsbaza/herdr-ios-build-status-plugin",
+    "status": "success",
+    "duration": 0.89,
+    "path": "repos/atomsbaza__herdr-ios-build-status-plugin"
+  },
+  {
+    "name": "T0mSIlver/herdr-title-wrap",
+    "status": "success",
+    "duration": 1.0,
+    "path": "repos/T0mSIlver__herdr-title-wrap"
+  },
+  {
+    "name": "marius-se/herdr-brainrot",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/marius-se__herdr-brainrot"
+  },
+  {
+    "name": "willfish/herdr-balance-panes",
+    "status": "success",
+    "duration": 0.79,
+    "path": "repos/willfish__herdr-balance-panes"
+  },
+  {
+    "name": "nnexai/herdr-action-launcher",
+    "status": "success",
+    "duration": 0.88,
+    "path": "repos/nnexai__herdr-action-launcher"
+  },
+  {
+    "name": "sfroment/herdr-git-detail",
+    "status": "success",
+    "duration": 0.76,
+    "path": "repos/sfroment__herdr-git-detail"
+  },
+  {
+    "name": "cedrus-8864/herdr-sidebar-numbers",
+    "status": "success",
+    "duration": 0.83,
+    "path": "repos/cedrus-8864__herdr-sidebar-numbers"
+  },
+  {
+    "name": "inonprince/herdr-counting-sheep",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/inonprince__herdr-counting-sheep"
+  },
+  {
+    "name": "ralphilius/herdr-pr-tab-renamer",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/ralphilius__herdr-pr-tab-renamer"
+  },
+  {
+    "name": "lucasleon2107/herdr-claude-launcher",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/lucasleon2107__herdr-claude-launcher"
+  },
+  {
+    "name": "dnf0/herdr-llm-summary-header",
+    "status": "success",
+    "duration": 1.0,
+    "path": "repos/dnf0__herdr-llm-summary-header"
+  },
+  {
+    "name": "zetlen/herdr-hud",
+    "status": "success",
+    "duration": 1.1,
+    "path": "repos/zetlen__herdr-hud"
+  },
+  {
+    "name": "JLighter/herdr-spawn",
+    "status": "success",
+    "duration": 1.06,
+    "path": "repos/JLighter__herdr-spawn"
+  },
+  {
+    "name": "abtris/herdr-plugin-jira-pr",
+    "status": "success",
+    "duration": 1.36,
+    "path": "repos/abtris__herdr-plugin-jira-pr"
+  },
+  {
+    "name": "zerodice0/herdr-plugin-worktree-bootstrap",
+    "status": "success",
+    "duration": 1.01,
+    "path": "repos/zerodice0__herdr-plugin-worktree-bootstrap"
+  },
+  {
+    "name": "linuxing3/herdr-nnn",
+    "status": "success",
+    "duration": 1.24,
+    "path": "repos/linuxing3__herdr-nnn"
+  },
+  {
+    "name": "zerodice0/herdr-booking-task-plugin",
+    "status": "success",
+    "duration": 0.83,
+    "path": "repos/zerodice0__herdr-booking-task-plugin"
+  },
+  {
+    "name": "mackt/herdr-window-title",
+    "status": "success",
+    "duration": 1.06,
+    "path": "repos/mackt__herdr-window-title"
+  },
+  {
+    "name": "itayo-m/herdr-tab-session-name-sync",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/itayo-m__herdr-tab-session-name-sync"
+  },
+  {
+    "name": "vgreg/herdr-padio",
+    "status": "success",
+    "duration": 0.79,
+    "path": "repos/vgreg__herdr-padio"
+  },
+  {
+    "name": "sergeybataev/herdr-codex-session-title",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/sergeybataev__herdr-codex-session-title"
+  },
+  {
+    "name": "atm028/herdr-panes",
+    "status": "success",
+    "duration": 1.04,
+    "path": "repos/atm028__herdr-panes"
+  },
+  {
+    "name": "keinstn/drover-notify",
+    "status": "success",
+    "duration": 0.84,
+    "path": "repos/keinstn__drover-notify"
+  },
+  {
+    "name": "caoer/ccc-herdr-layout",
+    "status": "success",
+    "duration": 0.88,
+    "path": "repos/caoer__ccc-herdr-layout"
+  },
+  {
+    "name": "asermax/herdr-suspend-workspace",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/asermax__herdr-suspend-workspace"
+  },
+  {
+    "name": "Coolsik/herdr-codex-cost",
+    "status": "success",
+    "duration": 0.99,
+    "path": "repos/Coolsik__herdr-codex-cost"
+  },
+  {
+    "name": "yuuta1219/claude-usage",
+    "status": "success",
+    "duration": 1.11,
+    "path": "repos/yuuta1219__claude-usage"
+  },
+  {
+    "name": "mholtzscher/herdr-focus-or-tab",
+    "status": "success",
+    "duration": 1.06,
+    "path": "repos/mholtzscher__herdr-focus-or-tab"
+  },
+  {
+    "name": "jmarbutt/herdr-spaces-pr-status",
+    "status": "success",
+    "duration": 1.17,
+    "path": "repos/jmarbutt__herdr-spaces-pr-status"
+  },
+  {
+    "name": "zhangzujian/herdr-auto-session-title",
+    "status": "success",
+    "duration": 1.02,
+    "path": "repos/zhangzujian__herdr-auto-session-title"
+  },
+  {
+    "name": "TheMetalStorm/herdr-cline-plugin",
+    "status": "success",
+    "duration": 1.18,
+    "path": "repos/TheMetalStorm__herdr-cline-plugin"
+  },
+  {
+    "name": "jrswab/herdr-status",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/jrswab__herdr-status"
+  },
+  {
+    "name": "RanolP/herdr-handsfree",
+    "status": "success",
+    "duration": 0.86,
+    "path": "repos/RanolP__herdr-handsfree"
+  },
+  {
+    "name": "CowboyVang/herdr-which-key",
+    "status": "success",
+    "duration": 2.09,
+    "path": "repos/CowboyVang__herdr-which-key"
+  },
+  {
+    "name": "shivammehta25/herdr-file-picker",
+    "status": "success",
+    "duration": 0.95,
+    "path": "repos/shivammehta25__herdr-file-picker"
+  },
+  {
+    "name": "the-inconvenience-store/herdr-agent-session-title",
+    "status": "success",
+    "duration": 0.95,
+    "path": "repos/the-inconvenience-store__herdr-agent-session-title"
+  },
+  {
+    "name": "jmarcelomb/herdr-nav",
+    "status": "success",
+    "duration": 0.98,
+    "path": "repos/jmarcelomb__herdr-nav"
+  },
+  {
+    "name": "SerHappy/herdr-achievements",
+    "status": "success",
+    "duration": 1.72,
+    "path": "repos/SerHappy__herdr-achievements"
+  },
+  {
+    "name": "johnlindquist/herdr-pane-update-timestamps",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/johnlindquist__herdr-pane-update-timestamps"
+  },
+  {
+    "name": "untalfranfernandez/herdr-worktreeinclude",
+    "status": "success",
+    "duration": 1.02,
+    "path": "repos/untalfranfernandez__herdr-worktreeinclude"
+  },
+  {
+    "name": "ericcparsons/herdr-vitals",
+    "status": "success",
+    "duration": 1.13,
+    "path": "repos/ericcparsons__herdr-vitals"
+  },
+  {
+    "name": "phin-tech/herdr-phin-board",
+    "status": "success",
+    "duration": 1.16,
+    "path": "repos/phin-tech__herdr-phin-board"
+  },
+  {
+    "name": "redsquiggle/herdr-browser",
+    "status": "success",
+    "duration": 1.08,
+    "path": "repos/redsquiggle__herdr-browser"
+  },
+  {
+    "name": "willian/herdr-fzf-url",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/willian__herdr-fzf-url"
+  },
+  {
+    "name": "SoMaCoSF/colloquy",
+    "status": "success",
+    "duration": 1.32,
+    "path": "repos/SoMaCoSF__colloquy"
+  },
+  {
+    "name": "scheron/herdr-want-to-sleep",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/scheron__herdr-want-to-sleep"
+  },
+  {
+    "name": "eightHundreds/herdr-worktreeinclude",
+    "status": "success",
+    "duration": 0.89,
+    "path": "repos/eightHundreds__herdr-worktreeinclude"
+  },
+  {
+    "name": "lsisoft/herdr-telegram-slack-bridge",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/lsisoft__herdr-telegram-slack-bridge"
+  },
+  {
+    "name": "Shi1xin/herdr-gitui",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/Shi1xin__herdr-gitui"
+  },
+  {
+    "name": "gilvanecesar/herdr-attach",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/gilvanecesar__herdr-attach"
+  },
+  {
+    "name": "yuritada/numberer-manager",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/yuritada__numberer-manager"
+  },
+  {
+    "name": "cevr/herdr-hunk",
+    "status": "success",
+    "duration": 1.36,
+    "path": "repos/cevr__herdr-hunk"
+  },
+  {
+    "name": "calorie/herdr-auto-focus",
+    "status": "success",
+    "duration": 1.05,
+    "path": "repos/calorie__herdr-auto-focus"
+  },
+  {
+    "name": "hadeson/herdr-harpoon",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/hadeson__herdr-harpoon"
+  },
+  {
+    "name": "pedrobarco/herdr-lastfocus",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/pedrobarco__herdr-lastfocus"
+  },
+  {
+    "name": "nyanyaon/github-issue-herdr-plugin",
+    "status": "success",
+    "duration": 1.22,
+    "path": "repos/nyanyaon__github-issue-herdr-plugin"
+  },
+  {
+    "name": "perlporter/herdr-apple-music-plugin",
+    "status": "success",
+    "duration": 2.15,
+    "path": "repos/perlporter__herdr-apple-music-plugin"
+  },
+  {
+    "name": "gecm0/herdr-plugin-agents-usage",
+    "status": "success",
+    "duration": 1.13,
+    "path": "repos/gecm0__herdr-plugin-agents-usage"
+  },
+  {
+    "name": "tumf/conflux-herdr",
+    "status": "success",
+    "duration": 1.34,
+    "path": "repos/tumf__conflux-herdr"
+  },
+  {
+    "name": "bkarpinos/herdr-picker",
+    "status": "success",
+    "duration": 0.82,
+    "path": "repos/bkarpinos__herdr-picker"
+  },
+  {
+    "name": "khatriafaz/herdr-plugin-agent-repo",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/khatriafaz__herdr-plugin-agent-repo"
+  },
+  {
+    "name": "filoozom/herdr-title",
+    "status": "success",
+    "duration": 0.95,
+    "path": "repos/filoozom__herdr-title"
+  },
+  {
+    "name": "RufusLin/herdr-openmd",
+    "status": "success",
+    "duration": 2.53,
+    "path": "repos/RufusLin__herdr-openmd"
+  },
+  {
+    "name": "linvald/herdr-cmux-file-viewer",
+    "status": "success",
+    "duration": 0.89,
+    "path": "repos/linvald__herdr-cmux-file-viewer"
+  },
+  {
+    "name": "iagogfe/herdr-ai-memory",
+    "status": "success",
+    "duration": 0.98,
+    "path": "repos/iagogfe__herdr-ai-memory"
+  },
+  {
+    "name": "maedana/herdr-agents-bridge",
+    "status": "success",
+    "duration": 0.88,
+    "path": "repos/maedana__herdr-agents-bridge"
+  },
+  {
+    "name": "loopkeep/herdr-plugin-loopreview",
+    "status": "success",
+    "duration": 1.08,
+    "path": "repos/loopkeep__herdr-plugin-loopreview"
+  },
+  {
+    "name": "iQua/herdr-flakes",
+    "status": "success",
+    "duration": 0.8,
+    "path": "repos/iQua__herdr-flakes"
+  },
+  {
+    "name": "Qu4tro/herdr-whichkey",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/Qu4tro__herdr-whichkey"
+  },
+  {
+    "name": "Tetat-Chulchue/meadow",
+    "status": "success",
+    "duration": 0.88,
+    "path": "repos/Tetat-Chulchue__meadow"
+  },
+  {
+    "name": "KazBrekker1/herdr-hasr",
+    "status": "success",
+    "duration": 1.18,
+    "path": "repos/KazBrekker1__herdr-hasr"
+  },
+  {
+    "name": "aorumbayev/herdr-ctx",
+    "status": "success",
+    "duration": 0.8,
+    "path": "repos/aorumbayev__herdr-ctx"
+  },
+  {
+    "name": "CowboyVang/herdr-tab-badges",
+    "status": "success",
+    "duration": 0.78,
+    "path": "repos/CowboyVang__herdr-tab-badges"
+  },
+  {
+    "name": "TaylorFinklea/herdr-ask",
+    "status": "success",
+    "duration": 1.05,
+    "path": "repos/TaylorFinklea__herdr-ask"
+  },
+  {
+    "name": "abrose/herdr-numbered-workspaces",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/abrose__herdr-numbered-workspaces"
+  },
+  {
+    "name": "natori-hrj/herdr-green",
+    "status": "success",
+    "duration": 1.38,
+    "path": "repos/natori-hrj__herdr-green"
+  },
+  {
+    "name": "phin-tech/herdr-roborev",
+    "status": "success",
+    "duration": 0.83,
+    "path": "repos/phin-tech__herdr-roborev"
+  },
+  {
+    "name": "quinnjr/herdr-claude-profile",
+    "status": "success",
+    "duration": 0.8,
+    "path": "repos/quinnjr__herdr-claude-profile"
+  },
+  {
+    "name": "riq0h/tab-blank-number",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/riq0h__tab-blank-number"
+  },
+  {
+    "name": "leonho/herdr-cmd-marks",
+    "status": "success",
+    "duration": 0.77,
+    "path": "repos/leonho__herdr-cmd-marks"
+  },
+  {
+    "name": "riq0h/tab-process-name",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/riq0h__tab-process-name"
+  },
+  {
+    "name": "EricBois/herdr-nudge",
+    "status": "success",
+    "duration": 0.82,
+    "path": "repos/EricBois__herdr-nudge"
+  },
+  {
+    "name": "trapple/herdr-focus",
+    "status": "success",
+    "duration": 1.04,
+    "path": "repos/trapple__herdr-focus"
+  },
+  {
+    "name": "shelken/herdr-plugins",
+    "status": "success",
+    "duration": 0.84,
+    "path": "repos/shelken__herdr-plugins"
+  },
+  {
+    "name": "Risingtides-dev/ocean-herdr",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/Risingtides-dev__ocean-herdr"
+  },
+  {
+    "name": "MartinBspheroid/herdr-agent-dash",
+    "status": "success",
+    "duration": 1.91,
+    "path": "repos/MartinBspheroid__herdr-agent-dash"
+  },
+  {
+    "name": "y-hirakaw/herdr-cc-mac-notify",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/y-hirakaw__herdr-cc-mac-notify"
+  },
+  {
+    "name": "LuYanFCP/herdr-wechat-plugin",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/LuYanFCP__herdr-wechat-plugin"
+  },
+  {
+    "name": "leonho/herdr-new-task",
+    "status": "success",
+    "duration": 0.85,
+    "path": "repos/leonho__herdr-new-task"
+  },
+  {
+    "name": "krzysztoff1/herdr-cull",
+    "status": "success",
+    "duration": 1.69,
+    "path": "repos/krzysztoff1__herdr-cull"
+  },
+  {
+    "name": "lancodev/herdr-laravel-tinker",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/lancodev__herdr-laravel-tinker"
+  },
+  {
+    "name": "OiAnthony/herdr-plugin-telegram-notify",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/OiAnthony__herdr-plugin-telegram-notify"
+  },
+  {
+    "name": "josephschmitt/pj-herdr",
+    "status": "success",
+    "duration": 0.77,
+    "path": "repos/josephschmitt__pj-herdr"
+  },
+  {
+    "name": "hitaishi2222/herdr-llama",
+    "status": "success",
+    "duration": 0.96,
+    "path": "repos/hitaishi2222__herdr-llama"
+  },
+  {
+    "name": "Javamomma/herdr-approval-gate",
+    "status": "success",
+    "duration": 0.97,
+    "path": "repos/Javamomma__herdr-approval-gate"
+  },
+  {
+    "name": "Orchard-Robotics/herdview",
+    "status": "success",
+    "duration": 1.56,
+    "path": "repos/Orchard-Robotics__herdview"
+  },
+  {
+    "name": "nicolegros/herdr-launcher",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/nicolegros__herdr-launcher"
+  },
+  {
+    "name": "Allianaab2m/herdr-hunk-gh-diff",
+    "status": "success",
+    "duration": 0.85,
+    "path": "repos/Allianaab2m__herdr-hunk-gh-diff"
+  },
+  {
+    "name": "shoaibkhanz/herdr-active-agent-jump",
+    "status": "success",
+    "duration": 0.85,
+    "path": "repos/shoaibkhanz__herdr-active-agent-jump"
+  },
+  {
+    "name": "Newt6611/herdr-tab-title",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/Newt6611__herdr-tab-title"
+  },
+  {
+    "name": "Javamomma/herdr-matter-wall",
+    "status": "success",
+    "duration": 0.95,
+    "path": "repos/Javamomma__herdr-matter-wall"
+  },
+  {
+    "name": "noctaIO/herdr-plugin-aos",
+    "status": "success",
+    "duration": 0.83,
+    "path": "repos/noctaIO__herdr-plugin-aos"
+  },
+  {
+    "name": "arjenblokzijl/herdr-worktree-provisioner",
+    "status": "success",
+    "duration": 0.79,
+    "path": "repos/arjenblokzijl__herdr-worktree-provisioner"
+  },
+  {
+    "name": "juninaba/herdr-pr-preview",
+    "status": "success",
+    "duration": 0.79,
+    "path": "repos/juninaba__herdr-pr-preview"
+  },
+  {
+    "name": "willfish/herdr-workspacex",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/willfish__herdr-workspacex"
+  },
+  {
+    "name": "mikevalstar/herdr-machine-title",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/mikevalstar__herdr-machine-title"
+  },
+  {
+    "name": "Phoobobo/herdr-traex-integration",
+    "status": "success",
+    "duration": 0.79,
+    "path": "repos/Phoobobo__herdr-traex-integration"
+  },
+  {
+    "name": "edmundmiller/herdr-plugin-dotfiles-dev-layout",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/edmundmiller__herdr-plugin-dotfiles-dev-layout"
+  },
+  {
+    "name": "inxx/herdr-plan-code-review",
+    "status": "success",
+    "duration": 1.04,
+    "path": "repos/inxx__herdr-plan-code-review"
+  },
+  {
+    "name": "nicolasvasquez/herdr-smart-workspace",
+    "status": "success",
+    "duration": 1.01,
+    "path": "repos/nicolasvasquez__herdr-smart-workspace"
+  },
+  {
+    "name": "juninaba/herdr-slack-notify",
+    "status": "success",
+    "duration": 1.2,
+    "path": "repos/juninaba__herdr-slack-notify"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "name": "herdr-plugins-survey-app",
+  "version": "1.0.0",
+  "description": "Herdr Plugins Ecosystem Survey & Live Query Intelligence Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "survey": "python3 scripts/run_survey.py all_plugins.json",
+    "check": "node scripts/sync-plugins.js --check",
+    "sync": "node scripts/sync-plugins.js --update"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

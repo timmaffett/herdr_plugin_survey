@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Herdr Plugins Intelligence & Ecosystem Survey (903 Plugins)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/echarts.min.js"></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="hd-nav">
+    <div class="hd-brand">
+      <span class="ram-icon">🐑</span>
+      <span>herdr plugins survey</span>
+      <span class="nav-tag">Complete Marketplace Index (903 Plugins)</span>
+    </div>
+    <div class="nav-links">
+      <span class="nav-link active" data-view="browse">Browse Index</span>
+      <span class="nav-link" data-view="growth">📈 Growth Timelines</span>
+      <span class="nav-link" data-view="sql">SQL Query Runner</span>
+      <span class="nav-link" data-view="analytics">Analytics & Graphs</span>
+      <a href="https://github.com/herdrdev/herdr" target="_blank" class="nav-link">Herdr Docs ↗</a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <header class="hero">
+      <div>
+        <div class="hero-eyebrow">Ecosystem Intelligence · All 903 Community Repositories</div>
+        <h1>Built by the herd. Surveyed by agents.</h1>
+        <p>
+          An exhaustive architectural census of the entire universe of 903 published Herdr community plugins.
+          Every repository was shallow checked out, statically scanned across 8,700,000+ LOC, 
+          and cataloged with exact Herdr socket/CLI endpoints, commit timestamps, and AI agent integrations.
+        </p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-box">
+          <span class="num" id="stat-total-plugins">903</span>
+          <span class="lbl">Plugins</span>
+        </div>
+        <div class="stat-box">
+          <span class="num" id="stat-total-loc">8.7M</span>
+          <span class="lbl">Lines of Code</span>
+        </div>
+        <div class="stat-box">
+          <span class="num" id="stat-total-stars">22.0K</span>
+          <span class="lbl">Stars ★</span>
+        </div>
+        <div class="stat-box">
+          <span class="num" id="stat-total-forks">1.8K</span>
+          <span class="lbl">Forks ⑂</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- VIEW 1: Browse Index -->
+    <section id="view-browse">
+      <!-- Search & Controls -->
+      <div class="controls-bar">
+        <div class="search-wrap">
+          <span class="search-icon">/</span>
+          <input type="text" id="search-input" placeholder="Search 903 plugins by name, owner, description, API endpoint, or topic...">
+        </div>
+        <select id="category-select" class="filter-select">
+          <option value="">All Categories</option>
+        </select>
+        <select id="language-select" class="filter-select">
+          <option value="">All Languages</option>
+        </select>
+        <select id="sort-select" class="filter-select">
+          <option value="popularity">Sort by Popularity (Stars + Forks)</option>
+          <option value="stars">Sort by Stars ★</option>
+          <option value="forks">Sort by Forks ⑂</option>
+          <option value="trending">Sort by 7-Day Trending 🔥</option>
+          <option value="loc">Sort by Lines of Code</option>
+          <option value="files">Sort by File Count</option>
+          <option value="name">Sort by Name</option>
+          <option value="updated">Sort by Recently Updated</option>
+        </select>
+        
+        <!-- Filter Chips -->
+        <div class="filter-chips">
+          <span class="chip" data-filter="raw_socket">⚡ Raw Socket (352)</span>
+          <span class="chip" data-filter="agent_skills">🧩 Agent Skills (228)</span>
+          <span class="chip" data-filter="remote_infra">🌐 Remote Infra</span>
+          <span class="chip" data-filter="ssh">🔑 SSH Tunnel</span>
+          <span class="chip" data-filter="mosh">📡 Mosh</span>
+          <span class="chip" data-filter="vpn">🔒 VPN/Tailscale</span>
+          <span class="chip" data-filter="port_mapping">🔀 Port Forwarding</span>
+          <span class="chip" data-filter="router">🏠 Router / NAT</span>
+          <span class="chip" data-filter="vps">☁️ VPS / Gateway</span>
+          <span class="chip" data-filter="outdated">⚠️ Update Available</span>
+          <span class="chip" data-filter="trending">🔥 Trending This Week</span>
+          <span class="chip" data-filter="tui">🖥 TUI Interface</span>
+          <span class="chip" data-filter="mobile">📱 Mobile / Relay</span>
+          <span class="chip" data-filter="web">🌐 Web Display</span>
+          <span class="chip" data-filter="comms">💬 External Comms</span>
+          <span class="chip" data-filter="worktree">🌿 Git Worktree Aware</span>
+          <span class="chip" data-filter="cross_platform">🌐 Win/Mac/Linux</span>
+          <span class="chip" data-filter="tests">🧪 Has Tests</span>
+          <span class="chip" data-agent="claude-code">Claude Code</span>
+          <span class="chip" data-agent="opencode">OpenCode / OMP</span>
+          <span class="chip" data-agent="cursor">Cursor</span>
+          <span class="chip" data-agent="codex">OpenAI Codex</span>
+          <span class="chip" data-agent="amp">Amp</span>
+          <span class="chip" data-agent="cline">Cline</span>
+          <span class="chip" data-agent="agy">Agy</span>
+          <span class="chip" data-agent="grok">Grok</span>
+          <span class="chip" data-agent="copilot">Copilot</span>
+          <span class="chip" data-agent="devin">Devin</span>
+          <span class="chip" data-agent="pi">Pi Agent</span>
+        </div>
+      </div>
+
+      <!-- Plugins Card Grid -->
+      <div class="plugins-grid" id="plugins-container">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- VIEW 2: Historical Growth Timeline (ECharts) -->
+    <section id="view-growth" style="display: none;">
+      <div class="growth-controls">
+        <div class="growth-toolbar">
+          <!-- Metric selector -->
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-family: var(--mono); font-size: 0.78rem; color: var(--faint);">Metric:</span>
+            <div class="button-group" id="growth-metric-group">
+              <button class="metric-btn active" data-metric="stars">⭐ Stars</button>
+              <button class="metric-btn" data-metric="commits">🔨 Commits</button>
+              <button class="metric-btn" data-metric="forks">⑂ Forks</button>
+              <button class="metric-btn" data-metric="issues">📋 Issues</button>
+              <button class="metric-btn" data-metric="downloads">📦 Downloads</button>
+              <button class="metric-btn" data-metric="velocity">⚡ Trending Velocity</button>
+              <button class="metric-btn" data-metric="commit_velocity">🔨 Commit Velocity</button>
+            </div>
+          </div>
+
+          <!-- Series count / Limit selector -->
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-family: var(--mono); font-size: 0.78rem; color: var(--faint);">Plot Scope:</span>
+            <div class="button-group" id="growth-scope-group">
+              <button class="scope-btn" data-limit="10">Top 10</button>
+              <button class="scope-btn active" data-limit="25">Top 25</button>
+              <button class="scope-btn" data-limit="50">Top 50</button>
+              <button class="scope-btn" data-limit="100">Top 100</button>
+              <button class="scope-btn" data-limit="250">Top 250</button>
+              <button class="scope-btn" data-limit="903">All (903)</button>
+            </div>
+          </div>
+
+          <!-- Scale toggle -->
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-family: var(--mono); font-size: 0.78rem; color: var(--faint);">Scale:</span>
+            <div class="button-group" id="growth-scale-group">
+              <button class="scale-btn active" data-scale="linear">Linear</button>
+              <button class="scale-btn" data-scale="log">Logarithmic</button>
+            </div>
+          </div>
+
+          <!-- Exclude Outliers (Skip Top 10/20) -->
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-family: var(--mono); font-size: 0.78rem; color: var(--faint);">Outliers:</span>
+            <div class="button-group" id="growth-skip-group">
+              <button class="skip-btn active" data-skip="0">Rank #1+</button>
+              <button class="skip-btn" data-skip="10">Skip Top 10</button>
+              <button class="skip-btn" data-skip="20">Skip Top 20</button>
+            </div>
+          </div>
+
+          <!-- Herdr Core Benchmark Toggle -->
+          <div>
+            <button class="scope-btn" id="toggle-core-btn">🐑 Include Herdr Core</button>
+          </div>
+
+          <!-- Respond to Mouse Wheel Toggle Checkbox -->
+          <div>
+            <label class="checkbox-label" title="When unchecked (recommended for Mac trackpads), page scrolling is uninterrupted and zooming is done via the bottom timeline slider. Check this to enable mouse wheel zoom on the canvas.">
+              <input type="checkbox" id="growth-wheel-toggle">
+              <span>🖱️ Respond to Mouse Wheel</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Filter Chips inside Growth View -->
+        <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; border-top: 1px solid var(--line); padding-top: 0.8rem;">
+          <input type="text" id="growth-search-input" class="filter-select" style="min-width: 220px;" placeholder="Filter by plugin name...">
+          <select id="growth-category-select" class="filter-select">
+            <option value="">All Categories</option>
+          </select>
+          <select id="growth-language-select" class="filter-select">
+            <option value="">All Languages</option>
+          </select>
+          <div class="filter-chips" style="margin-top: 0;">
+            <span class="chip" data-growth-agent="claude-code">Claude Code</span>
+            <span class="chip" data-growth-agent="opencode">OpenCode</span>
+            <span class="chip" data-growth-agent="cursor">Cursor</span>
+            <span class="chip" data-growth-agent="codex">Codex</span>
+            <span class="chip" data-growth-agent="amp">Amp</span>
+            <span class="chip" data-growth-agent="agy">Agy</span>
+            <span class="chip" data-growth-filter="tui">🖥 TUI</span>
+            <span class="chip" data-growth-filter="mobile">📱 Mobile</span>
+            <span class="chip" data-growth-filter="web">🌐 Web</span>
+            <span class="chip" data-growth-filter="comms">💬 Comms</span>
+            <span class="chip" data-growth-filter="worktree">🌿 Worktree</span>
+            <span class="chip" data-growth-filter="cross_platform">🌐 Win/Mac/Linux</span>
+            <span class="chip" data-growth-filter="tests">🧪 Has Tests</span>
+            <span class="chip" data-growth-filter="trending">🔥 Trending</span>
+            <span class="chip" data-growth-filter="raw_socket">⚡ Raw Socket</span>
+            <span class="chip" data-growth-filter="agent_skills">🧩 Agent Skills</span>
+            <span class="chip" data-growth-filter="remote_infra">🌐 Remote Infra</span>
+            <span class="chip" data-growth-filter="ssh">🔑 SSH</span>
+            <span class="chip" data-growth-filter="mosh">📡 Mosh</span>
+            <span class="chip" data-growth-filter="vpn">🔒 VPN/Tailscale</span>
+            <span class="chip" data-growth-filter="port_mapping">🔀 Port Forward</span>
+            <span class="chip" data-growth-filter="router">🏠 Router/NAT</span>
+            <span class="chip" data-growth-filter="vps">☁️ VPS Gateway</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart Display Card -->
+      <div class="chart-card">
+        <div class="chart-header-bar">
+          <h2>
+            <span>Historical Growth Rate</span>
+            <span class="rainbow-badge">360° Rainbow HSL Spectrum</span>
+          </h2>
+          <div id="chart-legend-summary" style="font-family: var(--mono); font-size: 0.8rem; color: var(--faint2);">
+            Loading timelines...
+          </div>
+        </div>
+
+        <!-- ECharts Canvas Container -->
+        <div id="echarts-growth-container"></div>
+
+        <div class="chart-meta-bar">
+          <span id="growth-status-text">Timeline: Launch of Herdr (Jan 2026) to Present (Sep 2026) · 36 Weekly Milestones</span>
+          <span>Tip: Hover over any curve to focus. Use bottom scrubber to zoom in time.</span>
+        </div>
+      </div>
+      <!-- Chart Card 2: Layered Weekly Releases vs Cumulative Total -->
+      <div class="chart-card" style="margin-top: 1.8rem;">
+        <div class="chart-header-bar">
+          <h2>
+            <span>📦 Weekly Releases & Cumulative Ecosystem Adoption</span>
+          </h2>
+          <div style="font-family: var(--mono); font-size: 0.8rem; color: var(--faint2);">
+            Layered Dual-Axis Timeline (Jan 2026 – Present)
+          </div>
+        </div>
+
+        <div id="echarts-releases-container"></div>
+
+        <div class="chart-meta-bar">
+          <span>🟣 Left Axis: New Plugins Published Per Week (Bar) · 🟢 Right Axis: Cumulative Ecosystem Size (Step Line)</span>
+          <span>Timeline: 36 Weekly Intervals</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- VIEW 3: SQL Console -->
+    <section id="view-sql" style="display: none;">
+      <div class="sql-console">
+        <div class="sql-presets">
+          <span style="font-family: var(--mono); color: var(--faint); font-size: 0.78rem;">Presets:</span>
+          <button class="sql-preset-btn" data-sql="SELECT repo_full_name, stars, forks, popularity_score, primary_language, broad_category FROM plugins ORDER BY popularity_score DESC LIMIT 15;">Top 15 Most Popular (Stars + Forks)</button>
+          <button class="sql-preset-btn" data-sql="SELECT repo_full_name, stars, stars_delta_7d, broad_category FROM plugins WHERE stars_delta_7d > 0 ORDER BY stars_delta_7d DESC LIMIT 15;">Top Trending This Week (+Stars)</button>
+          <button class="sql-preset-btn" data-sql="SELECT repo_full_name, stars, forks, surveyed_version, SUBSTR(surveyed_commit_hash, 1, 7) as surveyed_hash, SUBSTR(upstream_head_commit, 1, 7) as upstream_hash FROM plugins WHERE is_out_of_date = 1 ORDER BY stars DESC LIMIT 15;">Out-of-Date Plugins (New Commits)</button>
+          <button class="sql-preset-btn" data-sql="SELECT p.repo_full_name, p.stars, h.week_date, h.stars_cumulative, h.commits_cumulative FROM plugins p JOIN plugin_history h ON p.id = h.plugin_id WHERE p.stars > 500 AND h.week_date LIKE '%-01' ORDER BY p.stars DESC, h.week_date ASC LIMIT 30;">Historical Growth Milestones</button>
+          <button class="sql-preset-btn" data-sql="SELECT repo_full_name, stars, primary_language, raw_socket_details FROM plugins WHERE uses_raw_socket = 1 ORDER BY stars DESC LIMIT 20;">Top Raw Socket API Plugins</button>
+          <button class="sql-preset-btn" data-sql="SELECT repo_full_name, stars, primary_language, agent_skills_details FROM plugins WHERE uses_agent_skills = 1 ORDER BY stars DESC LIMIT 20;">Top Agent Skills Integration Plugins</button>
+          <button class="sql-preset-btn" data-sql="SELECT endpoint, COUNT(*) as usage_count FROM plugin_endpoints GROUP BY endpoint ORDER BY usage_count DESC LIMIT 20;">Top 20 Herdr Endpoints</button>
+          <button class="sql-preset-btn" data-sql="SELECT e.endpoint, e.endpoint_type, e.category, COALESCE(pe.cnt, 0) as plugin_usage, e.doc_url FROM herdr_official_endpoints e LEFT JOIN (SELECT endpoint, COUNT(DISTINCT plugin_id) as cnt FROM plugin_endpoints GROUP BY endpoint) pe ON e.endpoint = pe.endpoint WHERE COALESCE(pe.cnt, 0) = 0 ORDER BY e.endpoint ASC;">⚠️ Zero-Usage Endpoints (0 Calls)</button>
+          <button class="sql-preset-btn" data-sql="SELECT primary_language, COUNT(*) as repos, SUM(total_loc) as loc, SUM(stars) as stars, SUM(forks) as forks FROM plugins GROUP BY primary_language ORDER BY loc DESC;">Language Breakdown Across 903</button>
+        </div>
+
+        <textarea id="sql-input" class="sql-input" placeholder="SELECT * FROM plugins WHERE stars > 50 ORDER BY stars DESC;"></textarea>
+        
+        <div class="sql-actions">
+          <span id="sql-meta" style="font-family: var(--mono); color: var(--faint); font-size: 0.78rem;">Ready to query SQLite database.</span>
+          <button id="btn-run-sql" class="btn-run">Execute Query ▶</button>
+        </div>
+
+        <div class="table-wrap">
+          <table class="sql-table" id="sql-results-table">
+            <thead id="sql-thead"></thead>
+            <tbody id="sql-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: Analytics -->
+    <section id="view-analytics" style="display: none;">
+      <div class="analytics-grid">
+        <div class="analytics-card">
+          <h2>Broad Categories Distribution</h2>
+          <div id="chart-categories" class="chart-list"></div>
+        </div>
+
+        <div class="analytics-card">
+          <h2>Primary Languages</h2>
+          <div id="chart-languages" class="chart-list"></div>
+        </div>
+
+        <div class="analytics-card">
+          <h2>AI Agents Supported</h2>
+          <div id="chart-agents" class="chart-list"></div>
+        </div>
+
+        <div class="analytics-card" style="grid-column: 1 / -1;">
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <h2 style="margin-bottom: 0.2rem;">Herdr CLI & Socket Endpoints Explorer</h2>
+              <div style="font-family: var(--mono); font-size: 0.8rem; color: var(--faint2);" id="endpoints-summary-bar">
+                Official Core Endpoints: 233 · Active in Plugins: 133 · Zero Usage: 100
+              </div>
+            </div>
+
+            <!-- Scope & Type Controls -->
+            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;">
+              <input type="text" id="endpoints-search-input" class="filter-select" style="min-width: 180px; padding: 0.35rem 0.65rem;" placeholder="Search endpoints...">
+              
+              <div class="button-group" id="endpoints-scope-group">
+                <button class="scope-btn active" data-ep-scope="top20">Top 20</button>
+                <button class="scope-btn" data-ep-scope="all">All Official (233)</button>
+                <button class="scope-btn" data-ep-scope="used">Active in Plugins (133)</button>
+                <button class="scope-btn" data-ep-scope="zero" style="color: #fab387;">⚠️ Zero Usage (100)</button>
+              </div>
+
+              <div class="button-group" id="endpoints-type-group">
+                <button class="scope-btn active" data-ep-type="all">All Types</button>
+                <button class="scope-btn" data-ep-type="socket">⚡ Socket</button>
+                <button class="scope-btn" data-ep-type="cli">💻 CLI</button>
+                <button class="scope-btn" data-ep-type="event">🔔 Events</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="chart-endpoints" class="chart-list" style="max-height: 520px; overflow-y: auto; padding-right: 0.5rem;"></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Plugin Detail Modal Drawer -->
+  <div class="modal-overlay" id="detail-modal">
+    <div class="modal-drawer">
+      <div class="drawer-header">
+        <div>
+          <div style="font-family: var(--mono); color: var(--faint2); font-size: 0.8rem;" id="modal-owner">owner</div>
+          <h2 style="font-family: var(--disp); font-size: 1.4rem; font-weight: 800; color: var(--ink);" id="modal-name">plugin-name</h2>
+        </div>
+        <button class="drawer-close" id="modal-close">&times;</button>
+      </div>
+      <div class="drawer-body" id="modal-content">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

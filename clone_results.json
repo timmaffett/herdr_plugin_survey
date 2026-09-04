@@ -1,0 +1,1202 @@
+[
+  {
+    "name": "AltanS/collie",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/AltanS__collie"
+  },
+  {
+    "name": "alvinunreal/oh-my-opencode-slim",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/alvinunreal__oh-my-opencode-slim"
+  },
+  {
+    "name": "zenbu-labs/terminal-code",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/zenbu-labs__terminal-code"
+  },
+  {
+    "name": "openclaw/crabbox",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/openclaw__crabbox"
+  },
+  {
+    "name": "persiyanov/herdr-reviewr",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/persiyanov__herdr-reviewr"
+  },
+  {
+    "name": "zenbu-labs/terminal-browser",
+    "status": "cached",
+    "duration": 0,
+    "path": "repos/zenbu-labs__terminal-browser"
+  },
+  {
+    "name": "nikok6/herdr-mirror",
+    "status": "success",
+    "duration": 1.29,
+    "path": "repos/nikok6__herdr-mirror"
+  },
+  {
+    "name": "cloudmanic/herdr-plus",
+    "status": "success",
+    "duration": 1.39,
+    "path": "repos/cloudmanic__herdr-plus"
+  },
+  {
+    "name": "nicosuave/memex",
+    "status": "success",
+    "duration": 1.66,
+    "path": "repos/nicosuave__memex"
+  },
+  {
+    "name": "alexarthurs/herdr-sidebar",
+    "status": "success",
+    "duration": 1.69,
+    "path": "repos/alexarthurs__herdr-sidebar"
+  },
+  {
+    "name": "dcolinmorgan/herdr-remote",
+    "status": "success",
+    "duration": 1.95,
+    "path": "repos/dcolinmorgan__herdr-remote"
+  },
+  {
+    "name": "plannotator/herdr-annotate",
+    "status": "success",
+    "duration": 2.15,
+    "path": "repos/plannotator__herdr-annotate"
+  },
+  {
+    "name": "osolmaz/pi-workflows",
+    "status": "success",
+    "duration": 2.39,
+    "path": "repos/osolmaz__pi-workflows"
+  },
+  {
+    "name": "devashish2203/herdr-worktrunk",
+    "status": "success",
+    "duration": 0.78,
+    "path": "repos/devashish2203__herdr-worktrunk"
+  },
+  {
+    "name": "ChmaraX/herdr-nvim",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/ChmaraX__herdr-nvim"
+  },
+  {
+    "name": "thanhdat77/herdr-navigator",
+    "status": "success",
+    "duration": 1.33,
+    "path": "repos/thanhdat77__herdr-navigator"
+  },
+  {
+    "name": "paulbkim-dev/vim-herdr-navigation",
+    "status": "success",
+    "duration": 0.73,
+    "path": "repos/paulbkim-dev__vim-herdr-navigation"
+  },
+  {
+    "name": "jhochenbaum/herdr-hunk-diff",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/jhochenbaum__herdr-hunk-diff"
+  },
+  {
+    "name": "yuk1ty/herdr-spreader",
+    "status": "success",
+    "duration": 0.85,
+    "path": "repos/yuk1ty__herdr-spreader"
+  },
+  {
+    "name": "smarzban/herdr-file-viewer",
+    "status": "success",
+    "duration": 3.32,
+    "path": "repos/smarzban__herdr-file-viewer"
+  },
+  {
+    "name": "qu8n/herdr-automatic-rename",
+    "status": "success",
+    "duration": 1.11,
+    "path": "repos/qu8n__herdr-automatic-rename"
+  },
+  {
+    "name": "osolmaz/ghzinga",
+    "status": "success",
+    "duration": 1.64,
+    "path": "repos/osolmaz__ghzinga"
+  },
+  {
+    "name": "uwuclxdy/clauth",
+    "status": "success",
+    "duration": 2.1,
+    "path": "repos/uwuclxdy__clauth"
+  },
+  {
+    "name": "iurysza/herdr-tab-smart-rename",
+    "status": "success",
+    "duration": 1.85,
+    "path": "repos/iurysza__herdr-tab-smart-rename"
+  },
+  {
+    "name": "aemrebarut/herdr-dagr",
+    "status": "success",
+    "duration": 1.58,
+    "path": "repos/aemrebarut__herdr-dagr"
+  },
+  {
+    "name": "lmilojevicc/herdr-splits.nvim",
+    "status": "success",
+    "duration": 1.01,
+    "path": "repos/lmilojevicc__herdr-splits.nvim"
+  },
+  {
+    "name": "aigorahub/herdr-lantern",
+    "status": "success",
+    "duration": 2.1,
+    "path": "repos/aigorahub__herdr-lantern"
+  },
+  {
+    "name": "lararosekelley/dotfiles",
+    "status": "success",
+    "duration": 1.18,
+    "path": "repos/lararosekelley__dotfiles"
+  },
+  {
+    "name": "nelsonPires5/herdr-board",
+    "status": "success",
+    "duration": 3.14,
+    "path": "repos/nelsonPires5__herdr-board"
+  },
+  {
+    "name": "NathanFlurry/herdr-plugin-jj-workspace",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/NathanFlurry__herdr-plugin-jj-workspace"
+  },
+  {
+    "name": "iurysza/termscope",
+    "status": "success",
+    "duration": 1.24,
+    "path": "repos/iurysza__termscope"
+  },
+  {
+    "name": "levi-qiao/herdr-agent-quota",
+    "status": "success",
+    "duration": 1.43,
+    "path": "repos/levi-qiao__herdr-agent-quota"
+  },
+  {
+    "name": "kryptamine/herdr-auto-title",
+    "status": "success",
+    "duration": 2.0,
+    "path": "repos/kryptamine__herdr-auto-title"
+  },
+  {
+    "name": "0cv/herdr-mobile-relay",
+    "status": "success",
+    "duration": 5.1,
+    "path": "repos/0cv__herdr-mobile-relay"
+  },
+  {
+    "name": "JonasBaeumer/herdr-file-annotator",
+    "status": "success",
+    "duration": 1.39,
+    "path": "repos/JonasBaeumer__herdr-file-annotator"
+  },
+  {
+    "name": "fkiene/llmtrim-herdr",
+    "status": "success",
+    "duration": 1.19,
+    "path": "repos/fkiene__llmtrim-herdr"
+  },
+  {
+    "name": "fullerzz/herdr-plugin-sesh",
+    "status": "error",
+    "duration": 0.99,
+    "error": "Cloning into 'repos/fullerzz__herdr-plugin-sesh'...\ngit-lfs filter-process: git-lfs: command not found\nfatal: the remote end hung up unexpectedly\nwarning: Clone succeeded, but checkout failed.\nYou can"
+  },
+  {
+    "name": "JanTvrdik/herdr-command-palette",
+    "status": "success",
+    "duration": 0.75,
+    "path": "repos/JanTvrdik__herdr-command-palette"
+  },
+  {
+    "name": "rjyo/herdr-window-title-sync",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/rjyo__herdr-window-title-sync"
+  },
+  {
+    "name": "madarco/agentbox-herdr-plugin",
+    "status": "success",
+    "duration": 0.76,
+    "path": "repos/madarco__agentbox-herdr-plugin"
+  },
+  {
+    "name": "andrewchng/herdr-sessionizer",
+    "status": "success",
+    "duration": 2.44,
+    "path": "repos/andrewchng__herdr-sessionizer"
+  },
+  {
+    "name": "ntindle/herdr-resurrect",
+    "status": "success",
+    "duration": 1.05,
+    "path": "repos/ntindle__herdr-resurrect"
+  },
+  {
+    "name": "razajamil/herdr-plugin-workspace-manager",
+    "status": "success",
+    "duration": 2.65,
+    "path": "repos/razajamil__herdr-plugin-workspace-manager"
+  },
+  {
+    "name": "senna-lang/herdr-agent-usage",
+    "status": "success",
+    "duration": 1.66,
+    "path": "repos/senna-lang__herdr-agent-usage"
+  },
+  {
+    "name": "ImArtisann/zed-herdr",
+    "status": "success",
+    "duration": 1.11,
+    "path": "repos/ImArtisann__zed-herdr"
+  },
+  {
+    "name": "ragamo/herdr-flock",
+    "status": "success",
+    "duration": 2.14,
+    "path": "repos/ragamo__herdr-flock"
+  },
+  {
+    "name": "jeffarese/herdr-bar",
+    "status": "success",
+    "duration": 2.56,
+    "path": "repos/jeffarese__herdr-bar"
+  },
+  {
+    "name": "speardragon/herdr-yazi",
+    "status": "success",
+    "duration": 1.05,
+    "path": "repos/speardragon__herdr-yazi"
+  },
+  {
+    "name": "Tyru5/herdr-floax",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/Tyru5__herdr-floax"
+  },
+  {
+    "name": "tdi/herdr-worktree-setup",
+    "status": "success",
+    "duration": 0.82,
+    "path": "repos/tdi__herdr-worktree-setup"
+  },
+  {
+    "name": "Crokily/herdr-lazygit",
+    "status": "success",
+    "duration": 2.63,
+    "path": "repos/Crokily__herdr-lazygit"
+  },
+  {
+    "name": "Unayung/herdr-watch",
+    "status": "success",
+    "duration": 1.6,
+    "path": "repos/Unayung__herdr-watch"
+  },
+  {
+    "name": "rmarganti/herdr-pluck",
+    "status": "success",
+    "duration": 1.16,
+    "path": "repos/rmarganti__herdr-pluck"
+  },
+  {
+    "name": "natori-hrj/herdr-lazy",
+    "status": "success",
+    "duration": 1.31,
+    "path": "repos/natori-hrj__herdr-lazy"
+  },
+  {
+    "name": "plannotator/herdr-plannotator",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/plannotator__herdr-plannotator"
+  },
+  {
+    "name": "speardragon/herdr-plugin-manager",
+    "status": "success",
+    "duration": 1.1,
+    "path": "repos/speardragon__herdr-plugin-manager"
+  },
+  {
+    "name": "caioniehues/herdmates",
+    "status": "success",
+    "duration": 1.59,
+    "path": "repos/caioniehues__herdmates"
+  },
+  {
+    "name": "Davidcreador/herdr-token-dashboard",
+    "status": "success",
+    "duration": 1.01,
+    "path": "repos/Davidcreador__herdr-token-dashboard"
+  },
+  {
+    "name": "aimdevlee/herdr-nvim-nav",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/aimdevlee__herdr-nvim-nav"
+  },
+  {
+    "name": "wyattjoh/herdr-plugin-gh-pr",
+    "status": "success",
+    "duration": 0.84,
+    "path": "repos/wyattjoh__herdr-plugin-gh-pr"
+  },
+  {
+    "name": "yankewei/herdr-focus-notify",
+    "status": "success",
+    "duration": 1.06,
+    "path": "repos/yankewei__herdr-focus-notify"
+  },
+  {
+    "name": "aorumbayev/herdr-workflows",
+    "status": "success",
+    "duration": 1.64,
+    "path": "repos/aorumbayev__herdr-workflows"
+  },
+  {
+    "name": "0xGosu/herdr-auto-pilot",
+    "status": "success",
+    "duration": 2.13,
+    "path": "repos/0xGosu__herdr-auto-pilot"
+  },
+  {
+    "name": "taxueseek/session-digger",
+    "status": "success",
+    "duration": 1.24,
+    "path": "repos/taxueseek__session-digger"
+  },
+  {
+    "name": "ogulcancelik/herdr-plugin-github-start",
+    "status": "success",
+    "duration": 0.86,
+    "path": "repos/ogulcancelik__herdr-plugin-github-start"
+  },
+  {
+    "name": "ribbons-digital/pi-herd",
+    "status": "success",
+    "duration": 1.17,
+    "path": "repos/ribbons-digital__pi-herd"
+  },
+  {
+    "name": "miiraheart/herdr-beads",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/miiraheart__herdr-beads"
+  },
+  {
+    "name": "third774/herdr-last-workspace",
+    "status": "success",
+    "duration": 1.1,
+    "path": "repos/third774__herdr-last-workspace"
+  },
+  {
+    "name": "edmundmiller/herdr-plugin-hunk",
+    "status": "success",
+    "duration": 0.74,
+    "path": "repos/edmundmiller__herdr-plugin-hunk"
+  },
+  {
+    "name": "mo-arvan/herdr-claude-auto-retry",
+    "status": "success",
+    "duration": 0.91,
+    "path": "repos/mo-arvan__herdr-claude-auto-retry"
+  },
+  {
+    "name": "ezcorp-org/herdr-pc-ram-and-cpu-usage-overlay",
+    "status": "success",
+    "duration": 1.0,
+    "path": "repos/ezcorp-org__herdr-pc-ram-and-cpu-usage-overlay"
+  },
+  {
+    "name": "ivanarama/PromptPilot",
+    "status": "success",
+    "duration": 1.22,
+    "path": "repos/ivanarama__PromptPilot"
+  },
+  {
+    "name": "tdi/herdr-worktree-from-linear",
+    "status": "success",
+    "duration": 0.95,
+    "path": "repos/tdi__herdr-worktree-from-linear"
+  },
+  {
+    "name": "AVGVSTVS96/herdr-drovr",
+    "status": "success",
+    "duration": 0.85,
+    "path": "repos/AVGVSTVS96__herdr-drovr"
+  },
+  {
+    "name": "lmilojevicc/seshagy",
+    "status": "success",
+    "duration": 1.28,
+    "path": "repos/lmilojevicc__seshagy"
+  },
+  {
+    "name": "alexarthurs/herdr-notes",
+    "status": "success",
+    "duration": 1.3,
+    "path": "repos/alexarthurs__herdr-notes"
+  },
+  {
+    "name": "tomasvarga/herdr-pickr",
+    "status": "success",
+    "duration": 1.32,
+    "path": "repos/tomasvarga__herdr-pickr"
+  },
+  {
+    "name": "vercel-labs/herdr-vercel-sandbox-plugin",
+    "status": "success",
+    "duration": 0.96,
+    "path": "repos/vercel-labs__herdr-vercel-sandbox-plugin"
+  },
+  {
+    "name": "DIodide/herdr-telemetry",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/DIodide__herdr-telemetry"
+  },
+  {
+    "name": "sanirudh17/herdr-agent-handoff",
+    "status": "success",
+    "duration": 0.95,
+    "path": "repos/sanirudh17__herdr-agent-handoff"
+  },
+  {
+    "name": "Resetnak/herdr-logbook",
+    "status": "success",
+    "duration": 1.62,
+    "path": "repos/Resetnak__herdr-logbook"
+  },
+  {
+    "name": "wyattjoh/herdr-plugin-renamer",
+    "status": "success",
+    "duration": 0.98,
+    "path": "repos/wyattjoh__herdr-plugin-renamer"
+  },
+  {
+    "name": "ythx-101/herdr-social-glass",
+    "status": "success",
+    "duration": 1.18,
+    "path": "repos/ythx-101__herdr-social-glass"
+  },
+  {
+    "name": "StructuPath/herdr-browser",
+    "status": "success",
+    "duration": 1.38,
+    "path": "repos/StructuPath__herdr-browser"
+  },
+  {
+    "name": "benkraus/herdr-plugin-mobile-relay",
+    "status": "success",
+    "duration": 1.21,
+    "path": "repos/benkraus__herdr-plugin-mobile-relay"
+  },
+  {
+    "name": "Matovidlo/herdr-pr-tracker",
+    "status": "success",
+    "duration": 1.01,
+    "path": "repos/Matovidlo__herdr-pr-tracker"
+  },
+  {
+    "name": "den-tanui/herdr-zoxide",
+    "status": "success",
+    "duration": 0.83,
+    "path": "repos/den-tanui__herdr-zoxide"
+  },
+  {
+    "name": "osamahbeig/herdr-pane-mover",
+    "status": "success",
+    "duration": 0.79,
+    "path": "repos/osamahbeig__herdr-pane-mover"
+  },
+  {
+    "name": "a2u/herdr-jira",
+    "status": "success",
+    "duration": 0.98,
+    "path": "repos/a2u__herdr-jira"
+  },
+  {
+    "name": "Tomyail/herdr-connect",
+    "status": "success",
+    "duration": 2.73,
+    "path": "repos/Tomyail__herdr-connect"
+  },
+  {
+    "name": "hmu332233/herdr-f1",
+    "status": "success",
+    "duration": 2.16,
+    "path": "repos/hmu332233__herdr-f1"
+  },
+  {
+    "name": "iviaxpow3r/herdr-session-parker",
+    "status": "success",
+    "duration": 1.12,
+    "path": "repos/iviaxpow3r__herdr-session-parker"
+  },
+  {
+    "name": "beyondlex/herdr-recent-navigator",
+    "status": "success",
+    "duration": 1.06,
+    "path": "repos/beyondlex__herdr-recent-navigator"
+  },
+  {
+    "name": "neon-solutions/neon-herdr",
+    "status": "success",
+    "duration": 1.12,
+    "path": "repos/neon-solutions__neon-herdr"
+  },
+  {
+    "name": "mrcndz/herdr-routines",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/mrcndz__herdr-routines"
+  },
+  {
+    "name": "luminexord/herdres",
+    "status": "success",
+    "duration": 1.57,
+    "path": "repos/luminexord__herdres"
+  },
+  {
+    "name": "neyham/herdr-paddock",
+    "status": "success",
+    "duration": 1.92,
+    "path": "repos/neyham__herdr-paddock"
+  },
+  {
+    "name": "dcolinmorgan/herdr-push",
+    "status": "success",
+    "duration": 0.91,
+    "path": "repos/dcolinmorgan__herdr-push"
+  },
+  {
+    "name": "briankeegan1/herdkit",
+    "status": "success",
+    "duration": 5.41,
+    "path": "repos/briankeegan1__herdkit"
+  },
+  {
+    "name": "ChmaraX/herdr-gitview",
+    "status": "success",
+    "duration": 1.16,
+    "path": "repos/ChmaraX__herdr-gitview"
+  },
+  {
+    "name": "ezcorp-org/herdr-git-status",
+    "status": "success",
+    "duration": 1.0,
+    "path": "repos/ezcorp-org__herdr-git-status"
+  },
+  {
+    "name": "quaywin/agys",
+    "status": "success",
+    "duration": 1.36,
+    "path": "repos/quaywin__agys"
+  },
+  {
+    "name": "dwarvesf/herdr-quicklook",
+    "status": "success",
+    "duration": 3.01,
+    "path": "repos/dwarvesf__herdr-quicklook"
+  },
+  {
+    "name": "speardragon/herdr-command-center",
+    "status": "success",
+    "duration": 1.29,
+    "path": "repos/speardragon__herdr-command-center"
+  },
+  {
+    "name": "joelhooks/herdr-pings",
+    "status": "success",
+    "duration": 0.95,
+    "path": "repos/joelhooks__herdr-pings"
+  },
+  {
+    "name": "hotchpotch/herdr-tiny-fingers",
+    "status": "success",
+    "duration": 0.93,
+    "path": "repos/hotchpotch__herdr-tiny-fingers"
+  },
+  {
+    "name": "wilbeibi/herdr-catchup",
+    "status": "success",
+    "duration": 0.84,
+    "path": "repos/wilbeibi__herdr-catchup"
+  },
+  {
+    "name": "diegopzz/herdr-updater",
+    "status": "success",
+    "duration": 1.01,
+    "path": "repos/diegopzz__herdr-updater"
+  },
+  {
+    "name": "douglascorrea/herdr-agent-inbox",
+    "status": "success",
+    "duration": 1.21,
+    "path": "repos/douglascorrea__herdr-agent-inbox"
+  },
+  {
+    "name": "second-state/vibetty",
+    "status": "success",
+    "duration": 4.53,
+    "path": "repos/second-state__vibetty"
+  },
+  {
+    "name": "makyinmars/herdr-context.nvim",
+    "status": "success",
+    "duration": 1.08,
+    "path": "repos/makyinmars__herdr-context.nvim"
+  },
+  {
+    "name": "catoncat/herdr-trail",
+    "status": "success",
+    "duration": 1.4,
+    "path": "repos/catoncat__herdr-trail"
+  },
+  {
+    "name": "sohanemon/herdr-helpr",
+    "status": "success",
+    "duration": 0.96,
+    "path": "repos/sohanemon__herdr-helpr"
+  },
+  {
+    "name": "ramarivera/herdr-palette",
+    "status": "success",
+    "duration": 1.16,
+    "path": "repos/ramarivera__herdr-palette"
+  },
+  {
+    "name": "ryonakae/shepherd",
+    "status": "success",
+    "duration": 2.28,
+    "path": "repos/ryonakae__shepherd"
+  },
+  {
+    "name": "bcihanc/herdr-claude-session-title",
+    "status": "success",
+    "duration": 0.99,
+    "path": "repos/bcihanc__herdr-claude-session-title"
+  },
+  {
+    "name": "Phoobobo/herdr-agent-config-manager",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/Phoobobo__herdr-agent-config-manager"
+  },
+  {
+    "name": "JacquesvanWyk/herdr-linear",
+    "status": "success",
+    "duration": 2.02,
+    "path": "repos/JacquesvanWyk__herdr-linear"
+  },
+  {
+    "name": "EzraCerpac/jj-waltz",
+    "status": "success",
+    "duration": 1.12,
+    "path": "repos/EzraCerpac__jj-waltz"
+  },
+  {
+    "name": "aorumbayev/herdr-canvas",
+    "status": "success",
+    "duration": 1.21,
+    "path": "repos/aorumbayev__herdr-canvas"
+  },
+  {
+    "name": "vjeantet/herdr-palette",
+    "status": "success",
+    "duration": 1.35,
+    "path": "repos/vjeantet__herdr-palette"
+  },
+  {
+    "name": "maro114510/herdr-toggle-popup",
+    "status": "success",
+    "duration": 0.97,
+    "path": "repos/maro114510__herdr-toggle-popup"
+  },
+  {
+    "name": "Phoobobo/herdr-workboard",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/Phoobobo__herdr-workboard"
+  },
+  {
+    "name": "zom-2018/herdr-ntfy-notify",
+    "status": "success",
+    "duration": 0.8,
+    "path": "repos/zom-2018__herdr-ntfy-notify"
+  },
+  {
+    "name": "horn553/herdr-ntfy",
+    "status": "success",
+    "duration": 1.03,
+    "path": "repos/horn553__herdr-ntfy"
+  },
+  {
+    "name": "TheMetalStorm/herdr-commandcode-plugin",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/TheMetalStorm__herdr-commandcode-plugin"
+  },
+  {
+    "name": "getpipher/herdr-sysmon",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/getpipher__herdr-sysmon"
+  },
+  {
+    "name": "Poor-Plebs/herdr-remote-panes",
+    "status": "success",
+    "duration": 1.59,
+    "path": "repos/Poor-Plebs__herdr-remote-panes"
+  },
+  {
+    "name": "sudoeren/herdr-lazydocker",
+    "status": "success",
+    "duration": 0.97,
+    "path": "repos/sudoeren__herdr-lazydocker"
+  },
+  {
+    "name": "July24/pier",
+    "status": "success",
+    "duration": 1.65,
+    "path": "repos/July24__pier"
+  },
+  {
+    "name": "StructuPath/herdr-swarm",
+    "status": "success",
+    "duration": 1.58,
+    "path": "repos/StructuPath__herdr-swarm"
+  },
+  {
+    "name": "walcew/herdr-assist",
+    "status": "success",
+    "duration": 5.49,
+    "path": "repos/walcew__herdr-assist"
+  },
+  {
+    "name": "husniadil/herdr-swipe",
+    "status": "success",
+    "duration": 0.96,
+    "path": "repos/husniadil__herdr-swipe"
+  },
+  {
+    "name": "jasonrr/herdr-tally",
+    "status": "success",
+    "duration": 2.13,
+    "path": "repos/jasonrr__herdr-tally"
+  },
+  {
+    "name": "allmight-ai/herdr-pet",
+    "status": "success",
+    "duration": 1.36,
+    "path": "repos/allmight-ai__herdr-pet"
+  },
+  {
+    "name": "e2b-dev/herdr-e2b-sandbox",
+    "status": "success",
+    "duration": 2.54,
+    "path": "repos/e2b-dev__herdr-e2b-sandbox"
+  },
+  {
+    "name": "thuanlm215/herdr-grid",
+    "status": "success",
+    "duration": 2.92,
+    "path": "repos/thuanlm215__herdr-grid"
+  },
+  {
+    "name": "aashishd/herdr-agent-messenger",
+    "status": "success",
+    "duration": 0.96,
+    "path": "repos/aashishd__herdr-agent-messenger"
+  },
+  {
+    "name": "natori-hrj/herdr-triage",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/natori-hrj__herdr-triage"
+  },
+  {
+    "name": "azizuysal/herdr-workbench",
+    "status": "success",
+    "duration": 1.26,
+    "path": "repos/azizuysal__herdr-workbench"
+  },
+  {
+    "name": "ShankyJS/herdr-space-scoped-agents",
+    "status": "success",
+    "duration": 1.08,
+    "path": "repos/ShankyJS__herdr-space-scoped-agents"
+  },
+  {
+    "name": "tdi/herdr-worktree-from-pr",
+    "status": "success",
+    "duration": 0.86,
+    "path": "repos/tdi__herdr-worktree-from-pr"
+  },
+  {
+    "name": "LoneExile/merino",
+    "status": "success",
+    "duration": 2.64,
+    "path": "repos/LoneExile__merino"
+  },
+  {
+    "name": "natori-hrj/herdr-hail",
+    "status": "success",
+    "duration": 1.13,
+    "path": "repos/natori-hrj__herdr-hail"
+  },
+  {
+    "name": "bojackduy/nvim-herdr-navigation",
+    "status": "success",
+    "duration": 1.16,
+    "path": "repos/bojackduy__nvim-herdr-navigation"
+  },
+  {
+    "name": "freethinkel/herdr-plugin-git-worktree-hooks",
+    "status": "success",
+    "duration": 0.86,
+    "path": "repos/freethinkel__herdr-plugin-git-worktree-hooks"
+  },
+  {
+    "name": "dot/herdr-terminal-notifier",
+    "status": "success",
+    "duration": 1.09,
+    "path": "repos/dot__herdr-terminal-notifier"
+  },
+  {
+    "name": "aarsh21/herdr-tab-title",
+    "status": "success",
+    "duration": 0.91,
+    "path": "repos/aarsh21__herdr-tab-title"
+  },
+  {
+    "name": "lachieh/herdr-plugin-cmux",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/lachieh__herdr-plugin-cmux"
+  },
+  {
+    "name": "osuki-dev/muqun-gateway",
+    "status": "success",
+    "duration": 1.16,
+    "path": "repos/osuki-dev__muqun-gateway"
+  },
+  {
+    "name": "vjeantet/herdr-scratchpad",
+    "status": "success",
+    "duration": 1.03,
+    "path": "repos/vjeantet__herdr-scratchpad"
+  },
+  {
+    "name": "andybarilla/herdr-scuttlebutt",
+    "status": "success",
+    "duration": 1.28,
+    "path": "repos/andybarilla__herdr-scuttlebutt"
+  },
+  {
+    "name": "dmnkf/herdr-omnisearch",
+    "status": "success",
+    "duration": 1.43,
+    "path": "repos/dmnkf__herdr-omnisearch"
+  },
+  {
+    "name": "moneycaringcoder/herdr-tether",
+    "status": "success",
+    "duration": 1.53,
+    "path": "repos/moneycaringcoder__herdr-tether"
+  },
+  {
+    "name": "Razz21/herdr-devserver-status",
+    "status": "success",
+    "duration": 1.01,
+    "path": "repos/Razz21__herdr-devserver-status"
+  },
+  {
+    "name": "gokay-ai/sheep",
+    "status": "success",
+    "duration": 1.73,
+    "path": "repos/gokay-ai__sheep"
+  },
+  {
+    "name": "winoooops/herdr-agent-watcher",
+    "status": "success",
+    "duration": 2.2,
+    "path": "repos/winoooops__herdr-agent-watcher"
+  },
+  {
+    "name": "crafts69guy/herdr-switchboard",
+    "status": "success",
+    "duration": 1.68,
+    "path": "repos/crafts69guy__herdr-switchboard"
+  },
+  {
+    "name": "coryshaw1/herdr-cliamp",
+    "status": "success",
+    "duration": 1.09,
+    "path": "repos/coryshaw1__herdr-cliamp"
+  },
+  {
+    "name": "shibayu36/herdr-equalize-panes",
+    "status": "success",
+    "duration": 0.96,
+    "path": "repos/shibayu36__herdr-equalize-panes"
+  },
+  {
+    "name": "qintmb/herdr-icon-agent-ui",
+    "status": "success",
+    "duration": 0.99,
+    "path": "repos/qintmb__herdr-icon-agent-ui"
+  },
+  {
+    "name": "zlxlabs/herdweb",
+    "status": "success",
+    "duration": 2.88,
+    "path": "repos/zlxlabs__herdweb"
+  },
+  {
+    "name": "eliasstravik/herdr-call",
+    "status": "success",
+    "duration": 0.88,
+    "path": "repos/eliasstravik__herdr-call"
+  },
+  {
+    "name": "enekos/herdr-quick-actions",
+    "status": "success",
+    "duration": 0.89,
+    "path": "repos/enekos__herdr-quick-actions"
+  },
+  {
+    "name": "wjarka/herdr-ghostty-tab-title",
+    "status": "success",
+    "duration": 0.89,
+    "path": "repos/wjarka__herdr-ghostty-tab-title"
+  },
+  {
+    "name": "htlin222/herdr-gamepad",
+    "status": "success",
+    "duration": 1.24,
+    "path": "repos/htlin222__herdr-gamepad"
+  },
+  {
+    "name": "jeph/herdr-pane-balancer",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/jeph__herdr-pane-balancer"
+  },
+  {
+    "name": "eyalev/herdr-web",
+    "status": "success",
+    "duration": 1.06,
+    "path": "repos/eyalev__herdr-web"
+  },
+  {
+    "name": "vonzelle-vzt/herdr-extensions",
+    "status": "success",
+    "duration": 1.39,
+    "path": "repos/vonzelle-vzt__herdr-extensions"
+  },
+  {
+    "name": "kaar/nvim-herdr-navigator",
+    "status": "success",
+    "duration": 1.24,
+    "path": "repos/kaar__nvim-herdr-navigator"
+  },
+  {
+    "name": "jlimas/herdr-worktree-seed",
+    "status": "success",
+    "duration": 0.89,
+    "path": "repos/jlimas__herdr-worktree-seed"
+  },
+  {
+    "name": "salkhalil/herdr-sessionizer",
+    "status": "success",
+    "duration": 0.89,
+    "path": "repos/salkhalil__herdr-sessionizer"
+  },
+  {
+    "name": "scott306lr/herdr-plugin-hunk-autodiff",
+    "status": "success",
+    "duration": 0.84,
+    "path": "repos/scott306lr__herdr-plugin-hunk-autodiff"
+  },
+  {
+    "name": "devskale/herdr-flist",
+    "status": "success",
+    "duration": 0.97,
+    "path": "repos/devskale__herdr-flist"
+  },
+  {
+    "name": "KokiKono/herdr-kanban",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/KokiKono__herdr-kanban"
+  },
+  {
+    "name": "krystof018/herdr-git-status",
+    "status": "success",
+    "duration": 0.87,
+    "path": "repos/krystof018__herdr-git-status"
+  },
+  {
+    "name": "DnzzL/herdr-automations",
+    "status": "success",
+    "duration": 1.09,
+    "path": "repos/DnzzL__herdr-automations"
+  },
+  {
+    "name": "qintmb/herdr-theme-picker",
+    "status": "success",
+    "duration": 1.25,
+    "path": "repos/qintmb__herdr-theme-picker"
+  },
+  {
+    "name": "AkashJana18/herdr-scratch",
+    "status": "success",
+    "duration": 0.96,
+    "path": "repos/AkashJana18__herdr-scratch"
+  },
+  {
+    "name": "kukv/herdr-plugin-github-dash",
+    "status": "success",
+    "duration": 0.95,
+    "path": "repos/kukv__herdr-plugin-github-dash"
+  },
+  {
+    "name": "crierr/herdr-arrange",
+    "status": "success",
+    "duration": 1.16,
+    "path": "repos/crierr__herdr-arrange"
+  },
+  {
+    "name": "barnuri/herdr-web",
+    "status": "success",
+    "duration": 1.61,
+    "path": "repos/barnuri__herdr-web"
+  },
+  {
+    "name": "thomasschafer/herdr-kiosk",
+    "status": "success",
+    "duration": 1.15,
+    "path": "repos/thomasschafer__herdr-kiosk"
+  },
+  {
+    "name": "kakigakki/herdr-auto-namer",
+    "status": "success",
+    "duration": 0.91,
+    "path": "repos/kakigakki__herdr-auto-namer"
+  },
+  {
+    "name": "Northern-Lighthouse/herdr-fleet",
+    "status": "success",
+    "duration": 0.84,
+    "path": "repos/Northern-Lighthouse__herdr-fleet"
+  },
+  {
+    "name": "mvallebr/herdr-telegram-plugin",
+    "status": "success",
+    "duration": 2.53,
+    "path": "repos/mvallebr__herdr-telegram-plugin"
+  },
+  {
+    "name": "gambtho/herdr-devcontainer",
+    "status": "success",
+    "duration": 1.12,
+    "path": "repos/gambtho__herdr-devcontainer"
+  },
+  {
+    "name": "talent-factory/herdr-linear",
+    "status": "success",
+    "duration": 1.81,
+    "path": "repos/talent-factory__herdr-linear"
+  },
+  {
+    "name": "The-Dave-Stack/herdr-keymap",
+    "status": "success",
+    "duration": 1.27,
+    "path": "repos/The-Dave-Stack__herdr-keymap"
+  },
+  {
+    "name": "miko-misa/herdr-portfwd",
+    "status": "success",
+    "duration": 1.14,
+    "path": "repos/miko-misa__herdr-portfwd"
+  },
+  {
+    "name": "alasano/house-of-herdr",
+    "status": "success",
+    "duration": 2.0,
+    "path": "repos/alasano__house-of-herdr"
+  },
+  {
+    "name": "lmilojevicc/herdr-last",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/lmilojevicc__herdr-last"
+  },
+  {
+    "name": "Efeguclu1/herdr-town",
+    "status": "success",
+    "duration": 1.29,
+    "path": "repos/Efeguclu1__herdr-town"
+  },
+  {
+    "name": "cokekitten/herdr-telegram-bridge",
+    "status": "success",
+    "duration": 0.92,
+    "path": "repos/cokekitten__herdr-telegram-bridge"
+  },
+  {
+    "name": "lmilojevicc/herdr-tab-rename",
+    "status": "success",
+    "duration": 0.81,
+    "path": "repos/lmilojevicc__herdr-tab-rename"
+  },
+  {
+    "name": "Zamua/openloc.nvim",
+    "status": "success",
+    "duration": 3.02,
+    "path": "repos/Zamua__openloc.nvim"
+  },
+  {
+    "name": "KonstantinKai/herdr-harpoon",
+    "status": "success",
+    "duration": 0.9,
+    "path": "repos/KonstantinKai__herdr-harpoon"
+  },
+  {
+    "name": "Hanyang-Li/herdr-espresso",
+    "status": "success",
+    "duration": 0.97,
+    "path": "repos/Hanyang-Li__herdr-espresso"
+  },
+  {
+    "name": "GavinTomlins/herdr-oh-my-agent",
+    "status": "success",
+    "duration": 1.36,
+    "path": "repos/GavinTomlins__herdr-oh-my-agent"
+  },
+  {
+    "name": "mr04vv/herdr-pane-navigator",
+    "status": "success",
+    "duration": 5.12,
+    "path": "repos/mr04vv__herdr-pane-navigator"
+  }
+]
