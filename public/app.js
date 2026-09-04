@@ -715,10 +715,6 @@ async function renderGrowthChart() {
             width: s.is_core ? 5.5 : 4.0,
             shadowColor: color,
             shadowBlur: 12
-          },
-          itemStyle: {
-            borderColor: '#fff',
-            borderWidth: 2
           }
         }
       };
@@ -908,11 +904,18 @@ async function renderGrowthChart() {
     let hoveredPlugin = null;
     let lastTipSeries = -1;
     let lastTipDataIdx = -1;
+    let hideTipTimer = null;
 
     function triggerLineTip(params) {
-      if (!params || params.componentType !== 'series' || params.seriesType !== 'line') return;
+      if (!params || params.componentType !== 'series') return;
       const sIndex = params.seriesIndex;
       if (sIndex === undefined || !seriesList[sIndex]) return;
+
+      // Cancel any pending hide action immediately
+      if (hideTipTimer) {
+        clearTimeout(hideTipTimer);
+        hideTipTimer = null;
+      }
 
       hoveredPlugin = seriesList[sIndex];
 
@@ -932,7 +935,7 @@ async function renderGrowthChart() {
             }
           } catch (err) {}
 
-          // Update tooltip and line highlight immediately as the cursor moves over the line
+          // Update tooltip immediately as the cursor moves over the line
           if (lastTipSeries !== sIndex || lastTipDataIdx !== dataIdx) {
             lastTipSeries = sIndex;
             lastTipDataIdx = dataIdx;
@@ -942,10 +945,6 @@ async function renderGrowthChart() {
               dataIndex: dataIdx,
               x: offsetX,
               y: offsetY
-            });
-            growthChartInstance.dispatchAction({
-              type: 'highlight',
-              seriesIndex: sIndex
             });
           }
         }
@@ -962,23 +961,36 @@ async function renderGrowthChart() {
     growthChartInstance.off('mousemove');
     growthChartInstance.on('mousemove', triggerLineTip);
 
-    // When cursor leaves a series curve
+    // Keep tooltip visible across line segments. Do NOT call hideTip on local mouseout between segments or points!
     growthChartInstance.off('mouseout');
-    growthChartInstance.on('mouseout', (params) => {
-      if (params && params.componentType === 'series') {
-        lastTipSeries = -1;
-        lastTipDataIdx = -1;
-        growthChartInstance.dispatchAction({ type: 'downplay', seriesIndex: params.seriesIndex });
-        growthChartInstance.dispatchAction({ type: 'hideTip' });
-        hoveredPlugin = null;
+
+    // Canvas background mousemove: if cursor moves into empty chart space away from all lines, smoothly dismiss
+    growthChartInstance.getZr().off('mousemove');
+    growthChartInstance.getZr().on('mousemove', (e) => {
+      const isOverSeries = e.target && (e.target.eventData || e.target.seriesIndex !== undefined || e.target.type === 'ec-polyline');
+      if (!isOverSeries) {
+        if (!hideTipTimer && hoveredPlugin) {
+          hideTipTimer = setTimeout(() => {
+            growthChartInstance.dispatchAction({ type: 'hideTip' });
+            lastTipSeries = -1;
+            lastTipDataIdx = -1;
+            hoveredPlugin = null;
+            hideTipTimer = null;
+          }, 250);
+        }
+      } else {
+        if (hideTipTimer) {
+          clearTimeout(hideTipTimer);
+          hideTipTimer = null;
+        }
       }
     });
 
     growthChartInstance.off('globalout');
     growthChartInstance.on('globalout', () => {
+      if (hideTipTimer) clearTimeout(hideTipTimer);
       lastTipSeries = -1;
       lastTipDataIdx = -1;
-      growthChartInstance.dispatchAction({ type: 'downplay' });
       growthChartInstance.dispatchAction({ type: 'hideTip' });
       hoveredPlugin = null;
     });
