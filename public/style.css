@@ -37,6 +37,7 @@
   --radius-md: 6px;
   --radius-sm: 4px;
   --gut: 28px;
+  --nav-height: 58px;
 }
 
 * {
@@ -144,6 +145,17 @@ a {
     font-size: 0.68rem;
     padding: 0.25rem 0.5rem;
     border-radius: 6px;
+  }
+  .controls-bar {
+    padding: 0.75rem 0.85rem;
+  }
+  .controls-bar.is-sticky {
+    padding: 0.55rem 0.75rem;
+  }
+  .chips-toggle-btn {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
   }
 }
 
@@ -256,22 +268,129 @@ a {
   letter-spacing: 0.04em;
 }
 
-/* Controls Bar */
+/* Sticky Controls Bar & Collapsible Filters */
+#controls-sentinel {
+  height: 1px;
+  margin-top: -1px;
+  pointer-events: none;
+  visibility: hidden;
+}
+
 .controls-bar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
+  flex-direction: column;
   background: var(--panel);
   border: 1px solid var(--line2);
   border-radius: var(--radius-lg);
-  padding: 1rem 1.25rem;
+  padding: 0.85rem 1.25rem;
   margin-bottom: 2rem;
+  position: sticky;
+  top: var(--nav-height, 58px);
+  z-index: 90;
+  transition: background 0.2s ease, padding 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease;
+}
+
+.controls-bar.is-sticky {
+  background: rgba(23, 23, 26, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), 0 1px 0 var(--line);
+  padding: 0.65rem 1.1rem;
+  margin-bottom: 1.5rem;
+  border-radius: var(--radius-md);
+  border-color: rgba(203, 166, 247, 0.25);
+}
+
+.controls-main-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  width: 100%;
+}
+
+.chips-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--bg);
+  color: var(--ink-soft);
+  border: 1px solid var(--line2);
+  border-radius: var(--radius-md);
+  padding: 0.6rem 0.9rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  user-select: none;
+  margin-left: auto;
+}
+
+.chips-toggle-btn:hover {
+  background: var(--line);
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+.chips-toggle-btn.has-active {
+  background: var(--spot-glow);
+  color: var(--spot);
+  border-color: var(--spot);
+}
+
+.chips-toggle-chevron {
+  font-size: 0.72rem;
+  transition: transform 0.25s ease;
+  display: inline-block;
+}
+
+.chips-toggle-btn.expanded .chips-toggle-chevron {
+  transform: rotate(180deg);
+}
+
+.chips-active-badge {
+  background: var(--spot);
+  color: #111113;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Collapsible Filter Chips Wrapper */
+.filter-chips-wrapper {
+  width: 100%;
+  max-height: 450px;
+  opacity: 1;
+  overflow: hidden;
+  transition: max-height 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease, margin 0.25s ease;
+}
+
+.filter-chips-wrapper.collapsed {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  pointer-events: none;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  width: 100%;
+  padding-top: 0.65rem;
+  margin-top: 0.65rem;
+  border-top: 1px solid var(--line);
 }
 
 .search-wrap {
   position: relative;
-  flex: 1 1 20rem;
+  flex: 1 1 18rem;
 }
 
 .search-wrap input {
@@ -314,16 +433,6 @@ a {
 
 .filter-select:focus {
   border-color: var(--spot);
-}
-
-/* Filter Chips */
-.filter-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  width: 100%;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--line);
 }
 
 .chip {

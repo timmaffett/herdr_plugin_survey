@@ -199,6 +199,7 @@ function setupFilters() {
         activeFilters[key] = 1;
         chip.classList.add('active');
       }
+      updateActiveChipsBadge();
       loadPlugins();
     });
   });
@@ -215,9 +216,87 @@ function setupFilters() {
         activeFilters.agent = agent;
         chip.classList.add('active');
       }
+      updateActiveChipsBadge();
       loadPlugins();
     });
   });
+
+  // Active filter pills badge counter
+  function updateActiveChipsBadge() {
+    const activeCount = document.querySelectorAll('#filter-chips-container .chip.active').length;
+    const badge = document.getElementById('chips-active-badge');
+    const toggleBtn = document.getElementById('toggle-chips-btn');
+    if (badge && toggleBtn) {
+      if (activeCount > 0) {
+        badge.textContent = activeCount;
+        badge.style.display = 'inline-flex';
+        toggleBtn.classList.add('has-active');
+      } else {
+        badge.style.display = 'none';
+        toggleBtn.classList.remove('has-active');
+      }
+    }
+  }
+  updateActiveChipsBadge();
+
+  // Collapsible toggle button for filter chips
+  const toggleChipsBtn = document.getElementById('toggle-chips-btn');
+  const chipsWrapper = document.getElementById('filter-chips-wrapper');
+  let userManuallyToggled = false;
+
+  if (toggleChipsBtn && chipsWrapper) {
+    toggleChipsBtn.addEventListener('click', () => {
+      userManuallyToggled = true;
+      const isCollapsed = chipsWrapper.classList.toggle('collapsed');
+      toggleChipsBtn.classList.toggle('expanded', !isCollapsed);
+    });
+  }
+
+  // Dynamic --nav-height CSS variable to ensure sticky bar sits directly beneath the navbar
+  const hdNav = document.querySelector('.hd-nav');
+  function updateNavHeight() {
+    if (hdNav) {
+      const h = hdNav.offsetHeight;
+      document.documentElement.style.setProperty('--nav-height', `${h}px`);
+    }
+  }
+  updateNavHeight();
+  window.addEventListener('resize', updateNavHeight);
+
+  // Sticky detection on scroll: auto-collapse pills when scrolling into list, restore at top
+  const controlsBar = document.getElementById('controls-bar');
+  const sentinel = document.getElementById('controls-sentinel');
+
+  function checkStickyState() {
+    if (!controlsBar || !sentinel) return;
+    const navH = hdNav ? hdNav.offsetHeight : 58;
+    const sentinelRect = sentinel.getBoundingClientRect();
+    const isSticky = sentinelRect.top <= navH;
+
+    if (isSticky) {
+      if (!controlsBar.classList.contains('is-sticky')) {
+        controlsBar.classList.add('is-sticky');
+        // Auto-collapse pills to maximize screen real estate when scrolling into plugins list
+        if (!userManuallyToggled && chipsWrapper && !chipsWrapper.classList.contains('collapsed')) {
+          chipsWrapper.classList.add('collapsed');
+          if (toggleChipsBtn) toggleChipsBtn.classList.remove('expanded');
+        }
+      }
+    } else {
+      if (controlsBar.classList.contains('is-sticky')) {
+        controlsBar.classList.remove('is-sticky');
+        userManuallyToggled = false; // Reset manual toggle state when returning to top
+        // Re-expand pills when scrolled back to the top of the page
+        if (chipsWrapper && chipsWrapper.classList.contains('collapsed')) {
+          chipsWrapper.classList.remove('collapsed');
+          if (toggleChipsBtn) toggleChipsBtn.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  window.addEventListener('scroll', checkStickyState, { passive: true });
+  checkStickyState();
 }
 
 // Fetch and render plugins for Browse view
