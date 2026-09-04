@@ -695,12 +695,13 @@ async function renderGrowthChart() {
         type: 'line',
         data: s.data,
         smooth: true,
+        triggerLineEvent: true,  // Crucial: enables mouseover and click on the polyline itself!
         cursor: 'pointer',
-        showSymbol: false,       // In ECharts: hides symbols when idle, shows on hover
+        showSymbol: totalLines <= 100,  // Visible milestone dots for Top 10/25/50/100
         symbol: s.is_core ? 'diamond' : 'circle',
-        symbolSize: s.is_core ? 8 : (totalLines > 100 ? 5 : 6),
+        symbolSize: s.is_core ? 8 : (totalLines > 50 ? 4 : (totalLines > 25 ? 5 : 6)),
         lineStyle: {
-          width: s.is_core ? 3.5 : (totalLines > 100 ? 1.5 : 2.0),
+          width: s.is_core ? 3.5 : (totalLines > 100 ? 1.5 : (totalLines > 30 ? 2.0 : 2.5)),
           color: color,
           type: s.is_core ? 'dashed' : 'solid'
         },
@@ -711,9 +712,13 @@ async function renderGrowthChart() {
           focus: 'series',
           scale: true,
           lineStyle: {
-            width: s.is_core ? 5.0 : 3.5,
+            width: s.is_core ? 5.5 : 4.0,
             shadowColor: color,
-            shadowBlur: 10
+            shadowBlur: 12
+          },
+          itemStyle: {
+            borderColor: '#fff',
+            borderWidth: 2
           }
         }
       };
@@ -770,7 +775,14 @@ async function renderGrowthChart() {
           const metricTitle = metricLabels[growthConfig.metric] || growthConfig.metric;
           const starsFormatted = (s.stars || 0).toLocaleString();
           const color = s.color || params.color || '#cba6f7';
-          const weekLabel = (params.name && String(params.name).trim()) ? params.name : (formattedWeeks[params.dataIndex] || 'Week');
+          let weekLabel = '';
+          if (params.dataIndex !== undefined && params.dataIndex >= 0 && formattedWeeks[params.dataIndex]) {
+            weekLabel = formattedWeeks[params.dataIndex];
+          } else if (params.name && String(params.name).trim() && !params.name.includes('/')) {
+            weekLabel = params.name;
+          } else {
+            weekLabel = formattedWeeks[formattedWeeks.length - 1] ? 'Current (' + formattedWeeks[formattedWeeks.length - 1] + ')' : 'Current';
+          }
 
           // Special treatment for Herdr Core platform benchmark
           if (s.is_core || s.name.includes('Core')) {
@@ -892,17 +904,48 @@ async function renderGrowthChart() {
 
     growthChartInstance.setOption(option, true);
 
-    // Bind click on line or point to open detail modal or GitHub
+    // Track active hovered plugin for responsive and reliable click handling
+    let hoveredPlugin = null;
+
+    growthChartInstance.off('mouseover');
+    growthChartInstance.on('mouseover', (params) => {
+      if (params && params.seriesIndex !== undefined && seriesList[params.seriesIndex]) {
+        hoveredPlugin = seriesList[params.seriesIndex];
+      } else if (params && params.seriesName) {
+        hoveredPlugin = seriesList.find(item => item.name === params.seriesName) || hoveredPlugin;
+      }
+    });
+
+    growthChartInstance.off('globalout');
+    growthChartInstance.on('globalout', () => {
+      hoveredPlugin = null;
+    });
+
+    // Primary click handler: triggers when clicking a line, point, or symbol
     growthChartInstance.off('click');
     growthChartInstance.on('click', (params) => {
-      let s = (params.seriesIndex !== undefined && seriesList[params.seriesIndex])
+      let s = (params && params.seriesIndex !== undefined && seriesList[params.seriesIndex])
         ? seriesList[params.seriesIndex]
-        : (seriesList.find(item => item.name === params.seriesName) || null);
+        : (params && params.seriesName ? seriesList.find(item => item.name === params.seriesName) : null)
+        || hoveredPlugin;
+
       if (s) {
         if (s.id > 0) {
           openDetailModal(s.id);
         } else if (s.url) {
           window.open(s.url, '_blank');
+        }
+      }
+    });
+
+    // ZRender canvas click fallback: if user clicks while hovering a line, open the modal
+    growthChartInstance.getZr().off('click');
+    growthChartInstance.getZr().on('click', (event) => {
+      if (hoveredPlugin) {
+        if (hoveredPlugin.id > 0) {
+          openDetailModal(hoveredPlugin.id);
+        } else if (hoveredPlugin.url) {
+          window.open(hoveredPlugin.url, '_blank');
         }
       }
     });
