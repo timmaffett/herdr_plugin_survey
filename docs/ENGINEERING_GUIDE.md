@@ -10,7 +10,7 @@ The Herdr Plugins Survey is an automated pipeline that discovers, clones, parses
 ```
 ┌────────────────────────┐      ┌─────────────────────────┐      ┌──────────────────────┐
 │ https://herdr.dev/     │ ───> │ scripts/clone_repos.py  │ ───> │ repos/<owner>__<repo>│
-│ plugins/ marketplace   │      │ (parallel git checkout) │      │ (500 shallow clones) │
+│ plugins/ marketplace   │      │ (parallel git checkout) │      │ (903 shallow clones) │
 └────────────────────────┘      └─────────────────────────┘      └──────────────────────┘
                                                                             │
                                                                             ▼
@@ -35,11 +35,14 @@ All analysis, ingestion, and management scripts are collected in [`scripts/`](fi
 | Script | Purpose | CLI Example |
 |---|---|---|
 | [`scripts/ingest_plugin.py`](file:///Users/tim/source/herdr_plugins/scripts/ingest_plugin.py) | Ingest & analyze a single new plugin repository | `python3 scripts/ingest_plugin.py owner/repo` |
-| [`scripts/run_survey.py`](file:///Users/tim/source/herdr_plugins/scripts/run_survey.py) | Master orchestrator to scan all repos and update `plugins.db` | `python3 scripts/run_survey.py top500_plugins.json` |
+| [`scripts/run_survey.py`](file:///Users/tim/source/herdr_plugins/scripts/run_survey.py) | Master orchestrator to scan all repos and update `plugins.db` | `python3 scripts/run_survey.py top200_plugins.json` |
 | [`scripts/analyzer.py`](file:///Users/tim/source/herdr_plugins/scripts/analyzer.py) | Static/semantic code analyzer, manifest reader, endpoint detector | Imported by survey and ingest scripts |
 | [`scripts/db_manager.py`](file:///Users/tim/source/herdr_plugins/scripts/db_manager.py) | SQLite database manager with dynamic column migration | `python3 -c "import scripts.db_manager as db; db.init_db()"` |
 | [`scripts/taxonomy.py`](file:///Users/tim/source/herdr_plugins/scripts/taxonomy.py) | Classification heuristics for Broad, Sub, and Sub-Sub categories | Imported by analyzer |
-| [`scripts/clone_repos.py`](file:///Users/tim/source/herdr_plugins/scripts/clone_repos.py) | Multi-threaded shallow cloner for any batch of repositories | `python3 scripts/clone_repos.py top500_plugins.json 12` |
+| [`scripts/clone_repos.py`](file:///Users/tim/source/herdr_plugins/scripts/clone_repos.py) | Multi-threaded shallow cloner for any batch of repositories | `python3 scripts/clone_repos.py top200_plugins.json 12` |
+| [`scripts/collect_history.py`](file:///Users/tim/source/herdr_plugins/scripts/collect_history.py) | Collects 36-week historical adoption milestones (stars, forks, commits) | `python3 scripts/collect_history.py --workers 16` |
+| [`scripts/catalog_official_endpoints.py`](file:///Users/tim/source/herdr_plugins/scripts/catalog_official_endpoints.py) | Catalogs official Herdr Core CLI/Socket endpoints & maps official doc URLs | `python3 scripts/catalog_official_endpoints.py` |
+| [`scripts/sync-plugins.js`](file:///Users/tim/source/herdr_plugins/scripts/sync-plugins.js) | Fast marketplace metadata sync from `herdr.dev/plugins/` | `npm run sync` |
 
 ---
 
@@ -67,10 +70,13 @@ python3 scripts/ingest_plugin.py owner/new-plugin --reanalyze
 3. Parses `herdr-plugin.toml` wherever located in the repo.
 4. Walks all files, calculating total files, directories, and LOC breakdown by language.
 5. Scans code for Herdr socket endpoints (e.g. `workspace.list`, `pane.read`), CLI commands, and environment variables.
-6. Detects supported AI agents (Claude Code, OpenCode, Codex, Amp, Cursor, Grok, Agy, Cline, Devin, etc.) and data ingestion methods (`acp`, `log_file_scraping`, `socket_events`, `terminal_snooping`, `cli_proxy`, etc.).
-7. Classifies into Broad, Sub, and Sub-Sub categories and tags.
-8. Automatically detects and adds any missing schema columns in `plugins.db`.
-9. Upserts into `plugins.db` and updates auxiliary relational tables (`plugin_endpoints`, `plugin_agents`, `plugin_manifest_items`).
+6. Evaluates Herdr Core integration architecture:
+   - **⚡ Raw Socket API**: Direct connections to `$HERDR_SOCKET_PATH` (IPC Unix socket).
+   - **🧩 Agent Skills**: Inclusion of `SKILL.md`, `.claude/skills/`, `.opencode/skills/`, or agent state lifecycle hooks.
+7. Evaluates remote infrastructure requirements (SSH tunnels, Mosh, VPN/Tailscale, port forwarding, NAT routers, cloud VPS gateways).
+8. Classifies into Broad, Sub, and Sub-Sub categories and tags.
+9. Automatically detects and adds any missing schema columns in `plugins.db`.
+10. Upserts into `plugins.db` and updates auxiliary relational tables (`plugin_endpoints`, `plugin_agents`, `plugin_manifest_items`).
 
 ---
 
@@ -101,12 +107,61 @@ To add a new attribute to the survey database:
    ```sql
    ALTER TABLE plugins ADD COLUMN <new_column> <type>;
    ```
-4. Run `python3 scripts/run_survey.py top500_plugins.json`.
+4. Run `python3 scripts/run_survey.py top200_plugins.json`.
    All plugins will be re-analyzed and the new column will be back-filled across all existing records without data loss!
 
 ---
 
-## 6. Running and Extending the Node.js Web Server
+## 6. Official Herdr Documentation Resolution
+
+Official documentation URLs for Herdr CLI subcommands, JSON-RPC socket methods, and lifecycle event hooks must route to the official Astro Starlight documentation on `https://herdr.dev/docs/` rather than broken GitHub blob anchors.
+
+### Implementation Pattern
+
+Both [`public/app.js`](file:///Users/tim/source/herdr_plugins/public/app.js) (`getEndpointDocUrl`) and [`scripts/catalog_official_endpoints.py`](file:///Users/tim/source/herdr_plugins/scripts/catalog_official_endpoints.py) (`resolve_doc_url`) share the canonical resolution table:
+
+- **CLI Commands (`cli:<subcommand>`)**:
+  - `plugin` -> `https://herdr.dev/docs/cli-reference/#plugins`
+  - `pane` -> `https://herdr.dev/docs/cli-reference/#panes`
+  - `tab` -> `https://herdr.dev/docs/cli-reference/#tabs`
+  - `session` -> `https://herdr.dev/docs/cli-reference/#sessions`
+  - `workspace` -> `https://herdr.dev/docs/cli-reference/#workspaces`
+  - `worktree` -> `https://herdr.dev/docs/cli-reference/#worktrees`
+  - `agent` -> `https://herdr.dev/docs/cli-reference/#agents`
+  - `server` -> `https://herdr.dev/docs/cli-reference/#server`
+  - `notification` -> `https://herdr.dev/docs/cli-reference/#notifications`
+  - `status` -> `https://herdr.dev/docs/cli-reference/#launch-and-status`
+  - `completion` -> `https://herdr.dev/docs/cli-reference/#shell-completions`
+  - `terminal` / `attach` -> `https://herdr.dev/docs/cli-reference/#direct-terminal-attach`
+  - `wait` -> `https://herdr.dev/docs/cli-reference/#output-waits`
+  - `integration` -> `https://herdr.dev/docs/cli-reference/#integrations`
+  - `config` -> `https://herdr.dev/docs/config-reference/`
+- **Lifecycle Event Hooks (`event:<name>`)**:
+  - `https://herdr.dev/docs/plugins/#startup-hooks`
+- **Socket API Methods**:
+  - `plugin.*` -> `https://herdr.dev/docs/socket-api/#plugin-apis`
+  - `agent.*` -> `https://herdr.dev/docs/socket-api/#agent-view-queries`
+  - `pane.read*` -> `https://herdr.dev/docs/socket-api/#reading-panes`
+  - `wait.*` -> `https://herdr.dev/docs/socket-api/#waiting-for-state`
+  - `server.*`, `ping` -> `https://herdr.dev/docs/socket-api/#raw-methods`
+
+---
+
+## 7. Frontend UI Mechanics
+
+### Sticky Controls Bar & Collapsible Drawer
+- **Dynamic Docking**: In `public/app.js`, `--nav-height` tracks `.hd-nav.offsetHeight` on resize. `.controls-bar` is styled with `position: sticky; top: var(--nav-height); z-index: 90;`.
+- **Sentinel Geometric Detection**: `#controls-sentinel` triggers sticky state transition (`sentinelRect.top <= navH`) reliably without scroll jitter.
+- **Drawer State**: Filter chips are wrapped in `.filter-chips-wrapper` with smooth transition on `max-height`. Entering sticky state automatically collapses the drawer. Scrolled back to top, it auto-expands.
+- **Manual Toggle & Active Badge**: `#toggle-chips-btn` toggles the drawer anytime, with `#chips-active-badge` displaying the active filter count.
+
+### ECharts Coordinate Mapping & Hover Persistence
+- Continuous line hovering uses `growthChartInstance.convertFromPixel({ seriesIndex }, [offsetX, offsetY])` to resolve the closest weekly milestone index dynamically.
+- Tooltips stay visible while cursor moves along curves; clicking any point or line dispatches `showPluginDetail(plugin)` to open the detail drawer.
+
+---
+
+## 8. Running and Extending the Node.js Web Server
 
 ### Starting the Server
 ```bash
@@ -118,32 +173,39 @@ node server.js
 The application will be accessible at `http://localhost:3000`.
 
 ### Available REST Endpoints
-- `GET /api/stats`: Ecosystem aggregate counts, category distributions, language shares, and top Herdr endpoints.
-- `GET /api/plugins`: Filterable plugin listing supporting `?q=`, `?category=`, `?language=`, `?agent=`, `?tui=1`, `?mobile=1`, `?web=1`, `?cross_platform=1`, `?tests=1`, `?trending=1`, `?sort=popularity`, `?order=desc`.
+- `GET /api/stats`: Ecosystem aggregate counts, category distributions, language shares, top official endpoints, all endpoints catalog, and zero-usage summary.
+- `GET /api/plugins`: Filterable plugin listing supporting query parameters: `q`, `category`, `language`, `agent`, `sort`, `raw_socket`, `agent_skills`, `remote_infra`, `ssh`, `mosh`, `vpn`, `tui`, `mobile`, `web`.
 - `GET /api/plugins/:id`: Full profile of a specific plugin including manifest items, endpoints, and agent collection architecture.
+- `GET /api/history`: 36-week historical growth timeseries matrix for Apache ECharts (`?metric=stars|velocity|commits`).
+- `GET /api/releases`: Weekly plugin release cadence (new per week vs cumulative total).
 - `POST /api/query`: Live read-only SQL query runner. Pass JSON `{"sql": "SELECT ... FROM plugins ..."}`.
 
 ---
 
-## 7. Useful SQL Recipes for Intelligence Work
+## 9. Useful SQL Recipes for Intelligence Work
 
 ```sql
 -- Top 10 Plugins by Composite Popularity (Stars + 2.5*Forks + 1.5*WeeklyTrending)
 SELECT repo_full_name, stars, forks, stars_delta_7d, popularity_score, primary_language, broad_category 
 FROM plugins ORDER BY popularity_score DESC LIMIT 10;
 
+-- Plugins Using Direct Raw Socket API with High Adoption
+SELECT repo_full_name, stars, forks, primary_language, raw_socket_details 
+FROM plugins WHERE uses_raw_socket = 1 ORDER BY stars DESC LIMIT 10;
+
+-- Plugins Bundling AI Agent Skills
+SELECT repo_full_name, stars, primary_language, agent_skills_details 
+FROM plugins WHERE uses_agent_skills = 1 ORDER BY stars DESC LIMIT 10;
+
 -- Plugins with Automated Tests and Cross-Platform Support
 SELECT repo_full_name, primary_language, total_loc, has_tests, is_cross_platform 
 FROM plugins WHERE has_tests = 1 AND is_cross_platform = 1 ORDER BY stars DESC LIMIT 10;
 
--- Claude Code Log Scraping vs OpenCode ACP Breakdown
-SELECT agent_name, collection_methods, COUNT(*) as plugins_using 
-FROM plugin_agents 
-GROUP BY agent_name, collection_methods ORDER BY plugins_using DESC LIMIT 15;
-
--- Top Herdr Socket API Endpoints Across All 500 Plugins
-SELECT endpoint, COUNT(*) as usage_count 
-FROM plugin_endpoints 
-WHERE source_type = 'socket_or_event'
-GROUP BY endpoint ORDER BY usage_count DESC LIMIT 15;
+-- Top Official Herdr Endpoints Never Called by Any Community Plugin (Zero-Usage)
+SELECT e.endpoint, e.endpoint_type, e.category, e.doc_url 
+FROM herdr_official_endpoints e
+LEFT JOIN (SELECT endpoint, COUNT(DISTINCT plugin_id) as cnt FROM plugin_endpoints GROUP BY endpoint) pe 
+  ON e.endpoint = pe.endpoint 
+WHERE COALESCE(pe.cnt, 0) = 0 
+ORDER BY e.endpoint ASC LIMIT 15;
 ```

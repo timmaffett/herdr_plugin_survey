@@ -1312,7 +1312,7 @@ function renderEndpointsChart() {
     const row = document.createElement('div');
     row.className = 'bar-row';
     const pct = Math.round((e.cnt / maxVal) * 100);
-    const docUrl = e.doc_url || getEndpointDocUrl(e.endpoint);
+    const docUrl = (e.doc_url && !e.doc_url.includes('github.com/herdrdev/herdr/blob')) ? e.doc_url : getEndpointDocUrl(e.endpoint);
 
     // Type badge label & style
     let typeBadge = '';
@@ -1391,22 +1391,104 @@ function escapeHtml(str) {
 }
 
 
-// Get official documentation URL for any Herdr endpoint
+// Get official documentation URL on herdr.dev for any Herdr endpoint
 function getEndpointDocUrl(endpoint) {
-  if (!endpoint) return "https://herdr.dev/docs";
-  const ep = String(endpoint).trim();
+  if (!endpoint) return "https://herdr.dev/docs/";
+  const raw = String(endpoint).trim();
+  const ep = raw.toLowerCase();
 
-  if (ep.startsWith('cli:')) {
-    const cmd = ep.replace('cli:', '').trim().replace(/\s+/g, '-');
-    return "https://github.com/herdrdev/herdr/blob/main/docs/CLI.md#" + encodeURIComponent(cmd);
-  } else if (ep.startsWith('event:')) {
-    const ev = ep.replace('event:', '').trim().replace(/\./g, '-');
-    return "https://github.com/herdrdev/herdr/blob/main/docs/PLUGINS.md#" + encodeURIComponent(ev);
-  } else if (ep.includes('.')) {
-    const slug = ep.replace(/\./g, '-');
-    return "https://github.com/herdrdev/herdr/blob/main/docs/SOCKET_API.md#" + encodeURIComponent(slug);
+  // CLI Commands (e.g. "cli:plugin install", "plugin pane", "pane split")
+  if (ep.startsWith('cli:') || ep.startsWith('herdr ')) {
+    const cleanCmd = ep.replace(/^cli:\s*/, '').replace(/^herdr\s+/, '').trim();
+    const rootCmd = cleanCmd.split(/[\s-]+/)[0];
+
+    switch (rootCmd) {
+      case 'plugin':
+      case 'plugins':
+        return "https://herdr.dev/docs/cli-reference/#plugins";
+      case 'pane':
+      case 'panes':
+        return "https://herdr.dev/docs/cli-reference/#panes";
+      case 'tab':
+      case 'tabs':
+        return "https://herdr.dev/docs/cli-reference/#tabs";
+      case 'session':
+      case 'sessions':
+        return "https://herdr.dev/docs/cli-reference/#sessions";
+      case 'workspace':
+      case 'workspaces':
+        return "https://herdr.dev/docs/cli-reference/#workspaces";
+      case 'worktree':
+      case 'worktrees':
+        return "https://herdr.dev/docs/cli-reference/#worktrees";
+      case 'agent':
+      case 'agents':
+      case 'report':
+      case 'release':
+        return "https://herdr.dev/docs/cli-reference/#agents";
+      case 'server':
+        return "https://herdr.dev/docs/cli-reference/#server";
+      case 'notification':
+      case 'notifications':
+        return "https://herdr.dev/docs/cli-reference/#notifications";
+      case 'status':
+      case 'launch':
+        return "https://herdr.dev/docs/cli-reference/#launch-and-status";
+      case 'completion':
+      case 'completions':
+        return "https://herdr.dev/docs/cli-reference/#shell-completions";
+      case 'terminal':
+      case 'attach':
+        return "https://herdr.dev/docs/cli-reference/#direct-terminal-attach";
+      case 'wait':
+        return "https://herdr.dev/docs/cli-reference/#output-waits";
+      case 'integration':
+      case 'integrations':
+        return "https://herdr.dev/docs/cli-reference/#integrations";
+      case 'config':
+        return "https://herdr.dev/docs/config-reference/";
+      case 'api':
+        return "https://herdr.dev/docs/socket-api/";
+      default:
+        return "https://herdr.dev/docs/cli-reference/";
+    }
   }
-  return "https://github.com/herdrdev/herdr/search?q=" + encodeURIComponent(ep);
+
+  // Event hooks (e.g. "event:startup", "event:pane_opened")
+  if (ep.startsWith('event:')) {
+    return "https://herdr.dev/docs/plugins/#startup-hooks";
+  }
+
+  // Socket API methods (e.g. "server.stop", "agent.explain", "ping")
+  if (ep.includes('.') || ep === 'ping') {
+    if (ep.startsWith('plugin.')) {
+      return "https://herdr.dev/docs/socket-api/#plugin-apis";
+    }
+    if (ep.startsWith('agent.')) {
+      return "https://herdr.dev/docs/socket-api/#agent-view-queries";
+    }
+    if (ep.startsWith('pane.read') || ep.startsWith('read.')) {
+      return "https://herdr.dev/docs/socket-api/#reading-panes";
+    }
+    if (ep.startsWith('wait.')) {
+      return "https://herdr.dev/docs/socket-api/#waiting-for-state";
+    }
+    return "https://herdr.dev/docs/socket-api/#raw-methods";
+  }
+
+  // Check if string starts with a known CLI root command without prefix
+  const firstWord = ep.split(/[\s-]+/)[0];
+  const knownCliRoots = [
+    'plugin', 'plugins', 'pane', 'panes', 'tab', 'tabs', 'session', 'sessions',
+    'workspace', 'workspaces', 'worktree', 'worktrees', 'agent', 'agents',
+    'server', 'notification', 'notifications', 'status', 'launch', 'completion',
+    'completions', 'terminal', 'attach', 'wait', 'integration', 'integrations', 'config'
+  ];
+  if (knownCliRoots.includes(firstWord)) {
+    return getEndpointDocUrl('cli:' + ep);
+  }
+
+  return "https://herdr.dev/docs/";
 }
 
 // Render Layered Releases Chart (Weekly New vs Cumulative Total)

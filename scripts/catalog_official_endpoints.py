@@ -10,6 +10,48 @@ DB_PATH = "plugins.db"
 CORE_SCHEMA_PATH = "repos/herdrdev__herdr/docs/next/api/herdr-api.schema.json"
 CORE_CLI_PATH = "repos/herdrdev__herdr/src/cli/spec.rs"
 
+def resolve_doc_url(endpoint: str, endpoint_type: str) -> str:
+    ep = endpoint.strip().lower()
+    if endpoint_type == "cli_command" or ep.startswith("cli:"):
+        clean_cmd = ep.replace("cli:", "").strip()
+        root = clean_cmd.split()[0] if clean_cmd else ""
+        mapping = {
+            "plugin": "https://herdr.dev/docs/cli-reference/#plugins",
+            "pane": "https://herdr.dev/docs/cli-reference/#panes",
+            "tab": "https://herdr.dev/docs/cli-reference/#tabs",
+            "session": "https://herdr.dev/docs/cli-reference/#sessions",
+            "workspace": "https://herdr.dev/docs/cli-reference/#workspaces",
+            "worktree": "https://herdr.dev/docs/cli-reference/#worktrees",
+            "agent": "https://herdr.dev/docs/cli-reference/#agents",
+            "report-agent": "https://herdr.dev/docs/cli-reference/#agents",
+            "release-agent": "https://herdr.dev/docs/cli-reference/#agents",
+            "report-metadata": "https://herdr.dev/docs/cli-reference/#agents",
+            "server": "https://herdr.dev/docs/cli-reference/#server",
+            "notification": "https://herdr.dev/docs/cli-reference/#notifications",
+            "status": "https://herdr.dev/docs/cli-reference/#launch-and-status",
+            "completion": "https://herdr.dev/docs/cli-reference/#shell-completions",
+            "terminal": "https://herdr.dev/docs/cli-reference/#direct-terminal-attach",
+            "attach": "https://herdr.dev/docs/cli-reference/#direct-terminal-attach",
+            "wait": "https://herdr.dev/docs/cli-reference/#output-waits",
+            "integration": "https://herdr.dev/docs/cli-reference/#integrations",
+            "config": "https://herdr.dev/docs/config-reference/",
+            "api": "https://herdr.dev/docs/socket-api/",
+        }
+        return mapping.get(root, "https://herdr.dev/docs/cli-reference/")
+    elif endpoint_type == "event_hook" or ep.startswith("event:"):
+        return "https://herdr.dev/docs/plugins/#startup-hooks"
+    elif endpoint_type == "socket_method" or "." in ep or ep == "ping":
+        if ep.startswith("plugin."):
+            return "https://herdr.dev/docs/socket-api/#plugin-apis"
+        elif ep.startswith("agent."):
+            return "https://herdr.dev/docs/socket-api/#agent-view-queries"
+        elif ep.startswith("pane.read") or ep.startswith("read."):
+            return "https://herdr.dev/docs/socket-api/#reading-panes"
+        elif ep.startswith("wait."):
+            return "https://herdr.dev/docs/socket-api/#waiting-for-state"
+        return "https://herdr.dev/docs/socket-api/#raw-methods"
+    return "https://herdr.dev/docs/"
+
 def main():
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
@@ -39,13 +81,12 @@ def main():
                 desc = item.get("description") or props["method"].get("description") or ""
                 for method in methods:
                     cat = method.split(".")[0] if "." in method else "general"
-                    slug = method.replace(".", "-")
                     endpoints[method] = {
                         "endpoint": method,
                         "endpoint_type": "socket_method",
                         "category": cat.capitalize(),
                         "description": desc,
-                        "doc_url": f"https://github.com/herdrdev/herdr/blob/main/docs/SOCKET_API.md#{slug}"
+                        "doc_url": resolve_doc_url(method, "socket_method")
                     }
 
         # 2. Events from herdr-api.schema.json
@@ -60,13 +101,12 @@ def main():
         for ev in ev_kinds:
             full_name = f"event:{ev}"
             cat = ev.split(".")[0].split("_")[0] if ("." in ev or "_" in ev) else "event"
-            slug = ev.replace(".", "-").replace("_", "-")
             endpoints[full_name] = {
                 "endpoint": full_name,
                 "endpoint_type": "event_hook",
                 "category": cat.capitalize(),
                 "description": f"Herdr lifecycle event: {ev}",
-                "doc_url": f"https://github.com/herdrdev/herdr/blob/main/docs/PLUGINS.md#{slug}"
+                "doc_url": resolve_doc_url(full_name, "event_hook")
             }
 
     # 3. CLI commands from cli/spec.rs
@@ -88,23 +128,21 @@ def main():
         # Build CLI command paths
         for primary, subs in fn_map.items():
             cmd_root = f"cli:{primary}"
-            slug_root = primary
             endpoints[cmd_root] = {
                 "endpoint": cmd_root,
                 "endpoint_type": "cli_command",
                 "category": primary.capitalize(),
                 "description": f"herdr {primary} command",
-                "doc_url": f"https://github.com/herdrdev/herdr/blob/main/docs/CLI.md#{slug_root}"
+                "doc_url": resolve_doc_url(cmd_root, "cli_command")
             }
             for sub in subs:
                 cmd_full = f"cli:{primary} {sub}"
-                slug_full = f"{primary}-{sub}"
                 endpoints[cmd_full] = {
                     "endpoint": cmd_full,
                     "endpoint_type": "cli_command",
                     "category": primary.capitalize(),
                     "description": f"herdr {primary} {sub} command",
-                    "doc_url": f"https://github.com/herdrdev/herdr/blob/main/docs/CLI.md#{slug_full}"
+                    "doc_url": resolve_doc_url(cmd_full, "cli_command")
                 }
 
     print(f"Cataloged {len(endpoints)} official Herdr endpoints from core.")
