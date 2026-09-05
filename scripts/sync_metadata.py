@@ -21,7 +21,7 @@ import re
 from datetime import datetime
 
 sys.path.insert(0, os.path.abspath("."))
-from scripts.db_manager import get_connection
+from scripts.db_manager import get_connection, upsert_plugin
 from scripts.analyzer import analyze_repository
 
 DB_PATH = "plugins.db"
@@ -148,7 +148,19 @@ def pull_outdated(conn):
             continue
             
         print(f" - Pulling latest commit for {full_name}...")
-        pull_res = subprocess.run(["git", "-C", repo_path, "pull", "--depth", "1"], capture_output=True, text=True, timeout=60)
+        try:
+            pull_env = {**os.environ, "GIT_TERMINAL_PROMPT": "0", "GIT_ASKPASS": "echo"}
+            pull_res = subprocess.run(
+                ["git", "-C", repo_path, "pull", "--depth", "1"],
+                capture_output=True,
+                text=True,
+                timeout=15,
+                env=pull_env
+            )
+            if pull_res.returncode != 0:
+                print(f"   [Notice] git pull failed ({pull_res.stderr.strip()[:60] if pull_res.stderr else 'code ' + str(pull_res.returncode)}), proceeding with analysis...")
+        except Exception as e:
+            print(f"   [Warning] git pull timed out/skipped for {full_name}: {e}")
         
         # Build mock meta for re-analysis
         meta = {
@@ -161,18 +173,8 @@ def pull_outdated(conn):
         }
         
         record = analyze_repository(repo_path, meta)
-        # update in DB
-        cursor = conn.cursor()
-        cursor.execute("""
-            UPDATE plugins SET
-                surveyed_commit_hash = ?,
-                surveyed_commit_date = ?,
-                surveyed_version = ?,
-                is_out_of_date = 0,
-                last_analyzed_at = CURRENT_TIMESTAMP
-            WHERE repo_full_name = ?;
-        """, (record["surveyed_commit_hash"], record["surveyed_commit_date"], record["surveyed_version"], full_name))
-        conn.commit()
+        record["is_out_of_date"] = 0
+        upsert_plugin(conn, record)
         reanalyzed += 1
         
     print(f"\n[Pull] Successfully updated and re-analyzed {reanalyzed} plugins.")
