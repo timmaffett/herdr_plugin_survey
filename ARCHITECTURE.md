@@ -338,6 +338,9 @@ flowchart LR
 | `server.*`, `ping` | Socket Method | `https://herdr.dev/docs/socket-api/#raw-methods` |
 | Top Navbar "Herdr Docs ↗" | Global Docs | `https://herdr.dev/docs/` |
 
+> [!NOTE]
+> For the complete empirical census of all 233 official endpoints, Top 30 adoption rankings across the 903 community plugins, and deep architectural analysis of the 100 zero-usage endpoints, refer to **[`API_USAGE.md`](./API_USAGE.md)**.
+
 ---
 
 ## 7. Version Control & Contribution Guidelines

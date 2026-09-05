@@ -92,6 +92,7 @@ python3 scripts/ingest_plugin.py alvinunreal/oh-my-opencode-slim --reanalyze
 ## Architectural & Engineering Documentation
 
 - 🏛️ **[`ARCHITECTURE.md`](./ARCHITECTURE.md)**: Authoritative system architecture, component topology, static analysis engine, SQLite data model, sticky controls mechanics, ECharts coordinate mapping, and official documentation routing specification.
+- 📡 **[`API_USAGE.md`](./API_USAGE.md)**: Comprehensive Herdr Core API & CLI endpoint usage census across all 233 official endpoints, 903 community plugins, adoption rankings, and in-depth analysis of the 100 zero-usage endpoints.
 - 📖 **[`docs/ENGINEERING_GUIDE.md`](./docs/ENGINEERING_GUIDE.md)**: Deep technical architecture, static analysis AST/regex engine, dynamic SQLite migrations, and component extension guides.
 - 📖 **[`docs/UPDATING_AND_SYNC_GUIDE.md`](./docs/UPDATING_AND_SYNC_GUIDE.md)**: Details commit tracking, remote infrastructure dimensions, staleness detection, growth collection, and sync utilities.
 
