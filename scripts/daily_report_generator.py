@@ -18,7 +18,8 @@ import sqlite3
 from datetime import datetime, timedelta
 
 sys.path.insert(0, os.path.abspath("."))
-from scripts.db_manager import get_connection, init_db
+from scripts.db_manager import get_connection, init_db, ensure_columns
+from scripts.extract_herdr_events import populate_herdr_events
 
 DB_PATH = "plugins.db"
 START_DATE = datetime(2026, 1, 1)
@@ -101,13 +102,49 @@ def extract_plugin_capabilities(p, endpoints, agents):
         
     return caps
 
-def generate_report_content(report_date, day_num, day_plugins, breakthroughs, cum_stats, seen_caps_count):
+def generate_report_content(report_date, day_num, day_plugins, breakthroughs, cum_stats, seen_caps_count, herdr_events=None):
     dt = datetime.strptime(report_date, "%Y-%m-%d")
     date_formatted = dt.strftime("%A, %B %-d, %Y")
-    is_quiet = 1 if len(day_plugins) == 0 else 0
+    herdr_events = herdr_events or []
     
-    # Generate Headline
-    if is_quiet:
+    has_plugins = len(day_plugins) > 0
+    has_herdr = len(herdr_events) > 0
+    
+    # Priority sorting of herdr events: agent_detection > major_feature > core_release
+    type_prio = {"agent_detection": 0, "major_feature": 1, "core_release": 2}
+    sorted_herdr = sorted(herdr_events, key=lambda x: type_prio.get(x.get("event_type"), 3))
+    top_he = sorted_herdr[0] if sorted_herdr else None
+
+    # Construct Herdr section for newspaper if present
+    herdr_section = ""
+    if herdr_events:
+        herdr_blocks = []
+        for he in sorted_herdr:
+            ev_type = he.get("event_type", "platform_update")
+            badge = "🤖 NEW AGENT DETECTION SUPPORTED" if ev_type == "agent_detection" else ("🏛️ OFFICIAL CORE RELEASE" if ev_type == "core_release" else "⚡ ARCHITECTURAL MILESTONE")
+            commit_link = f"([`{he['commit_hash'][:7]}`](https://github.com/herdrdev/herdr/commit/{he['commit_hash']}))" if he.get("commit_hash") else ""
+            details = he.get("details_markdown") or he.get("summary", "")
+            
+            herdr_blocks.append(f"""#### {badge}: {he['headline']} {commit_link}
+*{ev_type.replace('_', ' ').title()} • Herdr Core Engineering Milestone*
+
+> **Platform Impact:** {he.get('summary', '')}
+
+{details.strip()}
+""")
+        herdr_blocks_joined = "\n\n".join(herdr_blocks)
+        herdr_section = f"""### ⚡ Herdr Platform & Core Engine Dispatches
+
+Today features official architectural advancements directly from the Herdr Core engine team:
+
+{herdr_blocks_joined}
+
+---
+"""
+
+    if not has_plugins and not has_herdr:
+        # True quiet day: 0 plugins, 0 Herdr core events
+        is_quiet = 1
         if day_num < 60:
             headline = f"Ecosystem Pulse: Early Multiplexer Incubation (Day {day_num})"
         elif day_num < 150:
@@ -147,64 +184,119 @@ Across the ecosystem, **{cum_stats['plugins']} published plugins** continued ser
 #### Historical Context
 During this phase of Herdr's adoption curve, plugin authors concentrated on stabilizing internal Unix Domain Socket IPC sessions (`$HERDR_SOCKET_PATH`) and refining terminal split layouts. Background maintenance, automated integration testing, and local workflow customizations formed the primary development focus.
 """
+
+    elif not has_plugins and has_herdr:
+        # Herdr Core platform milestone day (0 plugins, but Herdr had news!)
+        is_quiet = 0
+        if top_he["event_type"] == "agent_detection":
+            headline = f"Herdr Platform Milestone: Native Support Added for {top_he['agent_name']} Detection"
+        elif top_he["event_type"] == "core_release":
+            headline = f"Herdr Core {top_he['version_tag']} Released"
+        else:
+            headline = f"Herdr Architecture Milestone: {top_he['headline']}"
+
+        exec_summary = (
+            f"On {date_formatted}, Herdr Core announced a major platform milestone: **{top_he['headline']}**. "
+            f"{top_he['summary']} While new community plugin registrations held steady at {cum_stats['plugins']} plugins, "
+            f"this core multiplexer update provides critical capabilities for upcoming extensions and coding workflows."
+        )
+
+        long_form = f"""## The Daily Herdr Dispatch — Issue #{day_num}
+*{date_formatted} • Herdr Core Platform Edition • Cumulative Ecosystem: {cum_stats['plugins']} Plugins*
+
+---
+
+{herdr_section}
+
+### 📊 Ecosystem Barometer
+
+```
+┌──────────────────────────────────────────────────────────┐
+│                   ECOSYSTEM STATUS AT A GLANCE           │
+├───────────────────────────────┬──────────────────────────┤
+│ Calendar Day                  │ Day {day_num:<21}│
+│ Total Published Plugins       │ {cum_stats['plugins']:<25}│
+│ Cumulative Ecosystem Stars    │ {cum_stats['stars']:<25,f}│
+│ Distinct Platform Capabilities│ {seen_caps_count:<25}│
+└───────────────────────────────┴──────────────────────────┘
+```
+"""
+
     else:
-        # Active Day
+        # Active plugin release day (may also have Herdr news!)
+        is_quiet = 0
         top_plugin = sorted(day_plugins, key=lambda x: x["stars"] or 0, reverse=True)[0]
         n_count = len(day_plugins)
-        
-        # Headline crafting
-        if day_num == 1:
-            headline = f"Genesis: The Herdr Plugin Ecosystem Launches with {top_plugin['repo_name']}"
-        elif breakthroughs:
-            agent_bts = [b for b in breakthroughs if b["type"] == "agent_skill"]
-            infra_bts = [b for b in breakthroughs if b["type"] == "remote_infra"]
-            wt_bts = [b for b in breakthroughs if "worktree" in b["key"]]
-            ep_bts = [b for b in breakthroughs if b["type"] == "core_api"]
-            lang_bts = [b for b in breakthroughs if b["type"] == "language"]
-            
-            if wt_bts:
-                headline = f"Dawn of Worktree Orchestration: {top_plugin['repo_name']} Debuts"
-            elif agent_bts:
-                agent_name = agent_bts[0]["key"].replace("agent:", "").replace("-", " ").title()
-                headline = f"Agent Frontiers: First {agent_name} Integration Lands with {top_plugin['repo_name']}"
-            elif infra_bts:
-                raw_inf = infra_bts[0]["key"].replace("infra:", "")
-                name_map = {
-                    "vpn_tailscale": "Tailscale VPN Mesh",
-                    "port_mapping": "Port Forwarding & UPnP",
-                    "vps_gateway": "VPS Gateway Relay",
-                    "ssh_tunnel": "SSH Tunneling",
-                    "mosh": "Mosh Roaming Terminal",
-                    "router_nat": "Router NAT Traversal"
-                }
-                infra_name = name_map.get(raw_inf, raw_inf.replace("_", " ").title())
-                headline = f"Infrastructure Breakthrough: {infra_name} Protocol Unlocked"
-            elif lang_bts:
-                lang_name = lang_bts[0]["key"].replace("language:", "").capitalize()
-                headline = f"{lang_name} Authors Enter Herdr: {top_plugin['repo_name']} Leads New Wave"
-            elif ep_bts:
-                ep_name = ep_bts[0]["key"].replace("endpoint:", "")
-                headline = f"Core Method `{ep_name}` Adopted as {n_count} {'Plugin' if n_count == 1 else 'Plugins'} Launch"
-            else:
-                headline = f"{n_count} {'Plugin' if n_count == 1 else 'Plugins'} Arrive Unlocking {len(breakthroughs)} Platform Capabilities"
-        else:
-            if n_count >= 15:
-                headline = f"Marketplace Surge: {n_count} Plugins Debut Led by {top_plugin['repo_name']}"
-            elif n_count >= 5:
-                headline = f"Ecosystem Momentum: {n_count} New Plugins Land on Herdr"
-            elif n_count > 1:
-                headline = f"{n_count} New Plugins Released Including {top_plugin['repo_name']}"
-            else:
-                headline = f"{top_plugin['repo_name']} Published to Marketplace"
-                
-        bt_text = f" This issue documents {len(breakthroughs)} brand new ecosystem firsts." if breakthroughs else ""
         plugin_word = "plugin" if n_count == 1 else "plugins"
-        exec_summary = (
-            f"On {date_formatted}, {n_count} new {plugin_word} officially joined the Herdr marketplace, "
-            f"bringing the cumulative ecosystem total to {cum_stats['plugins']} plugins and {cum_stats['stars']:,} stars.{bt_text} "
-            f"Notable releases today include `{top_plugin['repo_full_name']}` ({top_plugin['primary_language']}, {top_plugin['stars']} ★)."
-        )
-        
+        bt_text = f" This issue documents {len(breakthroughs)} brand new ecosystem firsts." if breakthroughs else ""
+
+        if has_herdr:
+            # Dual headline: Herdr Core news + plugins
+            if top_he["event_type"] == "agent_detection":
+                headline = f"Herdr Adds Native {top_he['agent_name']} Detection as {n_count} Community {plugin_word.title()} Launch"
+            elif top_he["event_type"] == "core_release":
+                headline = f"Herdr Core {top_he['version_tag']} Released Alongside {n_count} New Community {plugin_word.title()}"
+            else:
+                headline = f"{top_he['headline']} — Alongside {n_count} New Community {plugin_word.title()}"
+
+            exec_summary = (
+                f"On {date_formatted}, {n_count} new {plugin_word} officially joined the Herdr marketplace, "
+                f"bringing the cumulative total to {cum_stats['plugins']} plugins and {cum_stats['stars']:,} stars.{bt_text} "
+                f"Notable releases include `{top_plugin['repo_full_name']}` ({top_plugin['primary_language']}, {top_plugin['stars']} ★). "
+                f"Concurrently, Herdr Core announced a major platform milestone: **{top_he['headline']}** ({top_he['summary']})."
+            )
+        else:
+            # Standard plugin headline
+            if day_num == 1:
+                headline = f"Genesis: The Herdr Plugin Ecosystem Launches with {top_plugin['repo_name']}"
+            elif breakthroughs:
+                agent_bts = [b for b in breakthroughs if b["type"] == "agent_skill"]
+                infra_bts = [b for b in breakthroughs if b["type"] == "remote_infra"]
+                wt_bts = [b for b in breakthroughs if "worktree" in b["key"]]
+                ep_bts = [b for b in breakthroughs if b["type"] == "core_api"]
+                lang_bts = [b for b in breakthroughs if b["type"] == "language"]
+                
+                if wt_bts:
+                    headline = f"Dawn of Worktree Orchestration: {top_plugin['repo_name']} Debuts"
+                elif agent_bts:
+                    agent_name = agent_bts[0]["key"].replace("agent:", "").replace("-", " ").title()
+                    headline = f"Agent Frontiers: First {agent_name} Integration Lands with {top_plugin['repo_name']}"
+                elif infra_bts:
+                    raw_inf = infra_bts[0]["key"].replace("infra:", "")
+                    name_map = {
+                        "vpn_tailscale": "Tailscale VPN Mesh",
+                        "port_mapping": "Port Forwarding & UPnP",
+                        "vps_gateway": "VPS Gateway Relay",
+                        "ssh_tunnel": "SSH Tunneling",
+                        "mosh": "Mosh Roaming Terminal",
+                        "router_nat": "Router NAT Traversal"
+                    }
+                    infra_name = name_map.get(raw_inf, raw_inf.replace("_", " ").title())
+                    headline = f"Infrastructure Breakthrough: {infra_name} Protocol Unlocked"
+                elif lang_bts:
+                    lang_name = lang_bts[0]["key"].replace("language:", "").capitalize()
+                    headline = f"{lang_name} Authors Enter Herdr: {top_plugin['repo_name']} Leads New Wave"
+                elif ep_bts:
+                    ep_name = ep_bts[0]["key"].replace("endpoint:", "")
+                    headline = f"Core Method `{ep_name}` Adopted as {n_count} {plugin_word.title()} Launch"
+                else:
+                    headline = f"{n_count} {plugin_word.title()} Arrive Unlocking {len(breakthroughs)} Platform Capabilities"
+            else:
+                if n_count >= 15:
+                    headline = f"Marketplace Surge: {n_count} Plugins Debut Led by {top_plugin['repo_name']}"
+                elif n_count >= 5:
+                    headline = f"Ecosystem Momentum: {n_count} New Plugins Land on Herdr"
+                elif n_count > 1:
+                    headline = f"{n_count} New Plugins Released Including {top_plugin['repo_name']}"
+                else:
+                    headline = f"{top_plugin['repo_name']} Published to Marketplace"
+
+            exec_summary = (
+                f"On {date_formatted}, {n_count} new {plugin_word} officially joined the Herdr marketplace, "
+                f"bringing the cumulative ecosystem total to {cum_stats['plugins']} plugins and {cum_stats['stars']:,} stars.{bt_text} "
+                f"Notable releases today include `{top_plugin['repo_full_name']}` ({top_plugin['primary_language']}, {top_plugin['stars']} ★)."
+            )
+
         # Long-form newspaper construction
         bt_section = ""
         if breakthroughs:
@@ -283,9 +375,7 @@ The following capabilities were recorded in the Herdr ecosystem for the very fir
 
 On **{date_formatted}**, the Herdr developer community expanded with **{n_count} newly registered plugins**. Today's crop represents **{sum(p['total_loc'] or 0 for p in day_plugins):,} lines of new code** and brings collective marketplace popularity to **{cum_stats['stars']:,} stars**.
 
-{bt_section}
-
-### 📦 Releases in Detail
+{herdr_section}{bt_section}### 📦 Releases in Detail
 
 {articles_joined}
 
@@ -305,7 +395,7 @@ On **{date_formatted}**, the Herdr developer community expanded with **{n_count}
 ```
 """
 
-    return headline, exec_summary, long_form
+    return headline, exec_summary, long_form, is_quiet
 
 def run_backfill():
     print("=" * 75)
@@ -314,6 +404,7 @@ def run_backfill():
     print("=" * 75)
     
     init_db(DB_PATH)
+    populate_herdr_events(DB_PATH)
     conn = get_connection(DB_PATH)
     cursor = conn.cursor()
     
@@ -352,6 +443,17 @@ def run_backfill():
     p_agents = {}
     for r in cursor.fetchall():
         p_agents.setdefault(r["plugin_id"], []).append(r["agent_name"])
+
+    # Load Herdr Core platform events
+    cursor.execute("""
+        SELECT event_date, event_type, headline, summary, details_markdown, agent_name, version_tag, commit_hash
+        FROM herdr_core_events
+        ORDER BY id ASC;
+    """)
+    herdr_events_by_date = {}
+    for r in cursor.fetchall():
+        herdr_events_by_date.setdefault(r["event_date"], []).append(dict(r))
+    print(f"Loaded {sum(len(v) for v in herdr_events_by_date.values())} Herdr Core platform events across {len(herdr_events_by_date)} dates.")
         
     # Group plugins by normalized release date
     plugins_by_date = {}
@@ -384,10 +486,9 @@ def run_backfill():
     while curr_date <= END_DATE:
         d_str = curr_date.strftime("%Y-%m-%d")
         day_plugins = plugins_by_date.get(d_str, [])
-        is_quiet = 1 if len(day_plugins) == 0 else 0
+        day_herdr_events = herdr_events_by_date.get(d_str, [])
         
-        if not is_quiet:
-            active_days_count += 1
+        if len(day_plugins) > 0:
             cum_stats["plugins"] += len(day_plugins)
             cum_stats["stars"] += sum(p["stars"] or 0 for p in day_plugins)
             cum_stats["forks"] += sum(p["forks"] or 0 for p in day_plugins)
@@ -432,14 +533,18 @@ def run_backfill():
         total_breakthroughs += len(day_breakthroughs)
         
         # Construct content
-        headline, exec_summary, long_form = generate_report_content(
+        headline, exec_summary, long_form, is_quiet = generate_report_content(
             d_str, 
             day_num, 
             day_plugins, 
             day_breakthroughs, 
             cum_stats, 
-            len(seen_capabilities)
+            len(seen_capabilities),
+            day_herdr_events
         )
+        
+        if not is_quiet:
+            active_days_count += 1
         
         # Prepare mini plugin JSON summary
         plugins_mini = [{
@@ -457,18 +562,20 @@ def run_backfill():
                 executive_summary, long_form_content, new_capabilities_json,
                 plugins_released_count, plugins_released_json,
                 cumulative_plugins_count, cumulative_stars_count, cumulative_forks_count,
+                herdr_events_count, herdr_events_json,
                 generated_by
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         """, (
             d_str, day_num, is_quiet, headline,
             exec_summary, long_form, json.dumps(day_breakthroughs),
             len(day_plugins), json.dumps(plugins_mini),
             cum_stats["plugins"], cum_stats["stars"], cum_stats["forks"],
+            len(day_herdr_events), json.dumps(day_herdr_events),
             "genesis_backfill_engine"
         ))
         
         if day_num % 25 == 0 or day_num == 250:
-            print(f"Day {day_num:3d} ({d_str}): {len(day_plugins):2d} plugins, {len(day_breakthroughs):2d} breakthroughs, cum total: {cum_stats['plugins']:3d} plugins")
+            print(f"Day {day_num:3d} ({d_str}): {len(day_plugins):2d} plugins, {len(day_herdr_events):2d} core events, {len(day_breakthroughs):2d} breakthroughs, cum: {cum_stats['plugins']:3d} plugins")
             
         curr_date += timedelta(days=1)
         day_num += 1
@@ -476,8 +583,23 @@ def run_backfill():
     conn.commit()
     conn.close()
     
+    print("\n" + "=" * 75)
+    print("DAILY REPORT BACKFILL COMPLETE")
+    print(f"Total Calendar Days: {day_num - 1}")
+    print(f"Active Dispatch Days: {active_days_count}")
+    print(f"Quiet Incubation Days: {(day_num - 1) - active_days_count}")
+    print(f"Total Breakthroughs Recorded: {total_breakthroughs}")
+    print(f"Cumulative Market Size: {cum_stats['plugins']} plugins")
+    print("=" * 75)
+
 def generate_single_day(date_str, force=False):
+    """
+    Incrementally generates a single daily report for `date_str` (YYYY-MM-DD),
+    consulting past ledger data without rewriting earlier days.
+    """
+    print(f"[Daily Report] Generating dispatch for date {date_str}...")
     init_db(DB_PATH)
+    populate_herdr_events(DB_PATH)
     conn = get_connection(DB_PATH)
     cursor = conn.cursor()
     
@@ -539,6 +661,15 @@ def generate_single_day(date_str, force=False):
     p_agents = {}
     for r in cursor.fetchall():
         p_agents.setdefault(r["plugin_id"], []).append(r["agent_name"])
+
+    # Load Herdr Core platform events for this day
+    cursor.execute("""
+        SELECT event_date, event_type, headline, summary, details_markdown, agent_name, version_tag, commit_hash
+        FROM herdr_core_events
+        WHERE event_date = ?
+        ORDER BY id ASC;
+    """, (date_str,))
+    day_herdr_events = [dict(r) for r in cursor.fetchall()]
         
     cum_plugins += len(day_plugins)
     cum_stars += sum(p["stars"] or 0 for p in day_plugins)
@@ -575,8 +706,8 @@ def generate_single_day(date_str, force=False):
             VALUES (?, ?, ?, ?, ?);
         """, (date_str, pid, p["repo_full_name"], 1 if p_bts else 0, json.dumps(p_bts)))
         
-    headline, exec_summary, long_form = generate_report_content(
-        date_str, day_num, day_plugins, day_breakthroughs, cum_stats, len(seen_capabilities)
+    headline, exec_summary, long_form, is_quiet = generate_report_content(
+        date_str, day_num, day_plugins, day_breakthroughs, cum_stats, len(seen_capabilities), day_herdr_events
     )
     
     plugins_mini = [{
@@ -594,19 +725,21 @@ def generate_single_day(date_str, force=False):
             executive_summary, long_form_content, new_capabilities_json,
             plugins_released_count, plugins_released_json,
             cumulative_plugins_count, cumulative_stars_count, cumulative_forks_count,
+            herdr_events_count, herdr_events_json,
             generated_by
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
     """, (
-        date_str, day_num, 1 if len(day_plugins) == 0 else 0, headline,
+        date_str, day_num, is_quiet, headline,
         exec_summary, long_form, json.dumps(day_breakthroughs),
         len(day_plugins), json.dumps(plugins_mini),
         cum_stats["plugins"], cum_stats["stars"], cum_stats["forks"],
+        len(day_herdr_events), json.dumps(day_herdr_events),
         "daily_agent_runner"
     ))
     
     conn.commit()
     conn.close()
-    print(f"[Success] Generated daily report for {date_str} (Day {day_num}): {len(day_plugins)} plugins, {len(day_breakthroughs)} breakthroughs.")
+    print(f"[Success] Generated daily report for {date_str} (Day {day_num}): {len(day_plugins)} plugins, {len(day_herdr_events)} core events, {len(day_breakthroughs)} breakthroughs.")
 
 if __name__ == "__main__":
     import argparse

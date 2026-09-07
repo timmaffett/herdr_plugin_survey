@@ -1633,6 +1633,8 @@ let reportsState = {
   hasMore: true,
   viewMode: 'newspaper', // 'newspaper' or 'compact'
   breakthroughsOnly: false,
+  herdrNewsOnly: false,
+  agentDetectionOnly: false,
   search: '',
   observer: null,
   initialized: false
@@ -1700,18 +1702,48 @@ function renderReportDayCard(report, viewMode) {
   const isQuiet = report.is_quiet_day === 1;
   const breakthroughs = report.new_capabilities || [];
   const plugins = report.plugins_released || [];
+  const herdrEvents = report.herdr_events || [];
   const dateFormatted = formatDisplayDate(report.report_date);
-  const cardClass = breakthroughs.length > 0 ? 'report-day-card has-breakthroughs' : 'report-day-card';
+  
+  let cardClass = 'report-day-card';
+  if (breakthroughs.length > 0) cardClass += ' has-breakthroughs';
+  if (herdrEvents.length > 0) cardClass += ' has-herdr-events';
 
   // Badges Right
-  let badgeRight = '';
-  if (isQuiet) {
-    badgeRight = `<span class="quiet-day-badge">Quiet Incubation Day</span>`;
-  } else if (breakthroughs.length > 0) {
-    badgeRight = `<span class="breakthrough-count-badge">🌟 ${breakthroughs.length} Breakthrough${breakthroughs.length === 1 ? '' : 's'}</span>`;
-  } else {
-    badgeRight = `<span class="report-chip" style="font-size: 0.72rem;">${report.plugins_released_count} Releases</span>`;
+  let badgesRight = [];
+  
+  // 1. Herdr event badges
+  if (herdrEvents.length > 0) {
+    const agentEvents = herdrEvents.filter(e => e.event_type === 'agent_detection');
+    const releaseEvents = herdrEvents.filter(e => e.event_type === 'core_release');
+    const featureEvents = herdrEvents.filter(e => e.event_type === 'major_feature');
+
+    if (agentEvents.length > 0) {
+      const names = agentEvents.map(e => e.agent_name || 'AI Agent').join(', ');
+      badgesRight.push(`<span class="badge-herdr-agent" title="${escapeHtml(names)}">🤖 Agent Detection: ${escapeHtml(names)}</span>`);
+    }
+    if (releaseEvents.length > 0) {
+      const vers = releaseEvents.map(e => e.version_tag || 'Release').join(', ');
+      badgesRight.push(`<span class="badge-herdr-release">🏛️ Herdr Core ${escapeHtml(vers)}</span>`);
+    }
+    if (featureEvents.length > 0 && agentEvents.length === 0 && releaseEvents.length === 0) {
+      badgesRight.push(`<span class="badge-herdr-feature">⚡ Herdr Core Milestone</span>`);
+    }
   }
+
+  // 2. Breakthrough badge
+  if (breakthroughs.length > 0) {
+    badgesRight.push(`<span class="breakthrough-count-badge">🌟 ${breakthroughs.length} Breakthrough${breakthroughs.length === 1 ? '' : 's'}</span>`);
+  }
+
+  // 3. Quiet or Releases count
+  if (isQuiet) {
+    badgesRight.push(`<span class="quiet-day-badge">Quiet Incubation Day</span>`);
+  } else if (report.plugins_released_count > 0) {
+    badgesRight.push(`<span class="report-chip" style="font-size: 0.72rem;">${report.plugins_released_count} Releases</span>`);
+  }
+
+  const badgeRightHtml = badgesRight.join(' ');
 
   // Breakthrough Pills
   let btHtml = '';
@@ -1733,6 +1765,29 @@ function renderReportDayCard(report, viewMode) {
     `;
   }
 
+  // Herdr Core Callout in Executive Card
+  let herdrCardHtml = '';
+  if (herdrEvents.length > 0) {
+    const topHe = herdrEvents[0];
+    const isAgent = topHe.event_type === 'agent_detection';
+    const cardModClass = isAgent ? 'report-herdr-dispatch-card agent-detection' : 'report-herdr-dispatch-card';
+    const typeLabel = isAgent ? 'AGENT DETECTION MILESTONE' : (topHe.event_type === 'core_release' ? 'OFFICIAL CORE RELEASE' : 'HERDR CORE DISPATCH');
+    const commitHtml = topHe.commit_hash ? `<div class="herdr-dispatch-commit"><a href="https://github.com/herdrdev/herdr/commit/${topHe.commit_hash}" target="_blank" rel="noopener">Herdr Core Commit <code>${escapeHtml(topHe.commit_hash.slice(0, 7))}</code> ↗</a></div>` : '';
+    
+    herdrCardHtml = `
+      <div class="${cardModClass}">
+        <div class="herdr-dispatch-header">
+          <span class="herdr-pulse-dot"></span>
+          <strong>⚡ ${typeLabel}</strong>
+          <span class="herdr-event-type-tag">${escapeHtml(topHe.event_type.replace('_', ' ').toUpperCase())}</span>
+        </div>
+        <div class="herdr-dispatch-title">${escapeHtml(topHe.headline)}</div>
+        <div class="herdr-dispatch-summary">${escapeHtml(topHe.summary)}</div>
+        ${commitHtml}
+      </div>
+    `;
+  }
+
   // Body content based on view mode
   let bodyContent = '';
   if (viewMode === 'newspaper') {
@@ -1743,7 +1798,7 @@ function renderReportDayCard(report, viewMode) {
     `;
   } else {
     // Compact mode: show list of plugins released on this day or a quiet pulse row
-    if (isQuiet) {
+    if (isQuiet && herdrEvents.length === 0) {
       bodyContent = `
         <div class="report-compact-list">
           <div style="font-family: var(--mono); color: var(--faint2); font-size: 0.82rem; padding: 0.5rem 0;">
@@ -1752,7 +1807,7 @@ function renderReportDayCard(report, viewMode) {
         </div>
       `;
     } else {
-      const rows = plugins.map(p => `
+      const pluginRows = plugins.map(p => `
         <div class="compact-plugin-row" onclick="openPluginModalByName('${escapeHtml(p.fullName)}')" style="cursor: pointer;">
           <div class="compact-plugin-left">
             <span style="font-size: 1.1rem;">📦</span>
@@ -1772,7 +1827,7 @@ function renderReportDayCard(report, viewMode) {
 
       bodyContent = `
         <div class="report-compact-list">
-          ${rows}
+          ${pluginRows}
         </div>
       `;
     }
@@ -1786,7 +1841,7 @@ function renderReportDayCard(report, viewMode) {
           <span>${dateFormatted}</span>
         </div>
         <div class="report-badges-right">
-          ${badgeRight}
+          ${badgeRightHtml}
         </div>
       </div>
 
@@ -1798,10 +1853,12 @@ function renderReportDayCard(report, viewMode) {
           <span class="report-chip">${(report.cumulative_plugins_count || 0).toLocaleString()} Total Ecosystem</span>
           <span class="report-chip">★ ${(report.cumulative_stars_count || 0).toLocaleString()} Cumulative Stars</span>
           <span class="report-chip">⑂ ${(report.cumulative_forks_count || 0).toLocaleString()} Forks</span>
+          ${herdrEvents.length > 0 ? `<span class="report-chip" style="color: #cba6f7; border-color: rgba(203,166,247,0.4);">⚡ ${herdrEvents.length} Herdr Milestone${herdrEvents.length === 1 ? '' : 's'}</span>` : ''}
         </div>
 
         <p class="report-summary-text">${escapeHtml(report.executive_summary)}</p>
 
+        ${herdrCardHtml}
         ${btHtml}
       </div>
 
@@ -1842,6 +1899,12 @@ async function loadReportsBatch(reset = false, customParams = '') {
 
   if (reportsState.breakthroughsOnly) {
     url += `&breakthroughs_only=true`;
+  }
+  if (reportsState.herdrNewsOnly) {
+    url += `&herdr_news_only=true`;
+  }
+  if (reportsState.agentDetectionOnly) {
+    url += `&agent_detection_only=true`;
   }
   if (reportsState.search) {
     url += `&search=${encodeURIComponent(reportsState.search)}`;
@@ -1903,7 +1966,7 @@ async function initDailyReports() {
     if (statsBar) {
       statsBar.innerHTML = `
         <span>📅 Calendar Coverage: Jan 1, 2026 – Sep 7, 2026 (${stats.total_days || 250} Days)</span>
-        <span>Active Publication Days: ${stats.active_days || 98} · Quiet Incubation Days: ${stats.quiet_days || 152} · Breakthrough Milestones: ${stats.total_breakthroughs || 186}</span>
+        <span>Active Dispatch Days: ${stats.active_days || 139} · Herdr Core Milestones: ${stats.total_herdr_events || 85} (${stats.total_agent_detections || 17} Agent Detections, ${stats.total_core_releases || 55} Releases) · Breakthroughs: ${stats.total_breakthroughs || 186}</span>
       `;
     }
   } catch (err) {
@@ -1947,6 +2010,26 @@ async function initDailyReports() {
   if (btToggle) {
     btToggle.addEventListener('change', (e) => {
       reportsState.breakthroughsOnly = e.target.checked;
+      reportsState.beforeDate = null;
+      loadReportsBatch(true);
+    });
+  }
+
+  // Herdr Core News Filter Toggle
+  const herdrToggle = document.getElementById('reports-herdr-news-toggle');
+  if (herdrToggle) {
+    herdrToggle.addEventListener('change', (e) => {
+      reportsState.herdrNewsOnly = e.target.checked;
+      reportsState.beforeDate = null;
+      loadReportsBatch(true);
+    });
+  }
+
+  // Agent Detections Filter Toggle
+  const agentToggle = document.getElementById('reports-agent-detect-toggle');
+  if (agentToggle) {
+    agentToggle.addEventListener('change', (e) => {
+      reportsState.agentDetectionOnly = e.target.checked;
       reportsState.beforeDate = null;
       loadReportsBatch(true);
     });

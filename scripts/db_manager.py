@@ -159,12 +159,30 @@ CREATE TABLE IF NOT EXISTS daily_reports (
     cumulative_plugins_count INTEGER DEFAULT 0,
     cumulative_stars_count INTEGER DEFAULT 0,
     cumulative_forks_count INTEGER DEFAULT 0,
+    herdr_events_count INTEGER DEFAULT 0,
+    herdr_events_json TEXT DEFAULT '[]',
     generated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     generated_by TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_daily_reports_day ON daily_reports(day_number);
 CREATE INDEX IF NOT EXISTS idx_daily_reports_quiet ON daily_reports(is_quiet_day);
+
+CREATE TABLE IF NOT EXISTS herdr_core_events (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    event_date TEXT NOT NULL,
+    event_type TEXT NOT NULL,
+    headline TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    details_markdown TEXT,
+    agent_name TEXT,
+    version_tag TEXT,
+    commit_hash TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_herdr_events_date ON herdr_core_events(event_date);
+CREATE INDEX IF NOT EXISTS idx_herdr_events_type ON herdr_core_events(event_type);
 
 CREATE TABLE IF NOT EXISTS ecosystem_capabilities_ledger (
     capability_key TEXT PRIMARY KEY,

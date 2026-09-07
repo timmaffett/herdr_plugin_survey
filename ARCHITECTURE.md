@@ -22,12 +22,13 @@ graph TD
         CLONE["scripts/clone_repos.py<br/>(Parallel Shallow Cloner)"]
         ANALYZER["scripts/analyzer.py<br/>(AST, Regex & Manifest Parser)"]
         CORE_CAT["scripts/catalog_official_endpoints.py<br/>(Official API Cataloger)"]
+        HERDR_EVT["scripts/extract_herdr_events.py<br/>(Core News & Agent Detection Extractor)"]
         GROWTH_COL["scripts/collect_history.py<br/>(36-Week Milestone Extractor)"]
         DAILY_GEN["scripts/daily_report_generator.py<br/>(Chronological Ledger & Report Engine)"]
     end
 
     subgraph Storage["Relational Storage Layer (SQLite)"]
-        DB[("plugins.db<br/>34,884 Milestone Rows<br/>250 Daily Reports • 186 Capabilities")]
+        DB[("plugins.db<br/>34,884 Milestone Rows<br/>250 Daily Reports • 85 Herdr Milestones • 186 Capabilities")]
         T_PLUGINS["plugins"]
         T_HISTORY["plugin_history"]
         T_OFFICIAL["herdr_official_endpoints"]
@@ -35,6 +36,7 @@ graph TD
         T_AGENTS["plugin_agents"]
         T_ITEMS["plugin_manifest_items"]
         T_DAILY["daily_reports (250 Days)"]
+        T_HERDR["herdr_core_events (85 Milestones)"]
         T_LEDGER["ecosystem_capabilities_ledger"]
         T_DRP["daily_report_plugins"]
         DB --- T_PLUGINS
@@ -44,6 +46,7 @@ graph TD
         DB --- T_AGENTS
         DB --- T_ITEMS
         DB --- T_DAILY
+        DB --- T_HERDR
         DB --- T_LEDGER
         DB --- T_DRP
     end
@@ -54,12 +57,14 @@ graph TD
         API_STATS["/api/stats (Ecosystem Aggregates, Endpoints & Summary)"]
         API_HISTORY["/api/history (36-Week Timeseries Matrix)"]
         API_REPORTS["/api/daily-reports (Chronological Dispatch & Breakthroughs)"]
+        API_HERDR["/api/herdr-events (Core Releases & Agent Detection Milestones)"]
         API_RELEASES["/api/releases (Weekly Ingestion Cadence)"]
         API_QUERY["/api/query (Read-Only SQL Console)"]
         EXPRESS --- API_PLUGINS
         EXPRESS --- API_STATS
         EXPRESS --- API_HISTORY
         EXPRESS --- API_REPORTS
+        EXPRESS --- API_HERDR
         EXPRESS --- API_RELEASES
         EXPRESS --- API_QUERY
     end

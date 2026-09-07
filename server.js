@@ -518,6 +518,8 @@ app.get('/api/daily-reports', (req, res) => {
     const afterDate = req.query.after_date;
     const specificDate = req.query.date;
     const breakthroughsOnly = req.query.breakthroughs_only === 'true' || req.query.breakthroughs_only === '1';
+    const herdrNewsOnly = req.query.herdr_news_only === 'true' || req.query.herdr_news_only === '1' || req.query.herdr_news === 'true' || req.query.herdr_news === '1';
+    const agentDetectionOnly = req.query.agent_detection_only === 'true' || req.query.agent_detection_only === '1' || req.query.agent_only === 'true';
     const search = (req.query.search || '').trim().replace(/'/g, "''");
 
     let whereClauses = [];
@@ -534,6 +536,14 @@ app.get('/api/daily-reports', (req, res) => {
       whereClauses.push(`new_capabilities_json != '[]' AND new_capabilities_json IS NOT NULL`);
     }
 
+    if (herdrNewsOnly) {
+      whereClauses.push(`herdr_events_count > 0`);
+    }
+
+    if (agentDetectionOnly) {
+      whereClauses.push(`herdr_events_json LIKE '%agent_detection%'`);
+    }
+
     if (search) {
       whereClauses.push(`(headline LIKE '%${search}%' OR executive_summary LIKE '%${search}%' OR long_form_content LIKE '%${search}%')`);
     }
@@ -547,6 +557,7 @@ app.get('/api/daily-reports', (req, res) => {
         executive_summary, long_form_content, new_capabilities_json,
         plugins_released_count, plugins_released_json,
         cumulative_plugins_count, cumulative_stars_count, cumulative_forks_count,
+        herdr_events_count, herdr_events_json,
         generated_at, generated_by
       FROM daily_reports
       ${whereSql}
@@ -559,7 +570,8 @@ app.get('/api/daily-reports', (req, res) => {
     const formatted = rows.map(r => ({
       ...r,
       new_capabilities: JSON.parse(r.new_capabilities_json || '[]'),
-      plugins_released: JSON.parse(r.plugins_released_json || '[]')
+      plugins_released: JSON.parse(r.plugins_released_json || '[]'),
+      herdr_events: JSON.parse(r.herdr_events_json || '[]')
     }));
 
     const results = afterDate ? formatted.reverse() : formatted;
@@ -590,7 +602,8 @@ app.get('/api/daily-reports/stats', (req, res) => {
         MIN(report_date) as start_date,
         MAX(report_date) as end_date,
         MAX(cumulative_plugins_count) as total_plugins,
-        MAX(cumulative_stars_count) as total_stars
+        MAX(cumulative_stars_count) as total_stars,
+        SUM(CASE WHEN herdr_events_count > 0 THEN 1 ELSE 0 END) as herdr_news_days
       FROM daily_reports;
     `)[0] || {};
 
@@ -602,10 +615,20 @@ app.get('/api/daily-reports/stats', (req, res) => {
       LIMIT 15;
     `);
 
+    const herdrStats = queryDb(`
+      SELECT 
+        COUNT(*) as total_herdr_events,
+        SUM(CASE WHEN event_type = 'agent_detection' THEN 1 ELSE 0 END) as total_agent_detections,
+        SUM(CASE WHEN event_type = 'core_release' THEN 1 ELSE 0 END) as total_core_releases,
+        SUM(CASE WHEN event_type = 'major_feature' THEN 1 ELSE 0 END) as total_major_features
+      FROM herdr_core_events;
+    `)[0] || {};
+
     res.json({
       ...stats,
       total_breakthroughs: breakthroughsCount,
-      sample_breakthroughs: topBreakthroughs
+      sample_breakthroughs: topBreakthroughs,
+      ...herdrStats
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -631,7 +654,31 @@ app.get('/api/daily-reports/:date', (req, res) => {
       ...row,
       new_capabilities: JSON.parse(row.new_capabilities_json || '[]'),
       plugins_released: JSON.parse(row.plugins_released_json || '[]'),
+      herdr_events: JSON.parse(row.herdr_events_json || '[]'),
       detailed_plugins: plugins
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get('/api/herdr-events', (req, res) => {
+  try {
+    const eventType = req.query.type;
+    const order = req.query.order === 'asc' ? 'ASC' : 'DESC';
+    let whereSql = '';
+    if (eventType) {
+      whereSql = `WHERE event_type = '${eventType.replace(/'/g, '')}'`;
+    }
+    const events = queryDb(`
+      SELECT id, event_date, event_type, headline, summary, details_markdown, agent_name, version_tag, commit_hash
+      FROM herdr_core_events
+      ${whereSql}
+      ORDER BY event_date ${order};
+    `);
+    res.json({
+      count: events.length,
+      events
     });
   } catch (err) {
     res.status(500).json({ error: err.message });

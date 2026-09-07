@@ -28,14 +28,14 @@ Open **[http://localhost:3000](http://localhost:3000)** in your browser to explo
 - **⚡ Official Herdr Documentation Deep Linking**:
   - Every detected CLI command, socket method, and lifecycle event hook routes directly to its corresponding section in the official documentation at **[herdr.dev/docs](https://herdr.dev/docs/)** (e.g. [`/docs/cli-reference/#plugins`](https://herdr.dev/docs/cli-reference/#plugins), [`/docs/socket-api/#raw-methods`](https://herdr.dev/docs/socket-api/#raw-methods), [`/docs/plugins/#startup-hooks`](https://herdr.dev/docs/plugins/#startup-hooks)).
 - **📦 Layered Release Cadence Chart**: View weekly new plugin launches (Bar chart on left axis) layered with total cumulative ecosystem growth (Step line on right axis).
-- **📰 Daily Reports & Capability Timeline**: Chronological daily dispatches spanning Day 1 (Jan 1, 2026) to Today (Sep 7, 2026) with reverse-chronological virtual scroll, executive briefs, long-form newspaper articles, and automated novelty breakthrough detection.
+- **📰 Daily Reports & Capability Timeline**: Chronological daily dispatches spanning Day 1 (Jan 1, 2026) to Today (Sep 7, 2026) with reverse-chronological virtual scroll, executive briefs, long-form newspaper articles, automated novelty breakthrough detection, and coverage of official **Herdr Core Platform News** (including native AI agent detections such as Claude Code, OpenAI Codex, OpenCode, Pi, Copilot, Qoder, Kilo, Kimi, Droid, Cursor, Devin, MastraCode, Maki, Grok, Antigravity, Qwen, and Muse).
 - **🌐 Remote Infrastructure Intelligence**: Filter by plugins that require or reference **SSH Tunnels**, **Mosh**, **VPN / Tailscale**, **Port Forwarding**, **Home Router / NAT Setup**, or **VPS / Cloud Gateway Hosting**.
 - **🧩 Herdr Core Integration Census**: Filter by plugins using the direct **⚡ Raw Socket API** (352 plugins, 36.3%) or bundling **🧩 Agent Skills** (228 plugins, 23.5%).
 - **💻 Live SQL Console**: Execute custom read-only SQL queries directly against `plugins.db` with sub-millisecond execution times.
 
 ### 2. Fast Sync & Daily Update Commands
 ```bash
-# Full ecosystem update (Marketplace sync + Git pull + Milestones + Daily Report):
+# Full ecosystem update (Marketplace sync + Git pull + Milestones + Herdr events + Daily Report):
 npm run update
 
 # Generate / update daily reports dispatch:
@@ -75,7 +75,8 @@ python3 scripts/ingest_plugin.py alvinunreal/oh-my-opencode-slim --reanalyze
 | **Cumulative Stars** | 23,184 ★ |
 | **Cumulative Forks** | 1,895 ⑂ |
 | **Historical Milestone Records** | 34,884 rows in `plugin_history` (36 weeks $\times$ 969 plugins) |
-| **📰 Daily Intelligence Reports** | **250 days (Jan 1, 2026 – Sep 7, 2026 • 98 active, 152 quiet)** |
+| **📰 Daily Intelligence Reports** | **250 days (Jan 1, 2026 – Sep 7, 2026 • 139 active, 111 quiet)** |
+| **⚡ Herdr Core Engine Milestones** | **85 events across 63 dates (17 Agent Detections, 55 Core Releases, 13 Arch Features)** |
 | **🌟 Ecosystem Breakthroughs Tracked** | **186 first-occurrence milestones in capabilities ledger** |
 | **⚡ Direct Raw Socket API (`$HERDR_SOCKET_PATH`)** | **352 plugins (36.3%)** |
 | **🧩 Agent Skill Integration (`SKILL.md` / Agent Hooks)** | **228 plugins (23.5%)** |
