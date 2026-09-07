@@ -85,6 +85,7 @@ function setupNavigation() {
   const links = document.querySelectorAll('.nav-link[data-view]');
   const views = {
     browse: document.getElementById('view-browse'),
+    reports: document.getElementById('view-reports'),
     growth: document.getElementById('view-growth'),
     sql: document.getElementById('view-sql'),
     analytics: document.getElementById('view-analytics')
@@ -97,13 +98,17 @@ function setupNavigation() {
       const viewName = link.dataset.view;
 
       Object.keys(views).forEach(k => {
-        views[k].style.display = (k === viewName) ? 'block' : 'none';
+        if (views[k]) {
+          views[k].style.display = (k === viewName) ? 'block' : 'none';
+        }
       });
 
       if (viewName === 'growth') {
         setTimeout(renderGrowthChart, 50);
       } else if (viewName === 'analytics') {
         renderAnalyticsCharts();
+      } else if (viewName === 'reports') {
+        initDailyReports();
       }
     });
   });
@@ -1613,3 +1618,394 @@ async function renderReleasesChart() {
     console.error('Failed to render releases chart:', err);
   }
 }
+
+/* ==============================================================
+   Daily Reports & Chronological Capability Timeline Subsystem
+   ============================================================== */
+
+let reportsState = {
+  reports: [],
+  beforeDate: null,
+  afterDate: null,
+  minDate: '2026-01-01',
+  maxDate: '2026-09-07',
+  isLoading: false,
+  hasMore: true,
+  viewMode: 'newspaper', // 'newspaper' or 'compact'
+  breakthroughsOnly: false,
+  search: '',
+  observer: null,
+  initialized: false
+};
+
+function formatDisplayDate(dateStr) {
+  if (!dateStr) return '';
+  const parts = dateStr.split('-');
+  if (parts.length !== 3) return dateStr;
+  const d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+  return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+function parseMarkdownToHtml(md) {
+  if (!md) return '';
+  let html = md;
+
+  // Code blocks ```lang ... ```
+  html = html.replace(/```([a-z]*)\n([\s\S]*?)```/g, (match, lang, code) => {
+    return `<pre><code>${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>`;
+  });
+
+  // Inline code `...`
+  html = html.replace(/`([^`]+)`/g, (match, code) => {
+    return `<code>${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code>`;
+  });
+
+  // Headers
+  html = html.replace(/^#### (.*?)$/gm, '<h4>$1</h4>');
+  html = html.replace(/^### (.*?)$/gm, '<h3>$1</h3>');
+  html = html.replace(/^## (.*?)$/gm, '<h2>$1</h2>');
+  html = html.replace(/^# (.*?)$/gm, '<h1>$1</h1>');
+
+  // Blockquotes
+  html = html.replace(/^> (.*?)$/gm, '<blockquote>$1</blockquote>');
+  html = html.replace(/<\/blockquote>\n<blockquote>/g, '<br>');
+
+  // Links [text](url)
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1 ↗</a>');
+
+  // Bold & Italic
+  html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+  // Unordered Lists
+  html = html.replace(/^- (.*?)$/gm, '<li>$1</li>');
+  html = html.replace(/(<li>.*?<\/li>\n?)+/g, '<ul>$&</ul>');
+
+  // Horizontal rules
+  html = html.replace(/^---$/gm, '<hr style="border:none; border-top:1px solid var(--line); margin: 1.25rem 0;">');
+
+  // Paragraphs
+  const paras = html.split('\n\n');
+  return paras.map(p => {
+    const trimmed = p.trim();
+    if (!trimmed) return '';
+    if (trimmed.startsWith('<h') || trimmed.startsWith('<pre') || trimmed.startsWith('<ul') || trimmed.startsWith('<blockquote') || trimmed.startsWith('<hr')) {
+      return trimmed;
+    }
+    return `<p>${trimmed.replace(/\n/g, '<br>')}</p>`;
+  }).join('\n');
+}
+
+function renderReportDayCard(report, viewMode) {
+  const isQuiet = report.is_quiet_day === 1;
+  const breakthroughs = report.new_capabilities || [];
+  const plugins = report.plugins_released || [];
+  const dateFormatted = formatDisplayDate(report.report_date);
+  const cardClass = breakthroughs.length > 0 ? 'report-day-card has-breakthroughs' : 'report-day-card';
+
+  // Badges Right
+  let badgeRight = '';
+  if (isQuiet) {
+    badgeRight = `<span class="quiet-day-badge">Quiet Incubation Day</span>`;
+  } else if (breakthroughs.length > 0) {
+    badgeRight = `<span class="breakthrough-count-badge">🌟 ${breakthroughs.length} Breakthrough${breakthroughs.length === 1 ? '' : 's'}</span>`;
+  } else {
+    badgeRight = `<span class="report-chip" style="font-size: 0.72rem;">${report.plugins_released_count} Releases</span>`;
+  }
+
+  // Breakthrough Pills
+  let btHtml = '';
+  if (breakthroughs.length > 0) {
+    const pills = breakthroughs.map(b => `
+      <div class="breakthrough-item">
+        <span class="breakthrough-pill">${escapeHtml(b.key)}</span>
+        <span>${escapeHtml(b.desc)}</span>
+      </div>
+    `).join('');
+
+    btHtml = `
+      <div class="report-breakthroughs-container">
+        <div style="font-family: var(--mono); font-size: 0.75rem; color: #fab387; font-weight: 700; margin-bottom: 0.2rem;">
+          🌟 ECOSYSTEM BREAKTHROUGHS & NOVEL CAPABILITIES:
+        </div>
+        ${pills}
+      </div>
+    `;
+  }
+
+  // Body content based on view mode
+  let bodyContent = '';
+  if (viewMode === 'newspaper') {
+    bodyContent = `
+      <div class="report-newspaper-body">
+        ${parseMarkdownToHtml(report.long_form_content)}
+      </div>
+    `;
+  } else {
+    // Compact mode: show list of plugins released on this day or a quiet pulse row
+    if (isQuiet) {
+      bodyContent = `
+        <div class="report-compact-list">
+          <div style="font-family: var(--mono); color: var(--faint2); font-size: 0.82rem; padding: 0.5rem 0;">
+            No new plugins published on this calendar date. Existing ${report.cumulative_plugins_count} plugins maintained steady operations.
+          </div>
+        </div>
+      `;
+    } else {
+      const rows = plugins.map(p => `
+        <div class="compact-plugin-row" onclick="openPluginModalByName('${escapeHtml(p.fullName)}')" style="cursor: pointer;">
+          <div class="compact-plugin-left">
+            <span style="font-size: 1.1rem;">📦</span>
+            <div>
+              <span class="compact-plugin-name">${escapeHtml(p.fullName)}</span>
+              <span style="font-size: 0.75rem; color: var(--faint2); margin-left: 0.5rem;">${escapeHtml(p.cat || 'Utility')}</span>
+            </div>
+          </div>
+          <div class="compact-plugin-right">
+            <span class="lang-tag" style="background: ${LANG_COLORS[p.lang] || '#888'}; color: #000; font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 3px; font-weight: 600;">${p.lang || 'Unknown'}</span>
+            <span style="color: var(--spot); font-weight: 700;">★ ${p.stars || 0}</span>
+            <span>${(p.loc || 0).toLocaleString()} LOC</span>
+            <span style="color: var(--spot);">Details ↗</span>
+          </div>
+        </div>
+      `).join('');
+
+      bodyContent = `
+        <div class="report-compact-list">
+          ${rows}
+        </div>
+      `;
+    }
+  }
+
+  return `
+    <article class="${cardClass}" id="day-${report.report_date}" data-date="${report.report_date}">
+      <div class="report-day-header">
+        <div class="report-date-badge">
+          <span class="report-day-num">DAY ${report.day_number}</span>
+          <span>${dateFormatted}</span>
+        </div>
+        <div class="report-badges-right">
+          ${badgeRight}
+        </div>
+      </div>
+
+      <div class="report-exec-card">
+        <h3 class="report-headline">${escapeHtml(report.headline)}</h3>
+        
+        <div class="report-meta-chips">
+          <span class="report-chip spotlight">${report.plugins_released_count} New Releases</span>
+          <span class="report-chip">${(report.cumulative_plugins_count || 0).toLocaleString()} Total Ecosystem</span>
+          <span class="report-chip">★ ${(report.cumulative_stars_count || 0).toLocaleString()} Cumulative Stars</span>
+          <span class="report-chip">⑂ ${(report.cumulative_forks_count || 0).toLocaleString()} Forks</span>
+        </div>
+
+        <p class="report-summary-text">${escapeHtml(report.executive_summary)}</p>
+
+        ${btHtml}
+      </div>
+
+      ${bodyContent}
+    </article>
+  `;
+}
+
+function openPluginModalByName(fullName) {
+  const plugin = allPlugins.find(p => p.repo_full_name === fullName);
+  if (plugin) {
+    openModal(plugin);
+  } else {
+    fetch(`/api/plugins?q=${encodeURIComponent(fullName)}&limit=1`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.plugins && data.plugins.length > 0) {
+          openModal(data.plugins[0]);
+        }
+      });
+  }
+}
+
+async function loadReportsBatch(reset = false, customParams = '') {
+  if (reportsState.isLoading) return;
+  reportsState.isLoading = true;
+
+  const loaderEl = document.getElementById('reports-loader');
+  if (loaderEl) loaderEl.style.display = 'block';
+
+  let url = `/api/daily-reports?limit=5`;
+
+  if (customParams) {
+    url += customParams;
+  } else if (!reset && reportsState.beforeDate) {
+    url += `&before_date=${reportsState.beforeDate}`;
+  }
+
+  if (reportsState.breakthroughsOnly) {
+    url += `&breakthroughs_only=true`;
+  }
+  if (reportsState.search) {
+    url += `&search=${encodeURIComponent(reportsState.search)}`;
+  }
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    const feed = document.getElementById('reports-feed-container');
+
+    if (reset) {
+      feed.innerHTML = '';
+      reportsState.reports = [];
+    }
+
+    if (!data.reports || data.reports.length === 0) {
+      reportsState.hasMore = false;
+      if (reset) {
+        feed.innerHTML = `
+          <div style="text-align: center; padding: 4rem 1rem; color: var(--faint2); font-family: var(--mono);">
+            No daily reports match the current query criteria.
+          </div>
+        `;
+      }
+      if (loaderEl) loaderEl.style.display = 'none';
+      reportsState.isLoading = false;
+      return;
+    }
+
+    reportsState.reports.push(...data.reports);
+    reportsState.beforeDate = data.next_cursor;
+    reportsState.hasMore = !!data.next_cursor;
+
+    const cardsHtml = data.reports.map(r => renderReportDayCard(r, reportsState.viewMode)).join('');
+    if (reset) {
+      feed.innerHTML = cardsHtml;
+    } else {
+      feed.insertAdjacentHTML('beforeend', cardsHtml);
+    }
+
+    if (!reportsState.hasMore && loaderEl) {
+      loaderEl.style.display = 'none';
+    }
+  } catch (err) {
+    console.error('Failed to load daily reports:', err);
+  } finally {
+    reportsState.isLoading = false;
+  }
+}
+
+async function initDailyReports() {
+  if (reportsState.initialized) return;
+  reportsState.initialized = true;
+
+  try {
+    const statsRes = await fetch('/api/daily-reports/stats');
+    const stats = await statsRes.json();
+    const statsBar = document.getElementById('reports-stats-bar');
+    if (statsBar) {
+      statsBar.innerHTML = `
+        <span>📅 Calendar Coverage: Jan 1, 2026 – Sep 7, 2026 (${stats.total_days || 250} Days)</span>
+        <span>Active Publication Days: ${stats.active_days || 98} · Quiet Incubation Days: ${stats.quiet_days || 152} · Breakthrough Milestones: ${stats.total_breakthroughs || 186}</span>
+      `;
+    }
+  } catch (err) {
+    console.error('Failed to load reports stats:', err);
+  }
+
+  // Setup Date Picker
+  const datePicker = document.getElementById('reports-date-picker');
+  if (datePicker) {
+    datePicker.addEventListener('change', (e) => {
+      const selected = e.target.value;
+      if (selected) {
+        reportsState.beforeDate = null;
+        loadReportsBatch(true, `&date=${selected}`);
+      }
+    });
+  }
+
+  // Button: Today
+  const btnToday = document.getElementById('btn-jump-today');
+  if (btnToday) {
+    btnToday.addEventListener('click', () => {
+      if (datePicker) datePicker.value = '2026-09-07';
+      reportsState.beforeDate = null;
+      loadReportsBatch(true);
+    });
+  }
+
+  // Button: Genesis
+  const btnGenesis = document.getElementById('btn-jump-genesis');
+  if (btnGenesis) {
+    btnGenesis.addEventListener('click', () => {
+      if (datePicker) datePicker.value = '2026-01-01';
+      reportsState.beforeDate = null;
+      loadReportsBatch(true, `&date=2026-01-01`);
+    });
+  }
+
+  // Breakthroughs Filter Toggle
+  const btToggle = document.getElementById('reports-breakthroughs-toggle');
+  if (btToggle) {
+    btToggle.addEventListener('change', (e) => {
+      reportsState.breakthroughsOnly = e.target.checked;
+      reportsState.beforeDate = null;
+      loadReportsBatch(true);
+    });
+  }
+
+  // Search Input
+  const searchInput = document.getElementById('reports-search-input');
+  let searchTimer = null;
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => {
+        reportsState.search = e.target.value.trim();
+        reportsState.beforeDate = null;
+        loadReportsBatch(true);
+      }, 300);
+    });
+  }
+
+  // View Mode: Newspaper vs Compact
+  const btnNewspaper = document.getElementById('btn-view-newspaper');
+  const btnCompact = document.getElementById('btn-view-compact');
+
+  if (btnNewspaper && btnCompact) {
+    btnNewspaper.addEventListener('click', () => {
+      if (reportsState.viewMode === 'newspaper') return;
+      reportsState.viewMode = 'newspaper';
+      btnNewspaper.classList.add('active');
+      btnCompact.classList.remove('active');
+      const feed = document.getElementById('reports-feed-container');
+      if (feed && reportsState.reports.length > 0) {
+        feed.innerHTML = reportsState.reports.map(r => renderReportDayCard(r, 'newspaper')).join('');
+      }
+    });
+
+    btnCompact.addEventListener('click', () => {
+      if (reportsState.viewMode === 'compact') return;
+      reportsState.viewMode = 'compact';
+      btnCompact.classList.add('active');
+      btnNewspaper.classList.remove('active');
+      const feed = document.getElementById('reports-feed-container');
+      if (feed && reportsState.reports.length > 0) {
+        feed.innerHTML = reportsState.reports.map(r => renderReportDayCard(r, 'compact')).join('');
+      }
+    });
+  }
+
+  // Setup Infinite Scroll IntersectionObserver
+  const loaderEl = document.getElementById('reports-loader');
+  if (loaderEl && 'IntersectionObserver' in window) {
+    reportsState.observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !reportsState.isLoading && reportsState.hasMore) {
+        loadReportsBatch(false);
+      }
+    }, { rootMargin: '400px' });
+    reportsState.observer.observe(loaderEl);
+  }
+
+  // Load initial batch starting from today
+  loadReportsBatch(true);
+}
+

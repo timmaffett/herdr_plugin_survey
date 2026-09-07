@@ -17,10 +17,11 @@
     <div class="hd-brand">
       <span class="ram-icon">🐑</span>
       <span>herdr plugins survey</span>
-      <span class="nav-tag">Complete Marketplace Index (903 Plugins)</span>
+      <span class="nav-tag">Complete Marketplace Index (969 Plugins)</span>
     </div>
     <div class="nav-links">
       <span class="nav-link active" data-view="browse">Browse Index</span>
+      <span class="nav-link" data-view="reports">📰 Daily Reports</span>
       <span class="nav-link" data-view="growth">📈 Growth Timelines</span>
       <span class="nav-link" data-view="sql">SQL Query Runner</span>
       <span class="nav-link" data-view="analytics">Analytics & Graphs</span>
@@ -34,27 +35,27 @@
     <header class="hero">
       <div class="hero-stats">
         <div class="stat-box">
-          <span class="num" id="stat-total-plugins">903</span>
+          <span class="num" id="stat-total-plugins">969</span>
           <span class="lbl">Plugins</span>
         </div>
         <div class="stat-box">
-          <span class="num" id="stat-total-loc">8.7M</span>
+          <span class="num" id="stat-total-loc">9.8M</span>
           <span class="lbl">Lines of Code</span>
         </div>
         <div class="stat-box">
-          <span class="num" id="stat-total-stars">22.0K</span>
+          <span class="num" id="stat-total-stars">23.2K</span>
           <span class="lbl">Stars ★</span>
         </div>
         <div class="stat-box">
-          <span class="num" id="stat-total-forks">1.8K</span>
+          <span class="num" id="stat-total-forks">1.9K</span>
           <span class="lbl">Forks ⑂</span>
         </div>
       </div>
-      <div class="hero-eyebrow">Ecosystem Intelligence · All 903 Community Repositories</div>
+      <div class="hero-eyebrow">Ecosystem Intelligence · All 969 Community Repositories</div>
       <h1>Built by the herd. Surveyed by agents.</h1>
       <p>
-        An exhaustive architectural census of the entire universe of 903 published Herdr community plugins.
-        Every repository was shallow checked out, statically scanned across 8,700,000+ LOC, 
+        An exhaustive architectural census of the entire universe of 969 published Herdr community plugins.
+        Every repository was shallow checked out, statically scanned across 9,760,000+ LOC, 
         and cataloged with exact Herdr socket/CLI endpoints, commit timestamps, and AI agent integrations.
       </p>
     </header>
@@ -137,7 +138,55 @@
       </div>
     </section>
 
-    <!-- VIEW 2: Historical Growth Timeline (ECharts) -->
+    <!-- VIEW 2: Daily Reports & Capability Timeline -->
+    <section id="view-reports" style="display: none;">
+      <!-- Sticky Navigation Bar for Daily Reports -->
+      <div class="reports-nav-sticky">
+        <div class="reports-controls-left">
+          <div class="reports-date-group">
+            <span class="ctrl-label">📅 Date:</span>
+            <input type="date" id="reports-date-picker" class="filter-select" min="2026-01-01" max="2026-09-07" value="2026-09-07">
+          </div>
+          <div class="button-group">
+            <button class="scope-btn active" id="btn-jump-today">Today (Sep 7)</button>
+            <button class="scope-btn" id="btn-jump-genesis">⏮ Genesis (Day 1)</button>
+          </div>
+          <label class="checkbox-label" title="Filter to days that introduced brand new capabilities to the Herdr ecosystem">
+            <input type="checkbox" id="reports-breakthroughs-toggle">
+            <span>🌟 Breakthroughs Only</span>
+          </label>
+        </div>
+
+        <div class="reports-controls-right">
+          <input type="text" id="reports-search-input" class="filter-select" style="min-width: 220px;" placeholder="Search daily reports...">
+          <div class="button-group">
+            <button class="scope-btn active" id="btn-view-newspaper" title="Long-form editorial articles">📰 Newspaper</button>
+            <button class="scope-btn" id="btn-view-compact" title="Compact executive brief cards">📋 Compact</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overview Stats Banner -->
+      <div class="reports-stats-bar" id="reports-stats-bar">
+        <span>📅 Calendar Coverage: Jan 1, 2026 – Sep 7, 2026 (250 Days)</span>
+        <span>Active Release Days: 98 · Quiet Incubation Days: 152 · Breakthrough Milestones: 186</span>
+      </div>
+
+      <!-- Feed Container for Daily Reports -->
+      <div id="reports-feed-container" class="reports-feed">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Infinite Scroll Trigger / Loader -->
+      <div id="reports-loader" class="reports-loader">
+        <div class="reports-loader-content">
+          <span class="pulse-icon">⏳</span>
+          <span class="mono-faint">Scrolling backwards through ecosystem history...</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: Historical Growth Timeline (ECharts) -->
     <section id="view-growth" style="display: none;">
       <div class="growth-controls">
         <div class="growth-toolbar">

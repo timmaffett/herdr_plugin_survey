@@ -145,6 +145,55 @@ CREATE INDEX IF NOT EXISTS idx_endpoints_name ON plugin_endpoints(endpoint);
 CREATE INDEX IF NOT EXISTS idx_agents_name ON plugin_agents(agent_name);
 """
 
+SCHEMA_DAILY_REPORTS = """
+CREATE TABLE IF NOT EXISTS daily_reports (
+    report_date TEXT PRIMARY KEY,
+    day_number INTEGER,
+    is_quiet_day INTEGER DEFAULT 0,
+    headline TEXT,
+    executive_summary TEXT,
+    long_form_content TEXT,
+    new_capabilities_json TEXT,
+    plugins_released_count INTEGER DEFAULT 0,
+    plugins_released_json TEXT,
+    cumulative_plugins_count INTEGER DEFAULT 0,
+    cumulative_stars_count INTEGER DEFAULT 0,
+    cumulative_forks_count INTEGER DEFAULT 0,
+    generated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    generated_by TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_daily_reports_day ON daily_reports(day_number);
+CREATE INDEX IF NOT EXISTS idx_daily_reports_quiet ON daily_reports(is_quiet_day);
+
+CREATE TABLE IF NOT EXISTS ecosystem_capabilities_ledger (
+    capability_key TEXT PRIMARY KEY,
+    capability_type TEXT,
+    first_seen_date TEXT,
+    first_plugin_id INTEGER,
+    first_plugin_name TEXT,
+    description TEXT,
+    FOREIGN KEY(first_plugin_id) REFERENCES plugins(id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_ledger_date ON ecosystem_capabilities_ledger(first_seen_date);
+CREATE INDEX IF NOT EXISTS idx_ledger_type ON ecosystem_capabilities_ledger(capability_type);
+
+CREATE TABLE IF NOT EXISTS daily_report_plugins (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    report_date TEXT,
+    plugin_id INTEGER,
+    repo_full_name TEXT,
+    is_breakthrough INTEGER DEFAULT 0,
+    breakthrough_reasons_json TEXT,
+    FOREIGN KEY(report_date) REFERENCES daily_reports(report_date),
+    FOREIGN KEY(plugin_id) REFERENCES plugins(id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_drp_date ON daily_report_plugins(report_date);
+CREATE INDEX IF NOT EXISTS idx_drp_plugin ON daily_report_plugins(plugin_id);
+"""
+
 def get_connection(db_path=DB_PATH):
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
@@ -155,6 +204,7 @@ def init_db(db_path=DB_PATH):
     cursor = conn.cursor()
     cursor.executescript(SCHEMA_PLUGINS)
     cursor.executescript(SCHEMA_AUXILIARY)
+    cursor.executescript(SCHEMA_DAILY_REPORTS)
     conn.commit()
     conn.close()
 

@@ -511,6 +511,133 @@ app.get('/api/plugins/:id', (req, res) => {
   }
 });
 
+app.get('/api/daily-reports', (req, res) => {
+  try {
+    const limit = Math.min(parseInt(req.query.limit || '7', 10), 30);
+    const beforeDate = req.query.before_date;
+    const afterDate = req.query.after_date;
+    const specificDate = req.query.date;
+    const breakthroughsOnly = req.query.breakthroughs_only === 'true' || req.query.breakthroughs_only === '1';
+    const search = (req.query.search || '').trim().replace(/'/g, "''");
+
+    let whereClauses = [];
+
+    if (specificDate) {
+      whereClauses.push(`report_date = '${specificDate.replace(/'/g, '')}'`);
+    } else if (beforeDate) {
+      whereClauses.push(`report_date < '${beforeDate.replace(/'/g, '')}'`);
+    } else if (afterDate) {
+      whereClauses.push(`report_date > '${afterDate.replace(/'/g, '')}'`);
+    }
+
+    if (breakthroughsOnly) {
+      whereClauses.push(`new_capabilities_json != '[]' AND new_capabilities_json IS NOT NULL`);
+    }
+
+    if (search) {
+      whereClauses.push(`(headline LIKE '%${search}%' OR executive_summary LIKE '%${search}%' OR long_form_content LIKE '%${search}%')`);
+    }
+
+    const whereSql = whereClauses.length > 0 ? `WHERE ${whereClauses.join(' AND ')}` : '';
+    const orderSql = afterDate ? 'ORDER BY report_date ASC' : 'ORDER BY report_date DESC';
+
+    const sql = `
+      SELECT 
+        report_date, day_number, is_quiet_day, headline,
+        executive_summary, long_form_content, new_capabilities_json,
+        plugins_released_count, plugins_released_json,
+        cumulative_plugins_count, cumulative_stars_count, cumulative_forks_count,
+        generated_at, generated_by
+      FROM daily_reports
+      ${whereSql}
+      ${orderSql}
+      LIMIT ${limit};
+    `;
+
+    const rows = queryDb(sql);
+
+    const formatted = rows.map(r => ({
+      ...r,
+      new_capabilities: JSON.parse(r.new_capabilities_json || '[]'),
+      plugins_released: JSON.parse(r.plugins_released_json || '[]')
+    }));
+
+    const results = afterDate ? formatted.reverse() : formatted;
+    const bounds = queryDb("SELECT MIN(report_date) as min_date, MAX(report_date) as max_date, COUNT(*) as total_days FROM daily_reports;")[0] || {};
+
+    res.json({
+      reports: results,
+      count: results.length,
+      limit,
+      min_date: bounds.min_date,
+      max_date: bounds.max_date,
+      total_days: bounds.total_days,
+      next_cursor: results.length > 0 ? results[results.length - 1].report_date : null,
+      prev_cursor: results.length > 0 ? results[0].report_date : null
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get('/api/daily-reports/stats', (req, res) => {
+  try {
+    const stats = queryDb(`
+      SELECT 
+        COUNT(*) as total_days,
+        SUM(CASE WHEN is_quiet_day = 0 THEN 1 ELSE 0 END) as active_days,
+        SUM(CASE WHEN is_quiet_day = 1 THEN 1 ELSE 0 END) as quiet_days,
+        MIN(report_date) as start_date,
+        MAX(report_date) as end_date,
+        MAX(cumulative_plugins_count) as total_plugins,
+        MAX(cumulative_stars_count) as total_stars
+      FROM daily_reports;
+    `)[0] || {};
+
+    const breakthroughsCount = (queryDb("SELECT COUNT(*) as cnt FROM ecosystem_capabilities_ledger;")[0] || {}).cnt || 0;
+    const topBreakthroughs = queryDb(`
+      SELECT capability_key, capability_type, first_seen_date, first_plugin_name, description
+      FROM ecosystem_capabilities_ledger
+      ORDER BY first_seen_date ASC
+      LIMIT 15;
+    `);
+
+    res.json({
+      ...stats,
+      total_breakthroughs: breakthroughsCount,
+      sample_breakthroughs: topBreakthroughs
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get('/api/daily-reports/:date', (req, res) => {
+  try {
+    const dateStr = req.params.date.replace(/'/g, '');
+    const row = queryDb(`SELECT * FROM daily_reports WHERE report_date = '${dateStr}';`)[0];
+    if (!row) {
+      return res.status(404).json({ error: `Daily report for ${dateStr} not found.` });
+    }
+    const plugins = queryDb(`
+      SELECT p.* 
+      FROM plugins p
+      JOIN daily_report_plugins drp ON p.id = drp.plugin_id
+      WHERE drp.report_date = '${dateStr}'
+      ORDER BY p.stars DESC;
+    `);
+
+    res.json({
+      ...row,
+      new_capabilities: JSON.parse(row.new_capabilities_json || '[]'),
+      plugins_released: JSON.parse(row.plugins_released_json || '[]'),
+      detailed_plugins: plugins
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 app.post('/api/query', (req, res) => {
   const { sql } = req.body;
   if (!sql || typeof sql !== 'string') {

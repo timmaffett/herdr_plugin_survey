@@ -23,22 +23,29 @@ graph TD
         ANALYZER["scripts/analyzer.py<br/>(AST, Regex & Manifest Parser)"]
         CORE_CAT["scripts/catalog_official_endpoints.py<br/>(Official API Cataloger)"]
         GROWTH_COL["scripts/collect_history.py<br/>(36-Week Milestone Extractor)"]
+        DAILY_GEN["scripts/daily_report_generator.py<br/>(Chronological Ledger & Report Engine)"]
     end
 
     subgraph Storage["Relational Storage Layer (SQLite)"]
-        DB[("plugins.db<br/>32,508 Milestone Rows<br/>50+ Dynamic Attributes")]
+        DB[("plugins.db<br/>34,884 Milestone Rows<br/>250 Daily Reports • 186 Capabilities")]
         T_PLUGINS["plugins"]
         T_HISTORY["plugin_history"]
         T_OFFICIAL["herdr_official_endpoints"]
         T_ENDPOINTS["plugin_endpoints"]
         T_AGENTS["plugin_agents"]
         T_ITEMS["plugin_manifest_items"]
+        T_DAILY["daily_reports (250 Days)"]
+        T_LEDGER["ecosystem_capabilities_ledger"]
+        T_DRP["daily_report_plugins"]
         DB --- T_PLUGINS
         DB --- T_HISTORY
         DB --- T_OFFICIAL
         DB --- T_ENDPOINTS
         DB --- T_AGENTS
         DB --- T_ITEMS
+        DB --- T_DAILY
+        DB --- T_LEDGER
+        DB --- T_DRP
     end
 
     subgraph Backend["API & Query Service"]
@@ -46,11 +53,13 @@ graph TD
         API_PLUGINS["/api/plugins (Filters, Sort, Pagination)"]
         API_STATS["/api/stats (Ecosystem Aggregates, Endpoints & Summary)"]
         API_HISTORY["/api/history (36-Week Timeseries Matrix)"]
+        API_REPORTS["/api/daily-reports (Chronological Dispatch & Breakthroughs)"]
         API_RELEASES["/api/releases (Weekly Ingestion Cadence)"]
         API_QUERY["/api/query (Read-Only SQL Console)"]
         EXPRESS --- API_PLUGINS
         EXPRESS --- API_STATS
         EXPRESS --- API_HISTORY
+        EXPRESS --- API_REPORTS
         EXPRESS --- API_RELEASES
         EXPRESS --- API_QUERY
     end
@@ -59,6 +68,7 @@ graph TD
         APP["public/app.js (Vanilla ES2022)"]
         INDEX["public/index.html (Semantic HTML5)"]
         STYLE["public/style.css (Catppuccin Ink Theme)"]
+        REPORTS_VIEW["📰 Daily Reports View<br/>(Reverse-Chronological Virtual Scroll, Newspaper Layout)"]
         STICKY["Sticky Controls & Collapsible Drawer<br/>(Dynamic --nav-height, Sentinel Detection)"]
         ECHARTS["Apache ECharts Engine<br/>(Pixel-to-Data Coordinate Mapping, Smooth Tooltips)"]
         DOC_ROUTER["Documentation Deep-Link Router<br/>(herdr.dev/docs/ Resolver)"]
