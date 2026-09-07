@@ -150,15 +150,23 @@ def pull_outdated(conn):
         print(f" - Pulling latest commit for {full_name}...")
         try:
             pull_env = {**os.environ, "GIT_TERMINAL_PROMPT": "0", "GIT_ASKPASS": "echo"}
-            pull_res = subprocess.run(
-                ["git", "-C", repo_path, "pull", "--depth", "1"],
+            f_res = subprocess.run(
+                ["git", "-C", repo_path, "fetch", "--depth", "1", "origin"],
                 capture_output=True,
                 text=True,
-                timeout=15,
+                timeout=25,
                 env=pull_env
             )
-            if pull_res.returncode != 0:
-                print(f"   [Notice] git pull failed ({pull_res.stderr.strip()[:60] if pull_res.stderr else 'code ' + str(pull_res.returncode)}), proceeding with analysis...")
+            if f_res.returncode == 0:
+                subprocess.run(
+                    ["git", "-C", repo_path, "reset", "--hard", "FETCH_HEAD"],
+                    capture_output=True,
+                    text=True,
+                    timeout=10,
+                    env=pull_env
+                )
+            else:
+                print(f"   [Notice] git fetch failed ({f_res.stderr.strip()[:60] if f_res.stderr else 'code ' + str(f_res.returncode)}), proceeding with analysis...")
         except Exception as e:
             print(f"   [Warning] git pull timed out/skipped for {full_name}: {e}")
         

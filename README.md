@@ -60,32 +60,32 @@ python3 scripts/ingest_plugin.py alvinunreal/oh-my-opencode-slim --reanalyze
 
 | Metric | Value |
 |---|---|
-| **Repositories Surveyed** | 903 (100% of marketplace) |
-| **Total Lines of Code Scanned** | 8,716,978 LOC |
-| **Cumulative Stars** | 22,006 ★ |
-| **Cumulative Forks** | 1,783 ⑂ |
-| **Historical Milestone Records** | 32,508 rows in `plugin_history` (36 weeks $\times$ 903 plugins) |
-| **⚡ Direct Raw Socket API (`$HERDR_SOCKET_PATH`)** | **352 plugins (39.0%)** |
-| **🧩 Agent Skill Integration (`SKILL.md` / Agent Hooks)** | **228 plugins (25.2%)** |
-| **🌐 Remote Infrastructure Required** | **219 plugins (24.2%)** |
-| **SSH Tunnel / Keys Referenced** | **136 plugins** |
-| **VPS / Cloud Gateway Hosting** | **91 plugins** |
-| **Home Router / NAT Setup** | **38 plugins** |
-| **VPN / Tailscale Mesh** | **30 plugins** |
-| **Port Forwarding / UPnP** | **14 plugins** |
-| **Mosh Mobile Shell** | **7 plugins** |
+| **Repositories Surveyed** | 969 (100% of marketplace) |
+| **Total Lines of Code Scanned** | 9,767,742 LOC |
+| **Cumulative Stars** | 23,184 ★ |
+| **Cumulative Forks** | 1,895 ⑂ |
+| **Historical Milestone Records** | 34,884 rows in `plugin_history` (36 weeks $\times$ 969 plugins) |
+| **⚡ Direct Raw Socket API (`$HERDR_SOCKET_PATH`)** | **352 plugins (36.3%)** |
+| **🧩 Agent Skill Integration (`SKILL.md` / Agent Hooks)** | **228 plugins (23.5%)** |
+| **🌐 Remote Infrastructure Required** | **238 plugins (24.6%)** |
+| **SSH Tunnel / Keys Referenced** | **150 plugins** |
+| **VPS / Cloud Gateway Hosting** | **94 plugins** |
+| **Home Router / NAT Setup** | **40 plugins** |
+| **VPN / Tailscale Mesh** | **35 plugins** |
+| **Port Forwarding / UPnP** | **15 plugins** |
+| **Mosh Mobile Shell** | **9 plugins** |
 | **Official Core Endpoints Cataloged** | **233 endpoints** (103 CLI, 101 Socket, 29 Events) |
 | **Community-Used Official Endpoints** | **133 endpoints (57.1%)** |
-| **Zero-Usage Endpoints (0 calls in 903 repos)** | **100 endpoints (42.9%)** |
-| **Top Languages** | Rust (208), Shell (199), Python (150), JavaScript (125), Go (103), TypeScript (82) |
-| **TUI-based Plugins** | 725 (80.3%) |
-| **Web / Browser-capable** | 384 (42.5%) |
-| **Mobile & Remote Relays** | 203 (22.5%) |
-| **External Comms (Telegram/Push)** | 242 (26.8%) |
-| **Git Worktree / VCS Aware** | 307 (34.0%) |
-| **Cross-Platform (Win/Mac/Linux)** | 129 (14.3%) |
-| **Contains Automated Tests** | 589 (65.2%) |
-| **CI Workflows (GitHub Actions)** | 391 (43.3%) |
+| **Zero-Usage Endpoints (0 calls in 969 repos)** | **100 endpoints (42.9%)** |
+| **Top Languages** | Rust (220), Shell (214), Python (165), JavaScript (129), Go (109), TypeScript (90) |
+| **TUI-based Plugins** | 773 (79.8%) |
+| **Web / Browser-capable** | 406 (41.9%) |
+| **Mobile & Remote Relays** | 220 (22.7%) |
+| **External Comms (Telegram/Push)** | 262 (27.0%) |
+| **Git Worktree / VCS Aware** | 328 (33.9%) |
+| **Cross-Platform (Win/Mac/Linux)** | 139 (14.3%) |
+| **Contains Automated Tests** | 626 (64.6%) |
+| **CI Workflows (GitHub Actions)** | 424 (43.8%) |
 
 ---
 
