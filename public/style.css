@@ -1632,3 +1632,93 @@ a {
   color: #fff;
 }
 
+/* ==============================================================
+   Ecosystem Barometer HTML Table Styling
+   ============================================================== */
+.ecosystem-barometer-card {
+  background: linear-gradient(180deg, #1b1b20 0%, #141417 100%);
+  border: 1px solid rgba(203, 166, 247, 0.22);
+  border-radius: var(--radius-md);
+  margin: 1.25rem 0 1.5rem;
+  max-width: 580px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), 0 0 1px rgba(203, 166, 247, 0.2);
+}
+
+.barometer-header {
+  background: rgba(203, 166, 247, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 0.65rem 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.barometer-title {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--spot);
+}
+
+.barometer-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.barometer-table tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background 0.15s ease;
+}
+
+.barometer-table tr:last-child {
+  border-bottom: none;
+}
+
+.barometer-table tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.barometer-label {
+  padding: 0.65rem 1.1rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+  width: 56%;
+  vertical-align: middle;
+}
+
+.barometer-value {
+  padding: 0.65rem 1.1rem;
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.barometer-num {
+  font-weight: 700;
+}
+
+.barometer-num.spot {
+  color: var(--spot);
+}
+
+.barometer-num.star {
+  color: #f9e2af;
+}
+
+.barometer-num.fork {
+  color: var(--done);
+}
+
+.barometer-num.cap {
+  color: #a6e3a1;
+}
+

@@ -1652,6 +1652,39 @@ function parseMarkdownToHtml(md) {
   if (!md) return '';
   let html = md;
 
+  // Convert legacy ASCII Barometer block to beautiful HTML table (for backward compatibility)
+  html = html.replace(/```[^\n]*\n┌[^\n]+┐\n│([^\n]+)│\n├[^\n]+┤\n([\s\S]*?)\n└[^\n]+┘\n```/g, (match, headerText, rowsText) => {
+    const rows = rowsText.split('\n').filter(r => r.includes('│')).map(r => {
+      const parts = r.split('│').map(p => p.trim()).filter(Boolean);
+      if (parts.length >= 2) {
+        let valHtml = parts[1];
+        if (parts[0].includes('Stars')) valHtml = `<span class="barometer-num star">★ ${valHtml.replace(/^★\s*/, '')}</span>`;
+        else if (parts[0].includes('Forks')) valHtml = `<span class="barometer-num fork">⑂ ${valHtml.replace(/^⑂\s*/, '')}</span>`;
+        else if (parts[0].includes('Plugins')) valHtml = `<span class="barometer-num spot">${valHtml}</span> plugins`;
+        else if (parts[0].includes('Repositories')) valHtml = `<span class="barometer-num">${valHtml}</span> repos`;
+        else if (parts[0].includes('Capabilities')) valHtml = `<span class="barometer-num cap">${valHtml}</span> distinct APIs`;
+        else valHtml = `<span class="barometer-num">${valHtml}</span>`;
+
+        return `      <tr>
+        <td class="barometer-label">${parts[0]}</td>
+        <td class="barometer-value">${valHtml}</td>
+      </tr>`;
+      }
+      return '';
+    }).filter(Boolean).join('\n');
+
+    return `<div class="ecosystem-barometer-card">
+  <div class="barometer-header">
+    <span class="barometer-title">📊 ${headerText.trim()}</span>
+  </div>
+  <table class="barometer-table">
+    <tbody>
+${rows}
+    </tbody>
+  </table>
+</div>`;
+  });
+
   // Code blocks ```lang ... ```
   html = html.replace(/```([a-z]*)\n([\s\S]*?)```/g, (match, lang, code) => {
     return `<pre><code>${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>`;
@@ -1691,7 +1724,7 @@ function parseMarkdownToHtml(md) {
   return paras.map(p => {
     const trimmed = p.trim();
     if (!trimmed) return '';
-    if (trimmed.startsWith('<h') || trimmed.startsWith('<pre') || trimmed.startsWith('<ul') || trimmed.startsWith('<blockquote') || trimmed.startsWith('<hr')) {
+    if (trimmed.startsWith('<h') || trimmed.startsWith('<pre') || trimmed.startsWith('<ul') || trimmed.startsWith('<blockquote') || trimmed.startsWith('<hr') || trimmed.startsWith('<div') || trimmed.startsWith('<table')) {
       return trimmed;
     }
     return `<p>${trimmed.replace(/\n/g, '<br>')}</p>`;

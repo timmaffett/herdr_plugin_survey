@@ -131,6 +131,25 @@ def extract_plugin_capabilities(p, endpoints, agents):
         
     return caps
 
+def format_barometer_table(title, rows):
+    rows_html = []
+    for label, val in rows:
+        rows_html.append(f"""      <tr>
+        <td class="barometer-label">{label}</td>
+        <td class="barometer-value">{val}</td>
+      </tr>""")
+    tbody = "\n".join(rows_html)
+    return f"""<div class="ecosystem-barometer-card">
+  <div class="barometer-header">
+    <span class="barometer-title">📊 {title}</span>
+  </div>
+  <table class="barometer-table">
+    <tbody>
+{tbody}
+    </tbody>
+  </table>
+</div>"""
+
 def generate_report_content(report_date, day_num, day_plugins, breakthroughs, cum_stats, seen_caps_count, herdr_events=None):
     dt = datetime.strptime(report_date, "%Y-%m-%d")
     date_formatted = dt.strftime("%A, %B %-d, %Y")
@@ -231,6 +250,17 @@ During this phase of Herdr's adoption curve, plugin authors concentrated on stab
             f"this core multiplexer update provides critical capabilities for upcoming extensions and coding workflows."
         )
 
+        barometer_html = format_barometer_table(
+            "ECOSYSTEM STATUS AT A GLANCE",
+            [
+                ("Calendar Day", f"<span class='barometer-num'>Day {day_num}</span>"),
+                ("Total Published Plugins", f"<span class='barometer-num spot'>{cum_stats['plugins']}</span> plugins"),
+                ("Registered Repositories", f"<span class='barometer-num'>{cum_stats.get('repos', cum_stats['plugins'])}</span> repos"),
+                ("Cumulative Ecosystem Stars", f"<span class='barometer-num star'>★ {cum_stats['stars']:,}</span>"),
+                ("Distinct Platform Capabilities", f"<span class='barometer-num cap'>{seen_caps_count}</span> distinct APIs")
+            ]
+        )
+
         long_form = f"""## The Daily Herdr Dispatch — Issue #{day_num}
 *{date_formatted} • Herdr Core Platform Edition • Cumulative Ecosystem: {cum_stats['plugins']} Plugins*
 
@@ -240,17 +270,7 @@ During this phase of Herdr's adoption curve, plugin authors concentrated on stab
 
 ### 📊 Ecosystem Barometer
 
-```
-┌──────────────────────────────────────────────────────────┐
-│                   ECOSYSTEM STATUS AT A GLANCE           │
-├───────────────────────────────┬──────────────────────────┤
-│ Calendar Day                  │ Day {day_num:<21}│
-│ Total Published Plugins       │ {cum_stats['plugins']:<25}│
-│ Registered Repositories       │ {cum_stats.get('repos', cum_stats['plugins']):<25}│
-│ Cumulative Ecosystem Stars    │ {cum_stats['stars']:<25,}│
-│ Distinct Platform Capabilities│ {seen_caps_count:<25}│
-└───────────────────────────────┴──────────────────────────┘
-```
+{barometer_html}
 """
 
     else:
@@ -415,17 +435,16 @@ On **{date_formatted}**, the Herdr developer community expanded with **{n_count}
 
 ### 📊 Ecosystem Barometer
 
-```
-┌──────────────────────────────────────────────────────────┐
-│                   ECOSYSTEM METRICS TO DATE              │
-├───────────────────────────────┬──────────────────────────┤
-│ Total Market Size (Plugins)   │ {cum_stats['plugins']:<25}│
-│ Registered Repositories       │ {cum_stats.get('repos', cum_stats['plugins']):<25}│
-│ Cumulative Community Stars    │ {cum_stats['stars']:<25,}│
-│ Cumulative Community Forks    │ {cum_stats['forks']:<25,}│
-│ Cumulative Capability Footprint│ {seen_caps_count:<25}│
-└───────────────────────────────┴──────────────────────────┘
-```
+{format_barometer_table(
+    "ECOSYSTEM METRICS TO DATE",
+    [
+        ("Total Market Size (Plugins)", f"<span class='barometer-num spot'>{cum_stats['plugins']}</span> plugins"),
+        ("Registered Repositories", f"<span class='barometer-num'>{cum_stats.get('repos', cum_stats['plugins'])}</span> repos"),
+        ("Cumulative Community Stars", f"<span class='barometer-num star'>★ {cum_stats['stars']:,}</span>"),
+        ("Cumulative Community Forks", f"<span class='barometer-num fork'>⑂ {cum_stats['forks']:,}</span>"),
+        ("Cumulative Capability Footprint", f"<span class='barometer-num cap'>{seen_caps_count}</span> distinct APIs")
+    ]
+)}
 """
 
     return headline, exec_summary, long_form, is_quiet
