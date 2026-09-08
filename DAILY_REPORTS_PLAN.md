@@ -61,3 +61,37 @@ Add two new tables to [`plugins.db`](file:///Users/tim/source/herdr_plugins/plug
 - Verify all 250 days backfilled in SQLite.
 - Test UI scrolling backwards and forward.
 - Stage, commit, and update documentation.
+
+---
+
+## Operational Protocol: Fresh Marketplace Gets & Shallow Repo Retrievals
+
+> [!IMPORTANT]
+> **MANDATORY PRE-FLIGHT REQUIREMENT**: Before generating any daily summary or running daily cron reports, the system **MUST** perform fresh marketplace catalog fetches and shallow repository retrievals for anything changed or new.
+
+### 1. The Discrepancy & Metric Accounting
+- On [`herdr.dev/plugins`](https://herdr.dev/plugins/), the live index exposes `pluginCount` (986 plugins, previously 985) across `repositoryCount` (969 repositories).
+- In the Herdr ecosystem, **one repository can host multiple installable plugins** (e.g., `tyler-jewell/herdr-plugins` provides 6 plugins; `alastairsounds/herdr-plugins` provides 4 plugins).
+- Our database [`plugins.db`](file:///Users/tim/source/herdr_plugins/plugins.db) records 977 community repositories and 994 individual plugin extensions.
+- When generating reports, both total plugins (manifests) and underlying repositories must be accounted for cleanly, avoiding confusion between repository counts and individual plugin counts.
+
+### 2. Autonomous Daily Cron & Runner Workflow
+When generating today's daily dispatch (`python3 scripts/daily_report_generator.py --date <YYYY-MM-DD>` or with `--sync`):
+1. **Fresh Marketplace Scrape**:
+   ```bash
+   curl -sL https://herdr.dev/plugins/ | python3 -c '... extract initialData ...'
+   ```
+   Save the updated catalog into [`all_plugins.json`](file:///Users/tim/source/herdr_plugins/all_plugins.json).
+2. **Detect New Uncataloged Repositories**:
+   Compare the live marketplace list against `plugins.db`. If any plugins exist on the marketplace that are missing from `plugins.db`, shallow clone them immediately (`git clone --depth 1 -c filter.lfs.process= ...`) and execute `analyze_repository` to upsert them into `plugins.db`.
+3. **Fast-Forward Outdated Repositories**:
+   Compare each repository's `surveyed_commit_hash` against `headCommit`. If a newer upstream commit exists, run:
+   ```bash
+   git -C repos/<owner__repo> fetch --depth 1 origin HEAD && git -C repos/<owner__repo> reset --hard FETCH_HEAD
+   ```
+   Re-run AST analysis and update metrics in `plugins.db`.
+4. **Milestone History Alignment**:
+   Run `python3 scripts/collect_history.py --workers 16` to ensure the 36-week milestone timeline (`plugin_history`) includes the new repositories.
+5. **Daily Dispatch Generation**:
+   Run `python3 scripts/daily_report_generator.py --date <YYYY-MM-DD> --force` (or pass `--sync` to execute steps 1–4 automatically).
+

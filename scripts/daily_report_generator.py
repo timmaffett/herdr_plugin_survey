@@ -25,14 +25,43 @@ DB_PATH = "plugins.db"
 START_DATE = datetime(2026, 1, 1)
 END_DATE = datetime(2026, 9, 7)
 
+def get_live_manifest_map():
+    if os.path.exists("all_plugins.json"):
+        try:
+            with open("all_plugins.json") as f:
+                return {p["fullName"]: p for p in json.load(f) if p.get("fullName")}
+        except Exception:
+            pass
+    return {}
+
+def get_plugin_manifest_count(p, live_map=None):
+    fn = p.get("repo_full_name")
+    if live_map and fn in live_map:
+        manifests = live_map[fn].get("manifests")
+        if manifests and isinstance(manifests, list) and len(manifests) > 0:
+            return len(manifests)
+    raw = p.get("manifest_raw_json")
+    if not raw:
+        return 1
+    try:
+        data = json.loads(raw)
+        if isinstance(data, list):
+            return max(1, len(data))
+    except Exception:
+        pass
+    return 1
+
 def get_normalized_release_date(p):
-    c_at = p["created_at"]
+    s_date = p.get("surveyed_commit_date") or ""
+    c_at = p.get("created_at") or ""
+    # Newly created plugins whose surveyed commit occurred on 2026-09-07
+    if s_date and s_date.startswith("2026-09-07") and c_at and c_at >= "2026-09-05":
+        return "2026-09-07"
     if c_at and len(c_at) >= 10 and c_at >= "2026-01-01":
         return c_at[:10]
-    s_date = p["surveyed_commit_date"]
     if s_date and len(s_date) >= 10 and s_date >= "2026-01-01":
         return s_date[:10]
-    p_at = p["pushed_at"]
+    p_at = p.get("pushed_at") or ""
     if p_at and len(p_at) >= 10 and p_at >= "2026-01-01":
         return p_at[:10]
     return "2026-08-30"
@@ -195,9 +224,10 @@ During this phase of Herdr's adoption curve, plugin authors concentrated on stab
         else:
             headline = f"Herdr Architecture Milestone: {top_he['headline']}"
 
+        repos_info = f" across {cum_stats['repos']} community repositories" if "repos" in cum_stats and cum_stats["repos"] else ""
         exec_summary = (
             f"On {date_formatted}, Herdr Core announced a major platform milestone: **{top_he['headline']}**. "
-            f"{top_he['summary']} While new community plugin registrations held steady at {cum_stats['plugins']} plugins, "
+            f"{top_he['summary']} While new community plugin registrations held steady at {cum_stats['plugins']} plugins{repos_info}, "
             f"this core multiplexer update provides critical capabilities for upcoming extensions and coding workflows."
         )
 
@@ -216,7 +246,8 @@ During this phase of Herdr's adoption curve, plugin authors concentrated on stab
 ├───────────────────────────────┬──────────────────────────┤
 │ Calendar Day                  │ Day {day_num:<21}│
 │ Total Published Plugins       │ {cum_stats['plugins']:<25}│
-│ Cumulative Ecosystem Stars    │ {cum_stats['stars']:<25,f}│
+│ Registered Repositories       │ {cum_stats.get('repos', cum_stats['plugins']):<25}│
+│ Cumulative Ecosystem Stars    │ {cum_stats['stars']:<25,}│
 │ Distinct Platform Capabilities│ {seen_caps_count:<25}│
 └───────────────────────────────┴──────────────────────────┘
 ```
@@ -229,6 +260,7 @@ During this phase of Herdr's adoption curve, plugin authors concentrated on stab
         n_count = len(day_plugins)
         plugin_word = "plugin" if n_count == 1 else "plugins"
         bt_text = f" This issue documents {len(breakthroughs)} brand new ecosystem firsts." if breakthroughs else ""
+        repos_info = f" across {cum_stats['repos']} community repositories" if "repos" in cum_stats and cum_stats["repos"] else ""
 
         if has_herdr:
             # Dual headline: Herdr Core news + plugins
@@ -241,7 +273,7 @@ During this phase of Herdr's adoption curve, plugin authors concentrated on stab
 
             exec_summary = (
                 f"On {date_formatted}, {n_count} new {plugin_word} officially joined the Herdr marketplace, "
-                f"bringing the cumulative total to {cum_stats['plugins']} plugins and {cum_stats['stars']:,} stars.{bt_text} "
+                f"bringing the cumulative total to {cum_stats['plugins']} plugins{repos_info} and {cum_stats['stars']:,} stars.{bt_text} "
                 f"Notable releases include `{top_plugin['repo_full_name']}` ({top_plugin['primary_language']}, {top_plugin['stars']} ★). "
                 f"Concurrently, Herdr Core announced a major platform milestone: **{top_he['headline']}** ({top_he['summary']})."
             )
@@ -293,7 +325,7 @@ During this phase of Herdr's adoption curve, plugin authors concentrated on stab
 
             exec_summary = (
                 f"On {date_formatted}, {n_count} new {plugin_word} officially joined the Herdr marketplace, "
-                f"bringing the cumulative ecosystem total to {cum_stats['plugins']} plugins and {cum_stats['stars']:,} stars.{bt_text} "
+                f"bringing the cumulative ecosystem total to {cum_stats['plugins']} plugins{repos_info} and {cum_stats['stars']:,} stars.{bt_text} "
                 f"Notable releases today include `{top_plugin['repo_full_name']}` ({top_plugin['primary_language']}, {top_plugin['stars']} ★)."
             )
 
@@ -387,9 +419,10 @@ On **{date_formatted}**, the Herdr developer community expanded with **{n_count}
 ┌──────────────────────────────────────────────────────────┐
 │                   ECOSYSTEM METRICS TO DATE              │
 ├───────────────────────────────┬──────────────────────────┤
-│ Total Market Size             │ {cum_stats['plugins']:<25}│
-│ Cumulative Community Stars    │ {cum_stats['stars']:<25,f}│
-│ Cumulative Community Forks    │ {cum_stats['forks']:<25,f}│
+│ Total Market Size (Plugins)   │ {cum_stats['plugins']:<25}│
+│ Registered Repositories       │ {cum_stats.get('repos', cum_stats['plugins']):<25}│
+│ Cumulative Community Stars    │ {cum_stats['stars']:<25,}│
+│ Cumulative Community Forks    │ {cum_stats['forks']:<25,}│
 │ Cumulative Capability Footprint│ {seen_caps_count:<25}│
 └───────────────────────────────┴──────────────────────────┘
 ```
@@ -463,6 +496,8 @@ def run_backfill():
         
     print(f"Plugins partitioned into {len(plugins_by_date)} distinct release dates.")
     
+    live_manifest_map = get_live_manifest_map()
+    
     # Reset existing tables for clean backfill
     cursor.execute("DELETE FROM daily_reports;")
     cursor.execute("DELETE FROM ecosystem_capabilities_ledger;")
@@ -474,6 +509,7 @@ def run_backfill():
     
     cum_stats = {
         "plugins": 0,
+        "repos": 0,
         "stars": 0,
         "forks": 0
     }
@@ -488,8 +524,10 @@ def run_backfill():
         day_plugins = plugins_by_date.get(d_str, [])
         day_herdr_events = herdr_events_by_date.get(d_str, [])
         
+        day_manifest_count = sum(get_plugin_manifest_count(p, live_manifest_map) for p in day_plugins)
         if len(day_plugins) > 0:
-            cum_stats["plugins"] += len(day_plugins)
+            cum_stats["plugins"] += day_manifest_count
+            cum_stats["repos"] += len(day_plugins)
             cum_stats["stars"] += sum(p["stars"] or 0 for p in day_plugins)
             cum_stats["forks"] += sum(p["forks"] or 0 for p in day_plugins)
             
@@ -553,7 +591,8 @@ def run_backfill():
             "stars": p["stars"] or 0,
             "lang": p["primary_language"],
             "cat": p["broad_category"],
-            "loc": p["total_loc"] or 0
+            "loc": p["total_loc"] or 0,
+            "manifestCount": get_plugin_manifest_count(p, live_manifest_map)
         } for p in day_plugins]
         
         cursor.execute("""
@@ -568,14 +607,14 @@ def run_backfill():
         """, (
             d_str, day_num, is_quiet, headline,
             exec_summary, long_form, json.dumps(day_breakthroughs),
-            len(day_plugins), json.dumps(plugins_mini),
+            day_manifest_count, json.dumps(plugins_mini),
             cum_stats["plugins"], cum_stats["stars"], cum_stats["forks"],
             len(day_herdr_events), json.dumps(day_herdr_events),
             "genesis_backfill_engine"
         ))
         
         if day_num % 25 == 0 or day_num == 250:
-            print(f"Day {day_num:3d} ({d_str}): {len(day_plugins):2d} plugins, {len(day_herdr_events):2d} core events, {len(day_breakthroughs):2d} breakthroughs, cum: {cum_stats['plugins']:3d} plugins")
+            print(f"Day {day_num:3d} ({d_str}): {day_manifest_count:2d} plugins ({len(day_plugins):2d} repos), {len(day_herdr_events):2d} core events, {len(day_breakthroughs):2d} breakthroughs, cum: {cum_stats['plugins']:3d} plugins ({cum_stats['repos']:3d} repos)")
             
         curr_date += timedelta(days=1)
         day_num += 1
@@ -589,7 +628,7 @@ def run_backfill():
     print(f"Active Dispatch Days: {active_days_count}")
     print(f"Quiet Incubation Days: {(day_num - 1) - active_days_count}")
     print(f"Total Breakthroughs Recorded: {total_breakthroughs}")
-    print(f"Cumulative Market Size: {cum_stats['plugins']} plugins")
+    print(f"Cumulative Market Size: {cum_stats['plugins']} plugins across {cum_stats['repos']} repositories")
     print("=" * 75)
 
 def generate_single_day(date_str, force=False):
@@ -645,11 +684,21 @@ def generate_single_day(date_str, force=False):
                has_tests, has_ci_workflows,
                uses_ssh, mentions_vps_gateway, mentions_router_setup,
                uses_vpn_tailscale, mentions_port_mapping, uses_mosh,
-               herdr_socket_methods, herdr_cli_commands, supported_agents
+               herdr_socket_methods, herdr_cli_commands, supported_agents,
+               manifest_raw_json
         FROM plugins;
     """)
     all_p = [dict(r) for r in cursor.fetchall()]
     day_plugins = [p for p in all_p if get_normalized_release_date(p) == date_str]
+    
+    live_manifest_map = get_live_manifest_map()
+    day_manifest_count = sum(get_plugin_manifest_count(p, live_manifest_map) for p in day_plugins)
+    
+    cum_plugins += day_manifest_count
+    cum_repos = len([p for p in all_p if get_normalized_release_date(p) <= date_str])
+    cum_stars += sum(p["stars"] or 0 for p in day_plugins)
+    cum_forks += sum(p["forks"] or 0 for p in day_plugins)
+    cum_stats = {"plugins": cum_plugins, "repos": cum_repos, "stars": cum_stars, "forks": cum_forks}
     
     cursor.execute("SELECT plugin_id, endpoint FROM plugin_endpoints;")
     p_endpoints = {}
@@ -671,11 +720,6 @@ def generate_single_day(date_str, force=False):
     """, (date_str,))
     day_herdr_events = [dict(r) for r in cursor.fetchall()]
         
-    cum_plugins += len(day_plugins)
-    cum_stars += sum(p["stars"] or 0 for p in day_plugins)
-    cum_forks += sum(p["forks"] or 0 for p in day_plugins)
-    cum_stats = {"plugins": cum_plugins, "stars": cum_stars, "forks": cum_forks}
-    
     # Detect breakthroughs
     day_breakthroughs = []
     for p in day_plugins:
@@ -716,7 +760,8 @@ def generate_single_day(date_str, force=False):
         "stars": p["stars"] or 0,
         "lang": p["primary_language"],
         "cat": p["broad_category"],
-        "loc": p["total_loc"] or 0
+        "loc": p["total_loc"] or 0,
+        "manifestCount": get_plugin_manifest_count(p, live_manifest_map)
     } for p in day_plugins]
     
     cursor.execute("""
@@ -731,7 +776,7 @@ def generate_single_day(date_str, force=False):
     """, (
         date_str, day_num, is_quiet, headline,
         exec_summary, long_form, json.dumps(day_breakthroughs),
-        len(day_plugins), json.dumps(plugins_mini),
+        day_manifest_count, json.dumps(plugins_mini),
         cum_stats["plugins"], cum_stats["stars"], cum_stats["forks"],
         len(day_herdr_events), json.dumps(day_herdr_events),
         "daily_agent_runner"
@@ -739,7 +784,7 @@ def generate_single_day(date_str, force=False):
     
     conn.commit()
     conn.close()
-    print(f"[Success] Generated daily report for {date_str} (Day {day_num}): {len(day_plugins)} plugins, {len(day_herdr_events)} core events, {len(day_breakthroughs)} breakthroughs.")
+    print(f"[Success] Generated daily report for {date_str} (Day {day_num}): {day_manifest_count} plugins ({len(day_plugins)} repos), {len(day_herdr_events)} core events, {len(day_breakthroughs)} breakthroughs.")
 
 if __name__ == "__main__":
     import argparse
@@ -747,8 +792,14 @@ if __name__ == "__main__":
     parser.add_argument("--backfill", action="store_true", help="Backfill all historical reports from Day 1 to Today")
     parser.add_argument("--date", type=str, help="Generate or update report for a specific date (YYYY-MM-DD)")
     parser.add_argument("--force", action="store_true", help="Overwrite existing report for the target date")
+    parser.add_argument("--sync", action="store_true", help="Run full marketplace sync and repository pulls before generating")
     args = parser.parse_args()
     
+    if args.sync:
+        import scripts.full_sync_pipeline as sync_pipeline
+        print("[Pre-flight] Running full ecosystem sync pipeline...")
+        sync_pipeline.main()
+        
     if args.date:
         generate_single_day(args.date, force=args.force)
     else:

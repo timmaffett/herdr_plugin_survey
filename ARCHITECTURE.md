@@ -28,7 +28,7 @@ graph TD
     end
 
     subgraph Storage["Relational Storage Layer (SQLite)"]
-        DB[("plugins.db<br/>34,884 Milestone Rows<br/>250 Daily Reports • 85 Herdr Milestones • 186 Capabilities")]
+        DB[("plugins.db<br/>35,172 Milestone Rows<br/>250 Daily Reports • 85 Herdr Milestones • 186 Capabilities")]
         T_PLUGINS["plugins"]
         T_HISTORY["plugin_history"]
         T_OFFICIAL["herdr_official_endpoints"]
@@ -364,3 +364,24 @@ flowchart LR
 - Development features must use feature branches (e.g. `feat/sticky-collapsible-controls`, `fix/herdr-website-docs-links`).
 - Commits must adhere to Conventional Commits: `feat:`, `fix:`, `docs:`, `chore:`, `refactor:`.
 - The database `plugins.db` is tracked in the repository with complete index data, while raw checkout mirrors under `repos/` and `node_modules/` remain gitignored.
+
+---
+
+## 8. Daily Reports Subsystem & Fresh Ingestion Protocol
+
+The Daily Reports subsystem generates an append-only, chronological narrative across every day of the ecosystem's history, combining community plugin releases, technical capability breakthroughs, and Herdr Core platform news (such as agent detections and core multiplexer releases).
+
+### 8.1 Metric Accounting: Manifests vs. Repositories
+On [`herdr.dev/plugins`](https://herdr.dev/plugins/), the official marketplace header displays `pluginCount: 986` across `repositoryCount: 969`.
+- **Individual Manifest Accounting**: Multiple community repositories function as multi-plugin toolkits (e.g., `alastairsounds/herdr-plugins` bundles 4 distinct plugins: *Speak Status*, *herdr-starship*, *Tally*, and *Yazi Popup Picker*; `tyler-jewell/herdr-plugins` bundles 6 distinct plugins).
+- **Survey Database Accounting**: [`plugins.db`](file:///Users/tim/source/herdr_plugins/plugins.db) indexes 977 community repositories and 994 total plugin extensions.
+- When generating reports, `cumulative_plugins_count` tracks individual plugin manifests, and dispatches explicitly report both counts (e.g. *994 plugins across 977 community repositories*), avoiding ambiguity between repository counts and installable plugin counts.
+
+### 8.2 Mandatory Pre-Flight Sync Protocol
+Before generating or updating daily reports (whether manually, via daily cron, or an autonomous AI agent loop):
+1. **Fresh Marketplace Ingestion**: Always fetch the latest catalog from `https://herdr.dev/plugins/` (`curl -sL`) and parse `initialData`.
+2. **Uncataloged Plugin Ingestion**: Any new plugins in the live marketplace missing from `plugins.db` must be immediately cloned (`git clone --depth 1 -c filter.lfs.process= ...`) and analyzed with `scripts/analyzer.py`.
+3. **Outdated Repositories Update**: For any repository whose `headCommit` differs from `surveyed_commit_hash`, fetch upstream HEAD and re-run AST analysis.
+4. **Milestone History Alignment**: Run `scripts/collect_history.py` to ensure 36-week milestone trajectories are populated for newly added plugins.
+5. **Execution**: Run `python3 scripts/daily_report_generator.py --sync` (or with `--date YYYY-MM-DD --force`).
+

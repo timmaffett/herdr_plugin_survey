@@ -70,14 +70,15 @@ python3 scripts/ingest_plugin.py alvinunreal/oh-my-opencode-slim --reanalyze
 
 | Metric | Value |
 |---|---|
-| **Repositories Surveyed** | 969 (100% of marketplace) |
-| **Total Lines of Code Scanned** | 9,767,742 LOC |
-| **Cumulative Stars** | 23,184 ★ |
-| **Cumulative Forks** | 1,895 ⑂ |
-| **Historical Milestone Records** | 34,884 rows in `plugin_history` (36 weeks $\times$ 969 plugins) |
-| **📰 Daily Intelligence Reports** | **250 days (Jan 1, 2026 – Sep 7, 2026 • 139 active, 111 quiet)** |
-| **⚡ Herdr Core Engine Milestones** | **85 events across 63 dates (17 Agent Detections, 55 Core Releases, 13 Arch Features)** |
-| **🌟 Ecosystem Breakthroughs Tracked** | **186 first-occurrence milestones in capabilities ledger** |
+| **Ecosystem Plugins (Manifests)** | **994 plugins** (986 live marketplace index across 969 repositories) |
+| **Repositories Surveyed** | **977 repositories** (969 live marketplace + 8 extended survey repos) |
+| **Total Lines of Code Scanned** | **9,792,943 LOC** |
+| **Cumulative Stars** | **23,285 ★** |
+| **Cumulative Forks** | **1,906 ⑂** |
+| **Historical Milestone Records** | **35,172 rows** in `plugin_history` (36 weeks $\times$ 977 plugins) |
+| **📰 Daily Intelligence Reports** | **250 days** (Jan 1, 2026 – Sep 7, 2026 • **140 active dispatches**, 110 quiet) |
+| **⚡ Herdr Core Engine Milestones** | **85 events** across 63 dates (17 Agent Detections, 55 Core Releases, 13 Arch Features) |
+| **🌟 Ecosystem Breakthroughs Tracked** | **186 first-occurrence milestones** in capabilities ledger |
 | **⚡ Direct Raw Socket API (`$HERDR_SOCKET_PATH`)** | **352 plugins (36.3%)** |
 | **🧩 Agent Skill Integration (`SKILL.md` / Agent Hooks)** | **228 plugins (23.5%)** |
 | **🌐 Remote Infrastructure Required** | **238 plugins (24.6%)** |
@@ -90,15 +91,31 @@ python3 scripts/ingest_plugin.py alvinunreal/oh-my-opencode-slim --reanalyze
 | **Official Core Endpoints Cataloged** | **233 endpoints** (103 CLI, 101 Socket, 29 Events) |
 | **Community-Used Official Endpoints** | **133 endpoints (57.1%)** |
 | **Zero-Usage Endpoints (0 calls in 969 repos)** | **100 endpoints (42.9%)** |
-| **Top Languages** | Rust (220), Shell (214), Python (165), JavaScript (129), Go (109), TypeScript (90) |
-| **TUI-based Plugins** | 773 (79.8%) |
-| **Web / Browser-capable** | 406 (41.9%) |
-| **Mobile & Remote Relays** | 220 (22.7%) |
-| **External Comms (Telegram/Push)** | 262 (27.0%) |
-| **Git Worktree / VCS Aware** | 328 (33.9%) |
-| **Cross-Platform (Win/Mac/Linux)** | 139 (14.3%) |
-| **Contains Automated Tests** | 626 (64.6%) |
-| **CI Workflows (GitHub Actions)** | 424 (43.8%) |
+| **Top Languages** | Rust (222), Shell (216), Python (167), JavaScript (131), Go (109), TypeScript (91) |
+| **TUI-based Plugins** | 780 (79.8%) |
+| **Web / Browser-capable** | 410 (42.0%) |
+| **Mobile & Remote Relays** | 224 (22.9%) |
+| **External Comms (Telegram/Push)** | 266 (27.2%) |
+| **Git Worktree / VCS Aware** | 330 (33.8%) |
+| **Cross-Platform (Win/Mac/Linux)** | 140 (14.3%) |
+| **Contains Automated Tests** | 630 (64.5%) |
+| **CI Workflows (GitHub Actions)** | 426 (43.6%) |
+
+---
+
+## ⚡ Operational Protocol: Fresh Scrapes & Repo Sync Before Daily Summaries
+
+> [!IMPORTANT]
+> **MANDATORY PRE-FLIGHT FOR DAILY REPORTS & CRON**:
+> Before generating any daily summary dispatch or running scheduled updates, the system **MUST** perform fresh marketplace catalog fetches and shallow repository retrievals for anything changed or new.
+>
+> 1. **Plugin vs. Repository Distinction**: The live marketplace on [herdr.dev](https://herdr.dev/plugins/) indexes individual plugin manifests (`pluginCount: 986`), while repositories may contain multiple manifests (e.g. monorepos with multiple plugin tools).
+> 2. **Pre-flight Execution**: Run `python3 scripts/daily_report_generator.py --sync` (or run `python3 scripts/full_sync_pipeline.py` first) so that:
+>    - Live marketplace catalog is refreshed (`curl -sL https://herdr.dev/plugins/`).
+>    - New repositories are cloned (`git clone --depth 1 -c filter.lfs.process= ...`) and analyzed into `plugins.db`.
+>    - Outdated repositories are fast-forwarded to upstream HEAD (`git fetch --depth 1 && git reset --hard FETCH_HEAD`).
+>    - Weekly growth milestones are updated (`python3 scripts/collect_history.py --workers 16`).
+>    - Daily reports accurately capture all newly released plugins, capabilities, and metrics.
 
 ---
 

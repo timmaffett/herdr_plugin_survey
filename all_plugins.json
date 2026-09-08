@@ -6,9 +6,9 @@
     "name": "oh-my-opencode-slim",
     "description": "Lean, fine tuned Opencode multi agent suite \u00b7 Mix any models \u00b7 Auto delegate tasks",
     "url": "https://github.com/alvinunreal/oh-my-opencode-slim",
-    "stars": 8659,
-    "forks": 512,
-    "openIssues": 47,
+    "stars": 8669,
+    "forks": 513,
+    "openIssues": 51,
     "language": "TypeScript",
     "topics": [
       "agentic-ai",
@@ -20,7 +20,7 @@
       "orchestration"
     ],
     "createdAt": "2026-01-15T18:45:08Z",
-    "updatedAt": "2026-09-06T10:29:55Z",
+    "updatedAt": "2026-09-06T19:36:38Z",
     "pushedAt": "2026-09-04T19:31:33Z",
     "headCommit": "da01d20994da39089346e8b70604a3d619bcf928",
     "manifests": [
@@ -39,7 +39,7 @@
       }
     ],
     "firstSeenAt": "2026-08-15T17:00:40.395Z",
-    "starsDelta7d": 150,
+    "starsDelta7d": 160,
     "starsDelta30d": null
   },
   {
@@ -49,8 +49,8 @@
     "name": "terminal-browser",
     "description": "A browser inside your terminal",
     "url": "https://github.com/zenbu-labs/terminal-browser",
-    "stars": 2692,
-    "forks": 124,
+    "stars": 2707,
+    "forks": 125,
     "openIssues": 56,
     "language": "Rust",
     "topics": [
@@ -65,7 +65,7 @@
       "web"
     ],
     "createdAt": "2026-07-06T16:31:11Z",
-    "updatedAt": "2026-09-06T10:07:00Z",
+    "updatedAt": "2026-09-06T22:15:50Z",
     "pushedAt": "2026-09-04T22:11:05Z",
     "headCommit": "56337421b85e1ec01f340373dde85c7e1862f2a4",
     "manifests": [
@@ -83,7 +83,7 @@
       }
     ],
     "firstSeenAt": "2026-08-11T04:31:10.754Z",
-    "starsDelta7d": 285,
+    "starsDelta7d": 300,
     "starsDelta30d": null
   },
   {
@@ -93,7 +93,7 @@
     "name": "terminal-code",
     "description": "VS Code in the terminal",
     "url": "https://github.com/zenbu-labs/terminal-code",
-    "stars": 1894,
+    "stars": 1895,
     "forks": 78,
     "openIssues": 24,
     "language": "TypeScript",
@@ -104,7 +104,7 @@
       "vscode"
     ],
     "createdAt": "2026-08-08T05:35:40Z",
-    "updatedAt": "2026-09-06T07:49:15Z",
+    "updatedAt": "2026-09-06T22:28:05Z",
     "pushedAt": "2026-09-02T18:30:13Z",
     "headCommit": "4e54ddf4d33cb813df060e8d10b0f0acca31f819",
     "manifests": [
@@ -122,7 +122,7 @@
       }
     ],
     "firstSeenAt": "2026-08-20T04:31:22.682Z",
-    "starsDelta7d": 140,
+    "starsDelta7d": 141,
     "starsDelta30d": null
   },
   {
@@ -133,8 +133,8 @@
     "description": "Crabbox: warm a box, sync the diff, run the suite.",
     "url": "https://github.com/openclaw/crabbox",
     "stars": 1372,
-    "forks": 173,
-    "openIssues": 51,
+    "forks": 174,
+    "openIssues": 48,
     "language": "Go",
     "topics": [
       "agent-skills",
@@ -142,9 +142,9 @@
       "remote-test-runner"
     ],
     "createdAt": "2026-04-30T14:31:48Z",
-    "updatedAt": "2026-09-06T09:50:24Z",
-    "pushedAt": "2026-09-06T10:18:06Z",
-    "headCommit": "a88c39bfa7b3042cd8fcf20205d1918fb383ce89",
+    "updatedAt": "2026-09-06T22:54:40Z",
+    "pushedAt": "2026-09-06T22:54:38Z",
+    "headCommit": "5344e73cd47a03a5ece2c78ffce07b262c840a2d",
     "manifests": [
       {
         "path": "plugins/herdr/herdr-plugin.toml",
@@ -170,9 +170,9 @@
     "name": "collie",
     "description": "PWA to manage \ud83d\udc11 herdr on the go. Tailnet accessible, push notifications, quick actions and more.",
     "url": "https://github.com/AltanS/collie",
-    "stars": 795,
-    "forks": 113,
-    "openIssues": 9,
+    "stars": 816,
+    "forks": 114,
+    "openIssues": 10,
     "language": "TypeScript",
     "topics": [
       "agent-orchestration",
@@ -186,15 +186,15 @@
       "pwa"
     ],
     "createdAt": "2026-06-28T21:30:25Z",
-    "updatedAt": "2026-09-06T09:14:27Z",
-    "pushedAt": "2026-09-05T20:33:16Z",
-    "headCommit": "cea2035e1f02d560d1bac66c85314828a7e01c20",
+    "updatedAt": "2026-09-06T22:26:32Z",
+    "pushedAt": "2026-09-06T22:26:27Z",
+    "headCommit": "1df245175a5df888b9a90e77c65c36b05717de69",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
         "id": "herdr.collie",
         "name": "Collie",
-        "version": "1.5.2",
+        "version": "1.5.4",
         "minHerdrVersion": "0.7.0",
         "description": "Mobile web UI to monitor and reply to your agent herd, served over Tailscale",
         "platforms": [
@@ -204,8 +204,8 @@
       }
     ],
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 230,
-    "starsDelta30d": 529
+    "starsDelta7d": 251,
+    "starsDelta30d": 550
   },
   {
     "id": 1281328046,
@@ -254,7 +254,7 @@
     "name": "herdr-file-viewer",
     "description": "A git-aware, read-only file viewer for herdr. Mouse friendly,  keyboard-driven TUI: tree + content pane with diffs, rendered markdown, and syntax highlighting.",
     "url": "https://github.com/smarzban/herdr-file-viewer",
-    "stars": 530,
+    "stars": 531,
     "forks": 37,
     "openIssues": 18,
     "language": "Rust",
@@ -270,7 +270,7 @@
       "tui"
     ],
     "createdAt": "2026-06-18T21:58:48Z",
-    "updatedAt": "2026-09-05T11:18:55Z",
+    "updatedAt": "2026-09-06T12:46:02Z",
     "pushedAt": "2026-09-02T21:29:29Z",
     "headCommit": "647f03236d9aa20de0b07c9de0a951e13a1e59bf",
     "manifests": [
@@ -289,8 +289,8 @@
       }
     ],
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 34,
-    "starsDelta30d": 178
+    "starsDelta7d": 35,
+    "starsDelta30d": 179
   },
   {
     "id": 1328358094,
@@ -299,9 +299,9 @@
     "name": "herdr-annotate",
     "description": "Annotate terminal text, review documents and agent replies in Herdr, and send the feedback straight back to the agent.",
     "url": "https://github.com/plannotator/herdr-annotate",
-    "stars": 373,
+    "stars": 377,
     "forks": 12,
-    "openIssues": 7,
+    "openIssues": 6,
     "language": "Rust",
     "topics": [
       "annotation",
@@ -310,7 +310,7 @@
       "multiplexer"
     ],
     "createdAt": "2026-08-09T02:34:40Z",
-    "updatedAt": "2026-09-06T08:17:07Z",
+    "updatedAt": "2026-09-06T22:23:08Z",
     "pushedAt": "2026-08-31T04:48:23Z",
     "headCommit": "bccf884b874f5f39ccbef1bb6ac67625c5fb5d54",
     "manifests": [
@@ -329,7 +329,7 @@
       }
     ],
     "firstSeenAt": "2026-08-27T15:31:33.789Z",
-    "starsDelta7d": 129,
+    "starsDelta7d": 133,
     "starsDelta30d": null
   },
   {
@@ -339,7 +339,7 @@
     "name": "herdr-remote",
     "description": "Monitor and drive your herdr agents from menu bar, phone, or Telegram. Zero config locally. Free tunnel for remote. No Tailscale needed.",
     "url": "https://github.com/dcolinmorgan/herdr-remote",
-    "stars": 322,
+    "stars": 325,
     "forks": 61,
     "openIssues": 4,
     "language": "Python",
@@ -350,7 +350,7 @@
       "mobile"
     ],
     "createdAt": "2026-06-21T11:19:18Z",
-    "updatedAt": "2026-09-06T09:12:10Z",
+    "updatedAt": "2026-09-06T18:59:11Z",
     "pushedAt": "2026-09-04T12:57:31Z",
     "headCommit": "b88b8f03f2ab07b84c8552ce6a7218011d1e520a",
     "manifests": [
@@ -369,8 +369,8 @@
       }
     ],
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 24,
-    "starsDelta30d": 131
+    "starsDelta7d": 27,
+    "starsDelta30d": 134
   },
   {
     "id": 1263724492,
@@ -379,7 +379,7 @@
     "name": "herdr-plus",
     "description": "An extension for herdr, built as a first-class herdr plugin \u2014 a collection of tools that make it better: Projects and Quick Actions.",
     "url": "https://github.com/cloudmanic/herdr-plus",
-    "stars": 288,
+    "stars": 289,
     "forks": 22,
     "openIssues": 5,
     "language": "Go",
@@ -387,7 +387,7 @@
       "herdr-plugin"
     ],
     "createdAt": "2026-06-09T07:58:41Z",
-    "updatedAt": "2026-09-05T15:45:10Z",
+    "updatedAt": "2026-09-06T18:21:35Z",
     "pushedAt": "2026-09-04T05:32:34Z",
     "headCommit": "f38df3570bea8f7ca71dc1ba11bce3b123d14402",
     "manifests": [
@@ -406,8 +406,8 @@
       }
     ],
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 17,
-    "starsDelta30d": 80
+    "starsDelta7d": 18,
+    "starsDelta30d": 81
   },
   {
     "id": 1304451904,
@@ -468,15 +468,15 @@
       "herdr-plugin"
     ],
     "createdAt": "2026-07-18T18:45:52Z",
-    "updatedAt": "2026-09-06T07:40:50Z",
-    "pushedAt": "2026-09-05T01:03:02Z",
-    "headCommit": "ca46ad9236075bb1012d0de4131e76523acd7c19",
+    "updatedAt": "2026-09-06T16:37:59Z",
+    "pushedAt": "2026-09-06T16:44:07Z",
+    "headCommit": "19e22f1fd84764e7d0999065b8b6ed333c923155",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
         "id": "osolmaz.pi-workflows",
         "name": "pi-workflows",
-        "version": "0.16.5",
+        "version": "0.16.6",
         "minHerdrVersion": "0.7.0",
         "description": "Open the active pi-workflows run in piw from a managed Herdr pane.",
         "platforms": [
@@ -496,7 +496,7 @@
     "name": "ttt",
     "description": "TTT Editor (Terminal Text Tool): A real alternative to VS Code, Zed, and Sublime that runs in your terminal. A TUI that feels like GUI. Single binary, zero config.",
     "url": "https://github.com/eugenioenko/ttt",
-    "stars": 235,
+    "stars": 237,
     "forks": 13,
     "openIssues": 55,
     "language": "Go",
@@ -523,7 +523,7 @@
       "vscode-alternative"
     ],
     "createdAt": "2026-01-16T06:21:11Z",
-    "updatedAt": "2026-09-06T07:01:47Z",
+    "updatedAt": "2026-09-06T13:00:24Z",
     "pushedAt": "2026-09-05T17:36:01Z",
     "headCommit": "bdd29760f9a77fba082974ca4af8f0f7037e534c",
     "manifests": [
@@ -551,15 +551,15 @@
     "name": "herdr-mirror",
     "description": "Unify your local and remote sessions in one window: mirror remote herdr servers into your local sidebar and drive them over SSH",
     "url": "https://github.com/nikok6/herdr-mirror",
-    "stars": 217,
+    "stars": 219,
     "forks": 58,
-    "openIssues": 8,
+    "openIssues": 9,
     "language": "Rust",
     "topics": [
       "herdr-plugin"
     ],
     "createdAt": "2026-07-04T03:18:49Z",
-    "updatedAt": "2026-09-06T09:00:49Z",
+    "updatedAt": "2026-09-06T20:57:50Z",
     "pushedAt": "2026-09-06T09:01:22Z",
     "headCommit": "195398c1275f9f3d18ddff70282149005a2bec01",
     "manifests": [
@@ -577,8 +577,8 @@
       }
     ],
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 18,
-    "starsDelta30d": 114
+    "starsDelta7d": 20,
+    "starsDelta30d": 116
   },
   {
     "id": 1126396638,
@@ -589,7 +589,7 @@
     "url": "https://github.com/nicosuave/memex",
     "stars": 189,
     "forks": 20,
-    "openIssues": 0,
+    "openIssues": 1,
     "language": "Rust",
     "topics": [
       "bm25",
@@ -603,15 +603,15 @@
       "tantivy"
     ],
     "createdAt": "2026-01-01T20:32:00Z",
-    "updatedAt": "2026-09-06T07:45:03Z",
-    "pushedAt": "2026-09-06T01:17:52Z",
-    "headCommit": "a2f9706c1ea792f0656cfde924cb88c03e5275b9",
+    "updatedAt": "2026-09-06T17:43:27Z",
+    "pushedAt": "2026-09-06T17:43:22Z",
+    "headCommit": "9432875e09fd03677565d16c64cb020f6e956497",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
         "id": "nicosuave.memex",
         "name": "memex",
-        "version": "0.17.4",
+        "version": "0.17.5",
         "minHerdrVersion": "0.7.0",
         "description": "Session desk for your agent history: search past Claude Code / Codex / Cursor / Pi / Oh My Pi sessions and resume one into a herdr tab.",
         "platforms": [
@@ -631,9 +631,9 @@
     "name": "herdr-mobile-relay",
     "description": "Approve and monitor Herdr agents remotely from your phone, a mobile web app for Android/iOS smartphones with push notifications, QR setup, and multi-computer relays.",
     "url": "https://github.com/0cv/herdr-mobile-relay",
-    "stars": 172,
-    "forks": 19,
-    "openIssues": 1,
+    "stars": 175,
+    "forks": 20,
+    "openIssues": 3,
     "language": "Go",
     "topics": [
       "android",
@@ -654,9 +654,9 @@
       "smartphone"
     ],
     "createdAt": "2026-07-03T11:41:38Z",
-    "updatedAt": "2026-09-05T23:29:37Z",
-    "pushedAt": "2026-09-05T12:19:10Z",
-    "headCommit": "4eb61d54d455199d58a3f7257b9464920121cefb",
+    "updatedAt": "2026-09-06T20:40:44Z",
+    "pushedAt": "2026-09-06T20:40:40Z",
+    "headCommit": "2165d82f4be2b3a805246d6e96e6f6fa6770234e",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
@@ -672,8 +672,8 @@
       }
     ],
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 28,
-    "starsDelta30d": 144
+    "starsDelta7d": 31,
+    "starsDelta30d": 147
   },
   {
     "id": 1311096202,
@@ -682,8 +682,8 @@
     "name": "herdr-nvim",
     "description": "Neovim, fully integrated into your herdr workspace",
     "url": "https://github.com/ChmaraX/herdr-nvim",
-    "stars": 140,
-    "forks": 15,
+    "stars": 141,
+    "forks": 16,
     "openIssues": 0,
     "language": "Rust",
     "topics": [
@@ -696,7 +696,7 @@
       "rust"
     ],
     "createdAt": "2026-07-24T14:00:24Z",
-    "updatedAt": "2026-09-06T06:43:42Z",
+    "updatedAt": "2026-09-06T22:14:53Z",
     "pushedAt": "2026-09-03T21:01:23Z",
     "headCommit": "e652ebf7b3d6713992e68a30aec588822e69fae5",
     "manifests": [
@@ -714,8 +714,8 @@
       }
     ],
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 47,
-    "starsDelta30d": 130
+    "starsDelta7d": 48,
+    "starsDelta30d": 131
   },
   {
     "id": 1282925790,
@@ -801,7 +801,7 @@
     "name": "herdr-hunk-diff",
     "description": "Review agent-authored changes in hunk from herdr and send inline comments back to the responsible agent.",
     "url": "https://github.com/jhochenbaum/herdr-hunk-diff",
-    "stars": 109,
+    "stars": 111,
     "forks": 5,
     "openIssues": 7,
     "language": "TypeScript",
@@ -812,7 +812,7 @@
       "hunk"
     ],
     "createdAt": "2026-08-12T05:26:56Z",
-    "updatedAt": "2026-09-05T20:54:32Z",
+    "updatedAt": "2026-09-06T13:49:26Z",
     "pushedAt": "2026-09-02T12:25:40Z",
     "headCommit": "ad6f670b78887cd0becb473fd486945e5255c062",
     "manifests": [
@@ -831,7 +831,7 @@
       }
     ],
     "firstSeenAt": "2026-08-14T14:30:44.241Z",
-    "starsDelta7d": 10,
+    "starsDelta7d": 12,
     "starsDelta30d": null
   },
   {
@@ -841,9 +841,9 @@
     "name": "clauth",
     "description": "Claude Code multi-account manager, usage monitor (CLI, TUI & MCP cross-account delegation)",
     "url": "https://github.com/uwuclxdy/clauth",
-    "stars": 104,
+    "stars": 110,
     "forks": 13,
-    "openIssues": 18,
+    "openIssues": 19,
     "language": "Rust",
     "topics": [
       "account-manager",
@@ -864,9 +864,9 @@
       "vibecoded"
     ],
     "createdAt": "2026-04-28T12:20:42Z",
-    "updatedAt": "2026-09-05T22:11:39Z",
-    "pushedAt": "2026-09-05T22:11:36Z",
-    "headCommit": "9889f38e1a2458388410476a46cc96509639e8fd",
+    "updatedAt": "2026-09-06T21:55:00Z",
+    "pushedAt": "2026-09-06T21:00:31Z",
+    "headCommit": "435a859f39c03eb36ed08b1731c6db6cb8ce2e82",
     "manifests": [
       {
         "path": "herdr-plugin/herdr-plugin.toml",
@@ -882,7 +882,7 @@
       }
     ],
     "firstSeenAt": "2026-08-18T14:00:46.803Z",
-    "starsDelta7d": 20,
+    "starsDelta7d": 26,
     "starsDelta30d": null
   },
   {
@@ -892,7 +892,7 @@
     "name": "herdr-spreader",
     "description": "Spin up your whole herdr workspace layout \u2014 tabs, panes, commands, and all \u2014 from a single YAML file.",
     "url": "https://github.com/yuk1ty/herdr-spreader",
-    "stars": 102,
+    "stars": 103,
     "forks": 9,
     "openIssues": 12,
     "language": "Rust",
@@ -901,7 +901,7 @@
       "herdr-plugin"
     ],
     "createdAt": "2026-07-03T23:12:04Z",
-    "updatedAt": "2026-09-06T09:23:08Z",
+    "updatedAt": "2026-09-06T18:21:37Z",
     "pushedAt": "2026-08-16T13:41:58Z",
     "headCommit": "206ae55aff2de0828623ea4e8fc9c6ab28519935",
     "manifests": [
@@ -919,8 +919,8 @@
       }
     ],
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 13,
-    "starsDelta30d": 40
+    "starsDelta7d": 14,
+    "starsDelta30d": 41
   },
   {
     "id": 1276398623,
@@ -1017,9 +1017,9 @@
       "herdr-plugin"
     ],
     "createdAt": "2026-05-31T09:42:10Z",
-    "updatedAt": "2026-09-06T10:30:32Z",
-    "pushedAt": "2026-09-06T10:30:26Z",
-    "headCommit": "611d9fe610b919e625326adc402c9989786f2ffe",
+    "updatedAt": "2026-09-06T10:31:27Z",
+    "pushedAt": "2026-09-06T10:40:51Z",
+    "headCommit": "6ed5266b20dd9eba362b84b982907a49111b519d",
     "manifests": [
       {
         "path": "plugins/herdr/herdr-plugin.toml",
@@ -1047,15 +1047,15 @@
     "url": "https://github.com/kryptamine/herdr-auto-title",
     "stars": 74,
     "forks": 5,
-    "openIssues": 1,
+    "openIssues": 2,
     "language": "Go",
     "topics": [
       "herdr-plugin"
     ],
     "createdAt": "2026-08-24T17:34:38Z",
-    "updatedAt": "2026-09-06T00:14:31Z",
-    "pushedAt": "2026-09-05T11:02:47Z",
-    "headCommit": "f574e6eac8497038885972b4f664095ef886d00b",
+    "updatedAt": "2026-09-06T21:06:12Z",
+    "pushedAt": "2026-09-06T21:06:30Z",
+    "headCommit": "a34f22d1fc8a6037d171789cfda17289088527e0",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
@@ -1081,7 +1081,7 @@
     "name": "herdr-automatic-rename",
     "description": "Smart tab names and numbered labels for a smooth herdr navigation",
     "url": "https://github.com/qu8n/herdr-automatic-rename",
-    "stars": 70,
+    "stars": 71,
     "forks": 10,
     "openIssues": 5,
     "language": "Shell",
@@ -1090,7 +1090,7 @@
       "herdr-plugin"
     ],
     "createdAt": "2026-07-09T08:19:11Z",
-    "updatedAt": "2026-09-06T02:55:44Z",
+    "updatedAt": "2026-09-06T18:24:36Z",
     "pushedAt": "2026-09-04T18:10:08Z",
     "headCommit": "125ecbbc8f564a618f413a1cd5a9099ea82d5c59",
     "manifests": [
@@ -1108,8 +1108,8 @@
       }
     ],
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 16,
-    "starsDelta30d": 54
+    "starsDelta7d": 17,
+    "starsDelta30d": 55
   },
   {
     "id": 1299627068,
@@ -1120,7 +1120,7 @@
     "url": "https://github.com/iurysza/herdr-tab-smart-rename",
     "stars": 69,
     "forks": 21,
-    "openIssues": 2,
+    "openIssues": 1,
     "language": "TypeScript",
     "topics": [
       "ai",
@@ -1130,15 +1130,15 @@
       "terminal"
     ],
     "createdAt": "2026-07-13T18:43:12Z",
-    "updatedAt": "2026-09-06T10:08:42Z",
-    "pushedAt": "2026-09-06T10:08:52Z",
-    "headCommit": "70ccb692c0a0c22d35d92b1d259b95cda7387553",
+    "updatedAt": "2026-09-06T15:29:41Z",
+    "pushedAt": "2026-09-06T15:29:43Z",
+    "headCommit": "e0fd0a3afd96aa229146279d7109a2448e429799",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
         "id": "tab-smart-rename",
         "name": "Smart Rename",
-        "version": "0.3.0",
+        "version": "0.4.0",
         "minHerdrVersion": "0.7.0",
         "description": "Context-aware names for Herdr workspaces and task tabs.",
         "platforms": [
@@ -1161,7 +1161,7 @@
     "url": "https://github.com/levi-qiao/herdr-agent-quota",
     "stars": 66,
     "forks": 12,
-    "openIssues": 2,
+    "openIssues": 0,
     "language": "Rust",
     "topics": [
       "agent-usage",
@@ -1186,15 +1186,15 @@
       "usage-monitor"
     ],
     "createdAt": "2026-08-15T03:56:49Z",
-    "updatedAt": "2026-09-06T05:01:53Z",
-    "pushedAt": "2026-09-06T10:17:28Z",
-    "headCommit": "24c03e05b821519b43cc6a6861dc0e7ce064ab8b",
+    "updatedAt": "2026-09-06T13:39:28Z",
+    "pushedAt": "2026-09-06T13:39:27Z",
+    "headCommit": "4bf3da30e5a86e637ef54ae7acf7273c8668a8db",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
         "id": "herdr-agent-quota",
         "name": "Herdr Agent Quota",
-        "version": "1.3.0",
+        "version": "1.4.0",
         "minHerdrVersion": "0.8.0",
         "description": "Credential-scoped AI quota and context for Claude, Codex, Grok, Agy, OpenCode, Pi, omp, and Devin.",
         "platforms": [
@@ -1214,7 +1214,7 @@
     "name": "herdr-dagr",
     "description": "Your agent swarm as a live DAG: an orchestration graph with attempts, review gates, and evidence, in a herdr split pane.",
     "url": "https://github.com/aemrebarut/herdr-dagr",
-    "stars": 62,
+    "stars": 63,
     "forks": 0,
     "openIssues": 0,
     "language": "Rust",
@@ -1229,7 +1229,7 @@
       "tui"
     ],
     "createdAt": "2026-08-14T19:02:01Z",
-    "updatedAt": "2026-09-05T23:40:50Z",
+    "updatedAt": "2026-09-06T18:33:39Z",
     "pushedAt": "2026-08-23T06:07:01Z",
     "headCommit": "52991f9a95a2b8c11518ed66f9530d938c1ba254",
     "manifests": [
@@ -1248,7 +1248,7 @@
       }
     ],
     "firstSeenAt": "2026-08-14T19:30:41.689Z",
-    "starsDelta7d": 14,
+    "starsDelta7d": 15,
     "starsDelta30d": null
   },
   {
@@ -1393,9 +1393,9 @@
       "vim"
     ],
     "createdAt": "2014-12-01T13:18:23Z",
-    "updatedAt": "2026-08-31T02:12:43Z",
-    "pushedAt": "2026-08-31T02:11:48Z",
-    "headCommit": "25afda05feb9ca738fad9dabd83729603bd0e505",
+    "updatedAt": "2026-09-06T15:36:04Z",
+    "pushedAt": "2026-09-06T15:36:01Z",
+    "headCommit": "6190819525907de9a3ea6d13b8019e73f18b4e90",
     "manifests": [
       {
         "path": "content/.config/herdr/local-plugins/default-session/herdr-plugin.toml",
@@ -1578,6 +1578,52 @@
     "starsDelta30d": 15
   },
   {
+    "id": 1326507166,
+    "fullName": "powerfooI/herdr-studio",
+    "owner": "powerfooI",
+    "name": "herdr-studio",
+    "description": "A web client for Herdr with a first-class mobile experience, browser terminals, workspace and worktree management, file and diff viewers, and AI agent session inspection.",
+    "url": "https://github.com/powerfooI/herdr-studio",
+    "stars": 38,
+    "forks": 9,
+    "openIssues": 1,
+    "language": "TypeScript",
+    "topics": [
+      "ai-agents",
+      "dogfooding",
+      "git-worktree",
+      "herdr",
+      "herdr-client",
+      "herdr-plugin",
+      "mobile-friendly",
+      "terminal-emulator",
+      "typescript",
+      "web-terminal"
+    ],
+    "createdAt": "2026-08-07T10:04:29Z",
+    "updatedAt": "2026-09-06T15:42:59Z",
+    "pushedAt": "2026-09-06T15:42:55Z",
+    "headCommit": "17db2276616a0b3e5cea9865524a5001606b9ad0",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "herdr.studio",
+        "name": "Herdr Studio",
+        "version": "0.5.2",
+        "minHerdrVersion": "0.7.2",
+        "description": "Browser and PWA client for Herdr: workspaces, tabs, panes, agent status, session inspection, diffs, and review annotations",
+        "platforms": [
+          "linux",
+          "macos",
+          "windows"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-09-03T13:01:20.975Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
     "id": 1270692502,
     "fullName": "razajamil/herdr-plugin-workspace-manager",
     "owner": "razajamil",
@@ -1620,7 +1666,7 @@
     "name": "herdr-plugin-sesh",
     "description": "Sesh-style workspace picker TUI for Herdr. Integrates with zoxide to create workspaces from commonly used directories.",
     "url": "https://github.com/fullerzz/herdr-plugin-sesh",
-    "stars": 36,
+    "stars": 37,
     "forks": 8,
     "openIssues": 7,
     "language": "Go",
@@ -1633,8 +1679,8 @@
       "zoxide"
     ],
     "createdAt": "2026-06-27T04:29:01Z",
-    "updatedAt": "2026-09-05T19:41:43Z",
-    "pushedAt": "2026-09-06T01:02:58Z",
+    "updatedAt": "2026-09-06T17:12:29Z",
+    "pushedAt": "2026-09-06T17:43:18Z",
     "headCommit": "6539de584655072fc0ff24d0189b343b872d65d9",
     "manifests": [
       {
@@ -1651,8 +1697,51 @@
       }
     ],
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 3,
-    "starsDelta30d": 13
+    "starsDelta7d": 4,
+    "starsDelta30d": 14
+  },
+  {
+    "id": 1311437062,
+    "fullName": "jeffarese/herdr-bar",
+    "owner": "jeffarese",
+    "name": "herdr-bar",
+    "description": "Cmd+K for herdr: fuzzy-jump to any tab, agent, repo or branch. Python stdlib only.",
+    "url": "https://github.com/jeffarese/herdr-bar",
+    "stars": 36,
+    "forks": 2,
+    "openIssues": 0,
+    "language": "Python",
+    "topics": [
+      "command-bar",
+      "fuzzy-finder",
+      "herdr",
+      "herdr-plugin",
+      "plugin",
+      "python",
+      "terminal",
+      "tui"
+    ],
+    "createdAt": "2026-07-24T21:12:32Z",
+    "updatedAt": "2026-09-06T18:23:14Z",
+    "pushedAt": "2026-08-31T19:05:57Z",
+    "headCommit": "b57aa342f88f9db78f3deb20629ccebf162a6f57",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "herdr-bar",
+        "name": "Bar",
+        "version": "0.3.0",
+        "minHerdrVersion": "0.7.4",
+        "description": "Cmd+K command bar: fuzzy-jump to any tab, pane, or agent",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-06T15:30:31.562Z",
+    "starsDelta7d": 8,
+    "starsDelta30d": 25
   },
   {
     "id": 1283907047,
@@ -1689,52 +1778,6 @@
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
     "starsDelta7d": 4,
     "starsDelta30d": 12
-  },
-  {
-    "id": 1326507166,
-    "fullName": "powerfooI/herdr-studio",
-    "owner": "powerfooI",
-    "name": "herdr-studio",
-    "description": "A web client for Herdr with a first-class mobile experience, browser terminals, workspace and worktree management, file and diff viewers, and AI agent session inspection.",
-    "url": "https://github.com/powerfooI/herdr-studio",
-    "stars": 35,
-    "forks": 7,
-    "openIssues": 1,
-    "language": "TypeScript",
-    "topics": [
-      "ai-agents",
-      "dogfooding",
-      "git-worktree",
-      "herdr",
-      "herdr-client",
-      "herdr-plugin",
-      "mobile-friendly",
-      "terminal-emulator",
-      "typescript",
-      "web-terminal"
-    ],
-    "createdAt": "2026-08-07T10:04:29Z",
-    "updatedAt": "2026-09-06T08:41:48Z",
-    "pushedAt": "2026-09-06T02:00:55Z",
-    "headCommit": "c15cab49d04cf72c01b90bc7b2fe4dd42d4ec9ca",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "herdr.studio",
-        "name": "Herdr Studio",
-        "version": "0.5.2",
-        "minHerdrVersion": "0.7.2",
-        "description": "Browser and PWA client for Herdr: workspaces, tabs, panes, agent status, session inspection, diffs, and review annotations",
-        "platforms": [
-          "linux",
-          "macos",
-          "windows"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-09-03T13:01:20.975Z",
-    "starsDelta7d": null,
-    "starsDelta30d": null
   },
   {
     "id": 1278254044,
@@ -1776,49 +1819,6 @@
     "starsDelta30d": 9
   },
   {
-    "id": 1311437062,
-    "fullName": "jeffarese/herdr-bar",
-    "owner": "jeffarese",
-    "name": "herdr-bar",
-    "description": "Cmd+K for herdr: fuzzy-jump to any tab, agent, repo or branch. Python stdlib only.",
-    "url": "https://github.com/jeffarese/herdr-bar",
-    "stars": 34,
-    "forks": 2,
-    "openIssues": 0,
-    "language": "Python",
-    "topics": [
-      "command-bar",
-      "fuzzy-finder",
-      "herdr",
-      "herdr-plugin",
-      "plugin",
-      "python",
-      "terminal",
-      "tui"
-    ],
-    "createdAt": "2026-07-24T21:12:32Z",
-    "updatedAt": "2026-09-04T16:47:30Z",
-    "pushedAt": "2026-08-31T19:05:57Z",
-    "headCommit": "b57aa342f88f9db78f3deb20629ccebf162a6f57",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "herdr-bar",
-        "name": "Bar",
-        "version": "0.3.0",
-        "minHerdrVersion": "0.7.4",
-        "description": "Cmd+K command bar: fuzzy-jump to any tab, pane, or agent",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 6,
-    "starsDelta30d": 23
-  },
-  {
     "id": 1302277405,
     "fullName": "senna-lang/herdr-agent-usage",
     "owner": "senna-lang",
@@ -1827,7 +1827,7 @@
     "url": "https://github.com/senna-lang/herdr-agent-usage",
     "stars": 31,
     "forks": 10,
-    "openIssues": 2,
+    "openIssues": 1,
     "language": "Go",
     "topics": [
       "ai-agents",
@@ -1841,9 +1841,9 @@
       "tui"
     ],
     "createdAt": "2026-07-16T03:43:38Z",
-    "updatedAt": "2026-09-05T06:59:21Z",
-    "pushedAt": "2026-09-06T01:57:13Z",
-    "headCommit": "86bb47a1328e9b7f60e0e994f3cbcfc3654defb3",
+    "updatedAt": "2026-09-06T13:12:23Z",
+    "pushedAt": "2026-09-06T13:12:16Z",
+    "headCommit": "00569b3d5b835089a20f67c336e3f2d8e7dbaa1d",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
@@ -2413,7 +2413,7 @@
     "name": "herdr-plugin-gh-pr",
     "description": "herdr plugin that shows the focused agent pane's branch GitHub PR status in the sidebar",
     "url": "https://github.com/wyattjoh/herdr-plugin-gh-pr",
-    "stars": 21,
+    "stars": 22,
     "forks": 3,
     "openIssues": 1,
     "language": "TypeScript",
@@ -2421,7 +2421,7 @@
       "herdr-plugin"
     ],
     "createdAt": "2026-06-17T16:42:59Z",
-    "updatedAt": "2026-09-05T03:54:31Z",
+    "updatedAt": "2026-09-06T18:31:52Z",
     "pushedAt": "2026-07-16T21:38:03Z",
     "headCommit": "6fe22de9a90c569f2186595cfddc3707f55ba1bd",
     "manifests": [
@@ -2439,8 +2439,8 @@
       }
     ],
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 3,
-    "starsDelta30d": 6
+    "starsDelta7d": 4,
+    "starsDelta30d": 7
   },
   {
     "id": 1306100351,
@@ -2544,15 +2544,15 @@
       "herdr-plugin"
     ],
     "createdAt": "2026-07-09T10:25:12Z",
-    "updatedAt": "2026-09-06T08:03:19Z",
-    "pushedAt": "2026-09-06T08:03:17Z",
-    "headCommit": "71b05fb12f4575b4cb00c7f7f666bd7e0c5611b4",
+    "updatedAt": "2026-09-06T18:18:57Z",
+    "pushedAt": "2026-09-06T18:18:55Z",
+    "headCommit": "983f781040ed3f4ae4937b72d47f488b4c4d56dd",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
         "id": "herd-auto-prompter",
         "name": "Herd Auto Prompter",
-        "version": "0.8.1",
+        "version": "0.8.2",
         "minHerdrVersion": "0.7.0",
         "description": "Monitors every agent in the herd, auto-supplies the next prompt or response when confident, and escalates to you when not \u2014 learned from your own past decisions.",
         "platforms": [
@@ -2763,6 +2763,50 @@
     "starsDelta30d": 2
   },
   {
+    "id": 1266108902,
+    "fullName": "lmilojevicc/seshagy",
+    "owner": "lmilojevicc",
+    "name": "seshagy",
+    "description": "Agent-aware session manager for tmux & herdr \u2014 discover projects, launch sessions, and track your AI agents work.",
+    "url": "https://github.com/lmilojevicc/seshagy",
+    "stars": 17,
+    "forks": 1,
+    "openIssues": 10,
+    "language": "Go",
+    "topics": [
+      "bubbletea",
+      "go",
+      "herdr",
+      "herdr-plugin",
+      "session-management",
+      "session-manager",
+      "terminal",
+      "tmux",
+      "tui"
+    ],
+    "createdAt": "2026-06-11T10:25:42Z",
+    "updatedAt": "2026-09-06T13:27:38Z",
+    "pushedAt": "2026-08-20T14:23:56Z",
+    "headCommit": "4d9a89d007fbd4dd7e28a4b27f09d299aabe5061",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "seshagy",
+        "name": "seshagy",
+        "version": "0.6.0",
+        "minHerdrVersion": "0.7.0",
+        "description": "Agent-aware terminal dashboard for tmux and herdr.",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-06T15:30:31.562Z",
+    "starsDelta7d": 3,
+    "starsDelta30d": 6
+  },
+  {
     "id": 1285076358,
     "fullName": "taxueseek/session-digger",
     "owner": "taxueseek",
@@ -2884,50 +2928,6 @@
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
     "starsDelta7d": 5,
     "starsDelta30d": 10
-  },
-  {
-    "id": 1266108902,
-    "fullName": "lmilojevicc/seshagy",
-    "owner": "lmilojevicc",
-    "name": "seshagy",
-    "description": "Agent-aware session manager for tmux & herdr \u2014 discover projects, launch sessions, and track your AI agents work.",
-    "url": "https://github.com/lmilojevicc/seshagy",
-    "stars": 16,
-    "forks": 1,
-    "openIssues": 10,
-    "language": "Go",
-    "topics": [
-      "bubbletea",
-      "go",
-      "herdr",
-      "herdr-plugin",
-      "session-management",
-      "session-manager",
-      "terminal",
-      "tmux",
-      "tui"
-    ],
-    "createdAt": "2026-06-11T10:25:42Z",
-    "updatedAt": "2026-09-03T15:54:51Z",
-    "pushedAt": "2026-08-20T14:23:56Z",
-    "headCommit": "4d9a89d007fbd4dd7e28a4b27f09d299aabe5061",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "seshagy",
-        "name": "seshagy",
-        "version": "0.6.0",
-        "minHerdrVersion": "0.7.0",
-        "description": "Agent-aware terminal dashboard for tmux and herdr.",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 2,
-    "starsDelta30d": 5
   },
   {
     "id": 1305078744,
@@ -3257,9 +3257,9 @@
       "react-native"
     ],
     "createdAt": "2026-07-17T01:26:29Z",
-    "updatedAt": "2026-09-06T06:23:38Z",
-    "pushedAt": "2026-09-06T06:23:40Z",
-    "headCommit": "bd284ed4a8d339600b1cd25642295d403102a7a3",
+    "updatedAt": "2026-09-06T20:58:23Z",
+    "pushedAt": "2026-09-06T20:58:20Z",
+    "headCommit": "95e46c13a458b93d921757e87a570a303047799b",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
@@ -3295,7 +3295,7 @@
       "herdr-plugin"
     ],
     "createdAt": "2026-07-23T13:26:01Z",
-    "updatedAt": "2026-09-05T23:24:33Z",
+    "updatedAt": "2026-09-06T13:42:44Z",
     "pushedAt": "2026-08-13T07:16:17Z",
     "headCommit": "2694068f7b944bda1f2704f15ffcebf9f5de9fbc",
     "manifests": [
@@ -3402,7 +3402,7 @@
     "description": "Your terminal's working memory \u2014 offline, Markdown-first notes, decisions, and an active-task now.md for Herdr",
     "url": "https://github.com/Resetnak/herdr-logbook",
     "stars": 12,
-    "forks": 1,
+    "forks": 2,
     "openIssues": 0,
     "language": "Go",
     "topics": [
@@ -3613,15 +3613,15 @@
       "telegram-bot"
     ],
     "createdAt": "2026-09-02T07:47:49Z",
-    "updatedAt": "2026-09-04T01:56:49Z",
-    "pushedAt": "2026-09-04T08:59:43Z",
-    "headCommit": "6650d49d9b037d626119c05f68cc7efa23e1764e",
+    "updatedAt": "2026-09-06T18:49:17Z",
+    "pushedAt": "2026-09-06T19:16:55Z",
+    "headCommit": "a60fcb1d6f5a1c59c849707e065b8f1f2f5b88bd",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
         "id": "permgps.telegram-agents",
         "name": "Telegram Agents",
-        "version": "0.6.0",
+        "version": "0.8.0",
         "minHerdrVersion": "0.7.5",
         "description": "One Telegram forum topic per live Herdr agent: status in the topic icon, questions and answers both ways.",
         "platforms": [
@@ -4228,8 +4228,8 @@
     "description": "Git status/diff panel for herdr - review changes, edit in nvim, stage/commit/discard, all from the terminal",
     "url": "https://github.com/ChmaraX/herdr-gitview",
     "stars": 9,
-    "forks": 0,
-    "openIssues": 1,
+    "forks": 1,
+    "openIssues": 0,
     "language": "Rust",
     "topics": [
       "git",
@@ -4242,15 +4242,15 @@
       "vim"
     ],
     "createdAt": "2026-07-20T21:16:01Z",
-    "updatedAt": "2026-09-05T22:37:54Z",
-    "pushedAt": "2026-09-05T22:38:05Z",
-    "headCommit": "b0bb21f540d0a03bab30a7043f3d06d7b3b14a7b",
+    "updatedAt": "2026-09-06T15:10:30Z",
+    "pushedAt": "2026-09-06T15:10:34Z",
+    "headCommit": "2de9ea5fd9f8eea1b54a3064d9321c9efe7d03d5",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
         "id": "chmarax.gitview",
         "name": "gitview",
-        "version": "0.1.0",
+        "version": "0.3.0",
         "minHerdrVersion": "0.7.0",
         "description": "Two-pane git view: changed files + diff, Enter opens nvim",
         "platforms": [
@@ -4339,6 +4339,44 @@
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
     "starsDelta7d": 1,
     "starsDelta30d": 3
+  },
+  {
+    "id": 1341726628,
+    "fullName": "shibayu36/herdr-equalize-panes",
+    "owner": "shibayu36",
+    "name": "herdr-equalize-panes",
+    "description": "herdr plugin that automatically equalizes pane sizes on split and close (tmux select-layout -E, but automatic)",
+    "url": "https://github.com/shibayu36/herdr-equalize-panes",
+    "stars": 9,
+    "forks": 1,
+    "openIssues": 0,
+    "language": "Perl",
+    "topics": [
+      "herdr",
+      "herdr-plugin",
+      "terminal"
+    ],
+    "createdAt": "2026-08-21T11:19:15Z",
+    "updatedAt": "2026-09-06T18:25:36Z",
+    "pushedAt": "2026-08-22T11:38:33Z",
+    "headCommit": "0c1d940e9af09c632a48a5b179753ef25056ff13",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "shibayu36.equalize-panes",
+        "name": "Equalize Panes",
+        "version": "0.1.0",
+        "minHerdrVersion": "0.7.2",
+        "description": "Evenly size panes on split/close (tmux select-layout -E equivalent)",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-22T11:31:22.298Z",
+    "starsDelta7d": 5,
+    "starsDelta30d": null
   },
   {
     "id": 1301073840,
@@ -4742,44 +4780,6 @@
     "starsDelta30d": null
   },
   {
-    "id": 1341726628,
-    "fullName": "shibayu36/herdr-equalize-panes",
-    "owner": "shibayu36",
-    "name": "herdr-equalize-panes",
-    "description": "herdr plugin that automatically equalizes pane sizes on split and close (tmux select-layout -E, but automatic)",
-    "url": "https://github.com/shibayu36/herdr-equalize-panes",
-    "stars": 8,
-    "forks": 1,
-    "openIssues": 0,
-    "language": "Perl",
-    "topics": [
-      "herdr",
-      "herdr-plugin",
-      "terminal"
-    ],
-    "createdAt": "2026-08-21T11:19:15Z",
-    "updatedAt": "2026-09-05T08:17:21Z",
-    "pushedAt": "2026-08-22T11:38:33Z",
-    "headCommit": "0c1d940e9af09c632a48a5b179753ef25056ff13",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "shibayu36.equalize-panes",
-        "name": "Equalize Panes",
-        "version": "0.1.0",
-        "minHerdrVersion": "0.7.2",
-        "description": "Evenly size panes on split/close (tmux select-layout -E equivalent)",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-22T11:31:22.298Z",
-    "starsDelta7d": 4,
-    "starsDelta30d": null
-  },
-  {
     "id": 1184171829,
     "fullName": "EzraCerpac/jj-waltz",
     "owner": "EzraCerpac",
@@ -5022,6 +5022,46 @@
     "starsDelta30d": 4
   },
   {
+    "id": 1293614944,
+    "fullName": "aarsh21/herdr-tab-title",
+    "owner": "aarsh21",
+    "name": "herdr-tab-title",
+    "description": "Automatic tmux-like tab titles for Herdr",
+    "url": "https://github.com/aarsh21/herdr-tab-title",
+    "stars": 8,
+    "forks": 2,
+    "openIssues": 2,
+    "language": "Rust",
+    "topics": [
+      "herdr",
+      "herdr-plugin",
+      "rust",
+      "terminal",
+      "tmux"
+    ],
+    "createdAt": "2026-07-08T13:09:14Z",
+    "updatedAt": "2026-09-06T18:40:11Z",
+    "pushedAt": "2026-07-08T14:16:59Z",
+    "headCommit": "2e85b286035803fb4cd1befb94b66111dad2cf1c",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "aarsh21.tab-title",
+        "name": "Tab Title",
+        "version": "0.1.6",
+        "minHerdrVersion": "0.7.3",
+        "description": "Automatic tmux-like Herdr tab titles from the focused pane's process or directory",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-06T15:30:31.562Z",
+    "starsDelta7d": 2,
+    "starsDelta30d": 3
+  },
+  {
     "id": 1342996144,
     "fullName": "Poor-Plebs/herdr-remote-panes",
     "owner": "Poor-Plebs",
@@ -5040,15 +5080,15 @@
       "terminal"
     ],
     "createdAt": "2026-08-22T16:50:32Z",
-    "updatedAt": "2026-09-06T09:57:05Z",
-    "pushedAt": "2026-09-06T09:57:01Z",
-    "headCommit": "cb3a59de50c21246114215eafb0ca0c711586a51",
+    "updatedAt": "2026-09-06T22:26:45Z",
+    "pushedAt": "2026-09-06T22:26:40Z",
+    "headCommit": "5ef8a3953f2a2d7cabfe5f57ff30263ad72f7986",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
         "id": "poorplebs.remote-panes",
         "name": "Remote Panes",
-        "version": "0.4.29",
+        "version": "0.4.30",
         "minHerdrVersion": "0.8.0",
         "description": "Work on other machines from one Herdr: pick a machine, get a terminal on it. Optional two-way mirroring.",
         "platforms": [
@@ -5059,6 +5099,44 @@
     ],
     "firstSeenAt": "2026-08-22T17:01:25.539Z",
     "starsDelta7d": 5,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1340910826,
+    "fullName": "barnuri/herdr-web",
+    "owner": "barnuri",
+    "name": "herdr-web",
+    "description": "Mobile-first web UI plugin for herdr \u2014 drive your coding agents from a phone, with notifications",
+    "url": "https://github.com/barnuri/herdr-web",
+    "stars": 7,
+    "forks": 4,
+    "openIssues": 0,
+    "language": "TypeScript",
+    "topics": [
+      "herdr",
+      "herdr-plugin",
+      "pwa"
+    ],
+    "createdAt": "2026-08-20T16:32:08Z",
+    "updatedAt": "2026-09-06T11:16:26Z",
+    "pushedAt": "2026-09-01T11:52:17Z",
+    "headCommit": "c5cba000f96fa81a555093e15f40d9a0613f16ca",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "barnuri.herdr-web",
+        "name": "Herdr Web",
+        "version": "0.1.1",
+        "minHerdrVersion": "0.7.0",
+        "description": "Mobile-first web UI for herdr \u2014 view and drive panes from a phone, with agent-state notifications",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-20T17:01:31.648Z",
+    "starsDelta7d": 3,
     "starsDelta30d": null
   },
   {
@@ -5436,46 +5514,6 @@
     "starsDelta30d": 5
   },
   {
-    "id": 1293614944,
-    "fullName": "aarsh21/herdr-tab-title",
-    "owner": "aarsh21",
-    "name": "herdr-tab-title",
-    "description": "Automatic tmux-like tab titles for Herdr",
-    "url": "https://github.com/aarsh21/herdr-tab-title",
-    "stars": 7,
-    "forks": 2,
-    "openIssues": 2,
-    "language": "Rust",
-    "topics": [
-      "herdr",
-      "herdr-plugin",
-      "rust",
-      "terminal",
-      "tmux"
-    ],
-    "createdAt": "2026-07-08T13:09:14Z",
-    "updatedAt": "2026-09-02T18:19:45Z",
-    "pushedAt": "2026-07-08T14:16:59Z",
-    "headCommit": "2e85b286035803fb4cd1befb94b66111dad2cf1c",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "aarsh21.tab-title",
-        "name": "Tab Title",
-        "version": "0.1.6",
-        "minHerdrVersion": "0.7.3",
-        "description": "Automatic tmux-like Herdr tab titles from the focused pane's process or directory",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 1,
-    "starsDelta30d": 2
-  },
-  {
     "id": 1286194823,
     "fullName": "lachieh/herdr-plugin-cmux",
     "owner": "lachieh",
@@ -5553,41 +5591,84 @@
     "starsDelta30d": 1
   },
   {
-    "id": 1303903723,
-    "fullName": "osuki-dev/muqun-gateway",
-    "owner": "osuki-dev",
-    "name": "muqun-gateway",
-    "description": "The program that lets Muqun reach a terminal on your own computer. It runs on your machine, talks to tmux or to Herdr, and answers your phone directly \u2014 there is no account and no server of ours in between.",
-    "url": "https://github.com/osuki-dev/muqun-gateway",
+    "id": 1295729735,
+    "fullName": "jasonrr/herdr-tally",
+    "owner": "jasonrr",
+    "name": "herdr-tally",
+    "description": "Project-scoped todos & scratchpads for you and your agents.",
+    "url": "https://github.com/jasonrr/herdr-tally",
     "stars": 6,
     "forks": 0,
-    "openIssues": 0,
+    "openIssues": 5,
     "language": "Rust",
     "topics": [
-      "herdr",
       "herdr-plugin"
     ],
-    "createdAt": "2026-07-17T11:09:54Z",
-    "updatedAt": "2026-09-06T10:25:23Z",
-    "pushedAt": "2026-09-06T10:25:19Z",
-    "headCommit": "76b7d0dd4b91c1c645f5f232c88ccf602ba762b7",
+    "createdAt": "2026-07-09T19:56:15Z",
+    "updatedAt": "2026-09-06T19:00:59Z",
+    "pushedAt": "2026-09-06T19:00:50Z",
+    "headCommit": "b367130cbeba76683ba75336838f3b4cc061bdac",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
-        "id": "herdr.gateway",
-        "name": "Muqun Gateway (Herdr integration)",
-        "version": "0.8.1",
-        "minHerdrVersion": "0.7.5",
-        "description": "Run Muqun's token-protected terminal gateway with Herdr and tmux backends.",
+        "id": "tally",
+        "name": "tally",
+        "version": "0.2.7",
+        "minHerdrVersion": "0.7.0",
+        "description": "Project-scoped todos & scratchpads for you and your agents.",
+        "platforms": [
+          "macos",
+          "linux"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-06T15:30:31.562Z",
+    "starsDelta7d": 1,
+    "starsDelta30d": 2
+  },
+  {
+    "id": 1346683112,
+    "fullName": "IvoryHeart/herdr-world",
+    "owner": "IvoryHeart",
+    "name": "herdr-world",
+    "description": "Herdr World \u2014 a multi-surface web experience for Herdr",
+    "url": "https://github.com/IvoryHeart/herdr-world",
+    "stars": 6,
+    "forks": 0,
+    "openIssues": 4,
+    "language": "TypeScript",
+    "topics": [
+      "herdr",
+      "herdr-plugin",
+      "multi-agent",
+      "observability",
+      "pixel-art",
+      "react",
+      "rust",
+      "terminal-emulator",
+      "web-ui"
+    ],
+    "createdAt": "2026-08-25T22:30:05Z",
+    "updatedAt": "2026-09-06T18:23:50Z",
+    "pushedAt": "2026-09-06T17:34:19Z",
+    "headCommit": "80e57993a1c527630bc9e802ea68617304a1c62d",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "ivoryheart.herdr-world",
+        "name": "Herdr World",
+        "version": "0.1.1",
+        "minHerdrVersion": "0.8.2",
+        "description": "Browser and mobile client for monitoring and controlling Herdr agents.",
         "platforms": [
           "linux",
           "macos"
         ]
       }
     ],
-    "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 1,
-    "starsDelta30d": 5
+    "firstSeenAt": "2026-08-29T16:31:30.674Z",
+    "starsDelta7d": 5,
+    "starsDelta30d": null
   },
   {
     "id": 1350488158,
@@ -5616,9 +5697,9 @@
       "tui"
     ],
     "createdAt": "2026-08-29T10:25:24Z",
-    "updatedAt": "2026-09-06T08:49:14Z",
-    "pushedAt": "2026-09-06T08:50:43Z",
-    "headCommit": "352068c14addfc843bcb0e15f01a2bc2ec68452b",
+    "updatedAt": "2026-09-06T15:37:32Z",
+    "pushedAt": "2026-09-06T15:37:29Z",
+    "headCommit": "18fb7a9e85d4f9f2e22e03005347fdf15795ef9c",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
@@ -5638,48 +5719,41 @@
     "starsDelta30d": null
   },
   {
-    "id": 1346683112,
-    "fullName": "IvoryHeart/herdr-world",
-    "owner": "IvoryHeart",
-    "name": "herdr-world",
-    "description": "Herdr World \u2014 a multi-surface web experience for Herdr",
-    "url": "https://github.com/IvoryHeart/herdr-world",
+    "id": 1303903723,
+    "fullName": "osuki-dev/muqun-gateway",
+    "owner": "osuki-dev",
+    "name": "muqun-gateway",
+    "description": "The program that lets Muqun reach a terminal on your own computer. It runs on your machine, talks to tmux or to Herdr, and answers your phone directly \u2014 there is no account and no server of ours in between.",
+    "url": "https://github.com/osuki-dev/muqun-gateway",
     "stars": 6,
     "forks": 0,
-    "openIssues": 4,
-    "language": "TypeScript",
+    "openIssues": 1,
+    "language": "Rust",
     "topics": [
       "herdr",
-      "herdr-plugin",
-      "multi-agent",
-      "observability",
-      "pixel-art",
-      "react",
-      "rust",
-      "terminal-emulator",
-      "web-ui"
+      "herdr-plugin"
     ],
-    "createdAt": "2026-08-25T22:30:05Z",
-    "updatedAt": "2026-09-05T23:53:08Z",
-    "pushedAt": "2026-09-06T01:40:51Z",
-    "headCommit": "80e57993a1c527630bc9e802ea68617304a1c62d",
+    "createdAt": "2026-07-17T11:09:54Z",
+    "updatedAt": "2026-09-06T12:24:16Z",
+    "pushedAt": "2026-09-06T12:24:28Z",
+    "headCommit": "a1b4ce3bbb22905adf12cbd3965bd2446e14b13e",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
-        "id": "ivoryheart.herdr-world",
-        "name": "Herdr World",
-        "version": "0.1.1",
-        "minHerdrVersion": "0.8.2",
-        "description": "Browser and mobile client for monitoring and controlling Herdr agents.",
+        "id": "herdr.gateway",
+        "name": "Muqun Gateway (Herdr integration)",
+        "version": "0.9.0",
+        "minHerdrVersion": "0.7.5",
+        "description": "Run Muqun's token-protected terminal gateway with Herdr and tmux backends.",
         "platforms": [
           "linux",
           "macos"
         ]
       }
     ],
-    "firstSeenAt": "2026-08-29T16:31:30.674Z",
-    "starsDelta7d": 5,
-    "starsDelta30d": null
+    "firstSeenAt": "2026-08-06T15:30:31.562Z",
+    "starsDelta7d": 1,
+    "starsDelta30d": 5
   },
   {
     "id": 1351041224,
@@ -5809,41 +5883,40 @@
     "starsDelta30d": null
   },
   {
-    "id": 1340910826,
-    "fullName": "barnuri/herdr-web",
-    "owner": "barnuri",
-    "name": "herdr-web",
-    "description": "Mobile-first web UI plugin for herdr \u2014 drive your coding agents from a phone, with notifications",
-    "url": "https://github.com/barnuri/herdr-web",
+    "id": 1339275791,
+    "fullName": "qintmb/herdr-theme-picker",
+    "owner": "qintmb",
+    "name": "herdr-theme-picker",
+    "description": "Theme picker for herdr UI based terminalcolors scheme and your customization.",
+    "url": "https://github.com/qintmb/herdr-theme-picker",
     "stars": 6,
-    "forks": 4,
-    "openIssues": 0,
-    "language": "TypeScript",
+    "forks": 1,
+    "openIssues": 1,
+    "language": "Shell",
     "topics": [
       "herdr",
-      "herdr-plugin",
-      "pwa"
+      "herdr-plugin"
     ],
-    "createdAt": "2026-08-20T16:32:08Z",
-    "updatedAt": "2026-09-05T08:42:34Z",
-    "pushedAt": "2026-09-01T11:52:17Z",
-    "headCommit": "c5cba000f96fa81a555093e15f40d9a0613f16ca",
+    "createdAt": "2026-08-19T07:59:39Z",
+    "updatedAt": "2026-09-06T18:24:03Z",
+    "pushedAt": "2026-08-31T23:20:43Z",
+    "headCommit": "0595122c5bfbf412f88087f6719bdc8f85de8700",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
-        "id": "barnuri.herdr-web",
-        "name": "Herdr Web",
-        "version": "0.1.1",
-        "minHerdrVersion": "0.7.0",
-        "description": "Mobile-first web UI for herdr \u2014 view and drive panes from a phone, with agent-state notifications",
+        "id": "herdr-theme-picker",
+        "name": "Theme Picker",
+        "version": "0.8.1",
+        "minHerdrVersion": "0.8.0",
+        "description": "Pick any terminalcolors.com theme and apply it to Herdr's UI via [theme.custom].",
         "platforms": [
           "linux",
           "macos"
         ]
       }
     ],
-    "firstSeenAt": "2026-08-20T17:01:31.648Z",
-    "starsDelta7d": 2,
+    "firstSeenAt": "2026-08-19T08:30:43.401Z",
+    "starsDelta7d": 4,
     "starsDelta30d": null
   },
   {
@@ -5883,42 +5956,6 @@
     "firstSeenAt": "2026-08-24T19:01:29.039Z",
     "starsDelta7d": 3,
     "starsDelta30d": null
-  },
-  {
-    "id": 1295729735,
-    "fullName": "jasonrr/herdr-tally",
-    "owner": "jasonrr",
-    "name": "herdr-tally",
-    "description": "Project-scoped todos & scratchpads for you and your agents.",
-    "url": "https://github.com/jasonrr/herdr-tally",
-    "stars": 6,
-    "forks": 0,
-    "openIssues": 5,
-    "language": "Rust",
-    "topics": [
-      "herdr-plugin"
-    ],
-    "createdAt": "2026-07-09T19:56:15Z",
-    "updatedAt": "2026-08-30T22:23:14Z",
-    "pushedAt": "2026-08-30T18:42:15Z",
-    "headCommit": "a94206311806f51909c1c53c5ab33ea7210cd229",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "tally",
-        "name": "tally",
-        "version": "0.2.6",
-        "minHerdrVersion": "0.7.0",
-        "description": "Project-scoped todos & scratchpads for you and your agents.",
-        "platforms": [
-          "macos",
-          "linux"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 1,
-    "starsDelta30d": 2
   },
   {
     "id": 1346372298,
@@ -6516,6 +6553,45 @@
     "starsDelta30d": 1
   },
   {
+    "id": 1334746241,
+    "fullName": "winoooops/herdr-agent-watcher",
+    "owner": "winoooops",
+    "name": "herdr-agent-watcher",
+    "description": "Coding-agent observability for Herdr: live sidebar cards, lifecycle notifications, and a zero-config Claude Code metrics bridge.",
+    "url": "https://github.com/winoooops/herdr-agent-watcher",
+    "stars": 5,
+    "forks": 2,
+    "openIssues": 0,
+    "language": "Rust",
+    "topics": [
+      "claude-code",
+      "herdr",
+      "herdr-plugin",
+      "rust"
+    ],
+    "createdAt": "2026-08-15T02:57:12Z",
+    "updatedAt": "2026-09-06T11:51:47Z",
+    "pushedAt": "2026-09-06T11:53:10Z",
+    "headCommit": "05f37d446876bf4dbf899d3a2802e550c51bf0fe",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "herdr-agent-watcher",
+        "name": "Agent Watcher",
+        "version": "0.2.7",
+        "minHerdrVersion": "0.8.0",
+        "description": "Coding-agent observability: transcript watchers, metrics, and notifications for Claude Code, Codex, Kimi Code, and OpenCode.",
+        "platforms": [
+          "macos",
+          "linux"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-15T03:00:40.721Z",
+    "starsDelta7d": 0,
+    "starsDelta30d": null
+  },
+  {
     "id": 1337919529,
     "fullName": "zlxlabs/herdweb",
     "owner": "zlxlabs",
@@ -6549,45 +6625,6 @@
     ],
     "firstSeenAt": "2026-08-31T14:31:40.486Z",
     "starsDelta7d": null,
-    "starsDelta30d": null
-  },
-  {
-    "id": 1334746241,
-    "fullName": "winoooops/herdr-agent-watcher",
-    "owner": "winoooops",
-    "name": "herdr-agent-watcher",
-    "description": "Coding-agent observability for Herdr: live sidebar cards, lifecycle notifications, and a zero-config Claude Code metrics bridge.",
-    "url": "https://github.com/winoooops/herdr-agent-watcher",
-    "stars": 5,
-    "forks": 2,
-    "openIssues": 0,
-    "language": "Rust",
-    "topics": [
-      "claude-code",
-      "herdr",
-      "herdr-plugin",
-      "rust"
-    ],
-    "createdAt": "2026-08-15T02:57:12Z",
-    "updatedAt": "2026-09-05T16:33:44Z",
-    "pushedAt": "2026-09-06T06:37:28Z",
-    "headCommit": "d1a2452e1d147f9d342cebfdb3efebd97d5a107b",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "herdr-agent-watcher",
-        "name": "Agent Watcher",
-        "version": "0.2.6",
-        "minHerdrVersion": "0.8.0",
-        "description": "Coding-agent observability: transcript watchers, metrics, and notifications for Claude Code, Codex, Kimi Code, and OpenCode.",
-        "platforms": [
-          "macos",
-          "linux"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-15T03:00:40.721Z",
-    "starsDelta7d": 0,
     "starsDelta30d": null
   },
   {
@@ -6756,43 +6793,6 @@
     "starsDelta30d": 5
   },
   {
-    "id": 1339275791,
-    "fullName": "qintmb/herdr-theme-picker",
-    "owner": "qintmb",
-    "name": "herdr-theme-picker",
-    "description": "Theme picker for herdr UI based terminalcolors scheme and your customization.",
-    "url": "https://github.com/qintmb/herdr-theme-picker",
-    "stars": 5,
-    "forks": 1,
-    "openIssues": 1,
-    "language": "Shell",
-    "topics": [
-      "herdr",
-      "herdr-plugin"
-    ],
-    "createdAt": "2026-08-19T07:59:39Z",
-    "updatedAt": "2026-09-04T01:51:56Z",
-    "pushedAt": "2026-08-31T23:20:43Z",
-    "headCommit": "0595122c5bfbf412f88087f6719bdc8f85de8700",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "herdr-theme-picker",
-        "name": "Theme Picker",
-        "version": "0.8.1",
-        "minHerdrVersion": "0.8.0",
-        "description": "Pick any terminalcolors.com theme and apply it to Herdr's UI via [theme.custom].",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-19T08:30:43.401Z",
-    "starsDelta7d": 3,
-    "starsDelta30d": null
-  },
-  {
     "id": 1345515050,
     "fullName": "vjeantet/herdr-scratchpad",
     "owner": "vjeantet",
@@ -6872,6 +6872,41 @@
     "starsDelta30d": 2
   },
   {
+    "id": 1299331053,
+    "fullName": "mvallebr/herdr-telegram-plugin",
+    "owner": "mvallebr",
+    "name": "herdr-telegram-plugin",
+    "description": "Telegram bot companion for herdr \u2014 remote control any agent via Telegram forum topics, zero LLM in the path.",
+    "url": "https://github.com/mvallebr/herdr-telegram-plugin",
+    "stars": 5,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "TypeScript",
+    "topics": [
+      "herdr-plugin"
+    ],
+    "createdAt": "2026-07-13T13:35:47Z",
+    "updatedAt": "2026-09-06T11:58:03Z",
+    "pushedAt": "2026-08-31T07:08:32Z",
+    "headCommit": "a88936c61b210b64062a8c4b14739a8451c66c0e",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "herdr-telegram-plugin",
+        "name": "Herdr Telegram Bridge",
+        "version": "0.1.0",
+        "minHerdrVersion": "0.7.0",
+        "description": "Control your herdr agents from Telegram via forum topics. Zero-LLM bridge.",
+        "platforms": [
+          "linux"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-06T15:30:31.562Z",
+    "starsDelta7d": 1,
+    "starsDelta30d": 2
+  },
+  {
     "id": 1346567224,
     "fullName": "gokay-ai/sheep",
     "owner": "gokay-ai",
@@ -6909,6 +6944,45 @@
     ],
     "firstSeenAt": "2026-08-26T14:31:28.291Z",
     "starsDelta7d": 0,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1334111487,
+    "fullName": "Northern-Lighthouse/herdr-fleet",
+    "owner": "Northern-Lighthouse",
+    "name": "herdr-fleet",
+    "description": "Manage a fleet of herdr machines over Tailscale: dashboard plugin, auto-discovery, capacity-aware agent dispatch, diskless workspaces",
+    "url": "https://github.com/Northern-Lighthouse/herdr-fleet",
+    "stars": 5,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "Python",
+    "topics": [
+      "ai-agents",
+      "herdr",
+      "herdr-plugin",
+      "tailscale"
+    ],
+    "createdAt": "2026-08-14T11:29:41Z",
+    "updatedAt": "2026-09-06T13:58:17Z",
+    "pushedAt": "2026-08-14T14:34:08Z",
+    "headCommit": "2cbefee191faf365fe4e262ed0c07ec835ca7757",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "dev.northernlighthouse.fleet",
+        "name": "Fleet",
+        "version": "0.3.0",
+        "minHerdrVersion": "0.8.0",
+        "description": "Manage a fleet of herdr machines over Tailscale: dashboard, remote tabs, capacity-aware agent dispatch, diskless workspaces.",
+        "platforms": [
+          "macos",
+          "linux"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-14T11:30:41.711Z",
+    "starsDelta7d": 2,
     "starsDelta30d": null
   },
   {
@@ -7362,6 +7436,51 @@
     "starsDelta30d": 2
   },
   {
+    "id": 1302352274,
+    "fullName": "rvalledorjr/herdr-fresh",
+    "owner": "rvalledorjr",
+    "name": "herdr-fresh",
+    "description": "A herdr plugin that runs Fresh, the terminal IDE, as a file viewer and editor inside a herdr pane.",
+    "url": "https://github.com/rvalledorjr/herdr-fresh",
+    "stars": 5,
+    "forks": 1,
+    "openIssues": 1,
+    "language": "Shell",
+    "topics": [
+      "developer-tools",
+      "editor",
+      "fresh",
+      "herdr",
+      "herdr-plugin",
+      "ide",
+      "plugin",
+      "terminal",
+      "tui"
+    ],
+    "createdAt": "2026-07-16T05:26:26Z",
+    "updatedAt": "2026-09-06T12:47:48Z",
+    "pushedAt": "2026-07-17T02:44:20Z",
+    "headCommit": "458e8240c765d29fc6404559e272c2d9f77523d9",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "herdr-fresh",
+        "name": "herdr-fresh",
+        "version": "0.1.1",
+        "minHerdrVersion": "0.7.0",
+        "description": "Run Fresh, the terminal IDE, as a file viewer and editor inside a herdr pane.",
+        "platforms": [
+          "linux",
+          "macos",
+          "windows"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-06T15:30:31.562Z",
+    "starsDelta7d": 1,
+    "starsDelta30d": 3
+  },
+  {
     "id": 1289193319,
     "fullName": "hmu332233/herdr-symlink-worktree",
     "owner": "hmu332233",
@@ -7376,7 +7495,7 @@
       "herdr-plugin"
     ],
     "createdAt": "2026-07-04T12:44:53Z",
-    "updatedAt": "2026-09-04T14:45:50Z",
+    "updatedAt": "2026-09-06T13:42:50Z",
     "pushedAt": "2026-07-16T20:50:49Z",
     "headCommit": "1af90cf40eef743c918df21badf33b99edadd09f",
     "manifests": [
@@ -7396,6 +7515,43 @@
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
     "starsDelta7d": 1,
     "starsDelta30d": 1
+  },
+  {
+    "id": 1296810802,
+    "fullName": "darjss/herdr-orchestrate",
+    "owner": "darjss",
+    "name": "herdr-orchestrate",
+    "description": null,
+    "url": "https://github.com/darjss/herdr-orchestrate",
+    "stars": 5,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "TypeScript",
+    "topics": [
+      "herdr-plugin",
+      "pi-package"
+    ],
+    "createdAt": "2026-07-10T18:46:37Z",
+    "updatedAt": "2026-09-06T14:40:42Z",
+    "pushedAt": "2026-07-13T11:59:16Z",
+    "headCommit": "281a462231ed5c9d69fdba503e08e05f6daf193d",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "darjss.herdr-orchestrate",
+        "name": "herdr-orchestrate",
+        "version": "0.1.2",
+        "minHerdrVersion": "0.7.1",
+        "description": "Pi-native orchestration for visible Herdr worker sessions.",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-06T15:30:31.562Z",
+    "starsDelta7d": 1,
+    "starsDelta30d": 3
   },
   {
     "id": 1270619675,
@@ -7555,6 +7711,57 @@
     "starsDelta30d": 2
   },
   {
+    "id": 1329066277,
+    "fullName": "miko-misa/herdr-portfwd",
+    "owner": "miko-misa",
+    "name": "herdr-portfwd",
+    "description": "Automatic SSH port forwarding for coding agents on remote machines: Ctrl+click the localhost URL your agent printed and the page opens on your machine, same port. A Herdr plugin.",
+    "url": "https://github.com/miko-misa/herdr-portfwd",
+    "stars": 4,
+    "forks": 0,
+    "openIssues": 1,
+    "language": "Rust",
+    "topics": [
+      "ai-agents",
+      "claude-code",
+      "cli",
+      "coding-agents",
+      "developer-tools",
+      "devtools",
+      "herdr",
+      "herdr-plugin",
+      "localhost",
+      "port-forwarding",
+      "remote-development",
+      "rust",
+      "ssh",
+      "ssh-tunnel",
+      "terminal",
+      "tui"
+    ],
+    "createdAt": "2026-08-09T18:02:38Z",
+    "updatedAt": "2026-09-01T18:46:32Z",
+    "pushedAt": "2026-09-06T22:43:32Z",
+    "headCommit": "9d4fcaa08c0e00860de7768bd9a77cba93432a1e",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "portfwd",
+        "name": "Herdr Port Forward",
+        "version": "0.2.1",
+        "minHerdrVersion": "0.8.0",
+        "description": "Forward dev-server ports from remote Herdr hosts to your local machine",
+        "platforms": [
+          "macos",
+          "linux"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-09T18:31:09.980Z",
+    "starsDelta7d": 2,
+    "starsDelta30d": null
+  },
+  {
     "id": 1351255587,
     "fullName": "crierr/herdr-arrange",
     "owner": "crierr",
@@ -7628,41 +7835,6 @@
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
     "starsDelta7d": 2,
     "starsDelta30d": 4
-  },
-  {
-    "id": 1299331053,
-    "fullName": "mvallebr/herdr-telegram-plugin",
-    "owner": "mvallebr",
-    "name": "herdr-telegram-plugin",
-    "description": "Telegram bot companion for herdr \u2014 remote control any agent via Telegram forum topics, zero LLM in the path.",
-    "url": "https://github.com/mvallebr/herdr-telegram-plugin",
-    "stars": 4,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "TypeScript",
-    "topics": [
-      "herdr-plugin"
-    ],
-    "createdAt": "2026-07-13T13:35:47Z",
-    "updatedAt": "2026-08-31T07:02:14Z",
-    "pushedAt": "2026-08-31T07:08:32Z",
-    "headCommit": "a88936c61b210b64062a8c4b14739a8451c66c0e",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "herdr-telegram-plugin",
-        "name": "Herdr Telegram Bridge",
-        "version": "0.1.0",
-        "minHerdrVersion": "0.7.0",
-        "description": "Control your herdr agents from Telegram via forum topics. Zero-LLM bridge.",
-        "platforms": [
-          "linux"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 0,
-    "starsDelta30d": 1
   },
   {
     "id": 1289456192,
@@ -7931,45 +8103,6 @@
     "starsDelta30d": 4
   },
   {
-    "id": 1334111487,
-    "fullName": "Northern-Lighthouse/herdr-fleet",
-    "owner": "Northern-Lighthouse",
-    "name": "herdr-fleet",
-    "description": "Manage a fleet of herdr machines over Tailscale: dashboard plugin, auto-discovery, capacity-aware agent dispatch, diskless workspaces",
-    "url": "https://github.com/Northern-Lighthouse/herdr-fleet",
-    "stars": 4,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "Python",
-    "topics": [
-      "ai-agents",
-      "herdr",
-      "herdr-plugin",
-      "tailscale"
-    ],
-    "createdAt": "2026-08-14T11:29:41Z",
-    "updatedAt": "2026-08-31T02:12:41Z",
-    "pushedAt": "2026-08-14T14:34:08Z",
-    "headCommit": "2cbefee191faf365fe4e262ed0c07ec835ca7757",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "dev.northernlighthouse.fleet",
-        "name": "Fleet",
-        "version": "0.3.0",
-        "minHerdrVersion": "0.8.0",
-        "description": "Manage a fleet of herdr machines over Tailscale: dashboard, remote tabs, capacity-aware agent dispatch, diskless workspaces.",
-        "platforms": [
-          "macos",
-          "linux"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-14T11:30:41.711Z",
-    "starsDelta7d": 1,
-    "starsDelta30d": null
-  },
-  {
     "id": 1331471341,
     "fullName": "gambtho/herdr-devcontainer",
     "owner": "gambtho",
@@ -8051,57 +8184,6 @@
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
     "starsDelta7d": 0,
     "starsDelta30d": 2
-  },
-  {
-    "id": 1329066277,
-    "fullName": "miko-misa/herdr-portfwd",
-    "owner": "miko-misa",
-    "name": "herdr-portfwd",
-    "description": "Automatic SSH port forwarding for coding agents on remote machines: Ctrl+click the localhost URL your agent printed and the page opens on your machine, same port. A Herdr plugin.",
-    "url": "https://github.com/miko-misa/herdr-portfwd",
-    "stars": 4,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "Rust",
-    "topics": [
-      "ai-agents",
-      "claude-code",
-      "cli",
-      "coding-agents",
-      "developer-tools",
-      "devtools",
-      "herdr",
-      "herdr-plugin",
-      "localhost",
-      "port-forwarding",
-      "remote-development",
-      "rust",
-      "ssh",
-      "ssh-tunnel",
-      "terminal",
-      "tui"
-    ],
-    "createdAt": "2026-08-09T18:02:38Z",
-    "updatedAt": "2026-09-01T18:46:32Z",
-    "pushedAt": "2026-08-11T13:48:33Z",
-    "headCommit": "9d4fcaa08c0e00860de7768bd9a77cba93432a1e",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "portfwd",
-        "name": "Herdr Port Forward",
-        "version": "0.2.1",
-        "minHerdrVersion": "0.8.0",
-        "description": "Forward dev-server ports from remote Herdr hosts to your local machine",
-        "platforms": [
-          "macos",
-          "linux"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-09T18:31:09.980Z",
-    "starsDelta7d": 2,
-    "starsDelta30d": null
   },
   {
     "id": 1327548661,
@@ -8496,7 +8578,7 @@
     "description": "Freebuff lifecycle integration plugin for Herdr \u2014 reports idle/working/blocked state via file polling and PTY content scraping",
     "url": "https://github.com/TheMetalStorm/herdr-freebuff-plugin",
     "stars": 4,
-    "forks": 0,
+    "forks": 1,
     "openIssues": 1,
     "language": "Shell",
     "topics": [
@@ -8642,51 +8724,6 @@
     "starsDelta30d": 1
   },
   {
-    "id": 1302352274,
-    "fullName": "rvalledorjr/herdr-fresh",
-    "owner": "rvalledorjr",
-    "name": "herdr-fresh",
-    "description": "A herdr plugin that runs Fresh, the terminal IDE, as a file viewer and editor inside a herdr pane.",
-    "url": "https://github.com/rvalledorjr/herdr-fresh",
-    "stars": 4,
-    "forks": 1,
-    "openIssues": 1,
-    "language": "Shell",
-    "topics": [
-      "developer-tools",
-      "editor",
-      "fresh",
-      "herdr",
-      "herdr-plugin",
-      "ide",
-      "plugin",
-      "terminal",
-      "tui"
-    ],
-    "createdAt": "2026-07-16T05:26:26Z",
-    "updatedAt": "2026-08-28T15:41:21Z",
-    "pushedAt": "2026-07-17T02:44:20Z",
-    "headCommit": "458e8240c765d29fc6404559e272c2d9f77523d9",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "herdr-fresh",
-        "name": "herdr-fresh",
-        "version": "0.1.1",
-        "minHerdrVersion": "0.7.0",
-        "description": "Run Fresh, the terminal IDE, as a file viewer and editor inside a herdr pane.",
-        "platforms": [
-          "linux",
-          "macos",
-          "windows"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 0,
-    "starsDelta30d": 2
-  },
-  {
     "id": 1302308251,
     "fullName": "jagzmz/herdr-annotations",
     "owner": "jagzmz",
@@ -8767,43 +8804,6 @@
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
     "starsDelta7d": 1,
     "starsDelta30d": 1
-  },
-  {
-    "id": 1296810802,
-    "fullName": "darjss/herdr-orchestrate",
-    "owner": "darjss",
-    "name": "herdr-orchestrate",
-    "description": null,
-    "url": "https://github.com/darjss/herdr-orchestrate",
-    "stars": 4,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "TypeScript",
-    "topics": [
-      "herdr-plugin",
-      "pi-package"
-    ],
-    "createdAt": "2026-07-10T18:46:37Z",
-    "updatedAt": "2026-08-27T06:52:43Z",
-    "pushedAt": "2026-07-13T11:59:16Z",
-    "headCommit": "281a462231ed5c9d69fdba503e08e05f6daf193d",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "darjss.herdr-orchestrate",
-        "name": "herdr-orchestrate",
-        "version": "0.1.2",
-        "minHerdrVersion": "0.7.1",
-        "description": "Pi-native orchestration for visible Herdr worker sessions.",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 0,
-    "starsDelta30d": 2
   },
   {
     "id": 1297656903,
@@ -9194,7 +9194,7 @@
     "url": "https://github.com/funsaized/herdr-mise",
     "stars": 3,
     "forks": 0,
-    "openIssues": 6,
+    "openIssues": 1,
     "language": "TypeScript",
     "topics": [
       "agent",
@@ -9217,9 +9217,9 @@
       "vite"
     ],
     "createdAt": "2026-07-31T16:06:51Z",
-    "updatedAt": "2026-09-06T05:07:01Z",
-    "pushedAt": "2026-09-06T10:25:23Z",
-    "headCommit": "23429e891d2ec34999531f7a4137d88d4862e062",
+    "updatedAt": "2026-09-06T20:49:29Z",
+    "pushedAt": "2026-09-06T22:11:05Z",
+    "headCommit": "18ff0b737870125cbd4ab4c23d77771e3f42e431",
     "manifests": [
       {
         "path": "herdr-plugin.toml",
@@ -9236,6 +9236,60 @@
     ],
     "firstSeenAt": "2026-08-14T01:30:41.646Z",
     "starsDelta7d": 2,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1165671599,
+    "fullName": "VilfredSikker/easy-review",
+    "owner": "VilfredSikker",
+    "name": "easy-review",
+    "description": "Git diff review for AI-assisted coding. Terminal TUI and Tauri desktop app.",
+    "url": "https://github.com/VilfredSikker/easy-review",
+    "stars": 3,
+    "forks": 0,
+    "openIssues": 12,
+    "language": "Rust",
+    "topics": [
+      "ai-code-review",
+      "cli",
+      "code-review",
+      "desktop-app",
+      "developer-tools",
+      "diff",
+      "git",
+      "github",
+      "herdr",
+      "herdr-plugin",
+      "mcp",
+      "model-context-protocol",
+      "pull-requests",
+      "ratatui",
+      "rust",
+      "svelte",
+      "tauri",
+      "tui"
+    ],
+    "createdAt": "2026-02-24T12:21:52Z",
+    "updatedAt": "2026-09-01T14:22:49Z",
+    "pushedAt": "2026-09-06T14:06:38Z",
+    "headCommit": "f8be0b72020ab38fcf782efac4a57404a187f36c",
+    "manifests": [
+      {
+        "path": "tools/herdr-easy-review/herdr-plugin.toml",
+        "id": "easy-review",
+        "name": "Easy Review",
+        "version": "0.1.0",
+        "minHerdrVersion": "0.7.0",
+        "description": "Open the Easy Review TUI on the current branch or a clicked PR.",
+        "platforms": [
+          "linux",
+          "macos",
+          "windows"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-24T08:01:28.237Z",
+    "starsDelta7d": 0,
     "starsDelta30d": null
   },
   {
@@ -9402,60 +9456,6 @@
     "starsDelta30d": 3
   },
   {
-    "id": 1165671599,
-    "fullName": "VilfredSikker/easy-review",
-    "owner": "VilfredSikker",
-    "name": "easy-review",
-    "description": "Git diff review for AI-assisted coding. Terminal TUI and Tauri desktop app.",
-    "url": "https://github.com/VilfredSikker/easy-review",
-    "stars": 3,
-    "forks": 0,
-    "openIssues": 11,
-    "language": "Rust",
-    "topics": [
-      "ai-code-review",
-      "cli",
-      "code-review",
-      "desktop-app",
-      "developer-tools",
-      "diff",
-      "git",
-      "github",
-      "herdr",
-      "herdr-plugin",
-      "mcp",
-      "model-context-protocol",
-      "pull-requests",
-      "ratatui",
-      "rust",
-      "svelte",
-      "tauri",
-      "tui"
-    ],
-    "createdAt": "2026-02-24T12:21:52Z",
-    "updatedAt": "2026-09-01T14:22:49Z",
-    "pushedAt": "2026-09-04T10:05:03Z",
-    "headCommit": "f8be0b72020ab38fcf782efac4a57404a187f36c",
-    "manifests": [
-      {
-        "path": "tools/herdr-easy-review/herdr-plugin.toml",
-        "id": "easy-review",
-        "name": "Easy Review",
-        "version": "0.1.0",
-        "minHerdrVersion": "0.7.0",
-        "description": "Open the Easy Review TUI on the current branch or a clicked PR.",
-        "platforms": [
-          "linux",
-          "macos",
-          "windows"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-24T08:01:28.237Z",
-    "starsDelta7d": 0,
-    "starsDelta30d": null
-  },
-  {
     "id": 1312744807,
     "fullName": "thuanlm215/advanced-herdr-file-viewer",
     "owner": "thuanlm215",
@@ -9496,6 +9496,49 @@
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
     "starsDelta7d": 0,
     "starsDelta30d": 2
+  },
+  {
+    "id": 1311064082,
+    "fullName": "matheus3301/herdr-phone",
+    "owner": "matheus3301",
+    "name": "herdr-phone",
+    "description": "Mobile remote console for Herdr over Cloudflare Tunnel and Access",
+    "url": "https://github.com/matheus3301/herdr-phone",
+    "stars": 3,
+    "forks": 2,
+    "openIssues": 11,
+    "language": "Go",
+    "topics": [
+      "cloudflare-tunnel",
+      "coding-agents",
+      "developer-tools",
+      "golang",
+      "herdr-plugin",
+      "mobile",
+      "pwa",
+      "react",
+      "remote-terminal"
+    ],
+    "createdAt": "2026-07-24T13:25:48Z",
+    "updatedAt": "2026-09-06T13:57:34Z",
+    "pushedAt": "2026-09-04T00:44:09Z",
+    "headCommit": "4c16d778923da0ffb7bb792bbc3c15f71c2d791d",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "matheus3301.phone",
+        "name": "Herdr Phone",
+        "version": "0.4.0",
+        "minHerdrVersion": "0.7.5",
+        "description": "Use your Mac's Herdr session from your phone, over a Cloudflare tunnel",
+        "platforms": [
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-06T15:30:31.562Z",
+    "starsDelta7d": 1,
+    "starsDelta30d": 1
   },
   {
     "id": 1342717931,
@@ -11776,6 +11819,81 @@
     "starsDelta30d": 0
   },
   {
+    "id": 1342567425,
+    "fullName": "ShoMasegi/herdr-worktree-nav",
+    "owner": "ShoMasegi",
+    "name": "herdr-worktree-nav",
+    "description": null,
+    "url": "https://github.com/ShoMasegi/herdr-worktree-nav",
+    "stars": 2,
+    "forks": 0,
+    "openIssues": 15,
+    "language": "Rust",
+    "topics": [
+      "herdr",
+      "herdr-plugin",
+      "terminal"
+    ],
+    "createdAt": "2026-08-22T07:47:27Z",
+    "updatedAt": "2026-09-06T16:49:27Z",
+    "pushedAt": "2026-09-06T22:22:42Z",
+    "headCommit": "bd1cc0acbd910611fb6b9df7349e1b9672eec2e4",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "herdr-worktree-nav",
+        "name": "herdr-worktree-nav",
+        "version": "0.1.0",
+        "minHerdrVersion": "0.7.4",
+        "description": "Navigate herdr panes by repository and worktree, and turn any branch into a worktree pane.",
+        "platforms": [
+          "macos",
+          "linux"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-24T01:31:22.510Z",
+    "starsDelta7d": 1,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1325237643,
+    "fullName": "davidolrik/herdr-titles",
+    "owner": "davidolrik",
+    "name": "herdr-titles",
+    "description": "Herdr Titles that keep up. \u2013 herdr-titles names your tabs and windows after what's actually running; including your AI agents' live session titles \u2014 and composes the window title from workspace, tab, agent-attention counts, and your shell environment via a small HCL template. Instant, near-zero CPU. Zero config to start, endlessly tweakable.",
+    "url": "https://github.com/davidolrik/herdr-titles",
+    "stars": 2,
+    "forks": 2,
+    "openIssues": 1,
+    "language": "Go",
+    "topics": [
+      "ai-assisted",
+      "herdr-plugin"
+    ],
+    "createdAt": "2026-08-06T12:52:42Z",
+    "updatedAt": "2026-09-06T20:59:25Z",
+    "pushedAt": "2026-09-06T20:59:26Z",
+    "headCommit": "d587120444d83bea705fb670d12be537ed68838e",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "davidolrik.titles",
+        "name": "Herdr Titles",
+        "version": "0.15.0",
+        "minHerdrVersion": "0.8.2",
+        "description": "Titles that keep up. herdr-titles names your tabs after what's actually running \u2014 including your AI agents' live session titles \u2014 and composes the window title from workspace, tab, agent-attention counts, and your shell environment via a small HCL template. Instant, self-healing, near-zero CPU. Zero config to start, endlessly tweakable.",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-10T13:31:12.823Z",
+    "starsDelta7d": 0,
+    "starsDelta30d": null
+  },
+  {
     "id": 1351905524,
     "fullName": "shaozk/herdr-shadow-pane",
     "owner": "shaozk",
@@ -11811,44 +11929,6 @@
     ],
     "firstSeenAt": "2026-09-03T07:01:17.660Z",
     "starsDelta7d": null,
-    "starsDelta30d": null
-  },
-  {
-    "id": 1342567425,
-    "fullName": "ShoMasegi/herdr-worktree-nav",
-    "owner": "ShoMasegi",
-    "name": "herdr-worktree-nav",
-    "description": null,
-    "url": "https://github.com/ShoMasegi/herdr-worktree-nav",
-    "stars": 2,
-    "forks": 0,
-    "openIssues": 10,
-    "language": "Rust",
-    "topics": [
-      "herdr",
-      "herdr-plugin",
-      "terminal"
-    ],
-    "createdAt": "2026-08-22T07:47:27Z",
-    "updatedAt": "2026-09-05T22:28:18Z",
-    "pushedAt": "2026-09-06T06:09:27Z",
-    "headCommit": "3aabfd912132f246d7c6b674669606e91e4fea70",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "herdr-worktree-nav",
-        "name": "herdr-worktree-nav",
-        "version": "0.1.0",
-        "minHerdrVersion": "0.7.4",
-        "description": "Navigate herdr panes by repository and worktree, and turn any branch into a worktree pane.",
-        "platforms": [
-          "macos",
-          "linux"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-24T01:31:22.510Z",
-    "starsDelta7d": 1,
     "starsDelta30d": null
   },
   {
@@ -11926,6 +12006,48 @@
       }
     ],
     "firstSeenAt": "2026-09-02T08:01:36.450Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1350159598,
+    "fullName": "teasec4/herdr-mobile-app",
+    "owner": "teasec4",
+    "name": "herdr-mobile-app",
+    "description": "Native companion app + lightweight Go relay: stream live agent terminal output to your phone, check statuses, and send prompts \u2014 over LAN, Tailscale, or Funnel",
+    "url": "https://github.com/teasec4/herdr-mobile-app",
+    "stars": 2,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "Dart",
+    "topics": [
+      "ai",
+      "devtools",
+      "flutter",
+      "herdr",
+      "herdr-integration",
+      "herdr-mobile",
+      "herdr-plugin",
+      "remote-control"
+    ],
+    "createdAt": "2026-08-29T00:57:25Z",
+    "updatedAt": "2026-09-06T13:56:06Z",
+    "pushedAt": "2026-09-05T14:09:10Z",
+    "headCommit": "02734041410404ef0d3f6bcaf2a9379517439967",
+    "manifests": [
+      {
+        "path": "plugin/herdr-plugin.toml",
+        "id": "herdrelay.events",
+        "name": "Herdr Mobile",
+        "version": "0.5.0",
+        "minHerdrVersion": "0.8.0",
+        "description": "Native mobile app for Herdr: watch live agent terminal output, check statuses, and send prompts from your phone over LAN/Tailscale/Funnel",
+        "platforms": [
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-31T05:01:37.421Z",
     "starsDelta7d": null,
     "starsDelta30d": null
   },
@@ -12169,49 +12291,6 @@
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
     "starsDelta7d": 0,
     "starsDelta30d": 1
-  },
-  {
-    "id": 1311064082,
-    "fullName": "matheus3301/herdr-phone",
-    "owner": "matheus3301",
-    "name": "herdr-phone",
-    "description": "Mobile remote console for Herdr over Cloudflare Tunnel and Access",
-    "url": "https://github.com/matheus3301/herdr-phone",
-    "stars": 2,
-    "forks": 2,
-    "openIssues": 11,
-    "language": "Go",
-    "topics": [
-      "cloudflare-tunnel",
-      "coding-agents",
-      "developer-tools",
-      "golang",
-      "herdr-plugin",
-      "mobile",
-      "pwa",
-      "react",
-      "remote-terminal"
-    ],
-    "createdAt": "2026-07-24T13:25:48Z",
-    "updatedAt": "2026-07-30T18:20:33Z",
-    "pushedAt": "2026-09-04T00:44:09Z",
-    "headCommit": "4c16d778923da0ffb7bb792bbc3c15f71c2d791d",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "matheus3301.phone",
-        "name": "Herdr Phone",
-        "version": "0.4.0",
-        "minHerdrVersion": "0.7.5",
-        "description": "Use your Mac's Herdr session from your phone, over a Cloudflare tunnel",
-        "platforms": [
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 0,
-    "starsDelta30d": 0
   },
   {
     "id": 1330130607,
@@ -12984,6 +13063,42 @@
     "starsDelta30d": null
   },
   {
+    "id": 1344606069,
+    "fullName": "choplin/herdr-next-agent",
+    "owner": "choplin",
+    "name": "herdr-next-agent",
+    "description": "Move between Herdr agents in configured semantic states.",
+    "url": "https://github.com/choplin/herdr-next-agent",
+    "stars": 2,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "Go",
+    "topics": [
+      "herdr-plugin"
+    ],
+    "createdAt": "2026-08-24T06:14:00Z",
+    "updatedAt": "2026-09-06T18:05:37Z",
+    "pushedAt": "2026-08-24T06:47:17Z",
+    "headCommit": "ca2c784326378b964d012cfb56c15da3757ce9f5",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "choplin.next-agent",
+        "name": "Next Agent",
+        "version": "0.1.1",
+        "minHerdrVersion": "0.8.2",
+        "description": "Move between Agents in configured semantic states",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-24T06:31:24.118Z",
+    "starsDelta7d": 2,
+    "starsDelta30d": null
+  },
+  {
     "id": 1316183725,
     "fullName": "kosuketut/herdr-remotedownloder",
     "owner": "kosuketut",
@@ -13336,43 +13451,6 @@
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
     "starsDelta7d": 0,
     "starsDelta30d": 2
-  },
-  {
-    "id": 1325237643,
-    "fullName": "davidolrik/herdr-titles",
-    "owner": "davidolrik",
-    "name": "herdr-titles",
-    "description": "Herdr Titles that keep up. \u2013 herdr-titles names your tabs and windows after what's actually running; including your AI agents' live session titles \u2014 and composes the window title from workspace, tab, agent-attention counts, and your shell environment via a small HCL template. Instant, near-zero CPU. Zero config to start, endlessly tweakable.",
-    "url": "https://github.com/davidolrik/herdr-titles",
-    "stars": 2,
-    "forks": 2,
-    "openIssues": 1,
-    "language": "Go",
-    "topics": [
-      "ai-assisted",
-      "herdr-plugin"
-    ],
-    "createdAt": "2026-08-06T12:52:42Z",
-    "updatedAt": "2026-08-26T13:05:43Z",
-    "pushedAt": "2026-08-18T10:13:21Z",
-    "headCommit": "e6ac6b9d8352f9c3124ff1502568cd284bcae6e6",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "davidolrik.titles",
-        "name": "Herdr Titles",
-        "version": "0.14.0",
-        "minHerdrVersion": "0.7.5",
-        "description": "Titles that keep up. herdr-titles names your tabs after what's actually running \u2014 including your AI agents' live session titles \u2014 and composes the window title from workspace, tab, agent-attention counts, and your shell environment via a small HCL template. Instant, self-healing, near-zero CPU. Zero config to start, endlessly tweakable.",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-10T13:31:12.823Z",
-    "starsDelta7d": 0,
-    "starsDelta30d": null
   },
   {
     "id": 1328872414,
@@ -14515,6 +14593,44 @@
     "firstSeenAt": "2026-08-06T15:30:31.562Z",
     "starsDelta7d": 0,
     "starsDelta30d": 0
+  },
+  {
+    "id": 1318645671,
+    "fullName": "aneym/herdr-voice",
+    "owner": "aneym",
+    "name": "herdr-voice",
+    "description": "Voice control for herdr \u2014 speak to create spaces, split panes, and drive coding agents. OpenAI Realtime + floating HUD with live dictation and transcripts.",
+    "url": "https://github.com/aneym/herdr-voice",
+    "stars": 2,
+    "forks": 1,
+    "openIssues": 0,
+    "language": "JavaScript",
+    "topics": [
+      "herdr",
+      "herdr-plugin",
+      "openai-realtime-api",
+      "voice"
+    ],
+    "createdAt": "2026-07-31T18:30:14Z",
+    "updatedAt": "2026-09-06T12:13:42Z",
+    "pushedAt": "2026-08-01T03:50:22Z",
+    "headCommit": "4577631a789c42d6477a356c4ed6523752c2f98f",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "herdr-voice",
+        "name": "Voice",
+        "version": "0.2.0",
+        "minHerdrVersion": "0.7.0",
+        "description": "Voice control for herdr via the OpenAI Realtime API \u2014 speak to create spaces, split panes, apply layouts, and start/prompt agents. Compact HUD with live dictation, clickable toggles, and persisted transcripts.",
+        "platforms": [
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-06T15:30:31.562Z",
+    "starsDelta7d": 1,
+    "starsDelta30d": 2
   },
   {
     "id": 1317283324,
@@ -15885,6 +16001,229 @@
     "starsDelta30d": 1
   },
   {
+    "id": 1329422963,
+    "fullName": "andschneider/roboherd",
+    "owner": "andschneider",
+    "name": "roboherd",
+    "description": "roborev review status and actions inside your herdr workspace",
+    "url": "https://github.com/andschneider/roboherd",
+    "stars": 1,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "Rust",
+    "topics": [
+      "herdr",
+      "herdr-plugin",
+      "rust",
+      "tui"
+    ],
+    "createdAt": "2026-08-10T04:35:22Z",
+    "updatedAt": "2026-09-06T21:34:22Z",
+    "pushedAt": "2026-09-06T21:34:19Z",
+    "headCommit": "9bb81f36d26c3ed72b09bce006b59bd994f17217",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "roboherd",
+        "name": "Roborev",
+        "version": "0.2.0",
+        "minHerdrVersion": "0.7.5",
+        "description": "Inspect roborev reviews, launch new ones, and get notified when they finish",
+        "platforms": [
+          "macos",
+          "linux"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-12T04:30:50.339Z",
+    "starsDelta7d": 0,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1358388485,
+    "fullName": "TawfiqAbubaker/scoopr",
+    "owner": "TawfiqAbubaker",
+    "name": "scoopr",
+    "description": "Herdr plugin for copying anything to the terminal without using the mouse, inspired by extrakto for tmux.",
+    "url": "https://github.com/TawfiqAbubaker/scoopr",
+    "stars": 1,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "Rust",
+    "topics": [
+      "herdr-plugin"
+    ],
+    "createdAt": "2026-09-05T16:58:06Z",
+    "updatedAt": "2026-09-06T21:02:34Z",
+    "pushedAt": "2026-09-06T21:02:30Z",
+    "headCommit": "75ddc5a0872cc62ce943a0318cf1fe2b3cef8d0b",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "scoopr",
+        "name": "Scoopr",
+        "version": "0.1.0",
+        "minHerdrVersion": "0.7.0",
+        "description": "Scoop text from a Herdr pane and copy or insert it",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-09-06T00:31:05.532Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1357492325,
+    "fullName": "tupton/herdr-worktree-include",
+    "owner": "tupton",
+    "name": "herdr-worktree-include",
+    "description": "Symlink or copy untracked files to git worktrees created by herdr.",
+    "url": "https://github.com/tupton/herdr-worktree-include",
+    "stars": 1,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "Shell",
+    "topics": [
+      "herdr-plugin"
+    ],
+    "createdAt": "2026-09-04T18:50:20Z",
+    "updatedAt": "2026-09-06T19:30:27Z",
+    "pushedAt": "2026-09-06T19:30:44Z",
+    "headCommit": "eaed0caf65a88ff5c2af1726479e8dd47833618c",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "dev.tupton.worktree-include",
+        "name": "Worktree Include",
+        "version": "0.5.0",
+        "minHerdrVersion": "0.7.0",
+        "description": "Copy or symlink selected local files into new worktrees.",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-09-04T19:30:53.543Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1342249584,
+    "fullName": "guidodinello/herdr-routines",
+    "owner": "guidodinello",
+    "name": "herdr-routines",
+    "description": null,
+    "url": "https://github.com/guidodinello/herdr-routines",
+    "stars": 1,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "Python",
+    "topics": [
+      "herdr-plugin"
+    ],
+    "createdAt": "2026-08-21T21:51:07Z",
+    "updatedAt": "2026-09-06T17:17:23Z",
+    "pushedAt": "2026-09-06T17:17:20Z",
+    "headCommit": "7f4ebab3270983afcda851a02335e031663f8edf",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "herdr-routines",
+        "name": "herdr-routines",
+        "version": "0.1.0",
+        "minHerdrVersion": "0.7.0",
+        "description": "Trigger herdr-routines jobs and status from inside Herdr",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-25T05:01:25.042Z",
+    "starsDelta7d": 0,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1358933831,
+    "fullName": "dibin666/herdr-remote",
+    "owner": "dibin666",
+    "name": "herdr-remote",
+    "description": "Remote browser access to your Herdr terminal workspaces",
+    "url": "https://github.com/dibin666/herdr-remote",
+    "stars": 1,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "TypeScript",
+    "topics": [
+      "herdr-plugin",
+      "herdr-plugins"
+    ],
+    "createdAt": "2026-09-06T08:23:33Z",
+    "updatedAt": "2026-09-06T17:11:49Z",
+    "pushedAt": "2026-09-06T17:12:22Z",
+    "headCommit": "97a2e9440dec773f620f8ee150fc46012d923f9e",
+    "manifests": [
+      {
+        "path": "packages/cli/herdr-plugin.toml",
+        "id": "herdr.remote.web",
+        "name": "Herdr Remote Web",
+        "version": "0.2.3",
+        "minHerdrVersion": "0.8.2",
+        "description": "Browser access to Herdr workspaces via local or self-hosted relay",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-09-06T10:01:09.833Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1359167472,
+    "fullName": "TinyWhite1997/herdr-flash-picker",
+    "owner": "TinyWhite1997",
+    "name": "herdr-flash-picker",
+    "description": "Fast pane picker for Herdr with aligned one- or two-letter jump labels",
+    "url": "https://github.com/TinyWhite1997/herdr-flash-picker",
+    "stars": 1,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "Rust",
+    "topics": [
+      "herdr",
+      "herdr-plugin",
+      "rust",
+      "tui"
+    ],
+    "createdAt": "2026-09-06T13:28:02Z",
+    "updatedAt": "2026-09-06T13:47:53Z",
+    "pushedAt": "2026-09-06T13:47:47Z",
+    "headCommit": "361be2e2688676af3eefde8f3de2dc8b033ab131",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "herdr-flash-picker",
+        "name": "herdr-flash-picker",
+        "version": "0.1.0",
+        "minHerdrVersion": "0.8.0",
+        "description": "Jump directly to a pane by typing its one- or two-letter label",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-09-06T13:31:05.457Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
     "id": 1342562987,
     "fullName": "LZHcode1986/herdr-link",
     "owner": "LZHcode1986",
@@ -15918,78 +16257,6 @@
       }
     ],
     "firstSeenAt": "2026-08-25T14:31:26.382Z",
-    "starsDelta7d": 0,
-    "starsDelta30d": null
-  },
-  {
-    "id": 1357492325,
-    "fullName": "tupton/herdr-worktree-include",
-    "owner": "tupton",
-    "name": "herdr-worktree-include",
-    "description": "Symlink or copy untracked files to git worktrees created by herdr.",
-    "url": "https://github.com/tupton/herdr-worktree-include",
-    "stars": 1,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "Shell",
-    "topics": [
-      "herdr-plugin"
-    ],
-    "createdAt": "2026-09-04T18:50:20Z",
-    "updatedAt": "2026-09-06T05:46:54Z",
-    "pushedAt": "2026-09-06T05:47:49Z",
-    "headCommit": "0fa4ed95a354360300851aaf4a5356961d873e99",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "dev.tupton.worktree-include",
-        "name": "Worktree Include",
-        "version": "0.4.0",
-        "minHerdrVersion": "0.7.0",
-        "description": "Copy or symlink selected local files into new worktrees.",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-09-04T19:30:53.543Z",
-    "starsDelta7d": null,
-    "starsDelta30d": null
-  },
-  {
-    "id": 1342249584,
-    "fullName": "guidodinello/herdr-routines",
-    "owner": "guidodinello",
-    "name": "herdr-routines",
-    "description": null,
-    "url": "https://github.com/guidodinello/herdr-routines",
-    "stars": 1,
-    "forks": 0,
-    "openIssues": 1,
-    "language": "Python",
-    "topics": [
-      "herdr-plugin"
-    ],
-    "createdAt": "2026-08-21T21:51:07Z",
-    "updatedAt": "2026-09-06T04:18:36Z",
-    "pushedAt": "2026-09-06T05:08:17Z",
-    "headCommit": "ef20f0e854fd7805c73ecd0e6e7fddfa2ded04fb",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "herdr-routines",
-        "name": "herdr-routines",
-        "version": "0.1.0",
-        "minHerdrVersion": "0.7.0",
-        "description": "Trigger herdr-routines jobs and status from inside Herdr",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-25T05:01:25.042Z",
     "starsDelta7d": 0,
     "starsDelta30d": null
   },
@@ -16106,48 +16373,6 @@
       }
     ],
     "firstSeenAt": "2026-09-05T17:00:55.322Z",
-    "starsDelta7d": null,
-    "starsDelta30d": null
-  },
-  {
-    "id": 1350159598,
-    "fullName": "teasec4/herdr-mobile-app",
-    "owner": "teasec4",
-    "name": "herdr-mobile-app",
-    "description": "Native companion app + lightweight Go relay: stream live agent terminal output to your phone, check statuses, and send prompts \u2014 over LAN, Tailscale, or Funnel",
-    "url": "https://github.com/teasec4/herdr-mobile-app",
-    "stars": 1,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "Dart",
-    "topics": [
-      "ai",
-      "devtools",
-      "flutter",
-      "herdr",
-      "herdr-integration",
-      "herdr-mobile",
-      "herdr-plugin",
-      "remote-control"
-    ],
-    "createdAt": "2026-08-29T00:57:25Z",
-    "updatedAt": "2026-09-05T14:09:13Z",
-    "pushedAt": "2026-09-05T14:09:10Z",
-    "headCommit": "02734041410404ef0d3f6bcaf2a9379517439967",
-    "manifests": [
-      {
-        "path": "plugin/herdr-plugin.toml",
-        "id": "herdrelay.events",
-        "name": "Herdr Mobile",
-        "version": "0.5.0",
-        "minHerdrVersion": "0.8.0",
-        "description": "Native mobile app for Herdr: watch live agent terminal output, check statuses, and send prompts from your phone over LAN/Tailscale/Funnel",
-        "platforms": [
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-31T05:01:37.421Z",
     "starsDelta7d": null,
     "starsDelta30d": null
   },
@@ -18220,45 +18445,6 @@
     "starsDelta30d": null
   },
   {
-    "id": 1329422963,
-    "fullName": "andschneider/roboherd",
-    "owner": "andschneider",
-    "name": "roboherd",
-    "description": "roborev review status and actions inside your herdr workspace",
-    "url": "https://github.com/andschneider/roboherd",
-    "stars": 1,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "Rust",
-    "topics": [
-      "herdr",
-      "herdr-plugin",
-      "rust",
-      "tui"
-    ],
-    "createdAt": "2026-08-10T04:35:22Z",
-    "updatedAt": "2026-08-25T06:18:26Z",
-    "pushedAt": "2026-08-25T06:18:49Z",
-    "headCommit": "78948ccc4a2df59dc1f67e4cf4c344e3fccf1f2b",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "roboherd",
-        "name": "Roborev",
-        "version": "0.2.0",
-        "minHerdrVersion": "0.7.5",
-        "description": "Inspect roborev reviews, launch new ones, and get notified when they finish",
-        "platforms": [
-          "macos",
-          "linux"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-12T04:30:50.339Z",
-    "starsDelta7d": 0,
-    "starsDelta30d": null
-  },
-  {
     "id": 1345587378,
     "fullName": "zackshen/herdr-translate",
     "owner": "zackshen",
@@ -18359,7 +18545,7 @@
       "labs"
     ],
     "createdAt": "2026-07-16T17:50:13Z",
-    "updatedAt": "2026-08-24T17:57:54Z",
+    "updatedAt": "2026-09-06T13:42:41Z",
     "pushedAt": "2026-08-24T17:53:02Z",
     "headCommit": "1c5073dda70c792b2e66683c007b69d9c426efe5",
     "manifests": [
@@ -19138,6 +19324,43 @@
     ],
     "firstSeenAt": "2026-08-21T03:01:22.655Z",
     "starsDelta7d": 0,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1339869734,
+    "fullName": "gabriel-laet/herdr-cursor",
+    "owner": "gabriel-laet",
+    "name": "herdr-cursor",
+    "description": "Cursor cloud agents as first-class herdr panes",
+    "url": "https://github.com/gabriel-laet/herdr-cursor",
+    "stars": 1,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "TypeScript",
+    "topics": [
+      "herdr-plugin"
+    ],
+    "createdAt": "2026-08-19T17:48:46Z",
+    "updatedAt": "2026-09-06T16:35:50Z",
+    "pushedAt": "2026-08-21T03:01:37Z",
+    "headCommit": "e7aacf992b5030931d1c79086c52200476b42091",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "cursor.cloud",
+        "name": "Cursor Cloud Agents",
+        "version": "0.2.0",
+        "minHerdrVersion": "0.8.0",
+        "description": "Cursor cloud agents as first-class herdr panes: roster, attach streams, state bridge",
+        "platforms": [
+          "linux",
+          "macos",
+          "windows"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-20T13:31:29.507Z",
+    "starsDelta7d": 1,
     "starsDelta30d": null
   },
   {
@@ -21239,6 +21462,42 @@
     "starsDelta30d": 1
   },
   {
+    "id": 1317801348,
+    "fullName": "zerodice0/herdr-plugin-worktree-bootstrap",
+    "owner": "zerodice0",
+    "name": "herdr-plugin-worktree-bootstrap",
+    "description": "Safely copy ignored local files and run setup commands in new Herdr Git worktrees",
+    "url": "https://github.com/zerodice0/herdr-plugin-worktree-bootstrap",
+    "stars": 1,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "Python",
+    "topics": [
+      "herdr-plugin"
+    ],
+    "createdAt": "2026-07-31T01:00:30Z",
+    "updatedAt": "2026-09-06T16:02:19Z",
+    "pushedAt": "2026-08-03T09:44:03Z",
+    "headCommit": "85427a6adfa883c7c001602f879cccdc95201e45",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "zerodice0.worktree-bootstrap",
+        "name": "Worktree Bootstrap",
+        "version": "0.4.0",
+        "minHerdrVersion": "0.7.0",
+        "description": "Bootstrap new worktrees and interactively review local branch cleanup after removal.",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-06T15:30:31.562Z",
+    "starsDelta7d": 1,
+    "starsDelta30d": 1
+  },
+  {
     "id": 1319918159,
     "fullName": "joshka0/herdr-watcher",
     "owner": "joshka0",
@@ -21303,44 +21562,6 @@
         "description": "Direction-aware pane navigation that remembers the last active pane per split (tmux-style)",
         "platforms": [
           "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 0,
-    "starsDelta30d": 1
-  },
-  {
-    "id": 1318645671,
-    "fullName": "aneym/herdr-voice",
-    "owner": "aneym",
-    "name": "herdr-voice",
-    "description": "Voice control for herdr \u2014 speak to create spaces, split panes, and drive coding agents. OpenAI Realtime + floating HUD with live dictation and transcripts.",
-    "url": "https://github.com/aneym/herdr-voice",
-    "stars": 1,
-    "forks": 1,
-    "openIssues": 0,
-    "language": "JavaScript",
-    "topics": [
-      "herdr",
-      "herdr-plugin",
-      "openai-realtime-api",
-      "voice"
-    ],
-    "createdAt": "2026-07-31T18:30:14Z",
-    "updatedAt": "2026-08-09T04:03:40Z",
-    "pushedAt": "2026-08-01T03:50:22Z",
-    "headCommit": "4577631a789c42d6477a356c4ed6523752c2f98f",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "herdr-voice",
-        "name": "Voice",
-        "version": "0.2.0",
-        "minHerdrVersion": "0.7.0",
-        "description": "Voice control for herdr via the OpenAI Realtime API \u2014 speak to create spaces, split panes, apply layouts, and start/prompt agents. Compact HUD with live dictation, clickable toggles, and persisted transcripts.",
-        "platforms": [
           "macos"
         ]
       }
@@ -23332,39 +23553,717 @@
     "starsDelta30d": 0
   },
   {
-    "id": 1358933831,
-    "fullName": "dibin666/herdr-remote",
-    "owner": "dibin666",
-    "name": "herdr-remote",
-    "description": "Remote browser access to your Herdr terminal workspaces",
-    "url": "https://github.com/dibin666/herdr-remote",
+    "id": 1359502328,
+    "fullName": "maxguzenski/herdr-pr-watch",
+    "owner": "maxguzenski",
+    "name": "herdr-pr-watch",
+    "description": "Herdr plugin: GitHub PR status of each workspace and agent pane in the sidebar",
+    "url": "https://github.com/maxguzenski/herdr-pr-watch",
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "language": "TypeScript",
+    "language": "Python",
     "topics": [
-      "herdr-plugin",
-      "herdr-plugins"
+      "github-pull-requests",
+      "herdr",
+      "herdr-plugin"
     ],
-    "createdAt": "2026-09-06T08:23:33Z",
-    "updatedAt": "2026-09-06T10:20:54Z",
-    "pushedAt": "2026-09-06T09:56:28Z",
-    "headCommit": "5003c12584c0677dc855bb5d037e7e674610044a",
+    "createdAt": "2026-09-06T20:49:02Z",
+    "updatedAt": "2026-09-06T22:00:07Z",
+    "pushedAt": "2026-09-06T21:35:35Z",
+    "headCommit": "965965a739e71692a97cdf82e60c915c9e1832c0",
     "manifests": [
       {
-        "path": "packages/cli/herdr-plugin.toml",
-        "id": "herdr.remote.web",
-        "name": "Herdr Remote Web",
-        "version": "0.2.3",
+        "path": "herdr-plugin.toml",
+        "id": "pr-watch",
+        "name": "PR Watch",
+        "version": "0.1.0",
         "minHerdrVersion": "0.8.2",
-        "description": "Mobile-first remote access to the native Herdr TUI through a local or self-hosted relay",
+        "description": "Labels workspaces and agent panes with their branch's GitHub PR status.",
         "platforms": [
           "linux",
           "macos"
         ]
       }
     ],
-    "firstSeenAt": "2026-09-06T10:01:09.833Z",
+    "firstSeenAt": "2026-09-06T22:01:06.209Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1353013233,
+    "fullName": "huketo/herdr-hitl",
+    "owner": "huketo",
+    "name": "herdr-hitl",
+    "description": "Block a Herdr coding agent on a human decision, delivered to your phone over Telegram or Discord",
+    "url": "https://github.com/huketo/herdr-hitl",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 2,
+    "language": "Go",
+    "topics": [
+      "agent-skill",
+      "ai-agents",
+      "cli",
+      "discord-bot",
+      "go",
+      "golang",
+      "herdr",
+      "herdr-plugin",
+      "human-in-the-loop",
+      "telegram-bot"
+    ],
+    "createdAt": "2026-09-01T01:30:32Z",
+    "updatedAt": "2026-09-03T01:43:00Z",
+    "pushedAt": "2026-09-06T21:04:04Z",
+    "headCommit": "5ecdaf116d311bb7d4d373c82b9792f16b689a10",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "huketo.hitl",
+        "name": "Herdr HITL",
+        "version": "0.2.0",
+        "minHerdrVersion": "0.8.0",
+        "description": "Block a coding agent on a human decision delivered over Telegram or Discord.",
+        "platforms": [
+          "linux",
+          "macos",
+          "windows"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-09-01T07:01:43.228Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1329658790,
+    "fullName": "m1sk9/herdr-worktree-hooks-plugin",
+    "owner": "m1sk9",
+    "name": "herdr-worktree-hooks-plugin",
+    "description": "A plugin that adds customizable hooks to Herdr's Worktree",
+    "url": "https://github.com/m1sk9/herdr-worktree-hooks-plugin",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 3,
+    "language": "Rust",
+    "topics": [
+      "herdr-plugin"
+    ],
+    "createdAt": "2026-08-10T09:41:51Z",
+    "updatedAt": "2026-09-05T23:59:00Z",
+    "pushedAt": "2026-09-06T21:01:24Z",
+    "headCommit": "f359a765c000c7a6c848972f4b401e777ee1efea",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "m1sk9.worktree-hooks",
+        "name": "Worktree Hooks",
+        "version": "0.1.1",
+        "minHerdrVersion": "0.8.0",
+        "description": "Copy gitignored files from the main checkout and run setup commands when a worktree is created",
+        "platforms": [
+          "macos",
+          "linux"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-11T12:30:47.072Z",
+    "starsDelta7d": 0,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1358360480,
+    "fullName": "oddurs/namesync",
+    "owner": "oddurs",
+    "name": "namesync",
+    "description": "Names herdr workspaces, tabs and agents from the intent the coding agent already publishes. No model call, no API key.",
+    "url": "https://github.com/oddurs/namesync",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "JavaScript",
+    "topics": [
+      "claude-code",
+      "herdr-plugin",
+      "terminal",
+      "tmux"
+    ],
+    "createdAt": "2026-09-05T16:21:56Z",
+    "updatedAt": "2026-09-06T21:00:26Z",
+    "pushedAt": "2026-09-06T21:00:18Z",
+    "headCommit": "f598bf6f7e9edacdf10ffcf5831cf56d2d458805",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "namesync",
+        "name": "Namesync",
+        "version": "0.1.0",
+        "minHerdrVersion": "0.8.0",
+        "description": "Renames workspaces, tabs and agents from the coding agent's own intent. Event-driven, no LLM calls, no API keys.",
+        "platforms": [
+          "linux",
+          "macos",
+          "windows"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-09-05T16:30:56.215Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1352645497,
+    "fullName": "kewah/herdr-tab-titles",
+    "owner": "kewah",
+    "name": "herdr-tab-titles",
+    "description": "Herdr plugin that names panes and tabs after the first coding-agent prompt.",
+    "url": "https://github.com/kewah/herdr-tab-titles",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "JavaScript",
+    "topics": [
+      "herdr-plugin"
+    ],
+    "createdAt": "2026-08-31T16:48:32Z",
+    "updatedAt": "2026-09-06T20:56:35Z",
+    "pushedAt": "2026-09-06T20:56:31Z",
+    "headCommit": "3c8a63db78547be8f513dbb647fd62bab0125c02",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "tab-titles",
+        "name": "Tab Titles",
+        "version": "0.10.0",
+        "minHerdrVersion": "0.8.0",
+        "description": "Names Herdr panes and tabs after the first coding-agent prompt, or the foreground process when there is no chat title.",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-31T19:01:43.913Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1349952089,
+    "fullName": "jtnovellis/herdr-nvim",
+    "owner": "jtnovellis",
+    "name": "herdr-nvim",
+    "description": "Neovim inside Herdr: a per-tab full-height sidebar, and a real round trip with your coding agent \u2014 ask about the code you're looking at, read the answer without leaving Neovim, and step through the edits it made.",
+    "url": "https://github.com/jtnovellis/herdr-nvim",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "Rust",
+    "topics": [
+      "ai-agents",
+      "claude-code",
+      "developer-tools",
+      "herdr",
+      "herdr-plugin",
+      "lua",
+      "neovim",
+      "neovim-plugin",
+      "nvim",
+      "rust",
+      "terminal",
+      "terminal-multiplexer"
+    ],
+    "createdAt": "2026-08-28T19:08:45Z",
+    "updatedAt": "2026-09-06T19:51:30Z",
+    "pushedAt": "2026-09-06T19:51:26Z",
+    "headCommit": "aafa32ceca90237b87e0647d4381b744906f4b71",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "herdr-nvim",
+        "name": "Herdr Neovim",
+        "version": "0.2.3",
+        "minHerdrVersion": "0.8.2",
+        "description": "Per-tab Neovim sidebars backed by headless daemons. Ask an agent about the code you are looking at, read its answer without leaving Neovim, and step through the edits it made with a key to put any of them back.",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-28T19:31:28.984Z",
+    "starsDelta7d": 0,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1358345466,
+    "fullName": "rchougule/herdr-highlights",
+    "owner": "rchougule",
+    "name": "herdr-highlights",
+    "description": "Highlight any sentence in an AI agent's reply, comment on it, and send the whole stack back to the agent in one paste. A Herdr plugin.",
+    "url": "https://github.com/rchougule/herdr-highlights",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "Rust",
+    "topics": [
+      "ai-agents",
+      "annotations",
+      "claude-code",
+      "code-review",
+      "comments",
+      "developer-tools",
+      "herdr",
+      "herdr-plugin",
+      "ratatui",
+      "rust",
+      "terminal",
+      "tui"
+    ],
+    "createdAt": "2026-09-05T16:01:38Z",
+    "updatedAt": "2026-09-06T19:39:09Z",
+    "pushedAt": "2026-09-06T19:39:05Z",
+    "headCommit": "82f6490ed2c738ccae59d2f3d8d51151256873bc",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "highlights",
+        "name": "highlights",
+        "version": "0.1.2",
+        "minHerdrVersion": "0.8.0",
+        "description": "Comment on any sentence of an agent's reply, keep the notes in a margin, and hand the stack back in one structured paste.",
+        "platforms": [
+          "macos",
+          "linux"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-09-06T16:31:09.874Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1359324403,
+    "fullName": "naturalmoods/herdr-telegram-notify",
+    "owner": "naturalmoods",
+    "name": "herdr-telegram-notify",
+    "description": "Herdr plugin: Telegram notification when an agent finishes or gets blocked \u2014 with the session title, project, duration, token use and the agent's last message.",
+    "url": "https://github.com/naturalmoods/herdr-telegram-notify",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "JavaScript",
+    "topics": [
+      "claude-code",
+      "herdr",
+      "herdr-plugin",
+      "notifications",
+      "telegram"
+    ],
+    "createdAt": "2026-09-06T16:29:03Z",
+    "updatedAt": "2026-09-06T19:30:28Z",
+    "pushedAt": "2026-09-06T19:30:21Z",
+    "headCommit": "f3a026d3a8bbb78405895b883ed7ef0d32224e8e",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "naturalmoods.herdr-telegram-notify",
+        "name": "Herdr Telegram Notify",
+        "version": "0.5.1",
+        "minHerdrVersion": "0.8.0",
+        "description": "Sends a Telegram message when a Herdr-managed agent finishes or gets blocked, with the session title, project, duration and the agent's last message.",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-09-06T18:01:11.482Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1356707618,
+    "fullName": "wazum/herdr-grazr",
+    "owner": "wazum",
+    "name": "herdr-grazr",
+    "description": "A simple and reliable auto account switcher for Claude Code: rotates to a fresh account before the 5-hour or weekly rate limit hits, so no pane ever stops at the usage quota. A Herdr plugin.",
+    "url": "https://github.com/wazum/herdr-grazr",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "Python",
+    "topics": [
+      "account-rotation",
+      "account-switcher",
+      "account-switching",
+      "anthropic",
+      "claude",
+      "claude-code",
+      "claude-code-plugin",
+      "cli",
+      "credentials",
+      "herdr",
+      "herdr-plugin",
+      "multi-account",
+      "oauth",
+      "python",
+      "quota",
+      "rate-limit",
+      "usage-limit"
+    ],
+    "createdAt": "2026-09-04T04:50:41Z",
+    "updatedAt": "2026-09-06T19:23:42Z",
+    "pushedAt": "2026-09-06T19:23:28Z",
+    "headCommit": "52ae21858a019fb20b60da75615678a98973f0b4",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "wazum.grazr",
+        "name": "grazr",
+        "version": "0.2.0",
+        "minHerdrVersion": "0.8.0",
+        "description": "Automatically switches Claude Code to another of your accounts before the usage limit hits: account rotation for multiple subscriptions, with no prompt and no lost turn",
+        "platforms": [
+          "macos",
+          "linux"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-09-04T21:00:56.677Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1348560077,
+    "fullName": "ponko2/herdr-equalize-panes",
+    "owner": "ponko2",
+    "name": "herdr-equalize-panes",
+    "description": "Automatically keeps panes in each tab evenly sized as panes are created, closed, moved, or exited.",
+    "url": "https://github.com/ponko2/herdr-equalize-panes",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 2,
+    "language": "Rust",
+    "topics": [
+      "herdr-plugin"
+    ],
+    "createdAt": "2026-08-27T14:04:22Z",
+    "updatedAt": "2026-09-05T16:57:22Z",
+    "pushedAt": "2026-09-06T18:57:07Z",
+    "headCommit": "f9d7b08c3964d241975dfa80b2bb5d447e6e32ff",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "ponko2.equalize-panes",
+        "name": "Equalize Panes",
+        "version": "0.2.2",
+        "minHerdrVersion": "0.8.2",
+        "description": "Keep panes the same size as the layout changes",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-27T18:31:31.078Z",
+    "starsDelta7d": 0,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1359352616,
+    "fullName": "kedwards/herdr-awst",
+    "owner": "kedwards",
+    "name": "herdr-awst",
+    "description": "AWST integration with herdr",
+    "url": "https://github.com/kedwards/herdr-awst",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "Shell",
+    "topics": [
+      "herdr-plugin"
+    ],
+    "createdAt": "2026-09-06T17:02:41Z",
+    "updatedAt": "2026-09-06T17:32:53Z",
+    "pushedAt": "2026-09-06T17:32:49Z",
+    "headCommit": "4d6dc5f700ce4e6c1d66aac119dc3d986c916829",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "herdr-awst",
+        "name": "AWST",
+        "version": "0.1.0",
+        "minHerdrVersion": "0.7.0",
+        "description": "Run awst login/logout in your current Herdr pane",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-09-06T17:31:06.369Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1358536208,
+    "fullName": "assawalhy/herdr-stay-awake",
+    "owner": "assawalhy",
+    "name": "herdr-stay-awake",
+    "description": "Keeps the machine from sleeping while any herdr agent pane is working (Linux, macOS, Windows, and WSL)",
+    "url": "https://github.com/assawalhy/herdr-stay-awake",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "JavaScript",
+    "topics": [
+      "agent-orchestration",
+      "agents",
+      "harness",
+      "herdr",
+      "herdr-plugin",
+      "linux",
+      "macos",
+      "plugin",
+      "windows",
+      "wsl",
+      "wsl2"
+    ],
+    "createdAt": "2026-09-05T20:25:09Z",
+    "updatedAt": "2026-09-06T17:18:56Z",
+    "pushedAt": "2026-09-06T17:17:37Z",
+    "headCommit": "24dc9000f19e90ae870ca32ca09fce7d694eacb5",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "assawalhy.stay-awake",
+        "name": "Stay Awake",
+        "version": "0.1.0",
+        "minHerdrVersion": "0.7.0",
+        "description": "Keeps the machine from sleeping while any herdr agent pane is working (Linux, macOS, Windows, and WSL)",
+        "platforms": [
+          "linux",
+          "macos",
+          "windows"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-09-06T17:31:06.369Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1359083482,
+    "fullName": "alkevintan/deepseek-counter-herdr",
+    "owner": "alkevintan",
+    "name": "deepseek-counter-herdr",
+    "description": "DeepSeek API credit in the herdr statusline \u2014 top-up spent, balance left, and today's pace toward a level month.",
+    "url": "https://github.com/alkevintan/deepseek-counter-herdr",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "Python",
+    "topics": [
+      "herdr-plugin"
+    ],
+    "createdAt": "2026-09-06T11:39:32Z",
+    "updatedAt": "2026-09-06T13:54:25Z",
+    "pushedAt": "2026-09-06T13:54:20Z",
+    "headCommit": "a45f9e380bb4124a2fe9969a9712885417926e21",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "deepseek.status",
+        "name": "DeepSeek Status",
+        "version": "0.3.0",
+        "minHerdrVersion": "0.8.0",
+        "description": "DeepSeek API credit in the herdr statusline \u2014 top-up spent, balance left, and today's pace toward a level month.",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-09-06T12:01:08.798Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1341241007,
+    "fullName": "hidekingerz/herdr-plugin-mado",
+    "owner": "hidekingerz",
+    "name": "herdr-plugin-mado",
+    "description": "herdr plugins that open agent-written markdown in mado, a TUI viewer, beside the agent writing it",
+    "url": "https://github.com/hidekingerz/herdr-plugin-mado",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "Shell",
+    "topics": [
+      "herdr-plugin",
+      "mado",
+      "markdown",
+      "tui"
+    ],
+    "createdAt": "2026-08-21T00:06:43Z",
+    "updatedAt": "2026-09-06T13:53:52Z",
+    "pushedAt": "2026-09-06T13:54:00Z",
+    "headCommit": "0b008c06198d19c39c9bd5c0998430dd39769317",
+    "manifests": [
+      {
+        "path": "agent-report-viewer/herdr-plugin.toml",
+        "id": "mado.agent-report-viewer",
+        "name": "mado agent report viewer",
+        "version": "0.2.0",
+        "minHerdrVersion": "0.8.0",
+        "description": "Show the markdown an agent run produced, in mado, when the run is done.",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      },
+      {
+        "path": "docs-peek/herdr-plugin.toml",
+        "id": "mado.docs-peek",
+        "name": "mado docs peek",
+        "version": "0.1.0",
+        "minHerdrVersion": "0.8.0",
+        "description": "Open the focused pane's docs in mado, in a split beside the agent that is writing them.",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      },
+      {
+        "path": "loop-dash/herdr-plugin.toml",
+        "id": "mado.loop-dash",
+        "name": "mado loop dash",
+        "version": "0.1.1",
+        "minHerdrVersion": "0.8.0",
+        "description": "Keep an agent loop's TASKS.md / log.md on screen in a mado pane that follows the files.",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-23T15:01:25.407Z",
+    "starsDelta7d": 0,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1359126297,
+    "fullName": "8liang/herdr-gotify",
+    "owner": "8liang",
+    "name": "herdr-gotify",
+    "description": null,
+    "url": "https://github.com/8liang/herdr-gotify",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "Shell",
+    "topics": [
+      "gotify",
+      "herdr-plugin",
+      "notifications"
+    ],
+    "createdAt": "2026-09-06T12:35:51Z",
+    "updatedAt": "2026-09-06T12:47:57Z",
+    "pushedAt": "2026-09-06T12:47:53Z",
+    "headCommit": "4c44600b2c9a941a68710ab5841dfa138a32a793",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "8liang.herdr-gotify",
+        "name": "Herdr Gotify Notifications",
+        "version": "0.1.0",
+        "minHerdrVersion": "0.7.0",
+        "description": "Send Herdr agent blocked/done notifications to Gotify",
+        "platforms": [
+          "macos",
+          "linux"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-09-06T13:01:11.477Z",
+    "starsDelta7d": null,
+    "starsDelta30d": null
+  },
+  {
+    "id": 1312646097,
+    "fullName": "go-min/herdr-pane-name",
+    "owner": "go-min",
+    "name": "herdr-pane-name",
+    "description": "Herdr plugin that automatically names panes in your terminal sessions.",
+    "url": "https://github.com/go-min/herdr-pane-name",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 3,
+    "language": "Rust",
+    "topics": [
+      "herdr",
+      "herdr-plugin",
+      "pane-naming",
+      "terminal",
+      "terminal-multiplexer"
+    ],
+    "createdAt": "2026-07-26T08:59:03Z",
+    "updatedAt": "2026-08-04T13:28:35Z",
+    "pushedAt": "2026-09-06T12:43:44Z",
+    "headCommit": "02ab7a62026008879e46fa972af49116ea2b66b9",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "herdr.pane-name",
+        "name": "Pane Name",
+        "version": "0.1.1",
+        "minHerdrVersion": "0.8.0",
+        "description": "Automatically name Herdr workspaces, tabs, and panes",
+        "platforms": [
+          "linux",
+          "macos",
+          "windows"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-08-06T15:30:31.562Z",
+    "starsDelta7d": 0,
+    "starsDelta30d": 0
+  },
+  {
+    "id": 1358419619,
+    "fullName": "DongHyunnn/ai-share-usage-herdr",
+    "owner": "DongHyunnn",
+    "name": "ai-share-usage-herdr",
+    "description": "herdr plugin for AI Share Usage: shared Codex quota tracking in the herdr terminal",
+    "url": "https://github.com/DongHyunnn/ai-share-usage-herdr",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 0,
+    "language": "JavaScript",
+    "topics": [
+      "herdr-plugin"
+    ],
+    "createdAt": "2026-09-05T17:37:48Z",
+    "updatedAt": "2026-09-06T11:50:51Z",
+    "pushedAt": "2026-09-06T11:50:49Z",
+    "headCommit": "f7061890c62d10d7af8ec8f0661fd5f46b541398",
+    "manifests": [
+      {
+        "path": "herdr-plugin.toml",
+        "id": "ai-share-usage",
+        "name": "AI Share Usage",
+        "version": "0.1.3",
+        "minHerdrVersion": "0.7.0",
+        "description": "Shared Codex (ChatGPT) account usage in the sidebar: your share, the account, alerts",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      }
+    ],
+    "firstSeenAt": "2026-09-05T18:00:53.166Z",
     "starsDelta7d": null,
     "starsDelta30d": null
   },
@@ -23446,58 +24345,6 @@
     "starsDelta30d": null
   },
   {
-    "id": 1356707618,
-    "fullName": "wazum/herdr-grazr",
-    "owner": "wazum",
-    "name": "herdr-grazr",
-    "description": "A simple and reliable auto account switcher for Claude Code: rotates to a fresh account before the 5-hour or weekly rate limit hits, so no pane ever stops at the usage quota. A Herdr plugin.",
-    "url": "https://github.com/wazum/herdr-grazr",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "Python",
-    "topics": [
-      "account-rotation",
-      "account-switcher",
-      "account-switching",
-      "anthropic",
-      "claude",
-      "claude-code",
-      "claude-code-plugin",
-      "cli",
-      "credentials",
-      "herdr",
-      "herdr-plugin",
-      "multi-account",
-      "oauth",
-      "python",
-      "quota",
-      "rate-limit",
-      "usage-limit"
-    ],
-    "createdAt": "2026-09-04T04:50:41Z",
-    "updatedAt": "2026-09-06T07:06:05Z",
-    "pushedAt": "2026-09-06T07:06:01Z",
-    "headCommit": "1554b567295bd7e93b0e7f4048bfd0d4040a1ebe",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "wazum.grazr",
-        "name": "grazr",
-        "version": "0.2.0",
-        "minHerdrVersion": "0.8.0",
-        "description": "Automatically switches Claude Code to another of your accounts before the usage limit hits: account rotation for multiple subscriptions, with no prompt and no lost turn",
-        "platforms": [
-          "macos",
-          "linux"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-09-04T21:00:56.677Z",
-    "starsDelta7d": null,
-    "starsDelta30d": null
-  },
-  {
     "id": 1358846844,
     "fullName": "bonkey/herdr-dup-tab",
     "owner": "bonkey",
@@ -23535,42 +24382,6 @@
     "starsDelta30d": null
   },
   {
-    "id": 1358822995,
-    "fullName": "MDsniper/herdr-plugin-starter",
-    "owner": "MDsniper",
-    "name": "herdr-plugin-starter",
-    "description": "Starter Herdr plugin: session-status action + worktree.created event hook",
-    "url": "https://github.com/MDsniper/herdr-plugin-starter",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "Shell",
-    "topics": [
-      "herdr-plugin"
-    ],
-    "createdAt": "2026-09-06T05:38:50Z",
-    "updatedAt": "2026-09-06T05:38:59Z",
-    "pushedAt": "2026-09-06T05:38:53Z",
-    "headCommit": "837d8c364495e0e8afe6091807f820feaa99cd52",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "demo.starter",
-        "name": "Starter",
-        "version": "0.1.0",
-        "minHerdrVersion": "0.7.0",
-        "description": "Example plugin: a session-status action and a worktree.created event hook",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-09-06T06:01:10.855Z",
-    "starsDelta7d": null,
-    "starsDelta30d": null
-  },
-  {
     "id": 1357633394,
     "fullName": "ArtMoreno/quota-deck",
     "owner": "ArtMoreno",
@@ -23604,46 +24415,6 @@
       }
     ],
     "firstSeenAt": "2026-09-04T23:00:55.343Z",
-    "starsDelta7d": null,
-    "starsDelta30d": null
-  },
-  {
-    "id": 1358360480,
-    "fullName": "oddurs/namesync",
-    "owner": "oddurs",
-    "name": "namesync",
-    "description": "Names herdr workspaces, tabs and agents from the intent the coding agent already publishes. No model call, no API key.",
-    "url": "https://github.com/oddurs/namesync",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "JavaScript",
-    "topics": [
-      "claude-code",
-      "herdr-plugin",
-      "terminal",
-      "tmux"
-    ],
-    "createdAt": "2026-09-05T16:21:56Z",
-    "updatedAt": "2026-09-06T04:06:07Z",
-    "pushedAt": "2026-09-06T04:06:02Z",
-    "headCommit": "cd1b2f9402b4e033c2355b6a7feedbfa823b3873",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "namesync",
-        "name": "Namesync",
-        "version": "0.1.0",
-        "minHerdrVersion": "0.8.0",
-        "description": "Renames workspaces, tabs and agents from the coding agent's own intent. Event-driven, no LLM calls, no API keys.",
-        "platforms": [
-          "linux",
-          "macos",
-          "windows"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-09-05T16:30:56.215Z",
     "starsDelta7d": null,
     "starsDelta30d": null
   },
@@ -23723,78 +24494,6 @@
       }
     ],
     "firstSeenAt": "2026-08-15T15:00:44.324Z",
-    "starsDelta7d": 0,
-    "starsDelta30d": null
-  },
-  {
-    "id": 1358388485,
-    "fullName": "TawfiqAbubaker/scoopr",
-    "owner": "TawfiqAbubaker",
-    "name": "scoopr",
-    "description": "Herdr plugin for copying anything to the terminal without using the mouse.",
-    "url": "https://github.com/TawfiqAbubaker/scoopr",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "Rust",
-    "topics": [
-      "herdr-plugin"
-    ],
-    "createdAt": "2026-09-05T16:58:06Z",
-    "updatedAt": "2026-09-06T00:21:38Z",
-    "pushedAt": "2026-09-06T00:17:20Z",
-    "headCommit": "9137a8fc1879d6995f9951a66a7066d8639aa180",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "scoopr",
-        "name": "Scoopr",
-        "version": "0.1.0",
-        "minHerdrVersion": "0.7.0",
-        "description": "Scoop text from a Herdr pane and copy or insert it",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-09-06T00:31:05.532Z",
-    "starsDelta7d": null,
-    "starsDelta30d": null
-  },
-  {
-    "id": 1329658790,
-    "fullName": "m1sk9/herdr-worktree-hooks-plugin",
-    "owner": "m1sk9",
-    "name": "herdr-worktree-hooks-plugin",
-    "description": "A plugin that adds customizable hooks to Herdr's Worktree",
-    "url": "https://github.com/m1sk9/herdr-worktree-hooks-plugin",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 3,
-    "language": "Rust",
-    "topics": [
-      "herdr-plugin"
-    ],
-    "createdAt": "2026-08-10T09:41:51Z",
-    "updatedAt": "2026-09-05T23:59:00Z",
-    "pushedAt": "2026-09-05T23:59:19Z",
-    "headCommit": "f359a765c000c7a6c848972f4b401e777ee1efea",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "m1sk9.worktree-hooks",
-        "name": "Worktree Hooks",
-        "version": "0.1.1",
-        "minHerdrVersion": "0.8.0",
-        "description": "Copy gitignored files from the main checkout and run setup commands when a worktree is created",
-        "platforms": [
-          "macos",
-          "linux"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-11T12:30:47.072Z",
     "starsDelta7d": 0,
     "starsDelta30d": null
   },
@@ -23941,78 +24640,6 @@
     ],
     "firstSeenAt": "2026-09-05T18:30:54.587Z",
     "starsDelta7d": null,
-    "starsDelta30d": null
-  },
-  {
-    "id": 1358419619,
-    "fullName": "DongHyunnn/ai-share-usage-herdr",
-    "owner": "DongHyunnn",
-    "name": "ai-share-usage-herdr",
-    "description": "herdr plugin for AI Share Usage: shared Codex quota tracking in the herdr terminal",
-    "url": "https://github.com/DongHyunnn/ai-share-usage-herdr",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "JavaScript",
-    "topics": [
-      "herdr-plugin"
-    ],
-    "createdAt": "2026-09-05T17:37:48Z",
-    "updatedAt": "2026-09-05T18:09:49Z",
-    "pushedAt": "2026-09-05T18:09:47Z",
-    "headCommit": "9bf953d6c6ee61258c9382fc4a387b4c602b1669",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "ai-share-usage",
-        "name": "AI Share Usage",
-        "version": "0.1.1",
-        "minHerdrVersion": "0.7.0",
-        "description": "Shared Codex (ChatGPT) account usage in the sidebar: your share, the account, alerts",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-09-05T18:00:53.166Z",
-    "starsDelta7d": null,
-    "starsDelta30d": null
-  },
-  {
-    "id": 1348560077,
-    "fullName": "ponko2/herdr-equalize-panes",
-    "owner": "ponko2",
-    "name": "herdr-equalize-panes",
-    "description": "Automatically keeps panes in each tab evenly sized as panes are created, closed, moved, or exited.",
-    "url": "https://github.com/ponko2/herdr-equalize-panes",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 1,
-    "language": "Rust",
-    "topics": [
-      "herdr-plugin"
-    ],
-    "createdAt": "2026-08-27T14:04:22Z",
-    "updatedAt": "2026-09-05T16:57:22Z",
-    "pushedAt": "2026-09-05T16:57:13Z",
-    "headCommit": "f9d7b08c3964d241975dfa80b2bb5d447e6e32ff",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "ponko2.equalize-panes",
-        "name": "Equalize Panes",
-        "version": "0.2.2",
-        "minHerdrVersion": "0.8.2",
-        "description": "Keep panes the same size as the layout changes",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-27T18:31:31.078Z",
-    "starsDelta7d": 0,
     "starsDelta30d": null
   },
   {
@@ -25859,52 +26486,6 @@
     "starsDelta30d": null
   },
   {
-    "id": 1353013233,
-    "fullName": "huketo/herdr-hitl",
-    "owner": "huketo",
-    "name": "herdr-hitl",
-    "description": "Block a Herdr coding agent on a human decision, delivered to your phone over Telegram or Discord",
-    "url": "https://github.com/huketo/herdr-hitl",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 1,
-    "language": "Go",
-    "topics": [
-      "agent-skill",
-      "ai-agents",
-      "cli",
-      "discord-bot",
-      "go",
-      "golang",
-      "herdr",
-      "herdr-plugin",
-      "human-in-the-loop",
-      "telegram-bot"
-    ],
-    "createdAt": "2026-09-01T01:30:32Z",
-    "updatedAt": "2026-09-03T01:43:00Z",
-    "pushedAt": "2026-09-03T01:40:14Z",
-    "headCommit": "5ecdaf116d311bb7d4d373c82b9792f16b689a10",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "huketo.hitl",
-        "name": "Herdr HITL",
-        "version": "0.2.0",
-        "minHerdrVersion": "0.8.0",
-        "description": "Block a coding agent on a human decision delivered over Telegram or Discord.",
-        "platforms": [
-          "linux",
-          "macos",
-          "windows"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-09-01T07:01:43.228Z",
-    "starsDelta7d": null,
-    "starsDelta30d": null
-  },
-  {
     "id": 1355169367,
     "fullName": "OmarDadabhoy/herdr-agent-links",
     "owner": "OmarDadabhoy",
@@ -26202,69 +26783,6 @@
     ],
     "firstSeenAt": "2026-09-02T16:31:39.277Z",
     "starsDelta7d": null,
-    "starsDelta30d": null
-  },
-  {
-    "id": 1341241007,
-    "fullName": "hidekingerz/herdr-plugin-mado",
-    "owner": "hidekingerz",
-    "name": "herdr-plugin-mado",
-    "description": "herdr plugins that open agent-written markdown in mado, a TUI viewer, beside the agent writing it",
-    "url": "https://github.com/hidekingerz/herdr-plugin-mado",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "Shell",
-    "topics": [
-      "herdr-plugin",
-      "mado",
-      "markdown",
-      "tui"
-    ],
-    "createdAt": "2026-08-21T00:06:43Z",
-    "updatedAt": "2026-09-02T16:07:14Z",
-    "pushedAt": "2026-09-02T16:05:29Z",
-    "headCommit": "9ca1efdb004386a41e72477c4e33cca452d6c252",
-    "manifests": [
-      {
-        "path": "agent-report-viewer/herdr-plugin.toml",
-        "id": "mado.agent-report-viewer",
-        "name": "mado agent report viewer",
-        "version": "0.1.1",
-        "minHerdrVersion": "0.8.0",
-        "description": "Show the markdown an agent run produced, in mado, when the run is done.",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      },
-      {
-        "path": "docs-peek/herdr-plugin.toml",
-        "id": "mado.docs-peek",
-        "name": "mado docs peek",
-        "version": "0.1.0",
-        "minHerdrVersion": "0.8.0",
-        "description": "Open the focused pane's docs in mado, in a split beside the agent that is writing them.",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      },
-      {
-        "path": "loop-dash/herdr-plugin.toml",
-        "id": "mado.loop-dash",
-        "name": "mado loop dash",
-        "version": "0.1.1",
-        "minHerdrVersion": "0.8.0",
-        "description": "Keep an agent loop's TASKS.md / log.md on screen in a mado pane that follows the files.",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-23T15:01:25.407Z",
-    "starsDelta7d": 0,
     "starsDelta30d": null
   },
   {
@@ -26615,45 +27133,6 @@
     "starsDelta30d": null
   },
   {
-    "id": 1353551886,
-    "fullName": "jovylle/herdr-pane-mark",
-    "owner": "jovylle",
-    "name": "herdr-pane-mark",
-    "description": "Herdr plugin \u2014 custom $mark under Agents via palette/popup (no fork)",
-    "url": "https://github.com/jovylle/herdr-pane-mark",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "Shell",
-    "topics": [
-      "herdr",
-      "herdr-plugin",
-      "terminal"
-    ],
-    "createdAt": "2026-09-01T12:33:51Z",
-    "updatedAt": "2026-09-01T12:44:05Z",
-    "pushedAt": "2026-09-01T12:34:58Z",
-    "headCommit": "ab8591170308d250b0e4ee4848c593af7daf245d",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "jovylle.pane-mark",
-        "name": "Pane Mark",
-        "version": "0.1.0",
-        "minHerdrVersion": "0.8.2",
-        "description": "Edit custom $mark under Agents via palette \u2014 pane right-click alternative without forking",
-        "platforms": [
-          "linux",
-          "macos",
-          "windows"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-09-01T13:01:40.897Z",
-    "starsDelta7d": null,
-    "starsDelta30d": null
-  },
-  {
     "id": 1339216577,
     "fullName": "JefeLabs/herdr-web-broker",
     "owner": "JefeLabs",
@@ -26687,42 +27166,6 @@
     ],
     "firstSeenAt": "2026-08-19T07:30:44.019Z",
     "starsDelta7d": 0,
-    "starsDelta30d": null
-  },
-  {
-    "id": 1352645497,
-    "fullName": "kewah/herdr-tab-titles",
-    "owner": "kewah",
-    "name": "herdr-tab-titles",
-    "description": "Herdr plugin that names panes and tabs after the first coding-agent prompt.",
-    "url": "https://github.com/kewah/herdr-tab-titles",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "JavaScript",
-    "topics": [
-      "herdr-plugin"
-    ],
-    "createdAt": "2026-08-31T16:48:32Z",
-    "updatedAt": "2026-09-01T11:24:21Z",
-    "pushedAt": "2026-09-01T11:21:53Z",
-    "headCommit": "833b8c4221a0655fb264c24b7d11635183f23793",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "tab-titles",
-        "name": "Tab Titles",
-        "version": "0.10.0",
-        "minHerdrVersion": "0.8.0",
-        "description": "Names Herdr panes and tabs after the first coding-agent prompt, or the foreground process when there is no chat title.",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-31T19:01:43.913Z",
-    "starsDelta7d": null,
     "starsDelta30d": null
   },
   {
@@ -26982,53 +27425,6 @@
       }
     ],
     "firstSeenAt": "2026-08-30T22:01:32.148Z",
-    "starsDelta7d": 0,
-    "starsDelta30d": null
-  },
-  {
-    "id": 1349952089,
-    "fullName": "jtnovellis/herdr-nvim",
-    "owner": "jtnovellis",
-    "name": "herdr-nvim",
-    "description": "Neovim inside Herdr: a per-tab full-height sidebar, and a real round trip with your coding agent \u2014 ask about the code you're looking at, read the answer without leaving Neovim, and step through the edits it made.",
-    "url": "https://github.com/jtnovellis/herdr-nvim",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "Rust",
-    "topics": [
-      "ai-agents",
-      "claude-code",
-      "developer-tools",
-      "herdr",
-      "herdr-plugin",
-      "lua",
-      "neovim",
-      "neovim-plugin",
-      "nvim",
-      "rust",
-      "terminal",
-      "terminal-multiplexer"
-    ],
-    "createdAt": "2026-08-28T19:08:45Z",
-    "updatedAt": "2026-08-31T21:35:21Z",
-    "pushedAt": "2026-08-31T21:34:57Z",
-    "headCommit": "342eb896d82770fcc76f8e7166fb4682f69625fa",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "herdr-nvim",
-        "name": "Herdr Neovim",
-        "version": "0.2.3",
-        "minHerdrVersion": "0.8.2",
-        "description": "Per-tab Neovim sidebars backed by headless daemons. Ask an agent about the code you are looking at, read its answer without leaving Neovim, and step through the edits it made with a key to put any of them back.",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-28T19:31:28.984Z",
     "starsDelta7d": 0,
     "starsDelta30d": null
   },
@@ -29525,42 +29921,6 @@
     "starsDelta30d": null
   },
   {
-    "id": 1344606069,
-    "fullName": "choplin/herdr-next-agent",
-    "owner": "choplin",
-    "name": "herdr-next-agent",
-    "description": "Move between Herdr agents in configured semantic states.",
-    "url": "https://github.com/choplin/herdr-next-agent",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "Go",
-    "topics": [
-      "herdr-plugin"
-    ],
-    "createdAt": "2026-08-24T06:14:00Z",
-    "updatedAt": "2026-08-24T06:47:42Z",
-    "pushedAt": "2026-08-24T06:47:17Z",
-    "headCommit": "ca2c784326378b964d012cfb56c15da3757ce9f5",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "choplin.next-agent",
-        "name": "Next Agent",
-        "version": "0.1.1",
-        "minHerdrVersion": "0.8.2",
-        "description": "Move between Agents in configured semantic states",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-24T06:31:24.118Z",
-    "starsDelta7d": 0,
-    "starsDelta30d": null
-  },
-  {
     "id": 1344606066,
     "fullName": "choplin/herdr-quickselect",
     "owner": "choplin",
@@ -30456,43 +30816,6 @@
     "starsDelta30d": null
   },
   {
-    "id": 1339869734,
-    "fullName": "gabriel-laet/herdr-cursor",
-    "owner": "gabriel-laet",
-    "name": "herdr-cursor",
-    "description": "Cursor cloud agents as first-class herdr panes",
-    "url": "https://github.com/gabriel-laet/herdr-cursor",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "TypeScript",
-    "topics": [
-      "herdr-plugin"
-    ],
-    "createdAt": "2026-08-19T17:48:46Z",
-    "updatedAt": "2026-08-21T03:02:32Z",
-    "pushedAt": "2026-08-21T03:01:37Z",
-    "headCommit": "e7aacf992b5030931d1c79086c52200476b42091",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "cursor.cloud",
-        "name": "Cursor Cloud Agents",
-        "version": "0.2.0",
-        "minHerdrVersion": "0.8.0",
-        "description": "Cursor cloud agents as first-class herdr panes: roster, attach streams, state bridge",
-        "platforms": [
-          "linux",
-          "macos",
-          "windows"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-20T13:31:29.507Z",
-    "starsDelta7d": 0,
-    "starsDelta30d": null
-  },
-  {
     "id": 1314206961,
     "fullName": "simoncrypta/herdr-dev-layout",
     "owner": "simoncrypta",
@@ -31278,47 +31601,6 @@
     "firstSeenAt": "2026-08-16T13:00:44.029Z",
     "starsDelta7d": 0,
     "starsDelta30d": null
-  },
-  {
-    "id": 1312646097,
-    "fullName": "go-min/herdr-pane-name",
-    "owner": "go-min",
-    "name": "herdr-pane-name",
-    "description": "Herdr plugin that automatically names panes in your terminal sessions.",
-    "url": "https://github.com/go-min/herdr-pane-name",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 3,
-    "language": "Rust",
-    "topics": [
-      "herdr",
-      "herdr-plugin",
-      "pane-naming",
-      "terminal",
-      "terminal-multiplexer"
-    ],
-    "createdAt": "2026-07-26T08:59:03Z",
-    "updatedAt": "2026-08-04T13:28:35Z",
-    "pushedAt": "2026-08-16T12:43:33Z",
-    "headCommit": "02ab7a62026008879e46fa972af49116ea2b66b9",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "herdr.pane-name",
-        "name": "Pane Name",
-        "version": "0.1.1",
-        "minHerdrVersion": "0.8.0",
-        "description": "Automatically name Herdr workspaces, tabs, and panes",
-        "platforms": [
-          "linux",
-          "macos",
-          "windows"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 0,
-    "starsDelta30d": 0
   },
   {
     "id": 1333176777,
@@ -33991,42 +34273,6 @@
         "version": "0.1.0",
         "minHerdrVersion": "0.7.0",
         "description": "LLM one-line summary written to the pane title when an agent finishes",
-        "platforms": [
-          "linux",
-          "macos"
-        ]
-      }
-    ],
-    "firstSeenAt": "2026-08-06T15:30:31.562Z",
-    "starsDelta7d": 0,
-    "starsDelta30d": 0
-  },
-  {
-    "id": 1317801348,
-    "fullName": "zerodice0/herdr-plugin-worktree-bootstrap",
-    "owner": "zerodice0",
-    "name": "herdr-plugin-worktree-bootstrap",
-    "description": "Safely copy ignored local files and run setup commands in new Herdr Git worktrees",
-    "url": "https://github.com/zerodice0/herdr-plugin-worktree-bootstrap",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 0,
-    "language": "Python",
-    "topics": [
-      "herdr-plugin"
-    ],
-    "createdAt": "2026-07-31T01:00:30Z",
-    "updatedAt": "2026-08-03T09:44:54Z",
-    "pushedAt": "2026-08-03T09:44:03Z",
-    "headCommit": "85427a6adfa883c7c001602f879cccdc95201e45",
-    "manifests": [
-      {
-        "path": "herdr-plugin.toml",
-        "id": "zerodice0.worktree-bootstrap",
-        "name": "Worktree Bootstrap",
-        "version": "0.4.0",
-        "minHerdrVersion": "0.7.0",
-        "description": "Bootstrap new worktrees and interactively review local branch cleanup after removal.",
         "platforms": [
           "linux",
           "macos"
