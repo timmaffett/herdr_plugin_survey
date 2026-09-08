@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Herdr Plugins Intelligence & Ecosystem Survey (903 Plugins)</title>
+  <title>Herdr Plugins Intelligence & Ecosystem Survey (994 Plugins)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
     <div class="hd-brand">
       <span class="ram-icon">🐑</span>
       <span>herdr plugins survey</span>
-      <span class="nav-tag">Complete Marketplace Index (969 Plugins)</span>
+      <span class="nav-tag" id="nav-tag-total-plugins">Complete Marketplace Index (994 Plugins)</span>
     </div>
     <div class="nav-links">
       <span class="nav-link active" data-view="browse">Browse Index</span>
@@ -35,7 +35,7 @@
     <header class="hero">
       <div class="hero-stats">
         <div class="stat-box">
-          <span class="num" id="stat-total-plugins">977</span>
+          <span class="num" id="stat-total-plugins">994</span>
           <span class="lbl">Plugins</span>
         </div>
         <div class="stat-box">
@@ -51,11 +51,11 @@
           <span class="lbl">Forks ⑂</span>
         </div>
       </div>
-      <div class="hero-eyebrow">Ecosystem Intelligence · All 969 Community Repositories</div>
+      <div class="hero-eyebrow">Ecosystem Intelligence · All 994 Plugins across 977 Repositories</div>
       <h1>Built by the herd. Surveyed by agents.</h1>
       <p>
-        An exhaustive architectural census of the entire universe of 969 published Herdr community plugins.
-        Every repository was shallow checked out, statically scanned across 9,760,000+ LOC, 
+        An exhaustive architectural census of the entire universe of 994 published Herdr community plugins across 977 repositories.
+        Every repository was shallow checked out, statically scanned across 9,790,000+ LOC, 
         and cataloged with exact Herdr socket/CLI endpoints, commit timestamps, and AI agent integrations.
       </p>
     </header>
@@ -70,7 +70,7 @@
         <div class="controls-main-row">
           <div class="search-wrap">
             <span class="search-icon">/</span>
-            <input type="text" id="search-input" placeholder="Search 903 plugins by name, owner, description, API endpoint, or topic...">
+            <input type="text" id="search-input" placeholder="Search 994 plugins by name, owner, description, API endpoint, or topic...">
           </div>
           <select id="category-select" class="filter-select">
             <option value="">All Categories</option>
@@ -177,7 +177,7 @@
       <!-- Overview Stats Banner -->
       <div class="reports-stats-bar" id="reports-stats-bar">
         <span>📅 Calendar Coverage: Jan 1, 2026 – Sep 7, 2026 (250 Days)</span>
-        <span>Active Release Days: 98 · Quiet Incubation Days: 152 · Breakthrough Milestones: 186</span>
+        <span>Total Ecosystem: <strong>994 Plugins</strong> (977 Repositories) · Active Dispatch Days: 140 · Breakthrough Milestones: 186</span>
       </div>
 
       <!-- Feed Container for Daily Reports -->
@@ -221,7 +221,7 @@
               <button class="scope-btn" data-limit="50">Top 50</button>
               <button class="scope-btn" data-limit="100">Top 100</button>
               <button class="scope-btn" data-limit="250">Top 250</button>
-              <button class="scope-btn" data-limit="903">All (903)</button>
+              <button class="scope-btn" id="growth-btn-all" data-limit="994">All (994)</button>
             </div>
           </div>
 
@@ -349,7 +349,7 @@
           <button class="sql-preset-btn" data-sql="SELECT repo_full_name, stars, primary_language, agent_skills_details FROM plugins WHERE uses_agent_skills = 1 ORDER BY stars DESC LIMIT 20;">Top Agent Skills Integration Plugins</button>
           <button class="sql-preset-btn" data-sql="SELECT endpoint, COUNT(*) as usage_count FROM plugin_endpoints GROUP BY endpoint ORDER BY usage_count DESC LIMIT 20;">Top 20 Herdr Endpoints</button>
           <button class="sql-preset-btn" data-sql="SELECT e.endpoint, e.endpoint_type, e.category, COALESCE(pe.cnt, 0) as plugin_usage, e.doc_url FROM herdr_official_endpoints e LEFT JOIN (SELECT endpoint, COUNT(DISTINCT plugin_id) as cnt FROM plugin_endpoints GROUP BY endpoint) pe ON e.endpoint = pe.endpoint WHERE COALESCE(pe.cnt, 0) = 0 ORDER BY e.endpoint ASC;">⚠️ Zero-Usage Endpoints (0 Calls)</button>
-          <button class="sql-preset-btn" data-sql="SELECT primary_language, COUNT(*) as repos, SUM(total_loc) as loc, SUM(stars) as stars, SUM(forks) as forks FROM plugins GROUP BY primary_language ORDER BY loc DESC;">Language Breakdown Across 903</button>
+          <button class="sql-preset-btn" data-sql="SELECT primary_language, COUNT(*) as repos, SUM(total_loc) as loc, SUM(stars) as stars, SUM(forks) as forks FROM plugins GROUP BY primary_language ORDER BY loc DESC;">Language Breakdown Across All Plugins</button>
         </div>
 
         <textarea id="sql-input" class="sql-input" placeholder="SELECT * FROM plugins WHERE stars > 50 ORDER BY stars DESC;"></textarea>

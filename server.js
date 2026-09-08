@@ -1,6 +1,6 @@
 /**
  * Herdr Plugins Survey - Interactive Explorer & Historical Growth Server
- * Full Ecosystem Index (All 903 Community Plugins) + 36-Week Growth Timelines + Remote Infra Intelligence.
+ * Full Ecosystem Index (All 994 Community Plugins across 977 Repositories) + 36-Week Growth Timelines + Remote Infra Intelligence.
  */
 
 const express = require('express');
@@ -30,6 +30,7 @@ function queryDb(sql) {
 app.get('/api/stats', (req, res) => {
   try {
     const totalRow = queryDb("SELECT COUNT(*) as count, SUM(total_loc) as total_loc, SUM(stars) as total_stars, SUM(forks) as total_forks FROM plugins;")[0];
+    const latestReport = queryDb("SELECT cumulative_plugins_count, cumulative_stars_count, cumulative_forks_count FROM daily_reports ORDER BY report_date DESC LIMIT 1;")[0];
     const categories = queryDb("SELECT broad_category, COUNT(*) as cnt FROM plugins GROUP BY broad_category ORDER BY cnt DESC;");
     const languages = queryDb("SELECT primary_language, COUNT(*) as cnt, SUM(total_loc) as loc FROM plugins GROUP BY primary_language ORDER BY cnt DESC;");
     const features = queryDb(`
@@ -100,11 +101,16 @@ app.get('/api/stats', (req, res) => {
 
     const tunnels = queryDb("SELECT tunnel_service, COUNT(*) as cnt FROM plugins WHERE tunnel_service != 'none' GROUP BY tunnel_service ORDER BY cnt DESC;");
 
+    const totalPlugins = latestReport ? latestReport.cumulative_plugins_count : totalRow.count;
+    const totalStars = latestReport ? latestReport.cumulative_stars_count : totalRow.total_stars;
+    const totalForks = latestReport ? latestReport.cumulative_forks_count : totalRow.total_forks;
+
     res.json({
-      total_plugins: totalRow.count,
+      total_plugins: totalPlugins,
+      total_repos: totalRow.count,
       total_loc: totalRow.total_loc,
-      total_stars: totalRow.total_stars,
-      total_forks: totalRow.total_forks,
+      total_stars: totalStars,
+      total_forks: totalForks,
       categories,
       languages,
       features,
@@ -354,7 +360,7 @@ app.get('/api/history', (req, res) => {
     if (agent_skills !== undefined && agent_skills !== '') whereClauses.push(`p.uses_agent_skills = ${Number(agent_skills)}`);
 
     const whereSql = whereClauses.length > 0 ? `WHERE ${whereClauses.join(' AND ')}` : '';
-    const seriesLimit = Math.min(Math.max(Number(limit) || 50, 1), 903);
+    const seriesLimit = Math.min(Math.max(Number(limit) || 50, 1), 2000);
 
     // 1. Get ordered list of matching plugins
     const sortOrderCol = (metric === 'commits' || metric === 'commit_velocity') ? 'p.total_loc' : 
@@ -624,8 +630,11 @@ app.get('/api/daily-reports/stats', (req, res) => {
       FROM herdr_core_events;
     `)[0] || {};
 
+    const totalRepos = (queryDb("SELECT COUNT(*) as cnt FROM plugins;")[0] || {}).cnt || 977;
+
     res.json({
       ...stats,
+      total_repos: totalRepos,
       total_breakthroughs: breakthroughsCount,
       sample_breakthroughs: topBreakthroughs,
       ...herdrStats
@@ -717,7 +726,7 @@ app.listen(PORT, () => {
   console.log(`====================================================`);
   console.log(`Herdr Plugins Intelligence & Growth Server is live!`);
   console.log(`URL: http://localhost:${PORT}`);
-  console.log(`Survey Scope: Entire Ecosystem (All 903 Community Plugins)`);
+  console.log(`Survey Scope: Entire Ecosystem (All 994 Community Plugins across 977 Repositories)`);
   console.log(`Database: ${DB_PATH}`);
   console.log(`====================================================`);
 });

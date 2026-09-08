@@ -1,6 +1,6 @@
 /**
  * Herdr Plugins Intelligence & Growth Explorer - Client SPA Application
- * Full Ecosystem Index (903 Plugins) + Interactive Apache ECharts Growth Timelines.
+ * Full Ecosystem Index (994 Plugins across 977 Repositories) + Interactive Apache ECharts Growth Timelines.
  */
 
 const LANG_COLORS = {
@@ -131,10 +131,36 @@ async function loadStats() {
     const res = await fetch('/api/stats');
     const data = await res.json();
 
-    document.getElementById('stat-total-plugins').textContent = data.total_plugins || 903;
+    const totalPlugins = data.total_plugins || 994;
+    document.getElementById('stat-total-plugins').textContent = totalPlugins;
     document.getElementById('stat-total-loc').textContent = (Math.round((data.total_loc || 8700000) / 100000) / 10).toFixed(1) + 'M';
     document.getElementById('stat-total-stars').textContent = (Math.round((data.total_stars || 22000) / 100) / 10).toFixed(1) + 'K';
     document.getElementById('stat-total-forks').textContent = (Math.round((data.total_forks || 1780) / 100) / 10).toFixed(1) + 'K';
+
+    // Synchronize nav button tag text
+    const navTag = document.getElementById('nav-tag-total-plugins') || document.querySelector('.nav-tag');
+    if (navTag) {
+      navTag.textContent = `Complete Marketplace Index (${totalPlugins} Plugins)`;
+    }
+
+    // Synchronize hero eyebrow if repos present
+    const heroEyebrow = document.querySelector('.hero-eyebrow');
+    if (heroEyebrow && data.total_repos) {
+      heroEyebrow.textContent = `Ecosystem Intelligence · All ${totalPlugins} Plugins across ${data.total_repos} Repositories`;
+    }
+
+    // Synchronize search input placeholder
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+      searchInput.placeholder = `Search ${totalPlugins} plugins by name, owner, description, API endpoint, or topic...`;
+    }
+
+    // Synchronize growth timelines 'All' button
+    const growthBtnAll = document.getElementById('growth-btn-all') || document.querySelector('#growth-scope-group button[data-limit="994"]') || document.querySelector('#growth-scope-group button[data-limit="903"]');
+    if (growthBtnAll) {
+      growthBtnAll.dataset.limit = totalPlugins;
+      growthBtnAll.textContent = `All (${totalPlugins})`;
+    }
 
     const catSelect = document.getElementById('category-select');
     const growthCatSelect = document.getElementById('growth-category-select');
@@ -1329,9 +1355,10 @@ function renderEndpointsChart() {
       typeBadge = `<span class="tag-badge" style="font-size: 0.65rem; padding: 1px 4px; color: #a6e3a1; background: rgba(166, 227, 161, 0.12); margin-left: 6px;">Socket</span>`;
     }
 
+    const totalEcoPlugins = window._ecosystemStats?.total_plugins || 994;
     const valueHtml = (e.cnt === 0)
       ? `<span style="color: #fab387; background: rgba(250, 179, 135, 0.15); border: 1px solid rgba(250, 179, 135, 0.25); padding: 1px 7px; border-radius: 4px; font-family: var(--mono); font-size: 0.72rem; font-weight: 700;">0 plugins (Unused)</span>`
-      : `<span style="font-family: var(--mono); font-size: 0.8rem; color: var(--ink);">${e.cnt} <span style="color: var(--faint2); font-size: 0.7rem;">(${((e.cnt / 903) * 100).toFixed(1)}%)</span></span>`;
+      : `<span style="font-family: var(--mono); font-size: 0.8rem; color: var(--ink);">${e.cnt} <span style="color: var(--faint2); font-size: 0.7rem;">(${((e.cnt / totalEcoPlugins) * 100).toFixed(1)}%)</span></span>`;
 
     const barColor = (e.cnt === 0) ? 'transparent' : 'var(--done)';
 
@@ -1999,7 +2026,7 @@ async function initDailyReports() {
     if (statsBar) {
       statsBar.innerHTML = `
         <span>📅 Calendar Coverage: Jan 1, 2026 – Sep 7, 2026 (${stats.total_days || 250} Days)</span>
-        <span>Active Dispatch Days: ${stats.active_days || 139} · Herdr Core Milestones: ${stats.total_herdr_events || 85} (${stats.total_agent_detections || 17} Agent Detections, ${stats.total_core_releases || 55} Releases) · Breakthroughs: ${stats.total_breakthroughs || 186}</span>
+        <span>Total Ecosystem: <strong>${stats.total_plugins || 994} Plugins</strong> (${stats.total_repos || 977} Repositories) · Active Dispatch Days: ${stats.active_days || 140} · Herdr Core Milestones: ${stats.total_herdr_events || 85} · Breakthroughs: ${stats.total_breakthroughs || 186}</span>
       `;
     }
   } catch (err) {
