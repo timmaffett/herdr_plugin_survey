@@ -4,7 +4,7 @@
  */
 
 const express = require('express');
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
@@ -17,9 +17,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 function queryDb(sql) {
   try {
-    const escapedSql = sql.replace(/"/g, '""');
-    const cmd = `sqlite3 -json "${DB_PATH}" "${escapedSql}"`;
-    const output = execSync(cmd, { maxBuffer: 35 * 1024 * 1024, encoding: 'utf8' });
+    const output = execFileSync('sqlite3', ['-json', DB_PATH, sql], {
+      maxBuffer: 35 * 1024 * 1024,
+      encoding: 'utf8'
+    });
     if (!output || !output.trim()) return [];
     return JSON.parse(output);
   } catch (err) {
