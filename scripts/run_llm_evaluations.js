@@ -95,12 +95,27 @@ async function main() {
   let limit = null;
   let targetPlugin = null;
   let force = false;
+  let dryRun = false;
 
-  for (const arg of args) {
-    if (arg.startsWith('--date=')) targetDate = arg.split('=')[1];
-    else if (arg.startsWith('--limit=')) limit = parseInt(arg.split('=')[1], 10);
-    else if (arg.startsWith('--plugin=')) targetPlugin = arg.split('=')[1];
-    else if (arg === '--force') force = true;
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    if (arg.startsWith('--date=')) {
+      targetDate = arg.split('=')[1];
+    } else if (arg === '--date' && args[i + 1]) {
+      targetDate = args[++i];
+    } else if (arg.startsWith('--limit=')) {
+      limit = parseInt(arg.split('=')[1], 10);
+    } else if (arg === '--limit' && args[i + 1]) {
+      limit = parseInt(args[++i], 10);
+    } else if (arg.startsWith('--plugin=')) {
+      targetPlugin = arg.split('=')[1];
+    } else if (arg === '--plugin' && args[i + 1]) {
+      targetPlugin = args[++i];
+    } else if (arg === '--force') {
+      force = true;
+    } else if (arg === '--dry-run') {
+      dryRun = true;
+    }
   }
 
   console.log('===============================================================');
@@ -181,6 +196,15 @@ async function main() {
       herdr_cli_commands: JSON.parse(item.herdr_cli_commands || '[]'),
       supported_agents: JSON.parse(item.supported_agents || '[]')
     };
+
+    if (dryRun) {
+      console.log(`🔎 [DRY RUN] Would evaluate: ${item.repo_full_name} (${item.report_date})`);
+      console.log(`   Repo Path: ${repoPath}`);
+      console.log(`   Category Memory: ${catMemory ? `${catMemory.length} chars loaded` : 'None'}`);
+      console.log(`   Deterministic Facts: LOC=${deterministicFacts.total_loc}, Lang=${deterministicFacts.primary_language}`);
+      successCount++;
+      continue;
+    }
 
     const t0 = Date.now();
     try {
