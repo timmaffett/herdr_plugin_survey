@@ -28,7 +28,7 @@ export interface ParsedSurveyReport {
 
 const META_COMPLETIONS_URL = process.env.META_API_URL || 'https://api.meta.ai/v1/chat/completions';
 const DEFAULT_MODEL = process.env.META_MODEL || 'muse-spark-1.3-contributor';
-const MAX_CODE_CHARS = 100000;
+const MAX_CODE_CHARS = 350000;
 
 function getApiKey(): string {
   let key = process.env.META_API_KEY;
@@ -44,24 +44,82 @@ function getApiKey(): string {
   return key;
 }
 
-function scoreFilePriority(filePath: string): number {
+function extractManifestReferences(tomlContent: string): string[] {
+  const refs = new Set<string>();
+  const regex = /["']([^"']+\.(?:sh|bash|zsh|py|js|ts|rs|go|bin|exe))["']/gi;
+  let match: RegExpExecArray | null;
+  while ((match = regex.exec(tomlContent)) !== null) {
+    refs.add(match[1].toLowerCase().replace(/^\.\//, ''));
+  }
+  const cmdRegex = /command\s*=\s*\[\s*["'][^"']+["']\s*,\s*["']([^"']+)["']/gi;
+  while ((match = cmdRegex.exec(tomlContent)) !== null) {
+    refs.add(match[1].toLowerCase().replace(/^\.\//, ''));
+  }
+  return Array.from(refs);
+}
+
+function scoreFilePriority(filePath: string, manifestRefs: string[] = []): number {
   const norm = filePath.toLowerCase();
   const base = path.basename(norm);
+
+  // 1. Files explicitly referenced in herdr-plugin.toml
+  if (manifestRefs.some(ref => norm === ref || norm.endsWith('/' + ref) || norm.endsWith(ref))) {
+    return 100;
+  }
   if (base === 'herdr-plugin.toml' || base.startsWith('herdr-plugin')) return 100;
-  if (base === 'readme.md' || base.startsWith('readme')) return 90;
-  if (base === 'agents.md' || base === 'claude.md' || base === 'architecture.md') return 85;
+
+  // 2. Shell scripts & Lifecycle hooks (high priority for Herdr runtime)
+  if (base.endsWith('.sh') || base.endsWith('.bash') || base.endsWith('.zsh')) return 85;
+  if (norm.includes('/scripts/') || norm.includes('/bin/') || norm.includes('/hooks/')) return 85;
+
+  // 3. Herdr IPC & Socket integrations
+  if (norm.includes('/herdr/') || base.includes('herdr') || base.includes('socket') || base.includes('pane')) return 80;
+
+  // 4. Manifests & Dependencies
   if (base === 'package.json' || base === 'cargo.toml' || base === 'pyproject.toml') return 80;
-  if (norm.includes('/herdr/') || base.includes('herdr') || base.includes('socket') || base.includes('pane')) return 75;
+
+  // 5. Documentation (README, AGENTS.md, etc.)
+  if (base === 'readme.md' || base.startsWith('readme')) return 75;
+  if (base === 'agents.md' || base === 'claude.md' || base === 'architecture.md') return 75;
+
+  // 6. Primary entrypoints
   if (base.startsWith('main.') || base.startsWith('index.') || base.startsWith('lib.') || base.startsWith('mod.')) return 70;
-  if (base.endsWith('.rs') || base.endsWith('.ts') || base.endsWith('.js') || base.endsWith('.py') || base.endsWith('.go')) return 60;
-  if (base.endsWith('.sh')) return 55;
-  if (base.endsWith('.json') || base.endsWith('.toml')) return 40;
+
+  // 7. Core source code
+  if (base.endsWith('.rs') || base.endsWith('.ts') || base.endsWith('.js') || base.endsWith('.py') || base.endsWith('.go') || base.endsWith('.lua') || base.endsWith('.c') || base.endsWith('.cpp')) return 65;
+
+  // 8. Configuration
+  if (base.endsWith('.json') || base.endsWith('.toml') || base.endsWith('.yaml') || base.endsWith('.yml')) return 40;
+
+  // 9. Tests and fixtures
   if (norm.includes('test') || norm.includes('fixture') || norm.includes('mock')) return 10;
+
   return 30;
 }
 
 async function collectFiles(dir: string): Promise<{ path: string; content: string }[]> {
   const results: { path: string; content: string; priority: number }[] = [];
+  const manifestRefs: string[] = [];
+
+  // Pre-pass: Find any herdr-plugin.toml to extract referenced scripts
+  async function findManifest(currentDir: string) {
+    try {
+      const entries = await fs.promises.readdir(currentDir, { withFileTypes: true });
+      for (const ent of entries) {
+        if (ent.name.startsWith('.') || ['node_modules', 'dist', 'target', '.git'].includes(ent.name)) continue;
+        const fullPath = path.join(currentDir, ent.name);
+        if (ent.isDirectory()) {
+          await findManifest(fullPath);
+        } else if (ent.isFile() && (ent.name === 'herdr-plugin.toml' || ent.name.startsWith('herdr-plugin'))) {
+          try {
+            const tomlText = await fs.promises.readFile(fullPath, 'utf8');
+            manifestRefs.push(...extractManifestReferences(tomlText));
+          } catch (e) {}
+        }
+      }
+    } catch (e) {}
+  }
+  await findManifest(dir);
 
   async function walk(currentDir: string) {
     const entries = await fs.promises.readdir(currentDir, { withFileTypes: true });
@@ -75,16 +133,44 @@ async function collectFiles(dir: string): Promise<{ path: string; content: strin
       } else if (ent.isFile()) {
         const ext = path.extname(ent.name).toLowerCase();
         if (ent.name.endsWith('.lock') || ent.name.includes('lock.json')) continue;
-        if (['.ts', '.js', '.mjs', '.json', '.md', '.toml', '.rs', '.py', '.go', '.sh'].includes(ext)) {
-          const relPath = path.relative(dir, fullPath);
+
+        const allowedExts = ['.ts', '.js', '.mjs', '.json', '.md', '.toml', '.rs', '.py', '.go', '.sh', '.bash', '.zsh', '.lua', '.yaml', '.yml', '.c', '.h', '.cpp'];
+        const relPath = path.relative(dir, fullPath);
+
+        let shouldInclude = allowedExts.includes(ext);
+        let content: string | null = null;
+
+        // Check extensionless files in bin/ or scripts/ for shebang
+        if (!shouldInclude && (relPath.includes('bin/') || relPath.includes('scripts/') || ext === '')) {
           try {
             const stats = await fs.promises.stat(fullPath);
-            if (stats.size > 250000) continue; // Skip huge binaries or bundles
-            const content = await fs.promises.readFile(fullPath, 'utf8');
+            if (stats.size < 250000) {
+              const head = await fs.promises.readFile(fullPath, 'utf8');
+              if (head.startsWith('#!')) {
+                shouldInclude = true;
+                content = head;
+              }
+            }
+          } catch (e) {}
+        }
+
+        if (shouldInclude) {
+          try {
+            const stats = await fs.promises.stat(fullPath);
+            if (stats.size > 500000) continue; // Skip huge binaries or bundles
+            if (content === null) {
+              content = await fs.promises.readFile(fullPath, 'utf8');
+            }
+
+            // Cap individual markdown files at 12,000 characters to prevent doc monopolization
+            if (ext === '.md' && content.length > 12000) {
+              content = content.slice(0, 12000) + '\n\n... [MARKDOWN DOC TRUNCATED TO PRESERVE CODE BUDGET] ...\n';
+            }
+
             results.push({
               path: relPath,
               content,
-              priority: scoreFilePriority(relPath)
+              priority: scoreFilePriority(relPath, manifestRefs)
             });
           } catch (e) {
             // Ignore unreadable files

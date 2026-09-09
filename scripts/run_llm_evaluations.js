@@ -96,6 +96,7 @@ async function main() {
   let targetPlugin = null;
   let force = false;
   let dryRun = false;
+  let reEval = false;
 
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
@@ -112,6 +113,9 @@ async function main() {
     } else if (arg === '--plugin' && args[i + 1]) {
       targetPlugin = args[++i];
     } else if (arg === '--force') {
+      force = true;
+    } else if (arg === '--re-eval' || arg === '--reeval') {
+      reEval = true;
       force = true;
     } else if (arg === '--dry-run') {
       dryRun = true;
@@ -152,7 +156,12 @@ async function main() {
   if (targetPlugin) {
     query += ` AND p.repo_full_name = ${escapeSql(targetPlugin)}`;
   }
-  if (!force) {
+  if (reEval) {
+    query += ` AND EXISTS (
+      SELECT 1 FROM plugin_llm_evaluations e 
+      WHERE e.plugin_id = p.id AND e.report_date = dr.report_date
+    )`;
+  } else if (!force) {
     query += ` AND NOT EXISTS (
       SELECT 1 FROM plugin_llm_evaluations e 
       WHERE e.plugin_id = p.id AND e.report_date = dr.report_date
