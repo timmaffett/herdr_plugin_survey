@@ -12,3 +12,7 @@ This document tracks architectural patterns and previously surveyed extensions w
 - **Overview**: `easy-review` (`Easy Review` v0.1.0, `min_herdr_version 0.7.0`) is a thin Herdr wrapper around the `er` terminal TUI from the `VilfredSikker/easy-review` monorepo. It does not re-implement review logic; it opens `er` in a Herdr `tab` pane for the current branch/worktree, or `er --remote <url>` for a clicked GitHub PR. This follows the established `Code Review & Diff Inspection` pattern seen in `eugenioenko/ttt`: a minimal declarative shim that launches a full external TUI binary inside the workspace.
 - **Key Features**: What is declaratively defined in `tools/herdr-easy-review/herdr-plugin.toml`:  * **Review pane (`panes.review`):** `title: Review`, `placement: tab`, `command: ["bash", "open.sh"]`. Per `tools/herdr-e
 
+### [2026-04-30] openclaw/crabbox
+- **Overview**: The `crabbox` Herdr plugin (`Crabbox` v0.1.0, `min_herdr_version 0.7.0`, `linux`/`macos` only) is a thin, declarative shell shim around the much larger Crabbox remote-execution control plane. Crabbox itself is a ~972k LOC Go system — CLI + coordinator (Cloudflare Workers/Durable Object or Node.js/PostgreSQL) + SSH-leased runners — for leasing a cloud/local box, syncing the dirty worktree, running a repo command remotely, and streaming evidence back.
+- **Key Features**: What is declaratively defined in `plugins/herdr/herdr-plugin.toml` is the entire user surface — 6 panes + 6 matching actions, all scoped to `contexts = ["workspace"]`:  * **Panes (`[[panes]]` → `sh bi
+
