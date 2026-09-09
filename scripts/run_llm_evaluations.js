@@ -22,12 +22,21 @@ function queryDb(sql) {
 }
 
 function runSql(sql) {
-  try {
-    execFileSync('sqlite3', [DB_PATH, sql], {
-      encoding: 'utf8'
-    });
-  } catch (err) {
-    throw new Error(err.stderr || err.message);
+  let attempts = 0;
+  while (attempts < 5) {
+    try {
+      execFileSync('sqlite3', [DB_PATH, `PRAGMA busy_timeout = 10000;\n${sql}`], {
+        encoding: 'utf8'
+      });
+      return;
+    } catch (err) {
+      attempts++;
+      if (err.message && err.message.includes('locked') && attempts < 5) {
+        Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 500 * attempts);
+        continue;
+      }
+      throw new Error(err.stderr || err.message);
+    }
   }
 }
 
