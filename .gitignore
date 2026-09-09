@@ -4,3 +4,6 @@ __pycache__/
 *.pyc
 .DS_Store
 .tempmediaStorage
+meta_llm_key.txt
+.env
+*.env

@@ -574,11 +574,31 @@ app.get('/api/daily-reports', (req, res) => {
 
     const rows = queryDb(sql);
 
+    const reportDates = rows.map(r => `'${r.report_date}'`);
+    let evalsByDate = {};
+    if (reportDates.length > 0) {
+      try {
+        const evals = queryDb(`
+          SELECT id, report_date, plugin_id, repo_full_name, model_name,
+                 overview, capabilities, architecture, herdr_integration,
+                 dependencies, extensibility_limitations, full_markdown,
+                 reasoning_tokens, completion_tokens, total_tokens, generated_at
+          FROM plugin_llm_evaluations
+          WHERE report_date IN (${reportDates.join(',')});
+        `);
+        evals.forEach(ev => {
+          if (!evalsByDate[ev.report_date]) evalsByDate[ev.report_date] = [];
+          evalsByDate[ev.report_date].push(ev);
+        });
+      } catch (e) {}
+    }
+
     const formatted = rows.map(r => ({
       ...r,
       new_capabilities: JSON.parse(r.new_capabilities_json || '[]'),
       plugins_released: JSON.parse(r.plugins_released_json || '[]'),
-      herdr_events: JSON.parse(r.herdr_events_json || '[]')
+      herdr_events: JSON.parse(r.herdr_events_json || '[]'),
+      llm_evaluations: evalsByDate[r.report_date] || []
     }));
 
     const results = afterDate ? formatted.reverse() : formatted;
@@ -660,13 +680,36 @@ app.get('/api/daily-reports/:date', (req, res) => {
       ORDER BY p.stars DESC;
     `);
 
+    let llmEvals = [];
+    try {
+      llmEvals = queryDb(`
+        SELECT id, report_date, plugin_id, repo_full_name, model_name,
+               overview, capabilities, architecture, herdr_integration,
+               dependencies, extensibility_limitations, full_markdown,
+               reasoning_tokens, completion_tokens, total_tokens, generated_at
+        FROM plugin_llm_evaluations
+        WHERE report_date = '${dateStr}';
+      `);
+    } catch (e) {}
+
     res.json({
       ...row,
       new_capabilities: JSON.parse(row.new_capabilities_json || '[]'),
       plugins_released: JSON.parse(row.plugins_released_json || '[]'),
       herdr_events: JSON.parse(row.herdr_events_json || '[]'),
-      detailed_plugins: plugins
+      detailed_plugins: plugins,
+      llm_evaluations: llmEvals
     });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get('/api/plugins/:id/evaluation', (req, res) => {
+  try {
+    const pid = Number(req.params.id);
+    const rows = queryDb(`SELECT * FROM plugin_llm_evaluations WHERE plugin_id = ${pid} ORDER BY report_date DESC;`);
+    res.json({ count: rows.length, evaluations: rows });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

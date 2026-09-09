@@ -10,7 +10,9 @@
     "sync": "node scripts/sync-plugins.js --update",
     "pull": "python3 scripts/sync_metadata.py --pull-outdated",
     "update": "python3 scripts/full_sync_pipeline.py && python3 scripts/collect_history.py --workers 16 && python3 scripts/daily_report_generator.py",
-    "report": "python3 scripts/daily_report_generator.py"
+    "report": "python3 scripts/daily_report_generator.py",
+    "survey:llm": "node scripts/run_llm_evaluations.js",
+    "eval": "node scripts/run_llm_evaluations.js"
   },
   "dependencies": {
     "express": "^4.19.2"

@@ -1722,3 +1722,137 @@ a {
   color: #a6e3a1;
 }
 
+/* ==============================================================
+   AI Architectural Code Survey (LLM Commentary) Card
+   ============================================================== */
+.plugin-llm-card {
+  margin: 1.25rem 0 1.5rem;
+  background: linear-gradient(180deg, rgba(24, 24, 37, 0.95) 0%, rgba(17, 17, 27, 0.98) 100%);
+  border: 1px solid rgba(137, 180, 250, 0.3);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 1px rgba(137, 180, 250, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.plugin-llm-card.llm-hidden {
+  display: none !important;
+}
+
+.llm-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.1rem;
+  background: rgba(137, 180, 250, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.llm-badge {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #89b4fa;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.llm-model-tag {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--faint2);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.llm-card-body {
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.llm-section {
+  border-left: 3px solid rgba(137, 180, 250, 0.4);
+  padding-left: 0.85rem;
+}
+
+.llm-section h5 {
+  margin: 0 0 0.45rem 0;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #cdd6f4;
+  text-transform: uppercase;
+}
+
+.llm-section p, .llm-section li {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 0.5rem 0;
+}
+
+.llm-section code {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: #a6e3a1;
+}
+
+.llm-section ul {
+  margin: 0.35rem 0 0.5rem 1.2rem;
+  padding: 0;
+}
+
+.llm-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid rgba(137, 180, 250, 0.3);
+  background: rgba(137, 180, 250, 0.08);
+  color: #cdd6f4;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.llm-toggle-btn:hover {
+  background: rgba(137, 180, 250, 0.16);
+  border-color: #89b4fa;
+}
+
+.llm-toggle-btn.active {
+  background: rgba(137, 180, 250, 0.22);
+  border-color: #89b4fa;
+  color: #fff;
+}
+
+.llm-toggle-btn .toggle-status-badge {
+  font-size: 0.65rem;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--faint2);
+}
+
+.llm-toggle-btn.active .toggle-status-badge {
+  background: #89b4fa;
+  color: #11111b;
+  font-weight: 700;
+}
+
+

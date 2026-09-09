@@ -1663,6 +1663,7 @@ let reportsState = {
   herdrNewsOnly: false,
   agentDetectionOnly: false,
   search: '',
+  showLlmEvals: localStorage.getItem('herdr_show_llm_evals') !== 'false',
   observer: null,
   initialized: false
 };
@@ -1848,12 +1849,66 @@ function renderReportDayCard(report, viewMode) {
     `;
   }
 
+  // Helper: render LLM evaluation card
+  function renderPluginLlmCard(ev, isHidden) {
+    if (!ev) return '';
+    const hiddenClass = isHidden ? 'llm-hidden' : '';
+    return `
+      <div class="plugin-llm-card ${hiddenClass}" data-plugin="${escapeHtml(ev.repo_full_name)}">
+        <div class="llm-card-header">
+          <span class="llm-badge">🤖 ARCHITECT'S CODE SURVEY · ${escapeHtml(ev.repo_full_name)}</span>
+          <span class="llm-model-tag">Meta Muse · ${escapeHtml(ev.model_name)}</span>
+        </div>
+        <div class="llm-card-body">
+          <div class="llm-section">
+            <h5>1. Overview</h5>
+            <div>${parseMarkdownToHtml(ev.overview)}</div>
+          </div>
+          <div class="llm-section">
+            <h5>2. Capabilities</h5>
+            <div>${parseMarkdownToHtml(ev.capabilities)}</div>
+          </div>
+          <div class="llm-section">
+            <h5>3. Architecture</h5>
+            <div>${parseMarkdownToHtml(ev.architecture)}</div>
+          </div>
+          <div class="llm-section">
+            <h5>4. Herdr Integration</h5>
+            <div>${parseMarkdownToHtml(ev.herdr_integration)}</div>
+          </div>
+          <div class="llm-section">
+            <h5>5. Dependencies</h5>
+            <div>${parseMarkdownToHtml(ev.dependencies)}</div>
+          </div>
+          <div class="llm-section">
+            <h5>6. Extensibility & Limitations</h5>
+            <div>${parseMarkdownToHtml(ev.extensibility_limitations)}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   // Body content based on view mode
   let bodyContent = '';
   if (viewMode === 'newspaper') {
+    let newspaperHtml = parseMarkdownToHtml(report.long_form_content);
+    if (report.llm_evaluations && report.llm_evaluations.length > 0) {
+      report.llm_evaluations.forEach(ev => {
+        const cardHtml = renderPluginLlmCard(ev, !reportsState.showLlmEvals);
+        const safeName = ev.repo_full_name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(`(<h4[^>]*>[\\s\\S]*?${safeName}[\\s\\S]*?<\\/h4>[\\s\\S]*?)(?=<h4|<h3|$)`, 'i');
+        if (regex.test(newspaperHtml)) {
+          newspaperHtml = newspaperHtml.replace(regex, `$1\n${cardHtml}\n`);
+        } else {
+          newspaperHtml += cardHtml;
+        }
+      });
+    }
+
     bodyContent = `
       <div class="report-newspaper-body">
-        ${parseMarkdownToHtml(report.long_form_content)}
+        ${newspaperHtml}
       </div>
     `;
   } else {
@@ -1867,23 +1922,30 @@ function renderReportDayCard(report, viewMode) {
         </div>
       `;
     } else {
-      const pluginRows = plugins.map(p => `
-        <div class="compact-plugin-row" onclick="openPluginModalByName('${escapeHtml(p.fullName)}')" style="cursor: pointer;">
-          <div class="compact-plugin-left">
-            <span style="font-size: 1.1rem;">📦</span>
-            <div>
-              <span class="compact-plugin-name">${escapeHtml(p.fullName)}</span>
-              <span style="font-size: 0.75rem; color: var(--faint2); margin-left: 0.5rem;">${escapeHtml(p.cat || 'Utility')}</span>
+      const pluginRows = plugins.map(p => {
+        const ev = (report.llm_evaluations || []).find(e => e.repo_full_name === p.fullName || e.plugin_id === p.id);
+        const cardHtml = ev ? renderPluginLlmCard(ev, !reportsState.showLlmEvals) : '';
+        return `
+          <div class="compact-plugin-item" style="margin-bottom: 0.75rem;">
+            <div class="compact-plugin-row" onclick="openPluginModalByName('${escapeHtml(p.fullName)}')" style="cursor: pointer;">
+              <div class="compact-plugin-left">
+                <span style="font-size: 1.1rem;">📦</span>
+                <div>
+                  <span class="compact-plugin-name">${escapeHtml(p.fullName)}</span>
+                  <span style="font-size: 0.75rem; color: var(--faint2); margin-left: 0.5rem;">${escapeHtml(p.cat || 'Utility')}</span>
+                </div>
+              </div>
+              <div class="compact-plugin-right">
+                <span class="lang-tag" style="background: ${LANG_COLORS[p.lang] || '#888'}; color: #000; font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 3px; font-weight: 600;">${p.lang || 'Unknown'}</span>
+                <span style="color: var(--spot); font-weight: 700;">★ ${p.stars || 0}</span>
+                <span>${(p.loc || 0).toLocaleString()} LOC</span>
+                <span style="color: var(--spot);">Details ↗</span>
+              </div>
             </div>
+            ${cardHtml}
           </div>
-          <div class="compact-plugin-right">
-            <span class="lang-tag" style="background: ${LANG_COLORS[p.lang] || '#888'}; color: #000; font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 3px; font-weight: 600;">${p.lang || 'Unknown'}</span>
-            <span style="color: var(--spot); font-weight: 700;">★ ${p.stars || 0}</span>
-            <span>${(p.loc || 0).toLocaleString()} LOC</span>
-            <span style="color: var(--spot);">Details ↗</span>
-          </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
 
       bodyContent = `
         <div class="report-compact-list">
@@ -2134,6 +2196,36 @@ async function initDailyReports() {
       if (feed && reportsState.reports.length > 0) {
         feed.innerHTML = reportsState.reports.map(r => renderReportDayCard(r, 'compact')).join('');
       }
+    });
+  }
+
+  // Toggle AI Code Survey
+  const btnToggleLlm = document.getElementById('btn-toggle-llm-eval');
+  if (btnToggleLlm) {
+    const updateLlmBtn = () => {
+      if (reportsState.showLlmEvals) {
+        btnToggleLlm.classList.add('active');
+        const badge = btnToggleLlm.querySelector('.toggle-status-badge');
+        if (badge) badge.textContent = 'ON';
+      } else {
+        btnToggleLlm.classList.remove('active');
+        const badge = btnToggleLlm.querySelector('.toggle-status-badge');
+        if (badge) badge.textContent = 'OFF';
+      }
+    };
+    updateLlmBtn();
+
+    btnToggleLlm.addEventListener('click', () => {
+      reportsState.showLlmEvals = !reportsState.showLlmEvals;
+      localStorage.setItem('herdr_show_llm_evals', reportsState.showLlmEvals ? 'true' : 'false');
+      updateLlmBtn();
+      document.querySelectorAll('.plugin-llm-card').forEach(card => {
+        if (reportsState.showLlmEvals) {
+          card.classList.remove('llm-hidden');
+        } else {
+          card.classList.add('llm-hidden');
+        }
+      });
     });
   }
 
