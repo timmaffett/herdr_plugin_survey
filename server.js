@@ -133,7 +133,7 @@ app.get('/api/plugins', (req, res) => {
       tui, mobile, web, comms, worktree, 
       cross_platform, tests, trending, outdated,
       ssh, mosh, vpn, port_mapping, router, vps, remote_infra,
-      raw_socket, agent_skills,
+      raw_socket, agent_skills, ai_surveyed, surveyed,
       endpoint, tunnel, sort = 'popularity', order = 'desc', 
       limit = 1000, offset = 0 
     } = req.query;
@@ -177,6 +177,10 @@ app.get('/api/plugins', (req, res) => {
     if (tunnel) {
       const cleanTunnel = tunnel.replace(/'/g, "''");
       whereClauses.push(`tunnel_service = '${cleanTunnel}'`);
+    }
+
+    if (ai_surveyed === 'true' || surveyed === 'true') {
+      whereClauses.push(`id IN (SELECT plugin_id FROM plugin_llm_evaluations)`);
     }
 
     if (tui !== undefined && tui !== '') whereClauses.push(`presents_tui = ${Number(tui)}`);
@@ -237,7 +241,8 @@ app.get('/api/plugins', (req, res) => {
         uses_raw_socket, raw_socket_details, uses_agent_skills, agent_skills_details,
         agent_scope, supported_agents, agent_data_collection, agent_data_details,
         herdr_socket_methods, herdr_cli_commands,
-        description, readme_summary, pushed_at
+        description, readme_summary, pushed_at,
+        (SELECT COUNT(1) FROM plugin_llm_evaluations e WHERE e.plugin_id = plugins.id) as has_llm_eval
       FROM plugins
       ${whereSql}
       ORDER BY ${sortCol} ${sortDir}
@@ -507,11 +512,15 @@ app.get('/api/plugins/:id', (req, res) => {
     const agents = queryDb(`SELECT agent_name, collection_methods FROM plugin_agents WHERE plugin_id = ${pluginId};`);
     const manifestItems = queryDb(`SELECT item_type, item_id, title, placement, command FROM plugin_manifest_items WHERE plugin_id = ${pluginId};`);
 
+    const cleanRepo = (plugin.repo_full_name || '').replace(/'/g, "''");
+    const llmEvals = queryDb(`SELECT * FROM plugin_llm_evaluations WHERE plugin_id = ${pluginId} OR repo_full_name = '${cleanRepo}' ORDER BY report_date DESC LIMIT 1;`);
+
     res.json({
       ...plugin,
       endpoints,
       agents,
-      manifest_items: manifestItems
+      manifest_items: manifestItems,
+      llm_evaluation: (llmEvals && llmEvals.length > 0) ? llmEvals[0] : null
     });
   } catch (err) {
     res.status(500).json({ error: err.message });

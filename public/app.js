@@ -402,7 +402,8 @@ function createPluginCard(p) {
         <div class="card-owner">${escapeHtml(p.repo_owner)}/</div>
         <div class="card-title">${escapeHtml(p.repo_name)}</div>
       </div>
-      <div style="display: flex; gap: 0.35rem; align-items: center;">
+      <div style="display: flex; gap: 0.35rem; align-items: center; flex-wrap: wrap;">
+        ${p.has_llm_eval ? `<span class="tag-badge" style="color: #89b4fa; background: rgba(137,180,250,0.14); border: 1px solid rgba(137,180,250,0.3); font-weight: 600;" title="Full 6-section AI Architectural Code Survey available">🤖 AI Surveyed</span>` : ''}
         ${p.is_out_of_date ? `<span class="tag-badge" style="color: var(--wait); background: rgba(211,160,39,0.15);" title="Upstream commits available">⚠️ Update</span>` : ''}
         ${delta7 > 0 ? `<span class="tag-badge" style="color: var(--spot); background: var(--spot-glow);">+${delta7}★</span>` : ''}
         <div class="card-stars">★ ${p.stars.toLocaleString()}</div>
@@ -477,6 +478,82 @@ async function openDetailModal(pluginId) {
 
     let langLoc = {};
     try { langLoc = JSON.parse(p.loc_language_dist || '{}'); } catch (e) {}
+
+    let aiSurveyHtml = '';
+    if (p.llm_evaluation) {
+      const ev = p.llm_evaluation;
+      aiSurveyHtml = `
+        <div class="detail-section" style="border: 1px solid rgba(137, 180, 250, 0.35); background: linear-gradient(180deg, rgba(24, 24, 37, 0.85) 0%, rgba(17, 17, 27, 0.98) 100%); margin-top: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(137, 180, 250, 0.2); padding-bottom: 0.8rem;">
+            <div>
+              <h3 style="color: #89b4fa; margin: 0 0 0.3rem 0; display: flex; align-items: center; gap: 0.4rem;">
+                <span>🤖</span> AI Architectural Code Survey
+              </h3>
+              <div style="font-family: var(--mono); font-size: 0.74rem; color: var(--faint2); display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;">
+                <span>Model: <strong style="color: var(--ink);">${escapeHtml(ev.model_name || 'Meta Muse')}</strong></span>
+                <span>·</span>
+                <span>Daily Dispatch: <strong style="color: var(--ink);">${escapeHtml(ev.report_date || '')}</strong></span>
+                <span>·</span>
+                <span>Survey Tokens: <strong style="color: var(--spot);">${(ev.total_tokens || 0).toLocaleString()}</strong></span>
+              </div>
+            </div>
+            <button onclick="jumpToDailyReportDate('${escapeHtml(ev.report_date)}', '${escapeHtml(p.repo_full_name)}')" class="btn btn-sm" style="background: rgba(137, 180, 250, 0.15); color: #89b4fa; border: 1px solid rgba(137, 180, 250, 0.35); font-family: var(--mono); font-size: 0.76rem; padding: 5px 12px; cursor: pointer; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; font-weight: 600;">
+              <span>📅</span> View in Daily Report (${escapeHtml(ev.report_date)}) ↗
+            </button>
+          </div>
+
+          <div class="llm-card-body" style="padding: 0; display: flex; flex-direction: column; gap: 1.1rem;">
+            <div class="llm-section">
+              <h5>1. Overview</h5>
+              <div>${parseMarkdownToHtml(ev.overview)}</div>
+            </div>
+            <div class="llm-section">
+              <h5>2. Capabilities</h5>
+              <div>${parseMarkdownToHtml(ev.capabilities)}</div>
+            </div>
+            <div class="llm-section">
+              <h5>3. Architecture</h5>
+              <div>${parseMarkdownToHtml(ev.architecture)}</div>
+            </div>
+            <div class="llm-section">
+              <h5>4. Herdr Integration</h5>
+              <div>${parseMarkdownToHtml(ev.herdr_integration)}</div>
+            </div>
+            <div class="llm-section">
+              <h5>5. Dependencies</h5>
+              <div>${parseMarkdownToHtml(ev.dependencies)}</div>
+            </div>
+            <div class="llm-section">
+              <h5>6. Extensibility & Limitations</h5>
+              <div>${parseMarkdownToHtml(ev.extensibility_limitations)}</div>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.25rem; padding-top: 0.8rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.6rem;">
+            <span style="font-family: var(--mono); font-size: 0.72rem; color: var(--faint2);">
+              Generated via Herdr Plugin Survey Suite · Reasoning: ${(ev.reasoning_tokens || 0).toLocaleString()} · Completion: ${(ev.completion_tokens || 0).toLocaleString()}
+            </span>
+            <button onclick="jumpToDailyReportDate('${escapeHtml(ev.report_date)}', '${escapeHtml(p.repo_full_name)}')" class="btn btn-sm" style="background: transparent; color: #89b4fa; border: none; font-family: var(--mono); font-size: 0.76rem; text-decoration: underline; cursor: pointer; padding: 0;">
+              Open ${escapeHtml(ev.report_date)} Dispatch in Daily Reports ↗
+            </button>
+          </div>
+        </div>
+      `;
+    } else {
+      aiSurveyHtml = `
+        <div class="detail-section" style="border: 1px dashed var(--line2); background: var(--mass); text-align: center; padding: 1.6rem 1.2rem; margin-top: 1.25rem;">
+          <h3 style="justify-content: center; color: var(--faint2); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;">
+            <span>🤖</span> AI Architectural Code Survey
+          </h3>
+          <p style="font-size: 0.82rem; color: var(--faint); max-width: 520px; margin: 0.4rem auto 1rem; line-height: 1.5;">
+            This plugin is queued in the retrospective AI code survey pipeline. Chronological deep-dives are generated daily starting from Genesis (Jan 1, 2026).
+          </p>
+          <button onclick="jumpToDailyReportDate('2026-01-01')" class="btn btn-sm" style="background: var(--surface); color: var(--spot); border: 1px solid var(--line2); font-family: var(--mono); font-size: 0.75rem; padding: 5px 12px; cursor: pointer; border-radius: 4px;">
+            Browse Published Daily Reports Feed ↗
+          </button>
+        </div>
+      `;
+    }
 
     modalContent.innerHTML = `
       <div class="detail-section">
@@ -594,6 +671,8 @@ async function openDetailModal(pluginId) {
           `).join('')}
         </div>
       </div>
+
+      ${aiSurveyHtml}
     `;
   } catch (err) {
     modalContent.innerHTML = `<div style="color: var(--danger); text-align: center; padding: 3rem;">Failed to load details: ${err.message}</div>`;
@@ -603,6 +682,38 @@ async function openDetailModal(pluginId) {
 function closeModal() {
   document.getElementById('detail-modal').classList.remove('open');
 }
+
+function jumpToDailyReportDate(dateStr, pluginFullName) {
+  closeModal();
+  const reportsTab = document.querySelector('.nav-link[data-view="reports"]');
+  if (reportsTab) {
+    reportsTab.click();
+  }
+  const datePicker = document.getElementById('reports-date-picker');
+  if (datePicker && dateStr) {
+    datePicker.value = dateStr;
+  }
+  reportsState.beforeDate = null;
+  const param = dateStr ? `&date=${dateStr}` : '';
+  loadReportsBatch(true, param).then(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (pluginFullName) {
+      setTimeout(() => {
+        const targetCard = document.querySelector(`.plugin-llm-card[data-plugin="${pluginFullName}"]`);
+        if (targetCard) {
+          targetCard.classList.remove('llm-hidden');
+          targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          const compItem = document.querySelector(`[data-plugin="${pluginFullName}"]`);
+          if (compItem) {
+            compItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      }, 350);
+    }
+  });
+}
+window.jumpToDailyReportDate = jumpToDailyReportDate;
 
 // -------------------------------------------------------------
 // HISTORICAL GROWTH GRAPH ENGINE (Apache ECharts)
@@ -1992,17 +2103,18 @@ function renderReportDayCard(report, viewMode) {
 function openPluginModalByName(fullName) {
   const plugin = allPlugins.find(p => p.repo_full_name === fullName);
   if (plugin) {
-    openModal(plugin);
+    openDetailModal(plugin.id);
   } else {
     fetch(`/api/plugins?q=${encodeURIComponent(fullName)}&limit=1`)
       .then(r => r.json())
       .then(data => {
         if (data.plugins && data.plugins.length > 0) {
-          openModal(data.plugins[0]);
+          openDetailModal(data.plugins[0].id);
         }
       });
   }
 }
+window.openPluginModalByName = openPluginModalByName;
 
 async function loadReportsBatch(reset = false, customParams = '') {
   if (reportsState.isLoading) return;
@@ -2050,6 +2162,7 @@ async function loadReportsBatch(reset = false, customParams = '') {
             No daily reports match the current query criteria.
           </div>
         `;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
       if (loaderEl) loaderEl.style.display = 'none';
       reportsState.isLoading = false;
@@ -2063,6 +2176,7 @@ async function loadReportsBatch(reset = false, customParams = '') {
     const cardsHtml = data.reports.map(r => renderReportDayCard(r, reportsState.viewMode)).join('');
     if (reset) {
       feed.innerHTML = cardsHtml;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       feed.insertAdjacentHTML('beforeend', cardsHtml);
     }
@@ -2103,6 +2217,7 @@ async function initDailyReports() {
       if (selected) {
         reportsState.beforeDate = null;
         loadReportsBatch(true, `&date=${selected}`);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
   }
@@ -2114,6 +2229,7 @@ async function initDailyReports() {
       if (datePicker) datePicker.value = '2026-09-07';
       reportsState.beforeDate = null;
       loadReportsBatch(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
@@ -2124,6 +2240,7 @@ async function initDailyReports() {
       if (datePicker) datePicker.value = '2026-01-01';
       reportsState.beforeDate = null;
       loadReportsBatch(true, `&date=2026-01-01`);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 

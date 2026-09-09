@@ -212,3 +212,167 @@ This document tracks architectural patterns and previously surveyed extensions w
 - **Overview**: `tdi/herdr-worktree-from-linear` (`Worktree from Linear`, v0.5.0, `min_herdr_version 0.7.0`, `linux`/`macos`) is a zero-dependency Node.js ESM plugin in Session & Workspace Management. It turns Linear triage into a one-keystroke flow: invoke `pick` from any workspace/tab/pane, fuzzy-pick an active Linear issue, and Herdr creates — or re-opens — a git worktree on Linear's own `branchName` and focuses it as a workspace.
 - **Key Features**: **User surface — 1 action, 2 panes, no events/endpoints:**  * `pick` (`Worktree from Linear issue`, `contexts=[workspace,tab,pane]` → `node bin/open.js`): launcher that resolves invoking-repo `cwd` an
 
+### [2026-07-09] ismaelosuna7824/herdr-recent-workspaces
+- **Overview**: **Recent Workspaces** (`ismaelosuna.recent-workspaces`, `v0.1.3`, `min_herdr_version 0.7.0`, `linux`/`macos`) is a Session & Workspace Management plugin that gives Herdr a missing primitive: **recent-folder memory**.
+- **Key Features**: Declared surface in `herdr-plugin.toml`: **1 pane, 2 actions, 2 default keybindings, 0 events, 0 endpoints.**  * **Picker pane `picker` (`placement = "split"`, `command = ["./bin/recent-workspaces"]`)
+
+### [2026-07-10] osamahbeig/herdr-pane-mover
+- **Overview**: **Pane Mover** (`osamahbeig.pane-mover`, v0.2.0) is a Session & Workspace Management utility for rearranging layout, not for creating workspaces. It provides a single mouse-clickable overlay menu that operates on the currently focused pane: re-split it within its tab, swap it with a neighbor, or migrate it to another tab, another workspace, a new tab, or a new workspace.
+- **Key Features**: Declared surface in `herdr-plugin.toml` is minimal: **1 action + 1 pane, 0 events, 0 HTTP endpoints.**  * **Action `open` (`Move this pane…`, `contexts=["workspace"]`):** launcher `node open.js`. Inte
+
+### [2026-07-10] kakigakki/herdr-auto-namer
+- **Overview**: `kakigakki/herdr-auto-namer` (`auto-namer`, `v1.0.0`, `min_herdr_version 0.7.0`) is a zero-UI, event-driven Session & Workspace Management plugin that eliminates Herdr's wall of identical `claude` rows.
+- **Key Features**: No user-invoked actions, panes, pickers, or HTTP endpoints. The entire surface is three event subscriptions in `herdr-plugin.toml`, all invoking the same handler:  * `pane.agent_status_changed -> ["ba
+
+### [2026-07-10] haphamdev/herdr-simple-switcher
+- **Overview**: `haphamdev/herdr-simple-switcher` (`simple-switcher`, v0.4.0) is a pure-Bash Session & Workspace Management plugin that provides four fuzzy-search popups for navigating a Herdr session: **Switch Workspace**, **Switch Tab**, **Switch Agent**, and **Open Project**. The first three are thin `herdr CLI → jq → fzf → herdr focus` loops with no state; Open Project discovers git checkouts under a user-configured root with `fd` and opens the selection in a new tab, creating the parent workspace if needed. It is deliberately minimal (~478 LOC Shell, no build step) and overlaps heavily with ledger peers like `alon-z/herdr-command-palette`, `willfish/herdr-workspacex`, `nicolasvasquez/herdr-smart-workspace`, and `nicolegros/herdr-launcher`, differentiated by splitting navigation into four single-purpose popups and by enforcing a strict `<workspace>/<project>` directory convention.
+- **Key Features**: No daemons, HTTP endpoints, sockets, or background services. Declared surface is 4 actions + 4 panes + 1 startup hook:  * **Switch Workspace (`switch-workspace`):** Lists `herdr workspace list`, forma
+
+### [2026-07-10] uuie/reasonix-herdr
+- **Overview**: `reasonix-herdr` (`Reasonix for Herdr`, `v0.1.0`, `min_herdr_version 0.7.3`) is a bidirectional bridge between the external `reasonix` agent runtime and Herdr. From the Herdr side it is a launcher + status integration: two actions open `reasonix` in a split or new tab, and a `doctor` action verifies both registrations. From the Reasonix side it is a lifecycle reporter plus a bundled `herdr` skill that lets a Reasonix session running inside Herdr inspect and control workspaces, tabs, panes, and sibling agents.
+- **Key Features**: **Herdr manifest surface (`herdr-plugin.toml`): 1 pane + 3 actions, no events, no HTTP endpoints.**  * Pane `reasonix` (`Reasonix`, `placement="split"`, `command=["reasonix"]`): the raw agent binary, 
+
+### [2026-07-11] tanshio/herdr-worktreeinclude
+- **Overview**: `herdr-worktreeinclude` (`tanshio.worktreeinclude`, `v0.1.0`) is a minimal, zero-UI Session & Workspace Management plugin that solves the cold-start problem for Herdr linked worktrees: a fresh `git worktree` contains only tracked files, so gitignored local state like `.env`, `.env.local`, or `config/secrets.json` is missing.
+- **Key Features**: Declared surface in `herdr-plugin.toml` is a single event subscription, no `[[actions]]`, `[[panes]]`, or HTTP endpoints:  * **Hook:** `worktree.created -> ["bash", "copy-worktreeinclude.sh"]` * **Tri
+
+### [2026-07-11] noctaIO/herdr-plugin-aos
+- **Overview**: `noctaio.aos` is a minimal, Shell-only Session & Workspace Management launcher. Its sole job is to spawn a Claude Code agent booted inside an external Agentic OS (`agentic-os`) checkout, in a Herdr split pane, from any current workspace.
+- **Key Features**: Declared surface in `herdr-plugin.toml` is **1 pane + 1 action + 1 keybinding. No events, no HTTP endpoints, no pickers, no daemons.**  * **Action `noctaio.aos.launch` (`Launch AOS agent`, `contexts =
+
+### [2026-07-12] jugyo/herdr-nav-history
+- **Overview**: `jugyo/herdr-nav-history` (`jugyo.nav-history`, `v0.1.0`) is a Session & Workspace Management plugin that adds browser-style **Back / Forward** navigation over Herdr focus history. It records every `pane.focused` event to a per-session stack, then lets the user walk that stack with two headless actions. It is the multi-step generalization of the one-step toggle in `third774/herdr-last-workspace` and Herdr's built-in `last_pane`.
+- **Key Features**: * **Passive history recording:** no UI. The `record` subcommand is invoked on every `pane.focused` event. Because tab and workspace switches always terminate in a pane focus, one subscription covers a
+
+### [2026-07-13] iurysza/herdr-tab-smart-rename
+- **Overview**: Smart Rename is a **Session & Workspace Management** plugin that keeps Herdr workspace, tab, and agent-pane labels aligned with the current task. A detached Bun worker watches lifecycle activity in the background and renames automatic targets, while manual CLI actions allow on-demand rename, reset, and AI-provider setup.
+- **Key Features**: **What the user sees:**  * **Background automatic naming:** detached `worker.ts` evaluates tabs on Herdr events + 60s sweep. Known commands get deterministic labels without AI (`Run Tests`, `Dev Serve
+
+### [2026-07-13] Phoobobo/herdr-workboard
+- **Overview**: `phoobobo.workboard` (`Workboard`, `v0.1.0`, `min_herdr_version 0.7.0`, `macos`/`linux`) is a kanban workboard that lives **inside** Herdr rather than mirroring it. The mapping is literal and stated in `herdr-plugin.toml` and `README.md`: **Board = Workspace, Column / task-state = Tab, Task session = Pane, Board view = first tab**.
+- **Key Features**: **Plugin manifest surface (`herdr-plugin.toml`): 4 actions + 1 pane, no `[[events]]`, no HTTP endpoints.**  * `init` — `bun run src/actions.ts init` (`global,workspace`): create or reuse a dedicated b
+
+### [2026-07-13] tomasvarga/herdr-e2b
+- **Overview**: `herdr-e2b` (v0.1.1, `min_herdr_version 0.7.0`, `macos`/`linux`) sends a Herdr git worktree to a fresh E2B cloud sandbox **on demand**. It performs a snapshot upload of the live tree — tracked files plus uncommitted edits and untracked files, honoring `.gitignore` — with no push, clone, or credentials.
+- **Key Features**: **CLI — `bin/e2b-box` (symlinked to `~/.local/bin` by `install.sh`):**  * `open` (default, no args also works): ensure-live + attach shell. Includes optimistic fast-path, spinner, and on-close `[p]ull
+
+### [2026-07-14] ImArtisann/zed-herdr
+- **Overview**: `artisann.zed-herdr` / **Zed Workspace Sync** (`v0.1.0`, `min_herdr_version 0.7.3`, `macos`/`linux` only) keeps the active Herdr workspace available in Zed without taking ownership of either application.
+- **Key Features**: **User-visible plugin surface (`herdr-plugin.toml`):**  * **Action `toggle` — `Toggle Zed Workspace Sync`, `contexts=["workspace"]`:** `bun ./dist/index.js toggle`. Pauses/resumes live synchronization
+
+### [2026-07-14] ctbaum/herdr-deck
+- **Overview**: herdr-deck is a Rust, terminal-UI workspace launcher that runs inside a Herdr pane and recreates the author's opinionated working "deck" around a selected project, worktree, directory, or saved agent conversation.
+- **Key Features**: **Browse / search:** * Live Herdr workspaces sorted `blocked (0) < done (1) < other (2)`, then clustered by project basename in first-appearance order (`ext::workspaces()`). * Remote entries from `$HE
+
+### [2026-07-15] salkhalil/herdr-sessionizer
+- **Overview**: `salkhalil/herdr-sessionizer` (`sessionizer`, v0.5.0) is a Shell (`bash`, ~282 LOC) port of ThePrimeagen's `tmux-sessionizer` for Herdr. One keybind opens an `fzf` overlay over two sources — live Herdr workspaces and `zoxide` directory history — where selecting an open workspace focuses it and selecting a directory creates a new focused workspace with pre-configured template tabs.
+- **Key Features**: No daemons, event hooks, HTTP endpoints, or sockets. Declared surface is **2 actions + 1 pane**:  * `sessionizer.pick` → `bash bin/open-picker` — opens workspace view. * `sessionizer.agents` → `bash b
+
+### [2026-07-15] serhii-chernenko/herdr-worktreeinclude
+- **Overview**: `serhii-chernenko.worktreeinclude` (`Project-local Worktrees`, `v0.2.2`, `min_herdr_version 0.7.4`, `macos`/`linux` only) is a Session & Workspace Management plugin that fixes two Herdr worktree cold-start problems at once.
+- **Key Features**: **What the user gets:**  * **Transparent relocation of native worktrees:** Use Herdr's normal **New worktree** UI. `scripts/on-worktree-created.sh` (on `worktree.created`) moves the just-created check
+
+### [2026-07-15] LeonardoTrapani/herdr-js-worktree-bootstrap
+- **Overview**: `LeonardoTrapani/herdr-js-worktree-bootstrap` (`leonardotrapani.js-worktree-bootstrap`, `v0.1.0`, `min_herdr_version 0.7.0`, `linux`/`macos`) is a zero-UI, event-driven Session & Workspace Management plugin that makes Herdr-created JavaScript/TypeScript linked worktrees immediately usable.
+- **Key Features**: **Declared surface in `herdr-plugin.toml` — 2 actions + 1 event, no panes, no HTTP endpoints, no daemon:**  * `bootstrap` (`Bootstrap this JavaScript worktree`, `contexts=["workspace"]`): `["node", "s
+
+### [2026-07-16] crafts69guy/herdr-switchboard
+- **Overview**: Switchboard (`switchboard`, v3.0.0, `min_herdr_version 0.8.0`, `macos`/`linux`) is a multi-picker terminal control surface for Herdr, not a narrow workspace switcher. It provides searchable Projects (live agents + workspaces + `ghq` repos + linked worktrees), AI-agent launcher, shell-command recall, TCP-port inspector, Node-version manager, Git review menu, Usage quota dashboard, and Zen focus mode — all as modes of a single Rust TUI (`herdr-switchboard`) hosted in Herdr popup/overlay panes and launched from Bash shims.
+- **Key Features**: **Manifest surface: 17 actions + 13 panes, no events/endpoints.**  Actions in `herdr-plugin.toml` (all `contexts=["global","pane"]`, all `["bash","bin/action.sh"]`): `menu`, `projects`, `agents`, `usa
+
+### [2026-07-16] ImArtisann/herdr-workspace-launcher
+- **Overview**: `ImArtisann/herdr-workspace-launcher` (`herdr-workspace-launcher` / `Workspace Launcher`, `v0.1.0`, `min_herdr_version 0.7.0`, `platforms=["macos"]`) is a narrow Session & Workspace Management launcher. It opens a searchable, directory-only filesystem picker in a session-modal popup and creates a new focused Herdr workspace at the chosen path.
+- **Key Features**: Declared surface in `herdr-plugin.toml` is **1 action + 1 pane, 0 events, 0 HTTP endpoints**:  * **Action `open-picker` (`Open workspace picker`, `contexts=["workspace"]`):** `["bun","run","index.ts"]
+
+### [2026-07-17] beyondlex/herdr-recent-navigator
+- **Overview**: **Herdr Recent Navigator** (`beyondlex.herdr-recent-navigator`, `v0.6.2`, `min_herdr_version 0.7.4`, `macos`/`linux`) is a Rust single-binary MRU switcher for Herdr. It opens as a `popup` (60% width) listing recently-focused **Workspaces, Tabs, Agents, and Panes** in most-recently-used order, with fuzzy search, keyboard navigation, and live agent-status indicators.
+- **Key Features**: **Four-category picker UI (`src/mru.rs`, `src/ui.rs`):**  * **Workspaces tab:** grouped by `workspace_id`, shows workspace name + per-pane agent status dots (`●`/`○`/`·`), sorted by workspace-level MR
+
+### [2026-07-17] timofey-TK/herdr-worktree-hooks
+- **Overview**: `timofey-TK/herdr-worktree-hooks` (`worktree-hooks`, v0.2.0) is a zero-dependency Python plugin that fills Herdr's missing worktree hook system. Herdr natively creates/opens/removes linked checkouts but does no bootstrap; this plugin runs user-configured `bash -c` commands on `worktree.created`, `worktree.opened`, and `worktree.removed` — e.g. `cp {repo_root}/.env .env`, `uv sync`, `docker rm -f devdb-{branch_slug}` — routed per-repo via `config.toml`.
+- **Key Features**: **Event hooks — no daemon, no HTTP endpoints:**  * `worktree.created -> ["python3", "wthooks.py", "event-created"]` — opens a visible split pane in the new workspace to run `created` commands with liv
+
+### [2026-07-17] y-hirakaw/herdr-launcher-pane
+- **Overview**: `y-hirakaw/herdr-launcher-pane` (`launcher-pane`, v0.5.0) is a **Session & Workspace Management** launcher, not a workspace creator. It provides a docked (or popup) curses pane that lists every live Herdr workspace nested under a user-configurable menu — by default `Open in Finder / Explorer / File Manager` plus `Open in VS Code (new window)` — so the user can click a workspace to run an external OS-level command against that workspace's directory without leaving Herdr or remembering paths.
+- **Key Features**: **User surface: 1 pane + 1 action, no events, no HTTP endpoints:**  * **Pane `launcher` (`Launcher`, `placement="split"`, `command=["python3", "app.py"]`):** stdlib-`curses` TUI, ~767 LOC Python total
+
+### [2026-07-17] shelken/herdr-plugins
+- **Overview**: ` shelken/herdr-plugins` is a Herdr plugin monorepo that currently ships a single independent plugin: `shelken.auto-pi` (`Auto Pi`, v0.3.0) under `auto-pi/`. It is a narrow Session & Workspace Management utility for the `pi` coding agent (badlogic/pi-mono): it launches fresh `pi` sessions into the largest available idle shell pane, and it restores prior `pi` sessions for the focused pane's directory via a fuzzy picker.
+- **Key Features**: **Declared surface in `auto-pi/herdr-plugin.toml` (2 actions + 1 pane, 0 events, 0 endpoints):**  * `enter-pi` (`Open pi in next free pane (by area)`) → `bash bin/open-pi-cascade.sh`. Scans the active
+
+### [2026-07-18] mrcndz/herdr-routines
+- **Overview**: `mrcndz/herdr-routines` (`Herdr Routines`, `v0.1.0`) is a cron scheduler for Herdr. The user declares `[[routine]]` blocks in `routines.toml`; a detached Python daemon wakes every 15s and fires due routines.
+- **Key Features**: Three routine types, inferred unless stated explicitly:  * `pane` (default when `command` is present): resolve/create workspace + tab, then `herdr pane run <pane> <cmd>`. Fire-and-forget by design. * 
+
+### [2026-07-18] shoaibkhanz/herdr-nav-plus
+- **Overview**: `shoaibkhanz/herdr-nav-plus` (`herdr-nav-plus`, `Herdr Nav Plus v0.1.0`, `min_herdr_version 0.7.0`, `linux`/`macos`) is a narrow Session & Workspace Management navigator. It provides direct `Ctrl+h/j/k/l` movement that falls through three layers in one chord: `Vim split -> Herdr pane -> workspace`.
+- **Key Features**: No pickers, panes, daemons, or HTTP endpoints. The entire user surface is 8 headless `global`-context actions in `herdr-plugin.toml`, all `["node", "navigate.js", <dir>]`:  * `left / down / up / right
+
+### [2026-07-19] Tomatio13/herdr-google-calendar
+- **Overview**: `herdr-gog-calendar` is a Shell-based Google Calendar integration for Herdr, not a session/workspace orchestrator in the conventional sense. It provides a single `fzf`-driven TUI panel hosted in a Herdr `split` pane that browses the user's Google Calendar by month via the external `gogcli` (`gog`) binary, previews event details, opens Meet/Calendar links in the OS browser, and optionally bootstraps a Herdr workspace from an event title via `git worktree` + `herdr workspace create`.
+- **Key Features**: **Declared surface: 1 pane + 1 action, 0 events, 0 HTTP endpoints:**  * Pane `gog-calendar` (`split`, `bash -c exec bash "$HERDR_PLUGIN_ROOT/scripts/panel.sh"`). * Action `open-gog-calendar` (`Open Go
+
+### [2026-07-20] Tomatio13/herdr-google-gmail
+- **Overview**: `Tomatio13/herdr-google-gmail` (`herdr-google-gmail` v0.1.0) is a Gmail integration for Herdr, not a session/workspace orchestrator. It provides an `fzf`-driven inbox browser hosted in a Herdr `split` pane plus a detached background poller that raises Herdr popup notifications for new unread mail.
+- **Key Features**: **TUI inbox browser (`scripts/panel.sh`):** - Lists top 30 `label:INBOX` messages via `gog gmail messages search "label:INBOX" --max 30 --json --results-only`. - Renders TSV rows `[id, threadId, unrea
+
+### [2026-07-20] aclima01/herdr-powershell-title-sync
+- **Overview**: PowerShell Title Sync is a Windows-only, zero-runtime port of Joel (Moshi)'s `rjyo/herdr-window-title-sync`. It mirrors Herdr state outward: on every workspace / tab / pane focus, rename, or agent-status transition it recomputes a short human-readable string from the focused workspace, tab, and agent session and writes it to the outer terminal window/tab title.
+- **Key Features**: Declared surface in `herdr-plugin.toml` is **1 headless action + 11 event subscriptions, no panes, no HTTP endpoints, no sockets, no daemon:**  **Manual action:** - `refresh` (`Refresh terminal title`
+
+### [2026-07-21] thomasschafer/herdr-kiosk
+- **Overview**: `thomasschafer.herdr-kiosk` (`Kiosk`, `v0.1.0`, `min_herdr_version 0.7.4`) is a **Session & Workspace Management** picker in the same family as `command-palette`, `workspacex`, `smart-workspace`, and `herdr-launcher`, but scoped to **repos → branches → worktrees**.
+- **Key Features**: **User surface (`herdr-plugin.toml`):**  * `open-picker` (`workspace,global`, `sh scripts/open-picker.sh` → `herdr plugin pane open --plugin thomasschafer.herdr-kiosk --entrypoint picker`) + `open-pic
+
+### [2026-07-21] mroth/herdr-jj-status
+- **Overview**: `mroth/herdr-jj-status` (`mroth.jj-status`, v0.1.1) is a stateless, Shell-based Session & Workspace Management augmentation — not a workspace orchestrator. It gives Jujutsu (`jj`) checkouts the equivalent of Herdr's built-in `branch` / `git_status` sidebar row by computing two custom metadata tokens, `$jj_bookmark` and `$jj_status`, and reporting them per-workspace for display in `ui.sidebar.spaces.rows`. For plain-git workspaces it is explicitly a no-op that clears its tokens.
+- **Key Features**: **What the user sees:** a third sidebar row, e.g. `[["$jj_bookmark", "$jj_status"]]`, that is empty/collapsed for non-`jj` workspaces and populated for `jj` workspaces. Display grammar is defined in `
+
+### [2026-07-21] abrose/herdr-numbered-workspaces
+- **Overview**: `abrose/herdr-numbered-workspaces` (`numbered-workspaces`, `v0.3.0`) is a minimal Session & Workspace Management utility, not a workspace creator. It solves one display gap: `herdr workspace list` already reports each space's 1-based ordinal as `number`, but Herdr has no built-in sidebar row token for it.
+- **Key Features**: **What the user sees:** a leading number in the spaces sidebar, e.g. `1 ● feat-...`, `2 ● dotfiles-chezmoi`, kept in sync as spaces are created, closed, or reordered.  **Declared surface in `herdr-plu
+
+### [2026-07-22] dmnkf/herdr-omnisearch
+- **Overview**: Herdr OmniSearch is a **fast, local, keyboard-driven search engine for live Herdr panes and archived agent conversations**. It is packaged as `herdr.omnisearch` (`min_herdr_version 0.7.5`, `linux`/`macos` only) and implemented primarily in Python (~9k LOC).
+- **Key Features**: ### Live search * Index current snapshot: `herdr-omnisearch index --lines 350 [--include-empty] [--include-wrappers]`. * Headless search: `herdr-omnisearch search <terms> [--status] [--agent] [--all-s
+
+### [2026-07-22] iQua/herdr-flakes
+- **Overview**: **Flakes** (`id: flakes`, `v0.1.0`) is a thin launcher shim in the **Session & Workspace Management** domain. It does not implement workspace management itself; it starts, stops, and queries an external implementation already shipped by the Flakes CLI (`flakes herdr daemon` / `flakes herdr status`).
+- **Key Features**: What the user actually gets is minimal and fully declared in `herdr-plugin.toml`:  **Three headless actions (all `contexts = ["workspace", "global"]`):** * `start` — `Flakes: start mirror` → `node shi
+
+### [2026-07-23] douglascorrea/herdr-agent-inbox
+- **Overview**: `herdr-agent-inbox` turns Herdr's Agents sidebar into an email-style inbox. A long-lived stdlib-Python daemon derives ChatGPT-like session titles from native agent transcripts, computes an attention rank (`blocked → unseen → working → idle → settled`), reports running-time and flag tokens, and asserts an `agent.view.set` sort so settled threads sink to the bottom.
+- **Key Features**: **Inbox triage model:** * Rank tiers in `daemon.py:rank_for`: `0 blocked`, `1 done/unread`, `2 working`, `3 idle`, `4 unknown`, `5 settled`. Settling is explicit and sticky; transitions into `working/
+
+### [2026-07-23] calebcauthon/herdr-theos-settler
+- **Overview**: **Herdr Inbox** (`herdr-plugins.inbox`, `0.4.0`, from `calebcauthon/herdr-theos-settler`) turns Herdr's native **Agents** and **Spaces** lists into an active-work inbox.
+- **Key Features**: **Four headless actions + one popup:**  * `toggle-agent` (`pane,workspace`): settle/restore the agent in the focused pane. Preserves underlying `agent` identity (`claude`, `codex`, etc.); if a tab hos
+
+### [2026-07-24] ChmaraX/herdr-nvim
+- **Overview**: `chmarax.herdr-nvim` (`herdr-nvim` v1.0.0, `min_herdr_version 0.7.4`, `macos`/`linux` only) is a two-halved editor bridge, not a workspace orchestrator.
+- **Key Features**: **Herdr manifest surface (`herdr-plugin.toml`):**  * 4 headless actions (all `sh -c exec bash herdr/run.sh ...`):   * `toggle` (`pane,workspace`): open/close sidebar in current tab.   * `pick-file` (`
+
+### [2026-07-24] quan-meng/herdr-slurm
+- **Overview**: `herdr-slurm` is a Linux-only, zero-dependency Python plugin that makes Herdr usable on Slurm login nodes. When the user opens an ordinary new Herdr tab inside a Space that already has an `srun --jobid=<id>` attachment in a sibling pane, the plugin replaces that new tab's login shell with an interactive `srun --jobid=<same-id>` re-attachment, optionally tagging the host-side `srun` process with `HERDR_AGENT=<name>` so Herdr's agent monitoring sees in-job activity.
+- **Key Features**: **What the user sees:**  * **Automatic inheritance on new tab:** Create a tab with Herdr's native new-tab command starting from a tab running e.g. `srun --jobid=2875600 --pty --overlap zsh -l`. If exa
+
+### [2026-07-24] speardragon/herdr-ask-inbox
+- **Overview**: `Ask Inbox` is a Herdr plugin that collects pending Claude `AskUserQuestion` calls from every Herdr workspace into a single FIFO modal popup where they can be answered in place. When an agent invokes `AskUserQuestion`, a Claude `PreToolUse` hook enqueues the structured request and opens the popup itself; picking an answer returns it verbatim to only the originating agent via the hook-response protocol.
+- **Key Features**: **What the user gets:**  * **Centralized question queue:** multiple stalled `AskUserQuestion` calls across workspaces land in one ordered queue. Header shows `Ask Inbox · 1/2`; answering immediately p
+
+### [2026-07-24] khatriafaz/herdr-plugin-auto-rename
+- **Overview**: **Auto Rename** (`afaz.auto-rename`, `v0.4.0`, `min_herdr_version 0.7.0`, `macos`/`linux` only) automatically renames a fresh Herdr linked-worktree workspace and its current Git branch from the coding agent's first prompt — e.g. `worktree-silver-river-3547` → workspace `Stripe webhook retries` + branch `feat/stripe-webhook-retries`.
+- **Key Features**: **Automatic first-prompt rename (Pi):** - `pi.on("session_start")` seeds an `attempted` flag via `sessionAlreadyStarted()` — true if the session branch already contains a `herdr-auto-rename-attempt` c
+
+### [2026-07-24] filoozom/herdr-title
+- **Overview**: Herdr Title is a zero-UI, event-driven Session & Workspace Management utility that mirrors Herdr state outward into the outer terminal window/tab title via OSC 0. It always shows the selected location — worktree checkout basename if present, otherwise focused workspace `label` — suffixed with the Herdr server hostname, e.g. `feature-a (devbox.local)`.
+- **Key Features**: **What the user sees:**  * **Base title:** `selected_location (+ hostname)`. `selected_location()` in `src/lib.rs` finds the `focused==true` workspace in `session.snapshot`, prefers `worktree.checkout
+
+### [2026-07-24] iagogfe/herdr-ai-memory
+- **Overview**: `herdr-ai-memory` is a zero-dependency Node.js launcher that starts coding agents **through** the external `ai-memory run` workstream manager instead of as bare panes. A Herdr action either resumes the current workstream (`ai-memory run` bare) or starts a harness-specific session (`ai-memory run <harness>`) in a new focused tab, so one logical conversation can move between Claude, Codex, OpenCode, Pi, Crush, Kimi, OMP, and Grok without re-explaining context. It belongs in **Memory (Session & Workspace Management)**, but unlike ledger peers that create/rename/snapshot workspaces (`sessionizer`, `workspace-manager`, `resurrect`, `auto-namer`), it creates no workspace abstraction of its own — it is a thin Herdr-to-`ai-memory` bridge enforcing `ai-memory`'s one-lease-per-workstream rule.
+- **Key Features**: **What the user gets: 10 headless actions + 1 popup picker, no events, no HTTP endpoints, no daemon.**  Declared in `herdr-plugin.toml` (all `contexts = ["workspace","tab","pane"]`):  * `continue` → `
+
+### [2026-07-25] HexSleeves/herdr-warp
+- **Overview**: **HexSleeves/herdr-warp** (`hexsleeves.warp` / `Warp Native Agent View`, `v0.1.0`, `min_herdr_version 0.7.5`, `macos` only) is a ~402 LOC Shell plugin that mirrors a Herdr workspace outward. On demand it snapshots every live agent in the focused workspace and opens them as native panes in a single Warp tab, leaving Herdr as the owner of agent processes, persistence, and IPC while Warp owns visible layout and navigation.
+- **Key Features**: Single user surface, no daemons, panes, or background sync:  * **Action `open-workspace` (`Open workspace in Warp`, `contexts=["workspace"]` → `bash scripts/open-workspace.sh`):** select a workspace i
+
