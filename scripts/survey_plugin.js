@@ -264,38 +264,73 @@ ${concatenatedFiles}`;
 
   let modelToUse = DEFAULT_MODEL;
   async function makeRequest(model) {
-    const res = await fetch(META_COMPLETIONS_URL, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model,
-        temperature: 0.3,
-        max_tokens: process.env.META_MAX_TOKENS ? parseInt(process.env.META_MAX_TOKENS, 10) : 50000,
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: userPrompt }
-        ]
-      })
-    });
+    let attempts = 0;
+    const maxAttempts = 4;
 
-    if (res.status === 401) {
-      throw new Error('Meta API Authentication Failed (401): Check META_API_KEY');
-    }
-    if (res.status === 429) {
-      throw new Error('Meta API Rate Limit Exceeded (429): Quota exhausted or rate limited');
-    }
-    if (res.status === 404) {
-      throw new Error(`Meta API Model Not Found (404): ${model}`);
-    }
-    if (!res.ok) {
-      const errText = await res.text();
-      throw new Error(`Meta API Error (${res.status}): ${errText}`);
-    }
+    while (attempts < maxAttempts) {
+      try {
+        attempts++;
+        const res = await fetch(META_COMPLETIONS_URL, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            model,
+            temperature: 0.3,
+            max_tokens: process.env.META_MAX_TOKENS ? parseInt(process.env.META_MAX_TOKENS, 10) : 50000,
+            messages: [
+              { role: 'system', content: systemPrompt },
+              { role: 'user', content: userPrompt }
+            ]
+          })
+        });
 
-    return await res.json();
+        if (res.status === 401) {
+          throw new Error('Meta API Authentication Failed (401): Check META_API_KEY');
+        }
+        if (res.status === 429) {
+          if (attempts < maxAttempts) {
+            console.warn(`   ⚠️ Rate limited (429). Retrying in ${attempts * 4}s...`);
+            await new Promise(resolve => setTimeout(resolve, attempts * 4000));
+            continue;
+          }
+          throw new Error('Meta API Rate Limit Exceeded (429): Quota exhausted or rate limited');
+        }
+        if (res.status === 404) {
+          throw new Error(`Meta API Model Not Found (404): ${model}`);
+        }
+        if (res.status >= 500) {
+          if (attempts < maxAttempts) {
+            console.warn(`   ⚠️ Meta API server error (${res.status}). Retrying in ${attempts * 3}s...`);
+            await new Promise(resolve => setTimeout(resolve, attempts * 3000));
+            continue;
+          }
+        }
+        if (!res.ok) {
+          const errText = await res.text();
+          throw new Error(`Meta API Error (${res.status}): ${errText}`);
+        }
+
+        return await res.json();
+      } catch (err) {
+        const isTransient = err.message && (
+          err.message.includes('terminated') ||
+          err.message.includes('fetch failed') ||
+          err.message.includes('ECONNRESET') ||
+          err.message.includes('ETIMEDOUT') ||
+          err.message.includes('ENOTFOUND')
+        );
+
+        if (isTransient && attempts < maxAttempts) {
+          console.warn(`   ⚠️ Network socket dropped (${err.message}). Retrying in ${attempts * 3}s (Attempt ${attempts}/${maxAttempts})...`);
+          await new Promise(resolve => setTimeout(resolve, attempts * 3000));
+          continue;
+        }
+        throw err;
+      }
+    }
   }
 
   let data;
