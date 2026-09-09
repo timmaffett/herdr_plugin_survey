@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 // View switching
-function setupNavigation() {
+function switchView(viewName) {
   const links = document.querySelectorAll('.nav-link[data-view]');
   const views = {
     browse: document.getElementById('view-browse'),
@@ -91,23 +91,32 @@ function setupNavigation() {
     analytics: document.getElementById('view-analytics')
   };
 
+  links.forEach(l => {
+    if (l.dataset.view === viewName) l.classList.add('active');
+    else l.classList.remove('active');
+  });
+
+  Object.keys(views).forEach(k => {
+    if (views[k]) {
+      views[k].style.display = (k === viewName) ? 'block' : 'none';
+    }
+  });
+
+  if (viewName === 'growth') {
+    setTimeout(renderGrowthChart, 50);
+  } else if (viewName === 'analytics') {
+    renderAnalyticsCharts();
+  }
+}
+window.switchView = switchView;
+
+function setupNavigation() {
+  const links = document.querySelectorAll('.nav-link[data-view]');
   links.forEach(link => {
     link.addEventListener('click', () => {
-      links.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
       const viewName = link.dataset.view;
-
-      Object.keys(views).forEach(k => {
-        if (views[k]) {
-          views[k].style.display = (k === viewName) ? 'block' : 'none';
-        }
-      });
-
-      if (viewName === 'growth') {
-        setTimeout(renderGrowthChart, 50);
-      } else if (viewName === 'analytics') {
-        renderAnalyticsCharts();
-      } else if (viewName === 'reports') {
+      switchView(viewName);
+      if (viewName === 'reports') {
         initDailyReports();
       }
     });
@@ -683,35 +692,47 @@ function closeModal() {
   document.getElementById('detail-modal').classList.remove('open');
 }
 
-function jumpToDailyReportDate(dateStr, pluginFullName) {
+async function jumpToDailyReportDate(dateStr, pluginFullName) {
   closeModal();
-  const reportsTab = document.querySelector('.nav-link[data-view="reports"]');
-  if (reportsTab) {
-    reportsTab.click();
-  }
-  const datePicker = document.getElementById('reports-date-picker');
-  if (datePicker && dateStr) {
-    datePicker.value = dateStr;
-  }
-  reportsState.beforeDate = null;
-  const param = dateStr ? `&date=${dateStr}` : '';
-  loadReportsBatch(true, param).then(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (pluginFullName) {
-      setTimeout(() => {
-        const targetCard = document.querySelector(`.plugin-llm-card[data-plugin="${pluginFullName}"]`);
-        if (targetCard) {
-          targetCard.classList.remove('llm-hidden');
-          targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          const compItem = document.querySelector(`[data-plugin="${pluginFullName}"]`);
-          if (compItem) {
-            compItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  switchView('reports');
+
+  // If jumping to a specific plugin on that day, don't snap scroll to top, center on plugin
+  const shouldScrollToTop = !pluginFullName;
+  await initDailyReports(dateStr, shouldScrollToTop);
+
+  if (pluginFullName) {
+    setTimeout(() => {
+      let targetEl = document.querySelector(`.plugin-llm-card[data-plugin="${pluginFullName}"]`);
+      if (!targetEl) {
+        targetEl = document.querySelector(`[data-plugin="${pluginFullName}"]`);
+      }
+      if (!targetEl) {
+        const allH4 = document.querySelectorAll('#reports-feed-container h4');
+        for (const h4 of allH4) {
+          if (h4.textContent.includes(pluginFullName)) {
+            targetEl = h4;
+            break;
           }
         }
-      }, 350);
-    }
-  });
+      }
+
+      if (targetEl) {
+        if (targetEl.classList.contains('llm-hidden')) {
+          targetEl.classList.remove('llm-hidden');
+        }
+        targetEl.style.transition = 'box-shadow 0.4s ease';
+        targetEl.style.boxShadow = '0 0 0 2px #89b4fa, 0 8px 30px rgba(137, 180, 250, 0.4)';
+        setTimeout(() => {
+          targetEl.style.boxShadow = '';
+        }, 3000);
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 150);
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
 window.jumpToDailyReportDate = jumpToDailyReportDate;
 
@@ -2116,7 +2137,7 @@ function openPluginModalByName(fullName) {
 }
 window.openPluginModalByName = openPluginModalByName;
 
-async function loadReportsBatch(reset = false, customParams = '') {
+async function loadReportsBatch(reset = false, customParams = '', scrollToTop = true) {
   if (reportsState.isLoading) return;
   reportsState.isLoading = true;
 
@@ -2162,7 +2183,7 @@ async function loadReportsBatch(reset = false, customParams = '') {
             No daily reports match the current query criteria.
           </div>
         `;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (scrollToTop) window.scrollTo({ top: 0, behavior: 'smooth' });
       }
       if (loaderEl) loaderEl.style.display = 'none';
       reportsState.isLoading = false;
@@ -2176,7 +2197,9 @@ async function loadReportsBatch(reset = false, customParams = '') {
     const cardsHtml = data.reports.map(r => renderReportDayCard(r, reportsState.viewMode)).join('');
     if (reset) {
       feed.innerHTML = cardsHtml;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (scrollToTop) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     } else {
       feed.insertAdjacentHTML('beforeend', cardsHtml);
     }
@@ -2191,203 +2214,208 @@ async function loadReportsBatch(reset = false, customParams = '') {
   }
 }
 
-async function initDailyReports() {
-  if (reportsState.initialized) return;
-  reportsState.initialized = true;
+async function initDailyReports(targetDate = null, scrollToTop = true) {
+  const isFirstInit = !reportsState.initialized;
+  if (isFirstInit) {
+    reportsState.initialized = true;
 
-  try {
-    const statsRes = await fetch('/api/daily-reports/stats');
-    const stats = await statsRes.json();
-    const statsBar = document.getElementById('reports-stats-bar');
-    if (statsBar) {
-      statsBar.innerHTML = `
-        <span>📅 Calendar Coverage: Jan 1, 2026 – Sep 7, 2026 (${stats.total_days || 250} Days)</span>
-        <span>Total Ecosystem: <strong>${stats.total_plugins || 994} Plugins</strong> (${stats.total_repos || 977} Repositories) · Active Dispatch Days: ${stats.active_days || 140} · Herdr Core Milestones: ${stats.total_herdr_events || 85} · Breakthroughs: ${stats.total_breakthroughs || 186}</span>
-      `;
+    try {
+      const statsRes = await fetch('/api/daily-reports/stats');
+      const stats = await statsRes.json();
+      const statsBar = document.getElementById('reports-stats-bar');
+      if (statsBar) {
+        statsBar.innerHTML = `
+          <span>📅 Calendar Coverage: Jan 1, 2026 – Sep 7, 2026 (${stats.total_days || 250} Days)</span>
+          <span>Total Ecosystem: <strong>${stats.total_plugins || 994} Plugins</strong> (${stats.total_repos || 977} Repositories) · Active Dispatch Days: ${stats.active_days || 140} · Herdr Core Milestones: ${stats.total_herdr_events || 85} · Breakthroughs: ${stats.total_breakthroughs || 186}</span>
+        `;
+      }
+    } catch (err) {
+      console.error('Failed to load reports stats:', err);
     }
-  } catch (err) {
-    console.error('Failed to load reports stats:', err);
-  }
 
-  // Setup Date Picker
-  const datePicker = document.getElementById('reports-date-picker');
-  if (datePicker) {
-    datePicker.addEventListener('change', (e) => {
-      const selected = e.target.value;
-      if (selected) {
-        reportsState.beforeDate = null;
-        loadReportsBatch(true, `&date=${selected}`);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    });
-  }
-
-  // Button: Today
-  const btnToday = document.getElementById('btn-jump-today');
-  if (btnToday) {
-    btnToday.addEventListener('click', () => {
-      if (datePicker) datePicker.value = '2026-09-07';
-      reportsState.beforeDate = null;
-      loadReportsBatch(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  // Button: Genesis
-  const btnGenesis = document.getElementById('btn-jump-genesis');
-  if (btnGenesis) {
-    btnGenesis.addEventListener('click', () => {
-      if (datePicker) datePicker.value = '2026-01-01';
-      reportsState.beforeDate = null;
-      loadReportsBatch(true, `&date=2026-01-01`);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  // Button: Next Active Day
-  const btnNextActive = document.getElementById('btn-next-active-day');
-  if (btnNextActive) {
-    btnNextActive.addEventListener('click', async () => {
-      let cur = datePicker ? datePicker.value : null;
-      const visibleArticles = document.querySelectorAll('#reports-feed-container article[data-date]');
-      for (const art of visibleArticles) {
-        const rect = art.getBoundingClientRect();
-        if (rect.bottom > 100) {
-          cur = art.getAttribute('data-date');
-          break;
-        }
-      }
-      if (!cur) cur = '2026-01-01';
-
-      try {
-        const res = await fetch(`/api/daily-reports/next-active?date=${encodeURIComponent(cur)}`);
-        const data = await res.json();
-        if (data.found && data.next_date) {
-          if (datePicker) datePicker.value = data.next_date;
+    // Setup Date Picker
+    const datePicker = document.getElementById('reports-date-picker');
+    if (datePicker) {
+      datePicker.addEventListener('change', (e) => {
+        const selected = e.target.value;
+        if (selected) {
           reportsState.beforeDate = null;
-          loadReportsBatch(true, `&date=${data.next_date}`);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      } catch (err) {
-        console.error('Failed to navigate to next active day:', err);
-      }
-    });
-  }
-
-  // Breakthroughs Filter Toggle
-  const btToggle = document.getElementById('reports-breakthroughs-toggle');
-  if (btToggle) {
-    btToggle.addEventListener('change', (e) => {
-      reportsState.breakthroughsOnly = e.target.checked;
-      reportsState.beforeDate = null;
-      loadReportsBatch(true);
-    });
-  }
-
-  // Herdr Core News Filter Toggle
-  const herdrToggle = document.getElementById('reports-herdr-news-toggle');
-  if (herdrToggle) {
-    herdrToggle.addEventListener('change', (e) => {
-      reportsState.herdrNewsOnly = e.target.checked;
-      reportsState.beforeDate = null;
-      loadReportsBatch(true);
-    });
-  }
-
-  // Agent Detections Filter Toggle
-  const agentToggle = document.getElementById('reports-agent-detect-toggle');
-  if (agentToggle) {
-    agentToggle.addEventListener('change', (e) => {
-      reportsState.agentDetectionOnly = e.target.checked;
-      reportsState.beforeDate = null;
-      loadReportsBatch(true);
-    });
-  }
-
-  // Search Input
-  const searchInput = document.getElementById('reports-search-input');
-  let searchTimer = null;
-  if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-      clearTimeout(searchTimer);
-      searchTimer = setTimeout(() => {
-        reportsState.search = e.target.value.trim();
-        reportsState.beforeDate = null;
-        loadReportsBatch(true);
-      }, 300);
-    });
-  }
-
-  // View Mode: Newspaper vs Compact
-  const btnNewspaper = document.getElementById('btn-view-newspaper');
-  const btnCompact = document.getElementById('btn-view-compact');
-
-  if (btnNewspaper && btnCompact) {
-    btnNewspaper.addEventListener('click', () => {
-      if (reportsState.viewMode === 'newspaper') return;
-      reportsState.viewMode = 'newspaper';
-      btnNewspaper.classList.add('active');
-      btnCompact.classList.remove('active');
-      const feed = document.getElementById('reports-feed-container');
-      if (feed && reportsState.reports.length > 0) {
-        feed.innerHTML = reportsState.reports.map(r => renderReportDayCard(r, 'newspaper')).join('');
-      }
-    });
-
-    btnCompact.addEventListener('click', () => {
-      if (reportsState.viewMode === 'compact') return;
-      reportsState.viewMode = 'compact';
-      btnCompact.classList.add('active');
-      btnNewspaper.classList.remove('active');
-      const feed = document.getElementById('reports-feed-container');
-      if (feed && reportsState.reports.length > 0) {
-        feed.innerHTML = reportsState.reports.map(r => renderReportDayCard(r, 'compact')).join('');
-      }
-    });
-  }
-
-  // Toggle AI Code Survey
-  const btnToggleLlm = document.getElementById('btn-toggle-llm-eval');
-  if (btnToggleLlm) {
-    const updateLlmBtn = () => {
-      if (reportsState.showLlmEvals) {
-        btnToggleLlm.classList.add('active');
-        const badge = btnToggleLlm.querySelector('.toggle-status-badge');
-        if (badge) badge.textContent = 'ON';
-      } else {
-        btnToggleLlm.classList.remove('active');
-        const badge = btnToggleLlm.querySelector('.toggle-status-badge');
-        if (badge) badge.textContent = 'OFF';
-      }
-    };
-    updateLlmBtn();
-
-    btnToggleLlm.addEventListener('click', () => {
-      reportsState.showLlmEvals = !reportsState.showLlmEvals;
-      localStorage.setItem('herdr_show_llm_evals', reportsState.showLlmEvals ? 'true' : 'false');
-      updateLlmBtn();
-      document.querySelectorAll('.plugin-llm-card').forEach(card => {
-        if (reportsState.showLlmEvals) {
-          card.classList.remove('llm-hidden');
-        } else {
-          card.classList.add('llm-hidden');
+          loadReportsBatch(true, `&date=${selected}`, true);
         }
       });
-    });
+    }
+
+    // Button: Today
+    const btnToday = document.getElementById('btn-jump-today');
+    if (btnToday) {
+      btnToday.addEventListener('click', () => {
+        if (datePicker) datePicker.value = '2026-09-07';
+        reportsState.beforeDate = null;
+        loadReportsBatch(true, '', true);
+      });
+    }
+
+    // Button: Genesis
+    const btnGenesis = document.getElementById('btn-jump-genesis');
+    if (btnGenesis) {
+      btnGenesis.addEventListener('click', () => {
+        if (datePicker) datePicker.value = '2026-01-01';
+        reportsState.beforeDate = null;
+        loadReportsBatch(true, `&date=2026-01-01`, true);
+      });
+    }
+
+    // Button: Next Active Day
+    const btnNextActive = document.getElementById('btn-next-active-day');
+    if (btnNextActive) {
+      btnNextActive.addEventListener('click', async () => {
+        let cur = datePicker ? datePicker.value : null;
+        const visibleArticles = document.querySelectorAll('#reports-feed-container article[data-date]');
+        for (const art of visibleArticles) {
+          const rect = art.getBoundingClientRect();
+          if (rect.bottom > 100) {
+            cur = art.getAttribute('data-date');
+            break;
+          }
+        }
+        if (!cur) cur = '2026-01-01';
+
+        try {
+          const res = await fetch(`/api/daily-reports/next-active?date=${encodeURIComponent(cur)}`);
+          const data = await res.json();
+          if (data.found && data.next_date) {
+            if (datePicker) datePicker.value = data.next_date;
+            reportsState.beforeDate = null;
+            await loadReportsBatch(true, `&date=${data.next_date}`, true);
+          }
+        } catch (err) {
+          console.error('Failed to navigate to next active day:', err);
+        }
+      });
+    }
+
+    // Breakthroughs Filter Toggle
+    const btToggle = document.getElementById('reports-breakthroughs-toggle');
+    if (btToggle) {
+      btToggle.addEventListener('change', (e) => {
+        reportsState.breakthroughsOnly = e.target.checked;
+        reportsState.beforeDate = null;
+        loadReportsBatch(true, '', true);
+      });
+    }
+
+    // Herdr Core News Filter Toggle
+    const herdrToggle = document.getElementById('reports-herdr-news-toggle');
+    if (herdrToggle) {
+      herdrToggle.addEventListener('change', (e) => {
+        reportsState.herdrNewsOnly = e.target.checked;
+        reportsState.beforeDate = null;
+        loadReportsBatch(true, '', true);
+      });
+    }
+
+    // Agent Detections Filter Toggle
+    const agentToggle = document.getElementById('reports-agent-detect-toggle');
+    if (agentToggle) {
+      agentToggle.addEventListener('change', (e) => {
+        reportsState.agentDetectionOnly = e.target.checked;
+        reportsState.beforeDate = null;
+        loadReportsBatch(true, '', true);
+      });
+    }
+
+    // Search Input
+    const searchInput = document.getElementById('reports-search-input');
+    let searchTimer = null;
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => {
+          reportsState.search = e.target.value.trim();
+          reportsState.beforeDate = null;
+          loadReportsBatch(true, '', true);
+        }, 300);
+      });
+    }
+
+    // View Mode: Newspaper vs Compact
+    const btnNewspaper = document.getElementById('btn-view-newspaper');
+    const btnCompact = document.getElementById('btn-view-compact');
+
+    if (btnNewspaper && btnCompact) {
+      btnNewspaper.addEventListener('click', () => {
+        if (reportsState.viewMode === 'newspaper') return;
+        reportsState.viewMode = 'newspaper';
+        btnNewspaper.classList.add('active');
+        btnCompact.classList.remove('active');
+        const feed = document.getElementById('reports-feed-container');
+        if (feed && reportsState.reports.length > 0) {
+          feed.innerHTML = reportsState.reports.map(r => renderReportDayCard(r, 'newspaper')).join('');
+        }
+      });
+
+      btnCompact.addEventListener('click', () => {
+        if (reportsState.viewMode === 'compact') return;
+        reportsState.viewMode = 'compact';
+        btnCompact.classList.add('active');
+        btnNewspaper.classList.remove('active');
+        const feed = document.getElementById('reports-feed-container');
+        if (feed && reportsState.reports.length > 0) {
+          feed.innerHTML = reportsState.reports.map(r => renderReportDayCard(r, 'compact')).join('');
+        }
+      });
+    }
+
+    // Toggle AI Code Survey
+    const btnToggleLlm = document.getElementById('btn-toggle-llm-eval');
+    if (btnToggleLlm) {
+      const updateLlmBtn = () => {
+        if (reportsState.showLlmEvals) {
+          btnToggleLlm.classList.add('active');
+          const badge = btnToggleLlm.querySelector('.toggle-status-badge');
+          if (badge) badge.textContent = 'ON';
+        } else {
+          btnToggleLlm.classList.remove('active');
+          const badge = btnToggleLlm.querySelector('.toggle-status-badge');
+          if (badge) badge.textContent = 'OFF';
+        }
+      };
+      updateLlmBtn();
+
+      btnToggleLlm.addEventListener('click', () => {
+        reportsState.showLlmEvals = !reportsState.showLlmEvals;
+        localStorage.setItem('herdr_show_llm_evals', reportsState.showLlmEvals ? 'true' : 'false');
+        updateLlmBtn();
+        document.querySelectorAll('.plugin-llm-card').forEach(card => {
+          if (reportsState.showLlmEvals) {
+            card.classList.remove('llm-hidden');
+          } else {
+            card.classList.add('llm-hidden');
+          }
+        });
+      });
+    }
+
+    // Setup Infinite Scroll IntersectionObserver
+    const loaderEl = document.getElementById('reports-loader');
+    if (loaderEl && 'IntersectionObserver' in window) {
+      reportsState.observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !reportsState.isLoading && reportsState.hasMore) {
+          loadReportsBatch(false);
+        }
+      }, { rootMargin: '400px' });
+      reportsState.observer.observe(loaderEl);
+    }
   }
 
-  // Setup Infinite Scroll IntersectionObserver
-  const loaderEl = document.getElementById('reports-loader');
-  if (loaderEl && 'IntersectionObserver' in window) {
-    reportsState.observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !reportsState.isLoading && reportsState.hasMore) {
-        loadReportsBatch(false);
-      }
-    }, { rootMargin: '400px' });
-    reportsState.observer.observe(loaderEl);
+  // Handle batch loading:
+  const datePicker = document.getElementById('reports-date-picker');
+  if (targetDate) {
+    if (datePicker) datePicker.value = targetDate;
+    reportsState.beforeDate = null;
+    return loadReportsBatch(true, `&date=${targetDate}`, scrollToTop);
+  } else if (isFirstInit && reportsState.reports.length === 0) {
+    return loadReportsBatch(true, '', true);
   }
-
-  // Load initial batch starting from today
-  loadReportsBatch(true);
 }
 
