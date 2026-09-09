@@ -97,16 +97,26 @@ A common point of confusion with LLM APIs is the `max_tokens` parameter:
   ```
 
 ### 3.3 Code Budget & Smart Prioritization
-- Up to **100,000 characters** (`MAX_CODE_CHARS = 100000`) of code are bundled per prompt.
-- Files are scored and prioritized so the most critical architectural files are always included:
-  1. `herdr-plugin.toml` (Score: 100)
-  2. `README.md` (Score: 90)
-  3. `AGENTS.md` / `architecture.md` (Score: 85)
-  4. `package.json` / `Cargo.toml` / `pyproject.toml` (Score: 80)
-  5. Socket/IPC integration files (Score: 75)
-  6. Core entrypoints (`main`, `index`, `lib`, `mod`) (Score: 70)
-  7. Implementation source code (`.rs`, `.ts`, `.js`, `.py`, `.go`) (Score: 60)
-  8. Excluded: lockfiles, minified bundles, binary fixtures, tests.
+- Up to **350,000 characters** (`MAX_CODE_CHARS = 350000`) of source code are bundled per prompt (~90,000–110,000 input tokens).
+- Files are scored and prioritized so runtime glue and shell hooks are never crowded out:
+  1. **Manifest-Referenced Scripts & Files (Score: 100):** `collectFiles` parses `herdr-plugin.toml` up-front. Any script referenced in `command = [...]`, `[[build]]`, or `[[actions]]` (e.g. `scripts/install.sh`, `scripts/open-worktree.sh`, `bin/...`) is automatically assigned top priority.
+  2. `herdr-plugin.toml` (Score: 100)
+  3. **Shell Scripts & Lifecycle Hooks (Score: 85):** `.sh`, `.bash`, `.zsh` files, and scripts in `/scripts/`, `/bin/`, or `/hooks/`.
+  4. Socket & IPC integrations (`/herdr/`, `herdr`, `socket`, `pane`) (Score: 80)
+  5. Package definitions (`package.json`, `Cargo.toml`, `pyproject.toml`) (Score: 80)
+  6. Documentation (`README.md`, `AGENTS.md`, `ARCHITECTURE.md`) (Score: 75) — *Capped at 12,000 characters per file to prevent doc monopolization.*
+  7. Core entrypoints (`main.*`, `index.*`, `lib.*`, `mod.*`) (Score: 70)
+  8. Implementation source code (`.rs`, `.ts`, `.js`, `.py`, `.go`, `.lua`, `.c`) (Score: 65)
+  9. Excluded: lockfiles, minified bundles, binary fixtures, unit tests.
+
+### 3.4 Network Resilience & Automatic Retry Logic
+Long batch runs (e.g. surveying 50–100 plugins sequentially) can encounter transient TCP socket drops, gateway keep-alive timeouts, or rate limits.
+- **Root Cause of `terminated` Errors:** In Node.js native `fetch` (powered by `undici`), if a remote server or reverse proxy closes an active socket before the response finishes streaming, an `Error: terminated` or `TypeError: fetch failed` is thrown.
+- **Built-in Backoff Engine:** `makeRequest()` wraps all completions calls in a 4-attempt retry loop with exponential backoff (3s, 6s, 9s). It automatically recovers from:
+  - Socket resets (`terminated`, `ECONNRESET`, `ETIMEDOUT`)
+  - HTTP 429 (Rate Limit Exceeded)
+  - HTTP 500/502/503/504 (Upstream server gateway glitches)
+- **SQLite Concurrency Defense:** All database transactions enforce `PRAGMA busy_timeout = 10000;` and a 5-attempt retry loop with random backoff, preventing `database is locked` errors during background processing.
 
 ---
 
@@ -135,23 +145,27 @@ Evaluations are stored in `plugins.db` in the `plugin_llm_evaluations` table:
 
 ```sql
 CREATE TABLE IF NOT EXISTS plugin_llm_evaluations (
-    plugin_name TEXT PRIMARY KEY,
-    first_seen_date TEXT,
-    category TEXT,
-    model_used TEXT,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    report_date TEXT NOT NULL,
+    plugin_id INTEGER NOT NULL,
+    repo_full_name TEXT NOT NULL,
+    model_name TEXT NOT NULL,
     overview TEXT,
     capabilities TEXT,
     architecture TEXT,
     herdr_integration TEXT,
     dependencies TEXT,
     extensibility_limitations TEXT,
-    raw_markdown TEXT,
-    prompt_tokens INTEGER,
-    completion_tokens INTEGER,
-    reasoning_tokens INTEGER,
-    total_tokens INTEGER,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    full_markdown TEXT NOT NULL,
+    reasoning_tokens INTEGER DEFAULT 0,
+    completion_tokens INTEGER DEFAULT 0,
+    total_tokens INTEGER DEFAULT 0,
+    generated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(plugin_id) REFERENCES plugins(id),
+    UNIQUE(report_date, plugin_id)
 );
+CREATE INDEX IF NOT EXISTS idx_llm_eval_date ON plugin_llm_evaluations(report_date);
+CREATE INDEX IF NOT EXISTS idx_llm_eval_plugin ON plugin_llm_evaluations(plugin_id);
 ```
 
 ### The 6 Standard Survey Sections
@@ -167,34 +181,58 @@ Every report is parsed into 6 discrete sections so they can be rendered as struc
 
 ## 6. Running the Survey Engine (CLI Commands)
 
+The survey runner [`scripts/run_llm_evaluations.js`](file:///Users/tim/source/herdr_plugins/scripts/run_llm_evaluations.js) supports both space-separated (`--limit 5`) and equals-separated (`--limit=5`) arguments.
+
 ### 6.1 Evaluate Plugins Incrementally (Recommended)
-Run the runner to process the next batch of un-evaluated plugins in chronological order:
+Processes the next batch of unanalyzed plugins in chronological order from Genesis (Day 1):
 ```bash
-# Process the next 5 unanalyzed plugins (chronological order from Genesis)
+# Process next 5 unanalyzed plugins
 npm run survey:llm -- --limit 5
 
 # Or via node directly
 node scripts/run_llm_evaluations.js --limit 5
+
+# Process a larger batch (e.g. 50 plugins)
+node scripts/run_llm_evaluations.js --limit 50
 ```
 
-### 6.2 Evaluate a Specific Plugin by Name
+### 6.2 Target a Specific Plugin by Name (and Recover Failed Ones)
+If a plugin fails during a marathon run (e.g. due to a network glitch or remote gateway reset), you can immediately isolate and run just that single plugin without re-processing the queue:
 ```bash
-node scripts/run_llm_evaluations.js --plugin nicosuave/memex
+# Evaluate a specific plugin
+node scripts/run_llm_evaluations.js --plugin tdi/herdr-worktree-from-linear
+
+node scripts/run_llm_evaluations.js --plugin 0xGosu/herdr-auto-pilot
 ```
 
-### 6.3 Force Re-evaluation
-If prompt instructions or the model change and you wish to re-evaluate existing plugins:
+### 6.3 Force Re-evaluation of an Existing Plugin
+By default, the runner skips plugins that already have an entry in `plugin_llm_evaluations`. Use `--force` to re-analyze an already surveyed plugin:
 ```bash
-node scripts/run_llm_evaluations.js --plugin nicosuave/memex --force
+node scripts/run_llm_evaluations.js --plugin eugenioenko/ttt --force
 ```
 
-### 6.4 Dry-Run Inspection
-To inspect what files would be read and what prompt would be constructed without calling the Meta API:
+### 6.4 Re-evaluate All Previously Surveyed Plugins (`--re-eval`)
+When prompt instructions, file scoring logic, or token budgets change, use `--re-eval` to re-evaluate **strictly all plugins that have already been surveyed**, in chronological sequence, without processing new ones:
 ```bash
-node scripts/run_llm_evaluations.js --limit 1 --dry-run
+node scripts/run_llm_evaluations.js --re-eval
 ```
 
-### 6.5 Environment Variables
+### 6.5 Target Plugins Released on a Specific Date
+```bash
+node scripts/run_llm_evaluations.js --date 2026-07-03
+```
+
+### 6.6 Dry-Run Inspection
+Inspect which files would be collected, how priority scores are assigned, and the character size of the prompt without making an API call:
+```bash
+# Dry run for next 5 queued plugins
+node scripts/run_llm_evaluations.js --limit 5 --dry-run
+
+# Dry run for a specific plugin
+node scripts/run_llm_evaluations.js --plugin tdi/herdr-worktree-from-linear --dry-run
+```
+
+### 6.7 Environment Variables
 | Variable | Default | Purpose |
 |---|---|---|
 | `META_API_KEY` | Reads `meta_llm_key.txt` | Meta AI API Bearer token |
@@ -223,13 +261,16 @@ Located alongside the date picker in the sticky toolbar:
 
 To inspect currently stored evaluations in SQLite:
 ```bash
-sqlite3 plugins.db "SELECT plugin_name, first_seen_date, completion_tokens, reasoning_tokens, created_at FROM plugin_llm_evaluations ORDER BY first_seen_date ASC;"
+sqlite3 plugins.db "SELECT count(*), min(report_date), max(report_date) FROM plugin_llm_evaluations;"
 ```
 
-As of September 8, 2026, the genesis plugins have been evaluated, cross-referenced, and persisted:
-- `2026-01-01`: `nicosuave/memex` (5,169 completion tokens, 1,542 reasoning tokens)
-- `2026-01-15`: `alvinunreal/oh-my-opencode-slim` (3,509 completion tokens, 1,152 reasoning tokens)
-- `2026-01-16`: `eugenioenko/ttt` (3,899 completion tokens, 1,321 reasoning tokens)
-- `2026-02-24`: `VilfredSikker/easy-review` (3,284 completion tokens, 1,497 reasoning tokens)
-- `2026-03-02`: `second-state/vibetty` (5,615 completion tokens, 2,002 reasoning tokens)
-- `2026-03-02`: `HikaruEgashira/say-hook` (4,484 completion tokens, 1,654 reasoning tokens)
+To view token metrics across recent evaluations:
+```bash
+sqlite3 plugins.db "SELECT report_date, repo_full_name, total_tokens, reasoning_tokens, completion_tokens FROM plugin_llm_evaluations ORDER BY report_date DESC LIMIT 15;"
+```
+
+As of September 9, 2026:
+- **Total Plugins Surveyed:** **153 plugins**
+- **Date Range Covered:** Genesis Day 1 (`2026-01-01`) through `2026-07-09`
+- **Average Token Ingestion:** ~75,000–105,000 tokens per plugin (with up to 350,000 characters of prioritized code per prompt)
+- **Manifest & Shell Ingestion:** 100% of manifest entrypoints, bash/sh glue scripts, and context parsers are prioritized and analyzed without truncation.
