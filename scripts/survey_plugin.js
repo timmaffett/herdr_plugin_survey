@@ -3,7 +3,7 @@ const path = require('path');
 
 const META_COMPLETIONS_URL = process.env.META_API_URL || 'https://api.meta.ai/v1/chat/completions';
 const DEFAULT_MODEL = process.env.META_MODEL || 'muse-spark-1.3-contributor';
-const MAX_CODE_CHARS = 48000;
+const MAX_CODE_CHARS = 100000;
 
 function getApiKey() {
   let key = process.env.META_API_KEY;
@@ -187,7 +187,7 @@ ${concatenatedFiles}`;
       body: JSON.stringify({
         model,
         temperature: 0.3,
-        max_tokens: 6000,
+        max_tokens: process.env.META_MAX_TOKENS ? parseInt(process.env.META_MAX_TOKENS, 10) : 50000,
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userPrompt }

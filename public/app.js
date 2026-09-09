@@ -2127,6 +2127,36 @@ async function initDailyReports() {
     });
   }
 
+  // Button: Next Active Day
+  const btnNextActive = document.getElementById('btn-next-active-day');
+  if (btnNextActive) {
+    btnNextActive.addEventListener('click', async () => {
+      let cur = datePicker ? datePicker.value : null;
+      const visibleArticles = document.querySelectorAll('#reports-feed-container article[data-date]');
+      for (const art of visibleArticles) {
+        const rect = art.getBoundingClientRect();
+        if (rect.bottom > 100) {
+          cur = art.getAttribute('data-date');
+          break;
+        }
+      }
+      if (!cur) cur = '2026-01-01';
+
+      try {
+        const res = await fetch(`/api/daily-reports/next-active?date=${encodeURIComponent(cur)}`);
+        const data = await res.json();
+        if (data.found && data.next_date) {
+          if (datePicker) datePicker.value = data.next_date;
+          reportsState.beforeDate = null;
+          loadReportsBatch(true, `&date=${data.next_date}`);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } catch (err) {
+        console.error('Failed to navigate to next active day:', err);
+      }
+    });
+  }
+
   // Breakthroughs Filter Toggle
   const btToggle = document.getElementById('reports-breakthroughs-toggle');
   if (btToggle) {

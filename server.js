@@ -665,6 +665,20 @@ app.get('/api/daily-reports/stats', (req, res) => {
   }
 });
 
+app.get('/api/daily-reports/next-active', (req, res) => {
+  try {
+    const fromDate = (req.query.date || '2026-01-01').replace(/'/g, '');
+    const row = queryDb(`
+      SELECT report_date FROM daily_reports 
+      WHERE report_date > '${fromDate}' AND (is_quiet_day = 0 OR plugins_released_count > 0 OR herdr_events_count > 0)
+      ORDER BY report_date ASC LIMIT 1;
+    `)[0];
+    res.json({ found: !!row, next_date: row ? row.report_date : null });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 app.get('/api/daily-reports/:date', (req, res) => {
   try {
     const dateStr = req.params.date.replace(/'/g, '');
