@@ -34,8 +34,10 @@ All analysis, ingestion, and management scripts are collected in [`scripts/`](fi
 
 | Script | Purpose | CLI Example |
 |---|---|---|
+| [`scripts/run_survey.py`](file:///Users/tim/source/herdr_plugins/scripts/run_survey.py) | Master survey orchestrator; automatically skips already-analyzed plugins | `npm run survey` or `python3 scripts/run_survey.py all_plugins.json` |
+| [`scripts/daily_report_generator.py`](file:///Users/tim/source/herdr_plugins/scripts/daily_report_generator.py) | Generates chronological daily reports & breakthroughs; resumes incrementally | `npm run report` or `python3 scripts/daily_report_generator.py` |
+| [`scripts/full_sync_pipeline.py`](file:///Users/tim/source/herdr_plugins/scripts/full_sync_pipeline.py) | Full autonomous pipeline: marketplace sync, new repo ingest, pulls & updates | `npm run update` |
 | [`scripts/ingest_plugin.py`](file:///Users/tim/source/herdr_plugins/scripts/ingest_plugin.py) | Ingest & analyze a single new plugin repository | `python3 scripts/ingest_plugin.py owner/repo` |
-| [`scripts/run_survey.py`](file:///Users/tim/source/herdr_plugins/scripts/run_survey.py) | Master orchestrator to scan all repos and update `plugins.db` | `python3 scripts/run_survey.py top200_plugins.json` |
 | [`scripts/analyzer.py`](file:///Users/tim/source/herdr_plugins/scripts/analyzer.py) | Static/semantic code analyzer, manifest reader, endpoint detector | Imported by survey and ingest scripts |
 | [`scripts/db_manager.py`](file:///Users/tim/source/herdr_plugins/scripts/db_manager.py) | SQLite database manager with dynamic column migration | `python3 -c "import scripts.db_manager as db; db.init_db()"` |
 | [`scripts/taxonomy.py`](file:///Users/tim/source/herdr_plugins/scripts/taxonomy.py) | Classification heuristics for Broad, Sub, and Sub-Sub categories | Imported by analyzer |
@@ -84,15 +86,19 @@ python3 scripts/ingest_plugin.py owner/new-plugin --reanalyze
 
 If you want to survey additional batches:
 
-1. **Extract new repositories to JSON** (e.g. `next_batch.json`).
-2. **Run parallel shallow clone**:
+1. **Extract new repositories to JSON** (e.g. `all_plugins.json`).
+2. **Run Survey Aggregation with Automatic Resume**:
    ```bash
-   python3 scripts/clone_repos.py next_batch.json 12
+   npm run survey
+   # or: python3 scripts/run_survey.py all_plugins.json
    ```
-3. **Run Survey Aggregation**:
+   *Note: The orchestrator queries `plugins.db` first and automatically skips all already-analyzed plugins in milliseconds, cloning and analyzing only newly queued repos.*
+3. **Generate Daily Dispatches**:
    ```bash
-   python3 scripts/run_survey.py next_batch.json
+   npm run report
+   # or: python3 scripts/daily_report_generator.py
    ```
+   *Note: Automatically picks up from the last recorded date up to today, carrying forward cumulative stats without wiping past reports.*
 
 ---
 

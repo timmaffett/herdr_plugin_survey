@@ -38,11 +38,13 @@ Add two new tables to [`plugins.db`](file:///Users/tim/source/herdr_plugins/plug
    - `description TEXT`
 
 ### Step 2: Generation Engine & Backfill (`scripts/daily_report_generator.py`)
-- Walk chronologically day-by-day from Jan 1, 2026 to Sep 7, 2026.
+- Walk chronologically day-by-day from Jan 1, 2026 to present.
 - Detect novel capabilities for each day by diffing against `ecosystem_capabilities_ledger`.
 - Generate compelling headlines, executive summaries, and multi-paragraph newspaper articles.
 - Append to `daily_reports` (immutable and append-only).
-- Support future `--date YYYY-MM-DD` execution for autonomous agent daily cron runs.
+- **Automatic Incremental Resume**: Defaults to picking up from `MAX(report_date) + 1 day` to today, protecting past reports from being wiped.
+- **Accidental Wipe Protection**: Clean database wipe and Day 1 backfill is strictly gated behind `--backfill`.
+- Support `--date YYYY-MM-DD` execution for single-day targeted updates.
 
 ### Step 3: Backend API in `server.js`
 - `GET /api/daily-reports`:

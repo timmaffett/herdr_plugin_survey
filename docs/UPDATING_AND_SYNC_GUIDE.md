@@ -56,7 +56,101 @@ The web explorer at **[http://localhost:3000](http://localhost:3000)** features 
 
 ---
 
-## 3. Using the TypeScript / Node Sync Utility
+## 3. Deterministic Data Collection & Incremental Resume Pipeline
+
+The ecosystem survey strictly decouples **deterministic fact collection** (instant, AST/regex/manifest parsing, zero LLM cost) from **LLM architectural retrospectives** (`npm run survey:llm` / `eval`).
+
+Both core deterministic tools are designed to **automatically resume exactly where they left off** rather than re-running from scratch:
+
+```
+┌───────────────────────────────────────────────────────────────────────┐
+│                    DETERMINISTIC RESUME WORKFLOW                      │
+├──────────────────────────┬────────────────────────────────────────────┤
+│ 1. Codebase Survey       │ `npm run survey` skips all 969+ already-   │
+│ (AST, Manifests, LOC)    │ analyzed plugins in <0.1s. Only new repos  │
+│                          │ are cloned and analyzed into `plugins.db`. │
+├──────────────────────────┼────────────────────────────────────────────┤
+│ 2. Daily Dispatches      │ `npm run report` checks MAX(report_date)   │
+│ (Ledger & Reports)       │ and incrementally generates only missing   │
+│                          │ dates up to today, carrying forward stats. │
+├──────────────────────────┼────────────────────────────────────────────┤
+│ 3. Autonomous Pipeline   │ `npm run update` orchestrates marketplace  │
+│ (One-Shot End-to-End)    │ sync, history collection, and daily report │
+│                          │ generation in a single seamless pass.      │
+└──────────────────────────┴────────────────────────────────────────────┘
+```
+
+### 3.1 Deterministic Codebase Survey (`scripts/run_survey.py`)
+Run the survey orchestrator:
+```bash
+# Automatically skips all already-analyzed plugins and scans only new repos:
+npm run survey
+# or: python3 scripts/run_survey.py all_plugins.json
+
+# If you ever need to force a full re-scan of every repository from scratch:
+python3 scripts/run_survey.py all_plugins.json --force
+```
+
+**How It Resumes:**
+- On startup, the script queries `plugins.db`:
+  ```sql
+  SELECT repo_full_name FROM plugins 
+  WHERE (surveyed_commit_hash IS NOT NULL AND surveyed_commit_hash != '') 
+     OR last_analyzed_at IS NOT NULL;
+  ```
+- Any plugin already analyzed is removed from the pending queue immediately.
+- Only un-analyzed repositories are cloned, inspected, and upserted.
+
+---
+
+### 3.2 Daily Intelligence Reports (`scripts/daily_report_generator.py`)
+Generate or catch up chronological daily dispatches and capability breakthroughs:
+```bash
+# Resumes incrementally from where the calendar left off up to today:
+npm run report
+# or: python3 scripts/daily_report_generator.py
+
+# Generate or refresh a specific single date:
+python3 scripts/daily_report_generator.py --date 2026-09-08
+
+# Overwrite a specific date cleanly (wipes and recomputes only that date's breakthroughs):
+python3 scripts/daily_report_generator.py --date 2026-09-08 --force
+
+# Full historical rebuild from Day 1 (Genesis: 2026-01-01):
+python3 scripts/daily_report_generator.py --backfill
+```
+
+**How It Resumes:**
+- The generator checks `SELECT MAX(report_date) FROM daily_reports;`.
+- Rather than wiping previous days, it starts at `MAX(report_date) + 1 day` and walks sequentially through `today`.
+- For each missing day:
+  - Fetches plugins released on that day.
+  - Diffing newly observed API endpoints and agent hooks against `ecosystem_capabilities_ledger` to detect first-ever breakthroughs.
+  - Carries forward cumulative metrics (`cumulative_plugins_count`, `cumulative_stars_count`, `cumulative_forks_count`).
+  - Writes the dispatch to `daily_reports` and updates `daily_report_plugins`.
+- **Accidental Wipe Protection**: Full backfills that delete and rebuild all reports from Day 1 are strictly protected behind the explicit `--backfill` flag.
+
+---
+
+### 3.3 Full Autonomous Sync Pipeline (`scripts/full_sync_pipeline.py`)
+To run the complete automated synchronization in one command:
+```bash
+npm run update
+# Equivalent to:
+# python3 scripts/full_sync_pipeline.py && python3 scripts/collect_history.py --workers 16 && python3 scripts/daily_report_generator.py
+```
+This single command:
+1. Fetches the latest live marketplace manifest from `https://herdr.dev/plugins/`.
+2. Identifies brand new plugins, clones them in parallel (12 workers), and analyzes them into `plugins.db`.
+3. Identifies outdated plugins whose upstream commit hash changed, pulls latest commits, and re-analyzes them.
+4. Refreshes live star counts, forks, and trending velocity scores across all plugins.
+5. Re-catalogs official Core endpoints from Herdr Core.
+6. Refreshes weekly historical milestone timelines.
+7. Incrementally generates all missing daily report dispatches up to today.
+
+---
+
+## 4. Using the TypeScript / Node Sync Utility
 
 For Node.js and TypeScript environments, [`scripts/sync-plugins.ts`](file:///Users/tim/source/herdr_plugins/scripts/sync-plugins.ts) (and [`scripts/sync-plugins.js`](file:///Users/tim/source/herdr_plugins/scripts/sync-plugins.js)) can be run via npm or node:
 
@@ -76,7 +170,7 @@ npm run sync
 
 ---
 
-## 4. Collecting & Refreshing Historical Growth Timelines
+## 5. Collecting & Refreshing Historical Growth Timelines
 
 To refresh or collect the 36-week historical timeline across all 903 plugins:
 
@@ -97,7 +191,7 @@ python3 scripts/collect_history.py --token YOUR_GITHUB_TOKEN
 
 ---
 
-## 5. Using the Python Sync Utility
+## 6. Using the Python Sync Utility
 
 ```bash
 # Check which plugins have newer upstream commits:
@@ -112,7 +206,7 @@ python3 scripts/sync_metadata.py --pull-outdated
 
 ---
 
-## 6. How to Ingest a Brand New Plugin
+## 7. How to Ingest a Brand New Plugin
 
 ```bash
 # Ingest by GitHub owner/repo shorthand:
@@ -127,7 +221,7 @@ python3 scripts/ingest_plugin.py owner/existing-plugin --reanalyze
 
 ---
 
-## 7. Remote Infrastructure & Access Intelligence
+## 8. Remote Infrastructure & Access Intelligence
 
 Many developers wish to interact with Herdr agents remotely (from mobile devices, laptops outside the office, or remote environments). We scan all manifests, docs, and source code for infrastructure setup prerequisites:
 
@@ -159,7 +253,7 @@ GROUP BY remote_infra_details ORDER BY count DESC LIMIT 15;
 
 ---
 
-## 8. Advanced Visualizer Capabilities
+## 9. Advanced Visualizer Capabilities
 
 The interactive application at `http://localhost:3000` includes several advanced analysis features:
 
@@ -196,7 +290,7 @@ The interactive application at `http://localhost:3000` includes several advanced
 
 ---
 
-## 9. Complete Official Core Endpoints & Zero-Usage Ecosystem Analysis
+## 10. Complete Official Core Endpoints & Zero-Usage Ecosystem Analysis
 
 In addition to recording endpoints that community plugins actively invoke, we maintain a complete master catalog of **ALL official Herdr CLI commands, Socket RPC methods, and Lifecycle Events** extracted directly from Herdr core (`repos/herdrdev__herdr`):
 
@@ -227,7 +321,7 @@ In addition to recording endpoints that community plugins actively invoke, we ma
 
 ---
 
-## 10. Raw Socket API & Agent Skill Integration Layer Survey
+## 11. Raw Socket API & Agent Skill Integration Layer Survey
 
 We statically scanned all 903 community repositories for two architectural integration dimensions:
 

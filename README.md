@@ -28,33 +28,34 @@ Open **[http://localhost:3000](http://localhost:3000)** in your browser to explo
 - **⚡ Official Herdr Documentation Deep Linking**:
   - Every detected CLI command, socket method, and lifecycle event hook routes directly to its corresponding section in the official documentation at **[herdr.dev/docs](https://herdr.dev/docs/)** (e.g. [`/docs/cli-reference/#plugins`](https://herdr.dev/docs/cli-reference/#plugins), [`/docs/socket-api/#raw-methods`](https://herdr.dev/docs/socket-api/#raw-methods), [`/docs/plugins/#startup-hooks`](https://herdr.dev/docs/plugins/#startup-hooks)).
 - **📦 Layered Release Cadence Chart**: View weekly new plugin launches (Bar chart on left axis) layered with total cumulative ecosystem growth (Step line on right axis).
-- **📰 Daily Reports & Capability Timeline**: Chronological daily dispatches spanning Day 1 (Jan 1, 2026) to Today (Sep 7, 2026) with reverse-chronological virtual scroll, executive briefs, long-form newspaper articles, automated novelty breakthrough detection, and coverage of official **Herdr Core Platform News** (including native AI agent detections such as Claude Code, OpenAI Codex, OpenCode, Pi, Copilot, Qoder, Kilo, Kimi, Droid, Cursor, Devin, MastraCode, Maki, Grok, Antigravity, Qwen, and Muse).
+- **📰 Daily Reports & Capability Timeline**: Chronological daily dispatches spanning Day 1 (Jan 1, 2026) to Today (Sep 10, 2026, 253 issues) with reverse-chronological virtual scroll, executive briefs, long-form newspaper articles, automated novelty breakthrough detection, and coverage of official **Herdr Core Platform News** (including native AI agent detections such as Claude Code, OpenAI Codex, OpenCode, Pi, Copilot, Qoder, Kilo, Kimi, Droid, Cursor, Devin, MastraCode, Maki, Grok, Antigravity, Qwen, and Muse).
 - **🌐 Remote Infrastructure Intelligence**: Filter by plugins that require or reference **SSH Tunnels**, **Mosh**, **VPN / Tailscale**, **Port Forwarding**, **Home Router / NAT Setup**, or **VPS / Cloud Gateway Hosting**.
 - **🧩 Herdr Core Integration Census**: Filter by plugins using the direct **⚡ Raw Socket API** (352 plugins, 36.3%) or bundling **🧩 Agent Skills** (228 plugins, 23.5%).
 - **💻 Live SQL Console**: Execute custom read-only SQL queries directly against `plugins.db` with sub-millisecond execution times.
 
-### 2. Fast Sync & Daily Update Commands
+### 2. Autonomous Sync & Incremental Survey Commands
+Deterministic data collection and daily reporting automatically **resume exactly where they left off**:
+
 ```bash
-# Full ecosystem update (Marketplace sync + Git pull + Milestones + Herdr events + Daily Report):
+# 1. Full Autonomous Ecosystem Update (Sync + History + Daily Reports catchup):
 npm run update
 
-# Generate / update daily reports dispatch:
+# 2. Deterministic Code Survey (Instantly skips 969+ already-analyzed plugins in <0.1s):
+npm run survey
+# (or force full re-scan: python3 scripts/run_survey.py all_plugins.json --force)
+
+# 3. Daily Intelligence Reports (Picks up from MAX(report_date) and generates up to today):
 npm run report
+# (or single date: python3 scripts/daily_report_generator.py --date 2026-09-08)
 
-# Or generate a specific single day (for daily cron / AI agent loop):
-python3 scripts/daily_report_generator.py --date 2026-09-08
-
-# Check which plugins have newer upstream commits:
-npm run check
-
-# Fast update stars, forks, and trending deltas (<20s):
+# 4. Fast Metadata & Star Sync (<20s, no git cloning):
 npm run sync
 
-# Collect/refresh 36-week historical growth timelines:
-python3 scripts/collect_history.py --workers 16
+# 5. Check Upstream Staleness (Detect plugins with newer commits on GitHub):
+npm run check
 
-# Re-catalog official Herdr Core CLI & Socket endpoints:
-python3 scripts/catalog_official_endpoints.py
+# 6. LLM Architectural Evaluations (Decoupled, runs Meta AI reasoning survey):
+npm run survey:llm
 ```
 
 ### 3. Ingest a Specific New Plugin
@@ -76,7 +77,7 @@ python3 scripts/ingest_plugin.py alvinunreal/oh-my-opencode-slim --reanalyze
 | **Cumulative Stars** | **23,285 ★** |
 | **Cumulative Forks** | **1,906 ⑂** |
 | **Historical Milestone Records** | **35,172 rows** in `plugin_history` (36 weeks $\times$ 977 plugins) |
-| **📰 Daily Intelligence Reports** | **250 days** (Jan 1, 2026 – Sep 7, 2026 • **140 active dispatches**, 110 quiet) |
+| **📰 Daily Intelligence Reports** | **253 days** (Jan 1, 2026 – Sep 10, 2026 • **140 active dispatches**, 113 quiet) |
 | **⚡ Herdr Core Engine Milestones** | **85 events** across 63 dates (17 Agent Detections, 55 Core Releases, 13 Arch Features) |
 | **🌟 Ecosystem Breakthroughs Tracked** | **186 first-occurrence milestones** in capabilities ledger |
 | **⚡ Direct Raw Socket API (`$HERDR_SOCKET_PATH`)** | **352 plugins (36.3%)** |
