@@ -23,7 +23,7 @@ from scripts.extract_herdr_events import populate_herdr_events
 
 DB_PATH = "plugins.db"
 START_DATE = datetime(2026, 1, 1)
-END_DATE = datetime(2026, 9, 7)
+END_DATE = max(datetime(2026, 9, 7), datetime.now())
 
 def get_live_manifest_map():
     if os.path.exists("all_plugins.json"):
@@ -663,10 +663,17 @@ def generate_single_day(date_str, force=False):
     
     # Check if already generated
     cursor.execute("SELECT report_date FROM daily_reports WHERE report_date = ?;", (date_str,))
-    if cursor.fetchone() and not force:
-        print(f"[Notice] Daily report for {date_str} already exists. Pass --force to regenerate.")
-        conn.close()
-        return
+    if cursor.fetchone():
+        if not force:
+            print(f"[Notice] Daily report for {date_str} already exists. Pass --force to regenerate.")
+            conn.close()
+            return
+        else:
+            print(f"[Force] Overwriting existing report and capabilities for {date_str}...")
+            cursor.execute("DELETE FROM ecosystem_capabilities_ledger WHERE first_seen_date = ?;", (date_str,))
+            cursor.execute("DELETE FROM daily_report_plugins WHERE report_date = ?;", (date_str,))
+            cursor.execute("DELETE FROM daily_reports WHERE report_date = ?;", (date_str,))
+            conn.commit()
         
     dt = datetime.strptime(date_str, "%Y-%m-%d")
     day_num = (dt - START_DATE).days + 1
@@ -821,6 +828,49 @@ if __name__ == "__main__":
         
     if args.date:
         generate_single_day(args.date, force=args.force)
-    else:
+    elif args.backfill:
         run_backfill()
+    else:
+        # Default behavior: Resume incrementally from the last generated report
+        conn = get_connection(DB_PATH)
+        cursor = conn.cursor()
+        cursor.execute("SELECT MAX(report_date) FROM daily_reports;")
+        row = cursor.fetchone()
+        conn.close()
+        max_date_str = row[0] if row and row[0] else None
+
+        if not max_date_str:
+            print("[Info] No existing daily reports found. Running full backfill from Day 1...")
+            run_backfill()
+        else:
+            today_dt = datetime.now()
+            last_dt = datetime.strptime(max_date_str, "%Y-%m-%d")
+            start_next = last_dt + timedelta(days=1)
+            
+            # Check maximum date present in plugins or current date
+            conn = get_connection(DB_PATH)
+            cursor = conn.cursor()
+            cursor.execute("SELECT MAX(COALESCE(surveyed_commit_date, created_at, pushed_at)) FROM plugins;")
+            p_row = cursor.fetchone()
+            conn.close()
+            max_p_date_str = p_row[0][:10] if p_row and p_row[0] and len(p_row[0]) >= 10 else None
+            
+            target_end_dt = today_dt
+            if max_p_date_str:
+                try:
+                    p_dt = datetime.strptime(max_p_date_str, "%Y-%m-%d")
+                    if p_dt > target_end_dt:
+                        target_end_dt = p_dt
+                except Exception:
+                    pass
+
+            if start_next.date() > target_end_dt.date():
+                print(f"[Success] Daily reports are already up to date! Latest report is {max_date_str}.")
+            else:
+                curr = start_next
+                while curr.date() <= target_end_dt.date():
+                    d_str = curr.strftime("%Y-%m-%d")
+                    print(f"\n[Incremental] Generating report for {d_str} (picking up from {max_date_str})...")
+                    generate_single_day(d_str, force=args.force)
+                    curr += timedelta(days=1)
 

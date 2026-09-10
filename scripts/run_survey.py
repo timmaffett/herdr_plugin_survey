@@ -39,7 +39,7 @@ def main():
     # Resume check: skip plugins already analyzed in plugins.db unless --force
     if not force:
         cursor = conn.cursor()
-        cursor.execute("SELECT repo_full_name FROM plugins WHERE surveyed_commit_hash IS NOT NULL AND surveyed_commit_hash != ''")
+        cursor.execute("SELECT repo_full_name FROM plugins WHERE (surveyed_commit_hash IS NOT NULL AND surveyed_commit_hash != '') OR last_analyzed_at IS NOT NULL;")
         existing_repos = {row[0] for row in cursor.fetchall()}
         
         pending_meta = [p for p in plugins_meta if p.get("fullName") not in existing_repos]
