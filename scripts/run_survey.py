@@ -14,8 +14,16 @@ from scripts.analyzer import analyze_repository
 from scripts.db_manager import init_db, get_connection, upsert_plugin, get_summary_stats
 
 def main():
-    input_file = sys.argv[1] if len(sys.argv) > 1 else "top500_plugins.json"
+    args = sys.argv[1:]
+    input_file = "all_plugins.json"
+    force = False
     
+    for a in args:
+        if a in ("--force", "--all", "-f"):
+            force = True
+        elif not a.startswith("--"):
+            input_file = a
+
     print("=" * 70)
     print(f"Herdr Plugins Ecosystem Survey: Processing {input_file}")
     print("=" * 70)
@@ -26,7 +34,30 @@ def main():
     with open(input_file) as f:
         plugins_meta = json.load(f)
         
-    print(f"Loaded metadata for {len(plugins_meta)} repositories.")
+    print(f"Loaded metadata for {len(plugins_meta)} repositories from {input_file}.")
+
+    # Resume check: skip plugins already analyzed in plugins.db unless --force
+    if not force:
+        cursor = conn.cursor()
+        cursor.execute("SELECT repo_full_name FROM plugins WHERE surveyed_commit_hash IS NOT NULL AND surveyed_commit_hash != ''")
+        existing_repos = {row[0] for row in cursor.fetchall()}
+        
+        pending_meta = [p for p in plugins_meta if p.get("fullName") not in existing_repos]
+        skipped_count = len(plugins_meta) - len(pending_meta)
+        
+        if skipped_count > 0:
+            print(f"⚡ Resuming: Skipping {skipped_count} already-analyzed plugins (use --force to re-analyze all).")
+            print(f"   Queued {len(pending_meta)} remaining plugins to analyze.")
+        plugins_meta = pending_meta
+    else:
+        print("⚡ Force mode active: Re-analyzing all plugins from scratch.")
+
+    if not plugins_meta:
+        print("\nAll repositories are already up to date in plugins.db! Nothing to analyze.")
+        stats = get_summary_stats(conn)
+        conn.close()
+        print(f"Total cataloged plugins: {stats['total_plugins']}")
+        return
     
     t0 = time.time()
     successful = 0
