@@ -843,6 +843,24 @@ if __name__ == "__main__":
             print("[Info] No existing daily reports found. Running full backfill from Day 1...")
             run_backfill()
         else:
+            # Check if any new plugins were added to historical dates that need their dispatch refreshed
+            conn = get_connection(DB_PATH)
+            cursor = conn.cursor()
+            cursor.execute("""
+                SELECT id, repo_full_name, created_at, surveyed_commit_date, pushed_at
+                FROM plugins
+                WHERE id NOT IN (SELECT plugin_id FROM daily_report_plugins);
+            """)
+            unreported_plugins = [dict(r) for r in cursor.fetchall()]
+            conn.close()
+            
+            if unreported_plugins:
+                unreported_dates = sorted({get_normalized_release_date(p) for p in unreported_plugins})
+                print(f"[Incremental] Detected {len(unreported_plugins)} newly ingested plugins across {len(unreported_dates)} dates: {unreported_dates}.")
+                print(f"              Refreshing historical daily dispatches for those dates...")
+                for d_str in unreported_dates:
+                    generate_single_day(d_str, force=True)
+
             today_dt = datetime.now()
             last_dt = datetime.strptime(max_date_str, "%Y-%m-%d")
             start_next = last_dt + timedelta(days=1)
