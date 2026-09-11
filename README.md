@@ -54,7 +54,10 @@ npm run sync
 # 5. Check Upstream Staleness (Detect plugins with newer commits on GitHub):
 npm run check
 
-# 6. LLM Architectural Evaluations (Decoupled, runs Meta AI reasoning survey):
+# 6. Full Pipeline + LLM Evaluations (One-Shot):
+npm run update:all
+
+# 7. LLM Architectural Evaluations (Decoupled, runs Meta AI reasoning survey):
 npm run survey:llm
 ```
 

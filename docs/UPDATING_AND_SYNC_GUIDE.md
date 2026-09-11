@@ -146,7 +146,15 @@ This single command:
 4. Refreshes live star counts, forks, and trending velocity scores across all plugins.
 5. Re-catalogs official Core endpoints from Herdr Core.
 6. Refreshes weekly historical milestone timelines.
-7. Incrementally generates all missing daily report dispatches up to today.
+8. Incrementally generates all missing daily report dispatches up to today.
+
+#### Combined One-Shot Update (Including LLM Evaluations):
+If you want to run the full deterministic update pipeline AND immediately trigger Meta AI LLM architectural evaluations for newly ingested plugins:
+```bash
+npm run update:all
+# Equivalent to:
+# npm run update && npm run survey:llm
+```
 
 ---
 
