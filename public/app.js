@@ -1787,7 +1787,7 @@ let reportsState = {
   beforeDate: null,
   afterDate: null,
   minDate: '2026-01-01',
-  maxDate: '2026-09-07',
+  maxDate: '2026-09-15',
   isLoading: false,
   hasMore: true,
   viewMode: 'newspaper', // 'newspaper' or 'compact'
@@ -2197,6 +2197,10 @@ async function loadReportsBatch(reset = false, customParams = '', scrollToTop = 
     const cardsHtml = data.reports.map(r => renderReportDayCard(r, reportsState.viewMode)).join('');
     if (reset) {
       feed.innerHTML = cardsHtml;
+      const datePickerEl = document.getElementById('reports-date-picker');
+      if (datePickerEl && data.reports[0] && data.reports[0].report_date && !customParams.includes('&date=')) {
+        datePickerEl.value = data.reports[0].report_date;
+      }
       if (scrollToTop) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
@@ -2222,12 +2226,37 @@ async function initDailyReports(targetDate = null, scrollToTop = true) {
     try {
       const statsRes = await fetch('/api/daily-reports/stats');
       const stats = await statsRes.json();
+      if (stats.end_date) {
+        reportsState.maxDate = stats.end_date;
+      }
+      if (stats.start_date) {
+        reportsState.minDate = stats.start_date;
+      }
       const statsBar = document.getElementById('reports-stats-bar');
       if (statsBar) {
         statsBar.innerHTML = `
-          <span>📅 Calendar Coverage: Jan 1, 2026 – Sep 7, 2026 (${stats.total_days || 250} Days)</span>
-          <span>Total Ecosystem: <strong>${stats.total_plugins || 994} Plugins</strong> (${stats.total_repos || 977} Repositories) · Active Dispatch Days: ${stats.active_days || 140} · Herdr Core Milestones: ${stats.total_herdr_events || 85} · Breakthroughs: ${stats.total_breakthroughs || 186}</span>
+          <span>📅 Calendar Coverage: ${formatDisplayDate(stats.start_date || '2026-01-01')} – ${formatDisplayDate(stats.end_date || '2026-09-15')} (${stats.total_days || 258} Days)</span>
+          <span>Total Ecosystem: <strong>${stats.total_plugins || 1140} Plugins</strong> (${stats.total_repos || 1133} Repositories) · Active Dispatch Days: ${stats.active_days || 148} · Herdr Core Milestones: ${stats.total_herdr_events || 85} · Breakthroughs: ${stats.total_breakthroughs || 187}</span>
         `;
+      }
+
+      const datePicker = document.getElementById('reports-date-picker');
+      if (datePicker) {
+        datePicker.min = stats.start_date || '2026-01-01';
+        datePicker.max = stats.end_date || '2026-09-15';
+        if (!targetDate) {
+          datePicker.value = stats.end_date || '2026-09-15';
+        }
+      }
+
+      const btnToday = document.getElementById('btn-jump-today');
+      if (btnToday && stats.end_date) {
+        const dParts = stats.end_date.split('-');
+        if (dParts.length === 3) {
+          const dObj = new Date(parseInt(dParts[0], 10), parseInt(dParts[1], 10) - 1, parseInt(dParts[2], 10));
+          const shortDate = dObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+          btnToday.textContent = `Today (${shortDate})`;
+        }
       }
     } catch (err) {
       console.error('Failed to load reports stats:', err);
@@ -2249,7 +2278,8 @@ async function initDailyReports(targetDate = null, scrollToTop = true) {
     const btnToday = document.getElementById('btn-jump-today');
     if (btnToday) {
       btnToday.addEventListener('click', () => {
-        if (datePicker) datePicker.value = '2026-09-07';
+        const todayVal = reportsState.maxDate || '2026-09-15';
+        if (datePicker) datePicker.value = todayVal;
         reportsState.beforeDate = null;
         loadReportsBatch(true, '', true);
       });
