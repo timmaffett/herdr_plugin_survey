@@ -136,3 +136,203 @@ This document tracks architectural patterns and previously surveyed extensions w
 - **Overview**: `bkarpinos/herdr-picker` — manifest `herdr.picker` / `herdr picker` `v0.1.0`, `min_herdr_version 0.7.5`, `linux`/`macos` only — is a workspace / agent / tab navigator, not a diff renderer despite its filing under **Code Review & Diff Inspection**.
 - **Key Features**: Declarative surface is minimal: **1 build + 1 action + 1 pane, no hooks, events, `link_handlers`, or HTTP API endpoints.**  * **Action `open` — `open herdr picker`:** `contexts = ["workspace","tab","p
 
+### [2026-07-26] bredebjorhovd/herdr-board
+- **Overview**: This plugin is a **task board that runs inside Herdr: Linear/GitHub in, Herdr panes out**. It polls Linear (read-write, system of record) and GitHub issues/PRs into a local SQLite database, renders them as a `BLOCKED / WORKING / READY / REVIEW / FAILED / DONE` queue in a Herdr split pane, and dispatches the selected row into a Herdr workspace as a git worktree + agent pane. It then reconciles Herdr pane/agent state back to board state, delivers PR reviews and settle notices, and exposes a CLI contract (`list --json`, `dispatch`, `wait`) explicitly designed for orchestrator agents to self-queue.
+- **Key Features**: What the user and agents actually get:  **Interactive surfaces:** * `board` pane (`title: Board`, `placement: split`): global queue beside current work. Pure renderer over `board.db`; logs to file onl
+
+### [2026-07-26] rytkmt/herdr-diff-review.nvim
+- **Overview**: `rytkmt/herdr-diff-review.nvim` (`diff-review` / `Diff Review` v0.1.0, `min_herdr_version 0.7.4`, `linux` only) is a **gating pre-write reviewer**, not a passive diff viewer.
+- **Key Features**: **What the user sees:**  * **Per-edit blocking review:** Every qualifying `Edit`/`Write` (Claude) or `strReplace`/`create`/`insert` (Kiro) pauses the agent for up to `DIFF_REVIEW_TIMEOUT` (default 180
+
+### [2026-07-27] quantk/herdr-review
+- **Overview**: `quantk/herdr-review` — manifest ID `quantick.hunk-review`, display name `Native Review` v0.2.7, `min_herdr_version 0.7.0`, `linux`/`macos` only — is a human-in-the-loop review companion for agent worktrees. Focus a detected coding agent, press `F6` to open a live native diff in a dedicated `Review` tab, save line/range comments, then press `F7` to insert those comments as an unsubmitted draft into the exact source agent.
+- **Key Features**: **Declared Herdr surface is minimal: 2 actions + 1 pane, no hooks, events, `link_handlers`, or HTTP endpoints:**  * `open-review` — `Review changes`, `contexts=["pane"]`, `node src/open-review.mjs`. R
+
+### [2026-07-27] RufusLin/herdr-openmd
+- **Overview**: `openmd` (`openmd` v0.1.2, `min_herdr_version 0.7.0`, `linux`/`macos` only) is a thin launcher shim that opens the external **openmd Qt markdown viewer** as a detached GUI window from Herdr context. It implements no rendering, diffing, or markdown parsing itself.
+- **Key Features**: Declared surface is minimal: **1 action, 0 panes, 0 hooks, 0 events, 0 link handlers, 0 HTTP endpoints.**  * `openmd.open` — `Open openmd` / `Open selected .md path or markdown text in openmd; otherwi
+
+### [2026-07-28] plannotator/herdr-plannotator
+- **Overview**: `plannotator/herdr-plannotator` (`official.plannotator`, `0.1.0`, `min_herdr_version 0.7.5`, `linux`/`macos` only) is a configuration + presenter bridge, not a diff renderer.
+- **Key Features**: Declared Herdr surface in `herdr-plugin.toml` is minimal: **1 `[[build]]` + 3 `[[actions]]`, no `[[panes]]`, no hooks, events, `link_handlers`, or HTTP endpoints:**  * `configure` — `Configure Plannot
+
+### [2026-07-28] brianh20/herdr-stagr
+- **Overview**: `brianh20/herdr-stagr` (`brianh20.stagr`, `stagr` v0.2.0) is a **Source Control sidebar for Herdr** — the VS Code / Cursor-style Changes panel for agent worktrees.
+- **Key Features**: **Herdr-declared surface (`herdr-plugin.toml`): 1 pane + 3 actions + 1 event, no HTTP API, no link handlers:**  * Pane `sidebar` (`title: stagr`, `placement: split`, `command: ["sh","-c","exec \"$HERD
+
+### [2026-07-28] cevr/herdr-hunk
+- **Overview**: `cvr.herdr-hunk` (`Hunk Review` v0.1.0, `min_herdr_version 0.7.5`, `linux`/`macos` only) is a review-bridge plugin in the **Code Review & Diff Inspection** ledger. It does not implement diffing: it launches the external **Hunk** TUI (`hunk diff --watch`) in a dedicated Herdr `tab`, remembers which agent pane opened that tab, then copies saved Hunk `user` notes into that exact source pane as a single-line prompt.
+- **Key Features**: Declared surface in `herdr-plugin.toml` is **2 actions + 1 pane, no hooks, events, link_handlers, or HTTP API**:  * `open` — `Open Hunk review`, `contexts=["pane"]`, `command=["bin/herdr-hunk","open"]
+
+### [2026-07-30] vonzelle-vzt/herdr-extensions
+- **Overview**: `herdr-extensions` v0.18.0 (`min_herdr_version 0.7.0`, `linux`/`macos`) is an **installer that makes Herdr behave like a tiny VS Code**. One Python CLI installs the editor, source-control UI, fonts, formatters and language servers, renders a Herdr plugin manifest with absolute binary paths, injects collision-checked keybindings, and auto-opens a project-scoped editor beside every new workspace.
+- **Key Features**: **Herdr surface declared in `plugin/herdr-plugin.toml`: 16 panes + 20 actions + 1 event.**  Panes (`placement: split` except `editor-tab: tab`): `Edit` (x2: `editor` split + `editor-tab` tab), `Git` (
+
+### [2026-07-30] aleslanger/herdr-strays
+- **Overview**: `aleslanger.strays` (`strays` v1.1.1, `min_herdr_version 0.7.0`) is a **live, read-only worktree monitor** for Herdr. It keeps one split pane beside the current work that lists every file that “strayed from HEAD” — staged, unstaged, untracked, renamed, deleted, unmerged and submodule gitlinks — across the current workspace or all workspaces, with the selected file’s diff immediately readable.
+- **Key Features**: **Herdr-declared surface is minimal — 1 pane + 1 action, no hooks/events/link_handlers/HTTP API:**  * `panes.strays`: `title: strays`, `placement: split`, `command: ["./bin/herdr-strays"]`. * `actions
+
+### [2026-07-31] flupke/herdr-progressive-reviewer
+- **Overview**: `herdr.progressive-reviewer` (`Progressive reviewer` v0.2.0, `min_herdr_version 0.7.5`, `linux`/`macos` only) is a full native review workbench for Herdr, not a thin launcher.
+- **Key Features**: **Herdr-declared surface (`herdr-plugin.toml`): no hooks, events, link handlers, or HTTP API.**  - 3 actions: `open` / `close` / `toggle` — `contexts=["workspace"]`, `command=["bin/reviewer-control", 
+
+### [2026-07-31] shadowfax92/herdr-comments
+- **Overview**: `shadowfax.comments` (`Herdr Comments` v0.1.0, `min_herdr_version 0.7.5`, `macos` only) is a local-first annotation collector for the **Code Review & Diff Inspection** domain. It turns passages of terminal history into quote-first Markdown (`> quote` + comment) for pasting into an agent prompt.
+- **Key Features**: **User surface — 3 actions + 2 popup panes, no hooks/events/link handlers/HTTP API:**  * `capture` — `Annotate pane history`, `contexts=["pane","selection"]`, `["./target/release/herdr-comments","capt
+
+### [2026-07-31] baotran01/herdr-agent-diff
+- **Overview**: `herdr-agent-diff` (`Herdr Agent Diff` v0.1.3, `min_herdr_version 0.7.0`, `macos`/`linux` only) is a self-contained, read-only Git and source viewer for Herdr agent panes. It opens a split (or tab) beside a running agent, shows combined staged/unstaged/renamed/deleted/untracked diff vs `HEAD` plus committed-but-unpushed diff vs `@{upstream}`, and provides a second tab for browsing current file contents with syntax highlighting.
+- **Key Features**: **What the user sees:**  * **Changes tab (default, `Git diff` mode):** grouped, collapsible tree by `staged/` / `unstaged/` / `mixed/` / `untracked/` status, then by folder. Selecting a file renders a
+
+### [2026-08-01] caoer/ccc-herdr-layout
+- **Overview**: `ccc-layout` (`ccc-layout` / `Layout Picker` v0.1.2, `min_herdr_version 0.7.5`) is a **live tab-layout switcher for Herdr, not a code-review tool** despite its filing under Code Review & Diff Inspection. Pressing the bound key opens a `popup` with thumbnail previews of candidate BSP arrangements for the panes in the current tab; moving the highlight reshapes the real tab in-place, `Enter` commits, `Escape` restores the starting tree. All pane processes and scrollback survive because the plugin never recreates panes — it only re-parents them via `pane.move`.
+- **Key Features**: **Declared Herdr surface (`herdr-plugin.toml`): 1 action + 1 pane, no hooks/events/link_handlers/HTTP API:**  * `pick` — `Layout: pick layout`, `contexts=["tab","pane"]`, `command=["./bin/ccc-layout",
+
+### [2026-08-07] mikhail-angelov/herdr-review-loop
+- **Overview**: `herdr-review-loop` (`herdr-review-loop` v0.1.0, `min_herdr_version 0.7.5`, `linux`/`macos` only) is a workflow-orchestration plugin, not a diff renderer. It pairs the agent in the focused pane as **author** with a second, different-kind agent in the same workspace as **reviewer**, then drives `reviewer → author → reviewer` rounds over the uncommitted working tree until the review parses as `clean`, the `max_iterations` budget is spent, the pair deadlocks, or a human is needed.
+- **Key Features**: **What the user sees is 7 Herdr actions + 3 panes, no hooks/events/link-handlers/HTTP:**  Declared in `herdr-plugin.toml`:  * Actions (all `bash bin/run.sh …`): `review` (`review`), `pair` (`review --
+
+### [2026-08-09] plannotator/herdr-annotate
+- **Overview**: `plannotator/herdr-annotate` (`annotate` / `Annotate` v`0.3.0`, `min_herdr_version 0.8.0`) is a local-first annotation collector in the **Code Review & Diff Inspection** ledger. Unlike diff-renderers (`hunk`, `reviewr`, `gitview`) it never renders `git diff` and never posts to a forge.
+- **Key Features**: **Terminal annotation flow — what is implemented:**  * `capture` (`Annotate selection`, `contexts=["pane"]`, `bun src/capture.ts` / `herdr-annotate.exe capture`): resolves selection in precedence orde
+
+### [2026-08-09] cyperx84/herdr-sesh-bro
+- **Overview**: `sesh-bro` (`Sesh Bro` v0.3.0, `min_herdr_version 0.8.0`, `linux`/`macos` only) is a `sesh`-style fuzzy session picker for Herdr. It merges three sources — Herdr workspaces, Herdr agents grouped by status, and `zoxide` directories — into one `fzf` popup with live terminal previews, git-branch enrichment, and connect-or-create semantics.
+- **Key Features**: **Picker UX (`picker`, `list`, `preview`, `open`):** * `sesh-bro picker [flags]` opens `fzf` with `--ansi --delimiter=\t --with-nth=3.. --layout=reverse --tiebreak=index`, prompt `sesh> `, and a heade
+
+### [2026-08-09] tareqmlx/herdr-hunk-viewer
+- **Overview**: `Hunk Diff` (`tareqmlx.hunk-viewer` v`0.2.0`, `min_herdr_version 0.8.0`, `linux`/`macos` only) is a self-contained Rust launcher that opens the external **Hunk** diff TUI inside Herdr. It implements no diff rendering itself.
+- **Key Features**: **What the user sees is 12 actions + 1 pane, no hooks, events, link handlers, or HTTP API:**  | Diff | split | tab | overlay | popup | |---|---|---|---|---| | uncommitted worktree | `worktree-split` |
+
+### [2026-08-09] AlexanderMakarov/herdr-preview
+- **Overview**: `herdr-preview` (`herdr-preview` v0.1.0, `min_herdr_version 0.7.0`, `linux`/`macos` only) is a **visible-text hint picker**, not a diff renderer or file renderer. From the focused pane's visible text it tokenizes path-like spans and `http(s)` URLs, paints a letter-hint overlay, and routes the pick elsewhere: existing files to peer `smarzban/herdr-file-viewer` when installed else to a `less` overlay, directories to an owned browse overlay, URLs to the system browser.
+- **Key Features**: **Herdr-declared surface is 1 action + 3 overlays, no hooks/events/link_handlers/HTTP API:**  * `hint` action — `Hint-pick openable file paths on screen`, `command = ["bash","scripts/run-hint.sh"]`. *
+
+### [2026-08-10] andschneider/roboherd
+- **Overview**: `roboherd` is a Herdr integration for **roborev** (`kenn-io/roborev`, requires `>=0.63`), an external AI review daemon + TUI. It is not a diff renderer itself.
+- **Key Features**: **Declarative surface in `herdr-plugin.toml`:** 1 `[[build]]` + 1 `[[startup]]` + 3 `[[panes]]` + 3 `[[actions]]`. No hooks, events, `link_handlers`, or HTTP API.  * `review-commit` (`workspace,pane` 
+
+### [2026-08-10] txmed82/herdr-code-review
+- **Overview**: `herdr-code-review` (`Herdr Code Review` v0.2.0, `min_herdr_version 0.7.5`) is a structured AI code-review launcher for Herdr. Invoked from the focused pane or workspace, it snapshots staged + unstaged `git diff` around the worktree, opens a dedicated `REVIEW // CODE` split or tab, runs a non-interactive reviewer there, prints findings in that pane, and auto-submits the result back into the originating agent pane.
+- **Key Features**: What is explicitly implemented in `bin/code-review.js` + `herdr-plugin.toml` + `README.md`:  **Two manual actions, no declarative panes, hooks, events, link handlers, or HTTP API:** * `review-split` —
+
+### [2026-08-10] Idan-Levin/herdr-implement-review
+- **Overview**: This is a workflow-orchestration plugin, not a diff renderer. One pane-context action (`run`) turns the invoking Claude or Codex pane into a persistent **mother process** — planner, reviewer, and final approver — and spawns two sibling panes beside it: a **Codex Implementer** that edits the repo and a read-only **Codex Security** pane that runs `npx @openai/codex-security scan`.
+- **Key Features**: Declared Herdr surface is minimal by design: **1 action, 0 panes, 0 hooks, 0 events, 0 `link_handlers`, 0 HTTP endpoints.**  * `idan.implement-review.run` — `Implement with Codex + Codex Security`, `c
+
+### [2026-08-11] elKei24/herdr-co-review
+- **Overview**: `elKei24/herdr-co-review` (`elkei24.co-review` / `co-review` v1.8.0, `min_herdr_version 0.8.0`, `linux`/`macos` only) is an interactive, split-screen PR co-review system for a human paired with an AI coding agent inside Herdr.
+- **Key Features**: **Session lifecycle (`src/orchestrate.rs`, `src/commands.rs`, `src/cli.rs`):**  * `start <pr>` — resolves `123`, `#123`, `PR123`, `owner/repo#123`, `owner/repo/pull/123`, or full `github.com/.../pull/
+
+### [2026-08-12] jhochenbaum/herdr-hunk-diff
+- **Overview**: `jhochenbaum.hunkdiff` (`hunk` v0.2.0, `min_herdr_version 0.8.0`, `macos`/`linux`/`windows`) is a full round-trip review bridge for the **Code Review & Diff Inspection** domain. It does not re-implement diff rendering: it launches the external **hunk** TUI (`hunkdiff` 0.19.0) in a Herdr `split` pane rooted at the reviewed worktree, then collects human-authored inline comments via `hunk session comment list` and submits them as a single prompt to the agent that authored the changes via `herdr agent prompt`.
+- **Key Features**: **Review modes — 5 actions × 2 pane twins (POSIX + Windows):**  * `review` — config `default_target`; `auto` shows `branch (<base>...HEAD)` when ahead of base, otherwise `working`. `contexts=["workspa
+
+### [2026-08-13] goofansu/herdr-hunk
+- **Overview**: `goofansu/herdr-hunk` (`herdr-hunk` / `Hunk review` v0.3.0, `min_herdr_version 0.8.0`, `linux`/`macos` only) is a thin, stdlib-only Python launcher that opens the external **Hunk** diff TUI (`github.com/modem-dev/hunk`) in a temporary Herdr `overlay`. It implements no diff rendering itself.
+- **Key Features**: **What the user gets is 3 actions + 3 overlay panes, no hooks, events, link handlers, or HTTP API:**  | Action (`contexts=["pane"]`) | Pane entrypoint | Hunk invocation in pane | |---|---|---| | `revi
+
+### [2026-08-13] dleen/herdr-agents
+- **Overview**: `dleen/herdr-agents` (`Agent picker` v0.3.1, `min_herdr_version 0.8.0`) is an **agent-pane picker and launcher**, not a diff renderer. It reads `herdr pane list`, resolves true agent state even for panes Herdr's ~30-column sidebar drops, groups one row per live agent pane by full `cwd`, and shows a transcript-reconstructed preview of what each session actually did.
+- **Key Features**: **Herdr surface is intentionally narrow: 1 popup pane + 2 actions, no hooks, events, `link_handlers`, or HTTP API.**  What the user gets:  * **Picker (`picker` pane + `open` action):** `fzf --with-nth
+
+### [2026-08-14] JonasBaeumer/herdr-file-annotator
+- **Overview**: `jonasbaeumer.file-annotator` (`File Annotator` v0.9.0, `min_herdr_version 0.8.0`, `macos`/`linux` only) is an **agent-summoned, blocking diff review** plugin. The coding agent registers the bundled binary as a stdio MCP server; when it calls `review_changes` a `Review` split pane opens beside the agent, the agent blocks, and the human returns a verdict (`approve` / `request_changes` / `reject` / `cancelled`) plus structured line-anchored annotations.
+- **Key Features**: **Herdr-declared surface is minimal: 1 build hook + 1 pane, no actions, no hooks/events/link_handlers/HTTP API:**  * `review` pane: `title: Review`, `placement: split`, `command: ["sh","-c","exec \"$H
+
+### [2026-08-14] damianpoole/herdr-opencode-sessions
+- **Overview**: This plugin is a session-history finder and re-opener for OpenCode, not a diff renderer. It reads the local OpenCode SQLite store read-only via `opencode db`, presents root sessions in an `fzf` overlay with live preview, and re-attaches the selected session via `opencode --session [--fork]` inside a new Herdr tab or workspace.
+- **Key Features**: What is actually implemented in `herdr-plugin.toml` + `src/main.ts` + `src/lib.ts` + `README.md`:  **Single user surface: 1 action + 1 overlay pane:** * `search` — `Search OpenCode sessions`, `context
+
+### [2026-08-15] moneycaringcoder/herdr-collide
+- **Overview**: `Collide` (`moneycaringcoder.collide` v0.2.0, `min_herdr_version 0.8.0`, `linux`/`macos`) warns when concurrent agents in different `git worktree` checkouts of the **same repository** are editing the same files. It groups Herdr workspaces by canonical `--git-common-dir` identity, compares **every pair** in a repo, and separates `overlap` (shared file, merges clean) from `conflict` (merge-tree predicts a conflict), plus `runaway` (oversize change-set) and `unknown` (could not prove an answer).
+- **Key Features**: **Herdr-declared surface (`herdr-plugin.toml`):** 1 `[[build]]` (`cargo build --release --locked`), 1 `[[startup]] (`--restore`), 4 `[[events]]` (`worktree.created/opened/removed`, `workspace.closed` 
+
+### [2026-08-15] sushidesu/herdr-tabpick
+- **Overview**: ` sushidesu/herdr-tabpick` (`sushidesu.tabpick`, `tabpick` v0.1.0, `min_herdr_version 0.7.4`, `macos`/`linux` only) is a cross-workspace tab picker with most-recently-used ordering. One `popup` pane runs an `fzf` UI listing every existing Herdr tab MRU-first with a live preview, plus optional not-yet-created tabs derived from configured project-root directories; selecting a directory creates and focuses a new tab there.
+- **Key Features**: What is actually implemented in `herdr-plugin.toml` + `bin/tabpick` (131 LOC `bash`) + `README.md`:  **Picker pane (`panes.open`):** `title: tabpick`, `placement: popup`, `width: 90%`, `height: 80%`, 
+
+### [2026-08-20] itisbryan/herdr-gh-checks
+- **Overview**: `itisbryan/herdr-gh-checks` (`herdr-gh-checks` / `GH Checks` v0.2.2, `min_herdr_version 0.7.0`) is a full native review workbench for the **Code Review & Diff Inspection** domain, not a thin launcher shim. A single Go + Charm (Bubble Tea / Bubbles / Lipgloss) binary provides three modes: a live 5s-polled PR/CI pane, an interactive merge popup, and a background sidebar daemon.
+- **Key Features**: **What is declared:** 2 panes + 2 actions, 1 `[[startup]]`, 2 `[[build]]`. No hooks, events, `link_handlers`, or HTTP API.  - `panes.panel` (`GH Checks`, `split`, `./herdr-gh-checks`) + `actions.show`
+
+### [2026-08-21] husniadil/herdr-dispatch
+- **Overview**: `herdr-dispatch` (`Dispatch` v0.10.7, `min_herdr_version 0.8.0`, `macos`/`linux` only) is the execution policy for the `herdr-tasks` (`htask`) board. It watches for `ready` tasks, brings up one Herdr worker pane per task in its own tab and checkout, delivers a `/goal` prompt, tracks `agent_status`, re-nudges silent workers, and stops at `review` where the board's own review gate takes over — it never runs `approve`/`reject`.
+- **Key Features**: **Herdr-declared surface (`herdr-plugin.toml`):** * `[[build]] binary`: `go build -o ./bin/hdis ./cmd/hdis` * `[[startup]] daemon`: `./scripts/start.sh` — `nohup .../bin/hdis daemon`, detaches so it o
+
+### [2026-08-21] husniadil/herdr-tasks
+- **Overview**: `herdr-tasks` (`Tasks` v0.10.1, `min_herdr_version 0.8.0`, `macos`/`linux`) is a task backlog and notes board for agents running on Herdr. One statically-linked Go binary, `htask`, is the daemon, the CLI, the stdio MCP server, and the popup TUI board.
+- **Key Features**: **Task lifecycle:** `create`, `list`, `get`, `claim`, `touch` (renew lease), `release`, `submit --report --evidence --evidence-for`, `amend`, `approve`, `reject`, `cancel`, `update`, `delete`, `archiv
+
+### [2026-08-21] neospark-sol/agentflock
+- **Overview**: **AgentFlock** (`neospark.agentflock`, `0.1.0-beta.0` in `herdr-plugin.toml` / `0.1.0-beta.2` in `package.json`, `min_herdr_version 0.8.0`, `linux`/`macos` only) is a durable **builder + reviewer + cheap coordinator** orchestration system, not a diff renderer.
+- **Key Features**: ### Herdr-declared surface — intentionally minimal  `herdr-plugin.toml` declares **no hooks, events, `link_handlers`, or HTTP endpoints**. Only:  * `[[build]]`: `npm ci` + `npm run build` * `[[actions
+
+### [2026-08-21] devops-fj/herdr-handoff
+- **Overview**: `devops-fj.herdr-handoff` (`Herdr Handoff` v`0.2.0`, `min_herdr_version 0.7.5`) is a **local, preview-first agent-to-agent context transporter**, not a diff renderer. It picks a source Herdr coding agent and a target agent, collects the source's recent terminal output plus `git` working-tree state, renders the exact Markdown prompt that will be delivered, and sends it only after the user types literal `SEND` (interactive) or passes explicit `--yes` (CLI).
+- **Key Features**: **Herdr-declared surface is minimal: 1 `[[build]]` + 1 `[[actions]]` + 1 `[[panes]]`.** No hooks, events, `link_handlers`, or HTTP API endpoints.  * `open` action — `Hand off to another agent`, `conte
+
+### [2026-08-21] woshahua/herdr-github-pr
+- **Overview**: `woshahua/herdr-github-pr` (`github-pr` / `GitHub PR Sync` v0.1.0, `min_herdr_version 0.7.4`, `linux`/`macos` only) is a read-only GitHub PR observer for Herdr. For the branch checked out in the focused pane it resolves the PR with `gh`, rolls up CI checks / review decision / mergeability, fetches conversation comments plus review submissions and inline threads via GraphQL, caches the result, and surfaces it in two places: sidebar tokens and a dedicated `GitHub PR` split pane.
+- **Key Features**: **Declared surface in `herdr-plugin.toml`: 1 `[[startup]]` + 3 `[[events]]` + 3 `[[actions]]` + 1 `[[panes]]` + 1 `[[link_handlers]]`. No hooks, no HTTP API.**  * **Auto-sync (`bin/sync.js`):** runs o
+
+### [2026-08-21] codingfragments/herdr-nav
+- **Overview**: `herdr-nav` is a modal popup switcher for Herdr: one keystroke opens it, you aim, `Enter` moves you, it closes. It unifies five target kinds — live Session panes/tabs/workspaces, Agents, Pinned dirs, `zoxide` frecency dirs, and installed Plugins — into two modes (`Browse` tree / `Search` flat fuzzy list) with a single-shape live preview for every kind.
+- **Key Features**: **Declared Herdr surface (`herdr-plugin.toml`): 2 panes + 2 actions, nothing else.** No `[[hooks]]`, `[[events]]`, `[[link_handlers]]`, `[[startup]]`, or HTTP API:  * `panes.switcher` — `title: herdr 
+
+### [2026-08-26] ubuntudroid/herdr-coder-sessions
+- **Overview**: `ubuntudroid/coder-sessions` (`ubuntudroid.coder-sessions`, `Coder Agent Sessions` v0.1.0, `min_herdr_version 0.8.0`, `linux`/`macos` only) is a **remote-session bridge** in the Code Review & Diff Inspection domain. It browses running Coder task workspaces — which have no tmux/screen, only `agentapi` on port 3284 — and opens each as its own Herdr workspace.
+- **Key Features**: ### `coder-sessions.py` — picker, builder, mirror, takeover  Single stdlib-only Python entrypoint with explicit sub-modes:  * **Picker (default pane + action):** `coder-sessions.py` runs an `fzf` popu
+
+### [2026-08-26] skellleks/lasso
+- **Overview**: `lasso` (`Lasso` v0.1.0, `min_herdr_version 0.7.5`, `macos`/`linux` only) is a native Rust TUI review pane for Herdr. Each window pins permanently to one agent pane and shows that agent's live working-tree diff with a file tree, whole-file syntax-highlighted diff, and separate file viewer.
+- **Key Features**: What the user gets is 1 pane + 1 action, no HTTP API, no `link_handlers`, no event declarations in TOML:  * **Pane `review`:** `title: Lasso review`, `placement: split`, `command: sh -c exec "$HERDR_P
+
+### [2026-08-27] 0xfelixli/herdr-notes
+- **Overview**: `0xfelixli.herdr-notes` (`Herdr Notes` v0.1.0, `min_herdr_version 0.7.4`, `macos` only) is a transient annotation collector for the **Code Review & Diff Inspection** domain, not a diff renderer.
+- **Key Features**: What is actually implemented in `herdr-plugin.toml` + `src/main.rs` + `README.md`:  **2 actions, 1 overlay pane, no hooks/events/link_handlers/HTTP API:**  * `annotate-selection` — `Add a note to sele
+
+### [2026-08-30] chasereyn/Vincent
+- **Overview**: Vincent (`chasereyn.vincent` / `Vincent` v1.0.2, `min_herdr_version 0.8.0`, `linux`/`macos` only) is a full, mouse-first terminal review client for code that AI agents wrote, packaged as a Herdr plugin. Forked from `spice-edit` at `5b4adc5` (MIT, Cloudmanic LLC — upstream headers intentionally retained), it presents a file tree on the left, file-or-diff in the middle, and a Zed-shaped Changes panel on the right.
+- **Key Features**: **Herdr-declared surface — no hooks, events, `link_handlers`, or HTTP API:**  * Pane `vincent` (`title: Vincent`, `placement: tab`, `command: ["sh","-c","exec \"$HERDR_PLUGIN_ROOT/bin/vincent\""]`). *
+
+### [2026-09-07] hilmimuktitama/herdr-jira-peek
+- **Overview**: `hilmimuktitama/herdr-jira-peek` (`jira-peek` / `Peek for Jira` v0.2.4, `min_herdr_version 0.8.2`, `macos`/`linux` only) is a **read-only Jira Cloud preview plugin** for Herdr, filed in the Code Review & Diff Inspection ledger but unlike the `hunk`/`reviewr`/`gitview` diff-renderers.
+- **Key Features**: **Declared surface in `herdr-plugin.toml`: 6 actions + 2 panes. No `hooks`, `events`, `link_handlers`, or HTTP API endpoints.**  * `peek` (`scripts/peek.sh`, `contexts=["workspace"]`): Acquires state 
+
+### [2026-09-08] cupsadarius/herdr-pr-glance
+- **Overview**: Glance PR is a read-only GitHub PR observer for Herdr. It tracks the working pane in the current tab, resolves its git checkout and branch locally, then reads PR identity, exact counts, CI `statusCheckRollup`, review decision, stack membership, comments and review threads through the user's authenticated `gh`.
+- **Key Features**: **Declared Herdr surface — `herdr-plugin.toml` only:** 1 `[[build]]` + 2 `[[actions]]` + 1 `[[panes]]`. No hooks, events, `link_handlers`, or HTTP endpoints.  * `open` — `Glance PR: open`, `contexts=[
+
+### [2026-09-09] Deetss/herdr-review-panel
+- **Overview**: `deetss.review-panel` (`Review Queue` v0.1.0, `min_herdr_version 0.8.0`, `linux`/`macos` only) is a local-first handoff queue for agent-to-human review. A Claude Code `Stop`/`SubagentStop` hook watches replies for `<user_review>path</user_review>` and `<user_command>cmd</user_command>` tags, appends them to `~/.claude/review.log`, and auto-opens a Herdr `split` panel.
+- **Key Features**: **What the user sees:**  * **Review Queue sidebar:** timestamp + repo `GroupHeader`, `FileItem` rows (yellow underlined, absolute path if resolvable), `CommandItem` rows (magenta, `[ ]`/`[x]` checkbox
+
+### [2026-09-09] YmlyZA/herdr-review-pack
+- **Overview**: `herdr-review-pack` (`Review Pack` v0.1.0, `min_herdr_version 0.9.0`, `macos`/`linux` only) is a local, explicit review-preparation tool, not a diff renderer or agent orchestrator.
+- **Key Features**: Declared Herdr surface is minimal: **1 action + 1 popup pane, no hooks, events, `link_handlers`, startup, build, or HTTP API.**  * **Action `open` — `Review Pack: open`:** `contexts=["pane","workspace
+
+### [2026-09-10] anthonykimm/herdr-pr-status
+- **Overview**: `pr-status` (`PR Status` v0.1.0, `min_herdr_version 0.7.0`, `macos`/`linux` only) is a minimal, read-only GitHub PR observer for the **Code Review & Diff Inspection** domain.
+- **Key Features**: What is actually implemented in `herdr-plugin.toml` + `pr_status.py` + `README.md`:  **Sidebar tokens (the only user-visible output):**  * `pr` — e.g. ` #12 approved · conflicts`, produced by `pr_labe
+
+### [2026-08-10] rodeyseijkens/codey
+- **Overview**: `codey` is a **review-first git TUI that sits beside a coding agent**. It presents staged vs. unstaged changes as two sections, lets a human walk hunks, attach transient line/range comments, do real `git` staging/discarding, and hand notes back to the agent.
+- **Key Features**: **Herdr-declared surface is intentionally minimal — 1 pane + 3 actions + 1 event, no hooks, no `link_handlers`, no HTTP endpoints:**  * `panes.pane`: `title: codey`, `placement: split`, `command: [sh 
+
+### [2026-09-11] odiumuniverse/herdr-diff-viewer
+- **Overview**: `odiumuniverse/herdr-diff-viewer` (`odiumuniverse.diff-viewer` / `Diff Viewer` v0.1.0, `min_herdr_version 0.9.0`, `macos`/`linux` only) is a self-contained, native Rust git-diff sidebar for Herdr. It is not a thin launcher around `hunk`/`er`/`ttt` like many ledger peers; it implements its own mouse-driven TUI that lives in a right-hand `split` beside a coding agent, shows changed files with red/green hunks, and lets the user click-to-jump or drag lines to inject `file:line` + code into the agent prompt.
+- **Key Features**: **User surface is minimal by manifest: 1 action + 1 pane + 3 background events, no hooks or HTTP API:**  * `toggle` — `Diff viewer: toggle git diff sidebar`, `contexts=["pane"]`, `command=["./target/r
+
+### [2026-09-12] sjlee06/herdr-git-graph
+- **Overview**: `herdr.git-graph` (`Herdr Git Graph` v0.4.2, `min_herdr_version 0.9.0`, `macos`/`linux` only) is a **read-only, native Rust TUI for browsing local Git history beside code**. It provides two complementary surfaces: a 40-column graph-only `sidebar` split for ambient history, and a full `graph` tab with branches + history + commit-inspector.
+- **Key Features**: **User-visible surface — 2 actions + 2 panes, no hooks/events/link_handlers/HTTP:**  * `open` (`--open-pane`): open full view in new tab, `--focus`, scoped to `--workspace` when known. * `sidebar` (`-
+
+### [2026-09-12] mvaios/herdr-scratchdock
+- **Overview**: `mvaios.scratchdock` (`Scratchpad Dock` v0.3.0, `min_herdr_version 0.9.0`, `macos`/`linux`) docks a coding agent's working files in a `split` pane beside the agent while it works.
+- **Key Features**: **Herdr-declared surface (`herdr-plugin.toml`): 1 pane + 2 events + 7 actions. No `[[build]]`, `[[startup]]`, hooks, `link_handlers`, or HTTP API.**  * Pane `dock` (`title: Scratchpad`, `placement: sp
+
+### [2026-09-13] hx-w/herdr-visuals
+- **Overview**: `hx-w.visuals` (`Visuals` `0.1.3`, `min_herdr_version 0.9.0`, `macos`/`linux` only) is a local-first preview pane for visual content produced by a coding agent. Pressing `prefix+v` opens a right-hand `split` beside the focused pane that renders complete fenced `mermaid` diagrams, display math (`$$…$$`, `\[…\]`, `math`/`latex`/`tex` fences), and local images referenced by or embedded in the bound conversation.
+- **Key Features**: **Declared Herdr surface is `2 actions + 1 pane`, no hooks, events, `link_handlers`, `startup`, or HTTP API:**  * `open` — `Visual previews` (`node src/launch.mjs`): open beside current pane; focus ex
+

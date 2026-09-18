@@ -92,3 +92,83 @@ This document tracks architectural patterns and previously surveyed extensions w
 - **Overview**: **Copy Hints** (`rotemb-wond.copy-hints`, v1.1.1, `min_herdr_version 0.7.0`) is a keyboard-driven copy utility for Herdr panes, explicitly modeled on `tmux-fingers`. It scans the **visible text** of the focused pane for paths, Git commits/branches/status paths, URLs, IPv4s, UUIDs, hex literals, and long numbers, then overlays compact type-to-select labels directly on top of the pane contents. Typing a label copies the full underlying value to the system clipboard immediately.
 - **Key Features**: No background service, hooks, or HTTP API. Two ephemeral entrypoints provide one user workflow:  **Action `open` — "Show copy hints" (`open.py`):** - Pane-context action (`contexts=["pane"]`). Reads `
 
+### [2026-07-26] voodootikigod/adlc-herdr
+- **Overview**: `adlc-herdr` (`id = "adlc"`, manifest v0.2.0, npm `@adlc/herdr` v1.11.0) surfaces the ADLC Agentic Development Lifecycle at the terminal-multiplexer layer. It does not enforce lifecycle or implement tickets/gates itself; it observes the shared `.adlc/` file contract written by seven harness plugins and renders that state natively in Herdr — per-pane `ticket`/`phase` tokens, workspace backlog counts, an overlay backlog board, pane-context actions, and `adlc-fleet` run observability.
+- **Key Features**: **Watcher daemon `bin/watcher.mjs` (`[[startup]]`):** - Maps every pane to a repo via `foreground_cwd` → `cwd` fallback and `git rev-parse --show-toplevel`. - Publishes per-pane tokens `{ticket, phase
+
+### [2026-07-30] ddfonseca/herdr-paste-image
+- **Overview**: `Herdr Paste Image` (`herdr-paste-image`, v0.1.0, `min_herdr_version 0.7.0`) is a minimal, single-action utility plugin that bridges the OS clipboard and a coding agent running in Herdr. On keypress it reads the image currently in the system clipboard, writes it to `~/.cache/herdr-paste-image/image_<timestamp>.png` (configurable), and types that filesystem path into the focused pane **without submitting**, so Claude Code / Codex / Amp-style agents can ingest it as a file reference.
+- **Key Features**: What the user gets is one workflow exposed as one action:  * **Action `paste` — "Paste clipboard image as a file path" (`herdr-plugin.toml` `[[actions]]`, `contexts=["global"]`, `command=["bash", "pas
+
+### [2026-07-31] shadowfax92/herdr-talon
+- **Overview**: **Talon** (`shadowfax.talon`, v0.2.0, `min_herdr_version 0.7.5`, `platforms = ["macos"]`) is a focused-pane history picker and copy utility, not a task manager despite its Task & Project Management ledger placement. Pressing `prefix+g` freezes up to 1,000 recent rendered rows from the invoking pane, unwraps soft-wraps, and opens them in a centered modal popup where detected values get short keyboard hints to copy.
+- **Key Features**: **Two actions + one popup** declared in `herdr-plugin.toml`:  * `launch` — `Open Talon`, `contexts=["pane"]`, `./target/release/herdr-talon launch`: capture focused-pane history and open picker. * `in
+
+### [2026-07-31] zerodice0/herdr-booking-task-plugin
+- **Overview**: Herdr Booking Task is a cron-like scheduler for Herdr. It schedules two kinds of work — **a prompt sent to a live Herdr agent** at a future time, or **a local CLI command executed directly** — on weekday, daily, weekly, or one-time schedules.
+- **Key Features**: **Two job kinds (`internal/booking/model.go`, `executor.go`):**  * `prompt` (`PromptSpec{Target, Text, WaitTimeoutSec}`): sends text to a unique agent name or pane ID via `herdr agent prompt`. Explici
+
+### [2026-07-31] jmarbutt/herdr-spaces-pr-status
+- **Overview**: `jmarbutt/herdr-spaces-pr-status` (`jmarbutt.spaces-pr-status`, v0.1.0, `min_herdr_version 0.7.4`) is a GitHub observability plugin for Herdr spaces, not a task manager despite its ledger category. It maps each Herdr workspace to its git branch / `owner/repo` and reports that branch's pull-request state into the sidebar, plus a Conductor-style board and per-space checks view.
+- **Key Features**: **Sidebar tokens (the primary surface):** * `$pr` — e.g. `● #10110`, `◆ #10129 MERGED`. Glyph per rolled state; word suffix only for `merged/closed/draft`. * `$pr_checks` — e.g. `✓ 28/28`, `✗ 2/14`, `
+
+### [2026-08-02] mdetweil/herdr-lazytask
+- **Overview**: `mdetweil/herdr-lazytask` (`herdr.lazytask`, v0.1.0, `min_herdr_version 0.7.0`, `linux`/`macos`) is a dual-store task plugin for Herdr. It summons the external `lazytask` TUI — a keyboard-driven TaskChampion client — in an idempotent Herdr split or tab beside current work, and separately ships a small Rust binary for Taskwarrior quick mutations without opening the TUI.
+- **Key Features**: **Lazytask pane (explicit action only, no event hooks):**  * `open` → `scripts/open-lazytask.sh`: open-or-focus-or-toggle in the **current tab**. No pane → open split right focused; unfocused match → 
+
+### [2026-08-07] cdowell09/herdr-pr-board
+- **Overview**: PR Board (`cdowell09.pr-board`, v0.3.1, `min_herdr_version 0.8.0`) is a config-driven, cross-repository GitHub pull-request dashboard for Herdr. It aggregates multiple `gh search prs` queries into named views in a single reusable Herdr tab named `PR Board`, enriches each PR with aggregate CI status via GraphQL, and optionally mirrors counts into Herdr sidebar tokens.
+- **Key Features**: **Views and scopes:** * Three defaults from `config.example.toml` / `DefaultFile`: `authored` (`is:open author:@me`, `scope=global`), `review` (`is:open review-requested:@me`, `global`), `all` (`is:op
+
+### [2026-08-20] the-inconvenience-store/herdr-tilt
+- **Overview**: **Tilt** (`id = "herdr.tilt"`, v0.2.0, `min_herdr_version 0.7.0`, `linux`/`macos` only) is a Rust Herdr plugin that controls and monitors [Tilt](https://docs.tilt.dev/) services from a Herdr split pane. It provides a keyboard-and-mouse Ratatui dashboard that lists every Tilt service with a four-color status, grouped by Tilt labels, while keeping the long-lived `tilt up` process in a retained plugin-owned controller so closing the dashboard does not stop Tilt.
+- **Key Features**: What the user gets, verified from `herdr-plugin.toml`, `README.md`, `src/main.rs`/`tui.rs`/`session.rs`/`tilt.rs`/`logs.rs`:  **Two workspace actions + one split pane:** - `open` — “Open Tilt status”:
+
+### [2026-08-21] agentience/herdr-plugin-ide-jump
+- **Overview**: **IDE Jump** (`agentience.ide-jump`, v0.1.0, `min_herdr_version 0.7.4`, `platforms = ["macos", "windows"]`) is a window-raising utility, not a task manager despite its Task & Project Management ledger placement. From a Herdr pane, one keystroke raises the external editor window belonging to *that pane's project* — either silently (`jump`) or via a filterable popup list preselected to that project (`pick`/`picker`). The entire implementation is ~2.7k LOC of standard-library-only Python with two narrow OS backends: System Events / `osascript` on macOS and `user32` via `ctypes` on Windows.
+- **Key Features**: No background service, hooks, or HTTP API. Two user gestures plus three diagnostic entrypoints, all dispatched by `ide_jump.py`:  * **`jump` — "Jump to this project's IDE window" (`[[actions]] jump`, 
+
+### [2026-08-24] wine-fall/herdr-copy-pane-id
+- **Overview**: **Copy pane id** (`wine-fall.copy-pane-id`, v0.1.0, `min_herdr_version 0.7.0`) is a minimal, stateless-unless-toggled utility plugin for Herdr on `linux`/`macos`. It solves one addressing problem: Herdr CLI commands require an unambiguous pane handle like `w1:p2`, which is hard to discover visually.
+- **Key Features**: Two user-facing actions, both documented in `README.md` and `herdr-plugin.toml`:  **`copy-focused` — "Copy focused pane id" (`scripts/copy-focused.sh`):** - Resolves the focused pane id from `HERDR_PA
+
+### [2026-08-26] yelsed/herdr-pr
+- **Overview**: `yelsed/herdr-pr` (`yelsed.pr`, v0.6.0, `min_herdr_version 0.8.0`) is a **Todo list of GitHub pull requests waiting on you, rendered in a Herdr pane**. It ranks everything where the next move is yours — review requested, assigned, changes requested, failing checks, ready-to-merge, already-reviewed, plus capped unreviewed team PRs — each row annotated with *why* it is on the list.
+- **Key Features**: **Six tabs, one ranked Todo:**  * `Todo` — derived locally by `todo::rank()` from the other five searches. Seven `Reason` variants in declaration order = ranking: `ReviewRequested > AssignedToYou > Ch
+
+### [2026-08-27] ivorpad/herdr-ports
+- **Overview**: `ports` (`Open Ports`, v0.1.1, `min_herdr_version 0.7.5`) is a small, dependency-free Herdr utility for developers fighting port conflicts. It opens a session-modal popup that lists every listening TCP port (optionally UDP), resolves the opaque runtime name like `node` / `beam.smp` / `python3.12` to the actual project and script behind it, and lets you open the URL in a browser or kill the holder with `SIGTERM` / `SIGKILL`.
+- **Key Features**: What the user actually gets, verified from `herdr-plugin.toml` + `ports.py` + `README.md`:  **Interactive TUI (`./ports.py`, run by the `ports` popup):** * Live table with columns `PORT / WHAT / CPU /
+
+### [2026-08-28] wavrin/herdr-ferry
+- **Overview**: **Ferry** (`herdr-ferry`, `v0.1.0`, `min_herdr_version 0.8.0`) moves files and clipboard content between the machine Herdr runs on (the “server” / Herdr box) and the laptop the user is attached from, over the user’s existing SSH — no cloud bucket, no new listener, no new keys.
+- **Key Features**: ### What the user gets in Herdr  Declared in `herdr-plugin.toml` (verified against Herdr `0.8.2` per `docs/herdr-verified.md`):  * **Actions (3):**   * `send` — “Ferry: send file to laptop”, `contexts
+
+### [2026-09-02] mike-bronner/herdr-plugin-project-picker
+- **Overview**: This is a minimal workspace reconciler for Herdr, not a project template system. `bin/pick-project` fuzzy-lists every git repo up to two levels under a configured root (default `~`), pre-checks what is already open, and on Enter makes the open set equal the checked set: unchecked workspaces are closed, newly checked repos are created, empty selection leaves only the pinned home workspace, Esc changes nothing.
+- **Key Features**: **One user gesture, no background service:**  * **Picker popup (`panes.picker`):** `Find projects to work on`, `placement = "popup"`, `85% x 85%`. This is a pane, not an `[[actions]]` entry, because a
+
+### [2026-09-03] chrisg32/tsk
+- **Overview**: `tsk` (`id = "tsk"`, v0.1.0, `min_herdr_version = "0.8.2"`, `linux`/`macos`) is a plain-text task manager in the spirit of PlainTasks / TaskPaper, implemented as a single Rust binary (~4.3k LOC). The same binary runs standalone in any terminal or as a Herdr plugin: it opens a `.todo` / `.taskpaper` / `.tasks` file in a full-screen Ratatui TUI where projects (`Name:`), tasks (`☐` / `✔` / `✘` plus many legacy bullets), `@tags`, and notes are edited in place.
+- **Key Features**: **File model:** Parses line-by-line into `Project | Task | Note | Blank`, preserving leading whitespace, trailing newline, and CRLF. Recognizes 16 open bullets (`☐ ❍ ❑ ■ □ ▪ ▫ – — ≡ → › - + * [ ]`), 4
+
+### [2026-09-03] testy-cool/herdr-copy-conversation
+- **Overview**: This is a minimal, single-purpose clipboard utility for Herdr, not a task manager despite its placement in the Task & Project Management ledger. In one keystroke it dumps the **entire unwrapped scrollback** of the focused pane — e.g. a Claude Code / Codex / Agy / opencode conversation — to the OS clipboard and fires a confirmation toast with the line count.
+- **Key Features**: What the user gets is exactly one workflow:  * **Action `copy` — "Copy Conversation" (`contexts=["pane"]`, `command=["bash", "copy.sh"]`):** Invoked via keybind (README suggests `prefix+y` → `type="pl
+
+### [2026-08-19] smarzban/herdr-tsk
+- **Overview**: `herdr-tsk` (`id = "herdr-tsk"`, v0.7.0, `min_herdr_version = "0.7.5"`) is a terminal task queue-board shipped as a Herdr plugin that also runs standalone. The same compiled `tsk` binary renders a full-screen Ratatui board for humans in a Herdr split pane or any terminal, while coding agents drive the same `~/.tsk` / `tsk.json` store headlessly through a scriptable CLI and an installed `SKILL.md`.
+- **Key Features**: **Interactive board (`tsk`, no args):** * Three persistent destinations on every normal surface (`1`/`2`/`3`): `desk` (NEEDS YOU + global IN MOTION + desk-only ON DECK), selected-project board, and `p
+
+### [2026-08-28] MatheusBBarni/herdr-tasks
+- **Overview**: `htasks` is a repo-local Kanban task runner for Herdr, shipped as a single Bun binary that serves both as a one-shot CLI for humans and coding agents and as a full-screen OpenTUI React board. Tasks are plain Markdown files with YAML frontmatter under `.herdr-tasks/` in the project itself; moving a card to `in_progress`, `review`, or a prompted custom lane creates a Herdr workspace/tab/pane in the task's repo, starts the mapped agent `command` there, and sends the task file plus lane prompt as the first `herdr agent prompt`.
+- **Key Features**: **Board + CLI share one store.** Discovery walks up from `HTASKS_ROOT` → `HERDR_PLUGIN_CONTEXT_JSON` workspace/worktree cwd → `process.cwd()` to find `.herdr-tasks/config.toml`. Source of truth is `ta
+
+### [2026-09-08] ArtMoreno/herdr-glance
+- **Overview**: **Glance** (`herdr-glance`, v0.1.0, `min_herdr_version 0.8.2`) is a read-mostly, live agent dashboard for Herdr. It answers “who is working, who is waiting, and who needs me” by polling Herdr for agents in the current workspace/session and rendering each as a themed card with state badge, elapsed-observed time, 32-sample activity sparkline, and last output lines — with `blocked` agents sorted first and expanded to show a `detection` excerpt under a `NEEDS YOU` banner.
+- **Key Features**: **Dashboard TUI (`glance`, no subcommand):** * Per-agent cards for five native states: `working / idle / blocked / done / unknown` (`STATES` in `src/model.rs`). Unknown covers any unrecognized `agent_
+
+### [2026-09-09] circusvoid/herdr-key-hints
+- **Overview**: `circusvoid/herdr-key-hints` (`local.key-hints`, v0.1.0, `min_herdr_version 0.9.0`, `macos`/`linux`) is a post-action teaching aid, not a task manager despite its ledger category.
+- **Key Features**: **User-visible actions** — declared in `herdr-plugin.toml` as `[[actions]]`:  * `initialize` — `python3 plugin.py initialize`: baseline snapshot, clear overlay frame, (re)start session watcher. * `pre
+
