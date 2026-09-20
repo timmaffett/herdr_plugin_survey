@@ -372,3 +372,23 @@ This document tracks architectural patterns and previously surveyed extensions w
 - **Overview**: `herdr.scratchpad` (`Scratchpad`, v0.9.0, `min_herdr_version 0.9.0`, `linux`/`macos` only) is a minimal per-tab markdown scratchpad with checkbox todos.
 - **Key Features**: No daemon, lifecycle hooks, HTTP endpoints, socket server, keybindings, or config schema. Observable surface is exactly one headless action + one split pane:  * **`toggle` — `Toggle scratchpad`:** `co
 
+### [2026-09-11] purehate/herdr-plugin-picker
+- **Overview**: `purehate.herdr-picker` (`Picker`, v0.5.0, `min_herdr_version 0.9.0`, `macos`/`linux` only) is a **Window, Tab & Layout Automation: unified navigator / launcher** plugin.
+- **Key Features**: **Manifest surface (`herdr-plugin.toml`):** one headless action + three panes, no `[[events]]`, `[[startup]]`, `[[keys.command]]`, HTTP endpoints, or config schema:  * `open-navigator` — `Open Navigat
+
+### [2026-09-15] yang3kc/herdr-tab-notes
+- **Overview**: `yang3kc/herdr-tab-notes` (`tabnotes`, `Tab notes`, v0.1.0, `min_herdr_version 0.9.0`) is a per-tab Markdown scratchpad for Herdr. One keystroke opens the focused tab's note in a narrow ~40-column right split; the same keystroke closes it. It is deliberately minimal — two Bash scripts, no daemon, no build step, no sync, no background lifecycle — intended to preserve human intent (“what the agents in this tab should do next”) across project switches.
+- **Key Features**: What the user gets is a single toggle plus an editor pane:  * **`toggle` action — `Tab notes: toggle the notes pane for this tab`:** headless, TTY-less. If `state/open/<tab-key>` names a live pane, cl
+
+### [2026-09-16] Taanviir/herdr-quick-prompt
+- **Overview**: `taanviir.quick-prompt` (`Quick Prompt`, v0.1.1, `min_herdr_version 0.8.0`, `linux`/`macos`/`windows`) is a **Window, Tab & Layout Automation: launcher** plugin in the same sub-family as `herdr-claude-launcher`, `herdr-new-task`, and `herdr-newtab-plus` in the ledger, but prompt-first rather than destination-first.
+- **Key Features**: **User-visible surface is two headless actions + one popup, per `herdr-plugin.toml`:**  * `taanviir.quick-prompt.open` — `Quick Prompt`, `contexts=["workspace"]`, `command=["node","bin/open.js"]`. Res
+
+### [2026-09-16] morphysh/herdr-battery
+- **Overview**: `morphysh/herdr-battery` (`rock.battery`, `Battery`, v0.1.0, `min_herdr_version 0.9.0`, `linux` only) is a system-status utility, not a layout automator in the sense of most entries in this ledger. In 2-3 sentences: it renders laptop battery state as a one-line Herdr tab-bar widget (`⚡87%` / `🔋87%` / `🔌100%` / `🔋15%!`) by polling Linux sysfs, and provides a `Battery details` popup with charge, health, cycles, instantaneous power, and time-to-full/empty estimate. It is ~185 LOC of POSIX `sh` with no daemon, no events, and no build step.
+- **Key Features**: **Tab-bar one-liner (`battery-status.sh`):** * Scans `/sys/class/power_supply/BAT*` for the first entry with a `capacity` file; if none exists, exits `0` with empty output, which Herdr interprets as c
+
+### [2026-09-17] ajaykumarMohite/herdr-agent-tab-titles
+- **Overview**: This is a **Window, Tab & Layout Automation: tab auto-renamer** plugin in the most crowded sub-family in the ledger — alongside `lucasleon2107/herdr-tab-title-sync`, `kewah/herdr-tab-titles`, `elKei24/herdr-title-sync`, `killerz3/herdr-agent-titler`, `lmilojevicc/herdr-tab-rename`, `riq0h/tab-process-name`, and `qu8n/herdr-automatic-rename`.
+- **Key Features**: What the user observes is two background triggers plus two on-demand actions:  **Event-driven rename (no configuration):** * `pane.agent_detected` → `python3 rename_tabs_from_agent_titles.py` * `pane.
+

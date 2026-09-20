@@ -160,3 +160,7 @@ This document tracks architectural patterns and previously surveyed extensions w
 - **Overview**: `ejlonn.herdr-supervisor` `0.3.0-beta.1` (`min_herdr_version 0.9.0`, `linux` only) is a **durable human-in-the-loop supervisor for existing Codex and Claude sessions**, not a fan-out swarm orchestrator. It preserves native Herdr agent conversations, routes turns between `codex-main` and `claude-main` via an explicit in-transcript protocol, enforces typed human gates, waits deterministically on quota, and exposes the whole run to an operator via CLI and an optional Telegram bridge.
 - **Key Features**: **Herdr-declared surface (`herdr-plugin.toml`):** 4 `contexts=["workspace"]` actions, no panes, no hooks, no HTTP endpoints:  * `setup` → `sh install.sh` — stage user-scoped files * `status` → `herdr-
 
+### [2026-09-11] ClockworkNet/herdr-claude-tmux-swarm
+- **Overview**: This is not a swarm orchestrator in the sense of `pi-herd`, `herdr-orchestrate`, `shepherdr`, `herdr-cadence`, `herdr-loop`, or `herdr-orc` in the ledger. It does not spawn, prompt, or manage agents.
+- **Key Features**: **Automatic watch loop (`bin/swarm_watcher.py:Runtime.loop/cycle`):**  * Polls `tmux_dir()` (`$TMUX_TMPDIR` or `/tmp` + `/tmux-<uid>`) every `interval_seconds` (default 2.0). * Liveness is a triple AN
+

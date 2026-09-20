@@ -1520,3 +1520,99 @@ This document tracks architectural patterns and previously surveyed extensions w
 - **Overview**: `netresearch.bg-activity` (`Background Activity`, `0.2.0`, `min_herdr_version 0.9.0`, `linux`/`macos`) is a presentation-only sidebar enrichment for parallel-agent work. Herdr reports a Claude Code pane as `idle` as soon as its turn ends, even when a monitor or background shell it started is still running (`herdrdev/herdr#1217`).
 - **Key Features**: Verifiable surface is one `[[startup]]` entrypoint, no `actions`, `panes`, `[[events]]`, `link_handlers`, or HTTP API:  * **Background-work marker:** pane token `bg` e.g. `⧗ 1 monitor, 2 shells`; work
 
+### [2026-08-15] juanitourquiza/shipframe
+- **Overview**: `juanitourquiza/shipframe` as surveyed here is not a Herdr-native automation. It is the **ShipFrame AI coding workflow toolkit** — ~11k LOC of Markdown skills, Markdown agents, and a Bash installer for Claude Code / Codex CLI / OpenCode — plus a thin, optional Herdr adapter in `herdr-plugin/`.
+- **Key Features**: Verifiable Herdr surface is minimal by design — **2x `actions` + 2x `panes`**, no `[[events]]`, `[[startup]]`, `[[build]]`, `link_handlers`, or HTTP/socket API (scanner confirms `Discovered Socket Cal
+
+### [2026-08-31] abhishek944/pet-village
+- **Overview**: Pet Village is a **transparent desktop companion for live coding agents**, not an in-Herdr pane or notifier. It is a from-scratch **Tauri v2 application (Rust backend + TypeScript/CSS WebView)** that renders every live agent as a small animated citizen walking a transparent strip along the bottom of the macOS desktop. It uses **one lightweight window for the whole village** — never one window per agent — kept transparent, undecorated, always-on-top, and visible across Spaces, with click-through empty pixels and interactive citizen pixels.
+- **Key Features**: **Herdr-declared surface — no panes, events, build, or link handlers:**  * `[[startup]]`: `sh scripts/supervisor.sh startup` — starts renderer only if `binary --startup-enabled` succeeds. * `actions.v
+
+### [2026-08-31] JJLiebig/herdr-plugins
+- **Overview**: `JJLiebig/herdr-plugins` is not one plugin but a monorepo of four independently installable Herdr plugins sharing only docs and conventions. **GitHub Tools** (`jjliebig.github-tools`) publishes the current branch's PR as workspace sidebar metadata and opens PR/repo in a browser. **Worktree Discovery** (`jjliebig.worktree-discovery`) auto-opens newly created git worktrees as unfocused Herdr spaces and retires untouched spaces after PR merge/close or worktree deletion. **Simple Dispatch** (`jjliebig.simple-dispatch`, Windows-only) turns an issue/PR URL or freeform feature description into an isolated worktree + agent workflow with manual or PR-merge-gated cleanup. **Herdr Stream Deck+** (`dev.herdr.streamdeck`) is a physical triage surface: six pinned thread keys + INBOX + ACTIONS keys + four dial-strip regions driven by a prebuilt Stream Deck bundle that polls `herdr api snapshot`.
+- **Key Features**: ### GitHub Tools (`github-tools/github.js`, `watch.js`, v0.2.0) * **PR sidebar tokens:** `refresh-current` / `refresh-all` run `gh pr view --json number,title,state,isDraft,mergedAt,url,headRefName` i
+
+### [2026-09-06] zbyhoo/herdr-image-gallery
+- **Overview**: **Herdr Image Gallery** (`local.image-gallery`, `0.3.0`, `min_herdr_version 0.8.2`, `macos`/`linux`) is a terminal-native image viewer that runs as a Herdr `split` pane. It lets an operator browse a workspace-scoped history of agent-produced images as thumbnails or full preview, browse arbitrary directories on disk, and let Codex / Claude Code push images into the view via a bundled skill and CLI without leaving the terminal.
+- **Key Features**: **Viewer UX (`gallery.py:gallery()` + `draw()`):**  * Two modes: `preview` (single large image + caption + path) and `grid` (up to 4 columns x 4 rows, max 24 per page, paged, click-to-open). * Smooth 
+
+### [2026-09-08] nabutabu/herdr-observr
+- **Overview**: **Herdr Observr** (`nabutabu.herdr-observr`, `Herdr Observr`, v`0.0.7`, `min_herdr_version 0.7.5`, `linux`/`macos`) is a telemetry-daemon plugin for Herdr, not an interactive utility.
+- **Key Features**: Verifiable surface is minimal by manifest, rich by runtime:  **Manifest-declared:** * `[[build]]`: `sh scripts/build.sh` — prefers `go build -o bin/herdr-observr .`, falls back to downloading latest p
+
+### [2026-09-14] ofelcan164/muster
+- **Overview**: Muster (`id="muster"`, `v0.1.0`, `min_herdr_version="0.8.2"`, `linux`/`macos`) is a fleet-triage overlay for Herdr. Tagline in the manifest: *“One screen for every agent across every repo.”*
+- **Key Features**: **Declared Herdr surface (`herdr-plugin.toml`):**  * `[[build]] x2`: `go build -o ./bin/muster ./cmd/muster` and `go build -o ./bin/musterd ./cmd/musterd`. Leading `./` is load-bearing — manifest comm
+
+### [2026-09-14] GODVvVZzz/herdr-agent-chat
+- **Overview**: `GODVvVZzz/herdr-agent-chat` is chat-like delegation for parallel agents in Herdr, not another `blocked/done` toaster. A human-facing **main session** (documented as Claude Code) opens sibling panes — or fresh tabs in a foreign workspace when the task belongs to another project — starts permission-free **worker** agents there, sends each a task as a message, and keeps talking to the user. Workers write full results to `/tmp/herdr-agent-chat/<task>.md` and report back over the same `herdr agent prompt` channel.
+- **Key Features**: **Guardian plugin — what it actually does at runtime:**  No `actions`, no `panes`, no `startup`, no `build`, no `link_handlers`, no HTTP/socket server. The entire Herdr-declared surface in `herdr-plug
+
+### [2026-09-14] justmytwospence/herdr-attention-queue
+- **Overview**: **Attention Queue** (`attention-queue`, `0.1.0`, `min_herdr_version 0.9.0`, `macos`/`linux`) turns Herdr's Agents panel into a sticky attention queue.
+- **Key Features**: **What the operator sees:**  * Three per-pane sidebar tokens, source `plugin:attention-queue`:   * `attn`: `blocked | done | working | idle | unknown`   * `attn_rank`: `0`–`4` in that order, for lexic
+
+### [2026-09-14] Castrozan/herdr-pace
+- **Overview**: **Castrozan/herdr-pace** (`castrozan.pace`, `Herdr Pace`, v`0.6.0`, `min_herdr_version 0.9.0`, `linux`/`macos`) is a speed-reading popup for completed AI replies.
+- **Key Features**: **Capture completed replies:**  * `herdr-pace capture` reads one JSON `Stop` event from stdin. `capture/events.py:completed_reply()` prefers `reply_text`, then `last_assistant_message`, then `transcri
+
+### [2026-09-14] feelautom/herdr-reliable-messaging
+- **Overview**: **Herdr Reliable Messaging** (`id = "herdr-reliable-messaging"`, `v0.7.0`, `min_herdr_version 0.8.2`, `platforms = ["windows"]`) is a durable, deterministic pane-to-pane messaging transport for Herdr on Windows.
+- **Key Features**: What the operator / agent can do, all via `node src/index.mjs <command>` emitting one JSON object (except `--human` target list and `help`):  * **Discovery:** `targets [--title <exact>] [--status <exa
+
+### [2026-09-15] Tyru5/herdr-clock
+- **Overview**: **Tyru5/herdr-clock (`herdr-clock`, v0.1.0)** is a faithful port of tmux `clock-mode` for Herdr. One keybinding — default `prefix+shift+t` — opens a session-modal `popup` running a small Rust TUI that draws the current local time in large 5×5 block glyphs and redraws on every second boundary; the first key press exits the binary, which closes the popup, reproducing tmux's press-anything-to-return feel without disturbing the tiled layout.
+- **Key Features**: Verifiable surface is **1× `[[build]]` + 1× `[[panes]]` + 1× `[[actions]]`**. No `[[events]]`, `[[startup]]`, `link_handlers`, or HTTP/socket API.  * **Show action (`actions.show` → `herdr-clock.show`
+
+### [2026-09-15] hanjm93/herdr-plugin-done-timer
+- **Overview**: `done-timer` (`id = "done-timer"`, `Done Timer`, v`0.5.0`, `min_herdr_version 0.7.4`, `macos`/`linux`) is a prompt-cache countdown for parallel AI agents. For each idle `claude` or `codex` agent it shows `MM:SS` (`59:59 -> 00:00`, or `04:59 -> 00:00` for 5-minute caches), `expired` once the TTL has passed, and blank while the agent is answering or when there is no cacheable conversation.
+- **Key Features**: Verifiable surface is **3x `[[events]]`, no `actions`, no `panes`, no `[[startup]]`, no `[[build]]`**:  * `pane.agent_status_changed -> ["bash", "bin/on-event.sh"]` — instant blank on answer start, re
+
+### [2026-09-15] codergeek121/herdr-rails
+- **Overview**: **Herdr Rails** (`codergeek121.herdr-rails`, `v0.3.0`, `min_herdr_version 0.7.0`, `linux`/`macos`) is a small, shell-only Developer Workflow utility that simplifies worktree-based Rails development with parallel agents in Herdr. It does two jobs: automatically bootstrap a newly created Rails worktree (`db:prepare` unconditionally, `css:install` / `javascript:install` conditionally), and provide one on-demand action that builds a conventional three-tab dev layout — `Editor` + `Rails` (server + console) + `Terminal`. The total bundle is ~138 LOC of POSIX `sh` plus manifest and README; there is no daemon, TUI, pane definition, or background service.
+- **Key Features**: Verifiable surface in `herdr-plugin.toml` is **3x `[[events]]` + 1x `[[actions]]`**. No `[[panes]]`, `[[startup]]`, `[[build]]`, `link_handlers`, or HTTP/socket server.  **Automatic worktree bootstrap
+
+### [2026-09-15] AkashJana18/zenbones-herdr
+- **Overview**: **AkashJana18/zenbones-herdr** (`zenbones` / `Zenbones Themes`, `1.0.0`, `min_herdr_version 0.8.0`, `linux`/`macos` only) is a cosmetic configuration plugin for Herdr. It ports 23 color palettes from the `zenbones.nvim` ecosystem — base `zenbones`, `zenwritten`, `neobones`, `forestbones`, `rosebones`, `tokyobones`, `seoulbones`, plus single-variant ports like `nordbones-dark` and `vimbones-light` and two originals (`snowbones`, `akabones`) — into Herdr's `[theme.custom]` format.
+- **Key Features**: Verifiable surface is minimal: **1x `panes` + 1x `actions` + 1x `keys.command`**, no `[[events]]`, `[[startup]]`, `[[build]]`, `link_handlers`, or HTTP/socket API.  * **Theme picker popup (`panes.pick
+
+### [2026-09-16] devangchhajed/herdr-pixel-office
+- **Overview**: **Pixel Office** (`pixel.office` / `Pixel Agents`, `0.1.0`, `min_herdr_version 0.7.0`, `linux`/`macos`) is a read-mostly fleet visualizer in the **Developer Workflow & Utilities** domain. It renders every Herdr-detected agent as a persistent pixel-art character in a single top-down office: `working`/`blocked` agents sit at desks in a per-workspace desk bank, everyone else (`idle`/`done`/`unknown`) wanders a break room with sofa, coffee machine, ping-pong / pool / foosball / cocktail bar.
+- **Key Features**: Verifiable surface is minimal by manifest — **1× `panes` + 1× `actions`**, no `[[events]]`, `[[startup]]`, `link_handlers`, or HTTP API:  * `panes.office` — `Pixel Office`, `placement = split`, `comma
+
+### [2026-09-16] Seigiard/herdr-command-palette
+- **Overview**: **Seigiard/herdr-command-palette** (`seigi.command-palette`, `0.1.0`, `min_herdr_version 0.7.0`, `macos`/`linux`) is a user-owned command runner for Herdr, not a plugin-action browser.
+- **Key Features**: Verifiable surface in `herdr-plugin.toml` is **2x `actions` + 2x `panes`**, no `[[events]]`, `[[startup]]`, `[[build]]`, `link_handlers`, or HTTP API:  * `actions.open` — `Open command palette` (`cont
+
+### [2026-09-16] muthuishere/herdr-conv-hooks
+- **Overview**: `dev.deemwar.herdr-conv-hooks` (`herdr-conv-hooks`, `0.1.0`, `min_herdr_version 0.9.0`, `macos`/`linux`) is a host-side pipe that binds an external chat conversation to a live Herdr agent pane.
+- **Key Features**: Verifiable surface is one Go binary (`bin/herdr-conv-hooks`) invoked as 9x `actions` + 2x `panes` + 1x `[[startup]]` + 1x `[[build]]`. No `[[events]]`, no `link_handlers`, no HTTP.  **The four verbs (
+
+### [2026-09-16] dhasdiel/herdr-gradle-toolbar
+- **Overview**: **`kmp.gradle-toolbar` / Gradle Toolbar (`0.1.0`, `min_herdr_version 0.8.0`, `linux`/`macos`)** is an IntelliJ-style Gradle launcher for Herdr, tuned for Kotlin Multiplatform projects.
+- **Key Features**: Verifiable surface in `herdr-plugin.toml`: **12x `actions` + 2x `panes` + 1x `[[events]]` + 1x `[[link_handlers]]`**. All logic lives in the single ~375-line `gradle.sh`.  **One-shot task actions (all
+
+### [2026-09-17] ecylmz/herdr-hosts
+- **Overview**: `herdr-hosts` (`SSH Hosts`, `id = "herdr-hosts"`, `min_herdr_version 0.9.0`, `linux`/`macos`) is a hierarchical SSH host picker for Herdr. Press a bound key, fuzzy-find a host, press Enter — the session opens in its own Herdr `tab` named after the host, leaving the tiled layout untouched.
+- **Key Features**: Verifiable surface is **2x `panes` + 1x `actions`**. No `[[events]]`, `[[startup]]`, `link_handlers`, or HTTP/socket API (scanner confirms `Discovered Socket Calls: []`).  **Declared in `herdr-plugin.
+
+### [2026-09-17] tim80411/herdr-pdf
+- **Overview**: `tim80411/herdr-pdf` (`id = "pdf"`, `PDF Viewer`, `v0.3.1`, `min_herdr_version 0.9.0`, `macos`/`linux` only) is a document-reading utility in the **Developer Workflow & Utilities** domain. It renders PDF pages to pixels and paints them into a Herdr `split` pane via Herdr's socket graphics API, so a PDF can be read without leaving the terminal workspace.
+- **Key Features**: **Declared Herdr surface is minimal: 1x `[[build]]` + 1x `[[panes]]` + 1x `[[actions]]` + 1x `[[link_handlers]]`. No `[[events]]`, `[[startup]]`, HTTP API, daemon, or background service.**  * **Pane `
+
+### [2026-09-17] zbyhoo/herdr-wake_on_lan
+- **Overview**: **Wake on LAN** (`zbyhoo.wake-on-lan`, `0.1.1`, `min_herdr_version 0.9.0`, `macos`/`linux`) solves one narrow operational gap: a saved Herdr SSH machine is asleep and Herdr sits at `connecting` forever. The plugin lists saved machines from `herdr machine list`, lets the operator store each computer's MAC once, sends a UDP magic packet on the local LAN, polls SSH until it answers (default 3 min), then forces Herdr to reconnect now.
+- **Key Features**: **Declared Herdr surface** (`herdr-plugin.toml`): exactly `2x [[build]] + 1x [[panes]] + 1x [[actions]]`. No `[[events]]`, `[[startup]]`, `link_handlers`, or HTTP/socket server.  * `panes.menu` — `Wak
+
+### [2026-09-17] KamalF/herdr-busywatch
+- **Overview**: **busywatch** (`id = "busywatch"`, `v0.1.0`, `min_herdr_version 0.9.0`, `linux`/`macos`) answers one glanceable question: *is anything still running, does it need me, or did it finish while I was looking elsewhere?*
+- **Key Features**: **Five marks, sticky where it matters:**  * `▶` — foreground process group != shell for >=10s (`MIN_BUSY_SECONDS`). Pane label adds elapsed: `▶ cargo 4m12s` via `elapsed()`. * `⏸` — busy *and* blocked
+
+### [2026-09-17] ponzu07/herdr-git-status
+- **Overview**: `herdr-git-status` (`id = "herdr-git-status"`, `name = "Git Status"`, `v0.1.0`, `min_herdr_version 0.9.0`, `platforms = ["linux"]`) is a lightweight, event-driven sidebar-enrichment plugin for Herdr workspaces.
+- **Key Features**: Verifiable runtime behavior lives entirely in `src/lib.rs` + `src/main.rs` (~1338 LOC Rust per scanner):  **Status string:** - `read_git_status(root)` runs `git --no-optional-locks -C <root> status --
+
+### [2026-09-18] lukecameron/herdr-spaces
+- **Overview**: **Spaces** (`lukecameron.spaces`, `0.1.0`, `min_herdr_version 0.9.0`, `linux`/`macos`) is a Developer Workflow & Utilities sidebar-enrichment plugin for Herdr Spaces (workspaces). It runs as a single long-lived Go daemon started by Herdr that polls `session.snapshot` every 2s and reports per-Space agent-count tokens (`$agents`, `$working`, `$blocked`, `$subagents`, `$agent_summary`), and on a 10-minute cycle sends eligible Spaces to Claude Code (`claude -p`) for a 2–4 word Title Case label, renaming the workspace via the socket API.
+- **Key Features**: **What the user sees:**  * **Live Space counts:** `internal/counts/counts.go:Compute()` + `Tokens()` derives per-`workspace_id`: `Agents`, `Working`, `Blocked`, `Idle`, `Subagents`. Rendered as five w
+

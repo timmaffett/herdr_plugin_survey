@@ -264,3 +264,35 @@ This document tracks architectural patterns and previously surveyed extensions w
 - **Overview**: `omp-subagents` (`OMP Subagent Models`, `v0.1.0`, `min_herdr_version 0.8.0`, `macos`/`linux` only) is a **sidebar-augmentation plugin** in the Terminal UI & Navigation cohort. Its sole job is to display live OMP subagent models in Herdr's native agents sidebar as a `$subagents` metadata token, e.g. `[scout:flash-3 | researcher:sonnet-4-6]`.
 - **Key Features**: **Herdr-declared surface (`herdr-plugin.toml`):** two `workspace`-context actions, no `[[panes]]`, no `[[events]]`:  * `install-bridge` — `Install OMP model bridge` → `sh scripts/plugin.sh install` * 
 
+### [2026-09-07] rchougule/herdr-agents-info
+- **Overview**: `rchougule/herdr-agents-info` — manifest ID `rchougule.agents-info`, name `Agents Info`, `v0.1.0`, `min_herdr_version 0.8.2` — is a sidebar-augmentation plugin in the **Terminal UI & Navigation** cohort. It does not open panes, move focus, or host a TUI.
+- **Key Features**: **What the user sees:** per Claude pane, configured via a 5-line `rows_by_agent.claude` recipe in `README.md`:  * Line 1: Herdr-native `workspace` bold leader alone — never crowded. * Lines 2-3: `$tab
+
+### [2026-09-11] reobin/herdr-link-hints
+- **Overview**: `herdr-link-hints` (`Link Hints`, `v1.1.0`, `min_herdr_version 0.9.0`, `linux`/`macos`) is a Vimium-style keyboard link opener for Herdr. Invoked on the focused pane (README binds `prefix+f` to `herdr-link-hints.hints`), it scans the visible text of every pane on the current screen for openable URLs, draws a short typeable code beside each one as a graphics overlay directly over the terminal cells, and opens the selected URL on code completion.
+- **Key Features**: **What the user sees:** press the action, every link on screen gains a 1–2 character badge (`a`, `s`, `d`… from home-row-first alphabet `asdfghjklqwertyuiopzxcvbnm`); typing narrows (ruled-out badges 
+
+### [2026-09-15] eliasstravik/herdr-agent-progress
+- **Overview**: `agent-progress` (`Agent Progress`, `v0.1.0`, `min_herdr_version 0.9.0`, `platforms = ["macos"]`) is a **sidebar-augmentation** plugin in the Terminal UI & Navigation cohort — closest to `ArteenHD/herdr-cache-timer`, `aorumbayev/herdr-ctx`, `bayoudhi/herdr-shell-progress`, `hamidi-dev/herdr-opentab`, and `NachoPal/herdr-pane-agent-unread`, not to the full TUIs or `vim-tmux-navigator` ports.
+- **Key Features**: **User-visible display:** one dimmed summary row `$agent_progress_summary` rendered as `~65% · Testing changes`, `~65% · stale · Testing changes`, `Assessing task` (unknown), or `100% · Done`. The thr
+
+### [2026-09-16] aman0singh/herdr-subs
+- **Overview**: `subs` is a sidebar-augmentation plugin in the **Terminal UI & Navigation** cohort. Its sole job is to answer *what AI harnesses am I paying for / logged into, and how close am I to their rate limits* — for Claude Code, Codex, Pi, and OpenCode — with one glance at the Herdr Spaces sidebar.
+- **Key Features**: **Two CLI entrypoints in `subs.py` (no arguments = `refresh`):**  * `refresh` — full workflow: `detect_all()` → `ensure_workspace()` → `report()` → prints `{workspace_id, tokens, subscriptions}` JSON 
+
+### [2026-09-17] adihex/herdr-agent-icons
+- **Overview**: `local.agent-icons` (`Agent Icons`, `v0.3.0`, `min_herdr_version 0.7.0`, `linux`/`macos`) is a sidebar-augmentation plugin in the **Terminal UI & Navigation** cohort. Its sole job is to report a per-agent glyph as the custom `$icon` sidebar token for every live agent pane.
+- **Key Features**: What the user sees is one extra cell in the Agents sidebar, wired manually in `~/.config/herdr/config.toml`:  ```toml [ui.sidebar.agents] rows = [["state_icon","machine","workspace","tab"],["$icon","a
+
+### [2026-09-17] EdTheBearded/herdbake
+- **Overview**: `EdTheBearded/herdbake` (`herdbake`, `v0.2.0`, `min_herdr_version 0.9.0`, `linux`/`macos`) routes Yocto / OpenEmbedded `bitbake` interactive terminal spawns — `menuconfig`, `devshell`, `ccmake` — into Herdr-managed `popup` / `split` / `tab` panes instead of external terminal windows.
+- **Key Features**: **Automatic routing:** * Any `bitbake -c menuconfig / devshell` run in an injected pane is intercepted via `OE_TERMINAL_CUSTOMCMD` and opened as a Herdr pane running the real command. `README.md` repo
+
+### [2026-09-18] webdavis/herdr-smart-nav
+- **Overview**: `webdavis/herdr-smart-nav` is a `vim-tmux-navigator`-style dispatcher for Herdr. Its sole job is to make one `Ctrl-h/j/k/l` press do the right thing: if the focused Herdr pane has Neovim in the foreground, forward the chord to Neovim to move a split; otherwise move Herdr pane focus directionally.
+- **Key Features**: Declared surface is exactly four one-shot actions, no `[[panes]]`, no `[[events]]`, no hooks:  * `nav_left` / `nav_down` / `nav_up` / `nav_right` → `./target/release/herdr-smart-nav left|down|up|right
+
+### [2026-09-18] NathanymousFu/nvim-ascii-on-focus
+- **Overview**: `NathanymousFu.nvim-ascii-on-focus` (`Neovim ASCII on Focus`, `v0.1.0`, `min_herdr_version 0.9.1`, `macos` only) is a tiny, stateless, event-only Herdr plugin (~127 LOC, Shell-primary). Its sole job is to normalize the macOS input source back to Latin/ASCII when a Herdr pane running a Neovim remote UI gains focus while Neovim is already in Normal mode.
+- **Key Features**: What the user sees is invisible — no picker, pane, badge, or keybinding:  * **Focus-triggered normalize:** On every `pane.focused` event, if the newly focused pane's foreground process is `nvim --serv
+

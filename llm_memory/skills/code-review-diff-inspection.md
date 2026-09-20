@@ -336,3 +336,31 @@ This document tracks architectural patterns and previously surveyed extensions w
 - **Overview**: `hx-w.visuals` (`Visuals` `0.1.3`, `min_herdr_version 0.9.0`, `macos`/`linux` only) is a local-first preview pane for visual content produced by a coding agent. Pressing `prefix+v` opens a right-hand `split` beside the focused pane that renders complete fenced `mermaid` diagrams, display math (`$$…$$`, `\[…\]`, `math`/`latex`/`tex` fences), and local images referenced by or embedded in the bound conversation.
 - **Key Features**: **Declared Herdr surface is `2 actions + 1 pane`, no hooks, events, `link_handlers`, `startup`, or HTTP API:**  * `open` — `Visual previews` (`node src/launch.mjs`): open beside current pane; focus ex
 
+### [2026-09-14] mikhail-angelov/herdr-revdiff
+- **Overview**: `herdr-revdiff` (`v0.1.0`, `min_herdr_version 0.7.5`, `linux`/`macos` only) is a thin, Shell-only Herdr wrapper around the external [`umputun/revdiff`](https://github.com/umputun/revdiff) terminal diff reviewer. It does not implement diffing itself.
+- **Key Features**: Declared surface in `herdr-plugin.toml` is minimal: **1 `[[build]]` + 1 `[[panes]]` + 1 `[[actions]]`. No hooks, events, `link_handlers`, `startup`, or HTTP API endpoints.**  * **Action `open` — `revd
+
+### [2026-09-14] ekropotin/herdr-tuicr
+- **Overview**: `ekropotin/herdr-tuicr` (`herdr-tuicr` v`0.0.1`, `min_herdr_version 0.8.0`, `linux`/`macos` only) is a pure-Shell plugin that runs the external [`tuicr`](https://github.com/agavra/tuicr) interactive review TUI in a Herdr `split` pane and hands the result back to the exact agent pane that invoked it.
+- **Key Features**: **User surface is 2 actions + 1 programmatic pane. No hooks, events, `link_handlers`, `startup`, `build`, or HTTP API:**  * `review-paste` — `tuicr review (paste to agent)`, `contexts=["pane"]`, `bin/
+
+### [2026-09-16] shved270189/herdr-worktree-status
+- **Overview**: `shved270189.worktree-status` (`Worktree Status` v0.1.0, `min_herdr_version 0.7.5`) is a tiny, dependency-free Shell plugin that lets a human assign a workflow state — Planning / In progress / Review / Blocked / Done / Clear — to a Herdr worktree workspace and see it as an emoji prefix in the Herdr sidebar.
+- **Key Features**: What the user actually gets is one action, one popup pane, and one background re-applier. There are no HTTP endpoints, no `link_handlers`, no hooks beyond `[[startup]]` + one `[[events]]`.  **Statuses
+
+### [2026-09-16] TarasKovalenko/herdiff
+- **Overview**: `taraskovalenko.herdiff` (`herdiff` v0.2.0, `min_herdr_version 0.9.0`, `linux`/`macos` only) is a **full native review workbench**, not a thin launcher shim.
+- **Key Features**: **Herdr-declared surface (`herdr-plugin.toml`): 2 panes + 2 actions, no hooks/events/API:**  * `viewer` pane: `title: herdiff`, `placement: split`, `command: ["target/release/herdiff"]` * `popup` pane
+
+### [2026-09-16] dlv-gold/herdr-tasks
+- **Overview**: `herdr-tasks` (`Herdr Tasks` v0.1.0, `min_herdr_version 0.9.0`, `linux` only) is a persistent personal productivity plugin for Herdr: a right-edge task board for **daily tasks + weekly missions** coupled to an **overnight scheduled reporting pipeline**.
+- **Key Features**: **User-visible board (`src/herdr_tasks/ui.py:TaskApp`):**  * `Today` / `Week` / `Reports` tabs in a narrow `split` pane. Today/Week show manual + accepted tasks with checkbox complete/reopen, `Edit`, 
+
+### [2026-09-17] hlouis/herdr-glab
+- **Overview**: `hlouis.glab` (`GitLab MR` v0.1.0, `min_herdr_version 0.9.0`, `macos`/`linux` only) is a **GitLab merge-request companion** for Herdr, filed in **Code Review & Diff Inspection**.
+- **Key Features**: What is declaratively guaranteed by `herdr-plugin.toml`:  **2 overlay panes (no `split`/`tab`/`popup`):**  * `panel` — `title: GitLab MRs`, `placement: overlay`, `command: ["bin/herdr-glab", "panel"]`
+
+### [2026-09-18] cantona/herdr-revive
+- **Overview**: `cantona.herdr-revive` (`herdr-revive` v0.1.0, `min_herdr_version 0.9.1`, `linux` only) is a native Rust session persistence plugin for Herdr. It saves pane programs, working directories, split/tab layout, and exact agent conversation IDs into retained JSON snapshots, then restores them either in-place by re-typing commands into matching idle panes or by rebuilding whole workspaces from scratch as new workspaces.
+- **Key Features**: **What the user sees is 10 actions + 5 panes, no HTTP API:**  Panes in `herdr-plugin.toml`: - `manage` — `title: herdr-revive`, `placement: popup`, `80%x80%`, `sh scripts/manage.sh` — interactive numb
+

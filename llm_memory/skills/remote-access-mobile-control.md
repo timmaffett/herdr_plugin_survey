@@ -276,3 +276,23 @@ This document tracks architectural patterns and previously surveyed extensions w
 - **Overview**: `jjuraszek/herdr-ntfy-notify` (`ntfy Notify`, `v1.1.0`, `min_herdr_version 0.9.0`, `linux,macos` only) is a one-way, event-driven notifier in the **Remote Access & Mobile Control** family. When a Herdr coding agent transitions to `blocked` or `done`, it `POST`s a short, generic push to an [ntfy](https://ntfy.sh) topic the operator subscribes to on a phone.
 - **Key Features**: **Event hook — notify:** * `pane.agent_status_changed` -> `/bin/sh run.sh notify.mjs` (`notify.mjs`). * Parses `HERDR_PLUGIN_EVENT_JSON` + `HERDR_PLUGIN_CONTEXT_JSON`, derives status via `statusFromEv
 
+### [2026-09-04] carsol/herdr-mobile
+- **Overview**: `herdr-mobile` (`id = herdr-mobile`, `v0.1.1`, `min_herdr_version 0.8.0`, `linux,macos` only) is a **mobile-first web UI for Herdr coding agents** served from the developer machine. From a phone browser / installed PWA the operator gets a workspace-grouped session list, a live terminal via xterm.js over WebSocket, an iMessage-style chat view for Claude Code / Codex transcripts, and the ability to spawn new agents.
+- **Key Features**: **User-visible from `README.md` + `server.py` routing:**  * **Session list grouped by workspace:** `GET /api/panes` builds canonical projection in `_pane_list()` — `pane_id`, `terminal_id`, `workspace
+
+### [2026-09-15] jeffhuen/tether-browser
+- **Overview**: `jeffhuen/tether-browser` (`id = tether-browser`, `v0.1.0`, `min_herdr_version 0.7.0`, `linux,macos`) is not a mobile dashboard, Telegram bot, or fleet viewer like most peers in the **Remote Access & Mobile Control** ledger. It is a **remote-to-local browser bridge**: the agent runs on a remote Linux server / Herdr pane / SSH session, Chrome runs on the developer workstation where Touch ID, 1Password, SSO cookies and GPU already live.
+- **Key Features**: **Herdr-declared surface (`herdr-plugin.toml` only):**  * `actions[id=open-url]` in `workspace,tab,pane`: `bash -c 'exec tether open "$HERDR_PLUGIN_CLICKED_URL"'` * `link_handlers[id=http-url]` `patte
+
+### [2026-09-16] IamGroooooot/herdr-keyboard
+- **Overview**: `herdr-keyboard` (`id = herdr-keyboard`, `Mobile Keyboard`, `min_herdr_version 0.9.0`) is not a remote-access relay, bot, or dashboard like most peers in the **Remote Access & Mobile Control** ledger. It is a local input utility: send hard-to-type key chords — `alt+up`, `shift+tab`, `ctrl+shift+left` — from a phone or limited keyboard into a Codex CLI, Claude Code, or any terminal running in a Herdr pane.
+- **Key Features**: **Declared Herdr surface in `herdr-plugin.toml`:**  * `[[build]] x2`: `npm ci` + `npm run build` — TypeScript -> `dist/` + `esbuild` bundle `src/cli.ts -> dist/cli.js` + `tsx scripts/build-launcher.ts
+
+### [2026-09-17] randomradio/herdr-ports
+- **Overview**: `herdr.ports_forwarding` (`Remote Ports`, `v0.2.3`, `min_herdr_version 0.9.0`) is a port-forwarding utility for Herdr, not a chat-bot, dashboard, or mobile TUI like most peers in **Remote Access & Mobile Control**. Its sole job is to take a TCP listener discovered inside a remote Herdr workspace and expose it on the operator's laptop as `http://herdr.{workspace}.localhost:{port}` via OpenSSH `-L` multiplexed over a persistent `ControlMaster`.
+- **Key Features**: **Herdr-declared surface (`herdr-plugin.toml`):**  * `[[build]] x2`: `cargo build --release` + `cp target/release/herdr-ports herdr-ports`. Requires `cargo` at install time. * `[[startup]]`: `./herdr-
+
+### [2026-09-18] shindakun/goat-herdr
+- **Overview**: `shindakun.goat-herdr` (`Goat Herdr`, `0.1.0`, `min_herdr_version 0.9.0`) is a one-way alerting plugin for Herdr coding agents. On `pane.agent_status_changed` / `pane.closed` it builds a normalized `Alert { host, workspace, agent, pane_id, status, tail }` and fans it out to configured sinks — Telegram (rich path with forum topics) and ntfy (plain webhook reference) — falling back to `stdout` so a fresh install is visible in `herdr plugin log list`.
+- **Key Features**: **Herdr-declared surface (`herdr-plugin.toml`):**  * `[[build]]`: `cargo build --release` * `[[events]] on = pane.agent_status_changed` → `./target/release/goat-herdr notify` * `[[events]] on = pane.c
+

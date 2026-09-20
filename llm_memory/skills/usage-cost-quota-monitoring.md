@@ -248,3 +248,11 @@ This document tracks architectural patterns and previously surveyed extensions w
 - **Overview**: `harpal-singh-qp/herdr-footprint` (`id: footprint`, `v0.4.1`, `min_herdr_version 0.7.5`, `linux`/`macos` only) answers per-space cost in the Herdr sidebar: how much disk a space's git worktree occupies (`$disk`, e.g. `⛁ 840M`) and how much context the busiest agent in that space has burned (`$ctx`, e.g. `◐ 7%`).
 - **Key Features**: **Sidebar meters — one push per space per cycle (`bin/collect.sh`):**  * `$disk`: size of the space's git worktree root via cached `du -sk`, rendered by `human_bytes()` in `bin/lib.sh` as `0B / 1023B 
 
+### [2026-09-15] JunSeo99/herdr-plan-meter
+- **Overview**: `junseo99.plan-meter` (`Plan Meter`, `v0.1.0`, `min_herdr_version 0.9.0`, `linux`/`macos` only) is a **Usage, Cost & Quota Monitoring** plugin scoped to **Claude Code and Codex subscription plans**. It keeps the tightest `5h` / weekly window per plan in Herdr's `tab_bar_right` with a reset countdown, and opens a `popup` detail view with every window, usage bars, and reset clocks.
+- **Key Features**: **Tab-bar line (`meter.py bar`):** Single line like `Claude 21% used 3d 10h   Codex 4% used 4d 5h`. Per provider it picks `headline()` — max `used`, tie-break on `resets_at` — and appends `left()` cou
+
+### [2026-09-16] VibrantClouds/herdr-gsd-core
+- **Overview**: `herdr-gsd-core` (`id: herdr-gsd-core`, `name: GSD-Core`, `v0.1.0`, `min_herdr_version 0.9.0`, `linux`/`macos` only) is a **GSD-Core project observer and supervised-run launcher**, not a Usage/Cost/Quota meter despite its filing in that ledger category.
+- **Key Features**: **Observe-only projection (always on):**  * **Workspace tokens** — documented in `README.md` and asserted in `scripts/e2e-herdr.cjs`: `gsd_phase` (`03 auth`), split form `gsd_phase_num`/`gsd_phase_nam
+

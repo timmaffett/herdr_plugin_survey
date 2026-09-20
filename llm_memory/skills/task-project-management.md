@@ -172,3 +172,31 @@ This document tracks architectural patterns and previously surveyed extensions w
 - **Overview**: `circusvoid/herdr-key-hints` (`local.key-hints`, v0.1.0, `min_herdr_version 0.9.0`, `macos`/`linux`) is a post-action teaching aid, not a task manager despite its ledger category.
 - **Key Features**: **User-visible actions** — declared in `herdr-plugin.toml` as `[[actions]]`:  * `initialize` — `python3 plugin.py initialize`: baseline snapshot, clear overlay frame, (re)start session watcher. * `pre
 
+### [2026-08-19] smarzban/tsk
+- **Overview**: `smarzban/tsk` — shipped as Herdr plugin `herdr-tsk` (`v0.10.1`, `min_herdr_version 0.9.0`, `linux`/`macos` only) — is a terminal task queue-board for a human plus their coding agents. The same compiled `tsk` binary runs standalone in any terminal as a full-screen Ratatui board, or inside Herdr as a `split` pane; agents drive the same `~/.tsk` / `tsk.json` store headlessly via CLI plus an installed `SKILL.md`. It is explicitly a human-status queue (`open · ready · started · blocked · review · done`), not an agent-execution or lifecycle-enforcement system.
+- **Key Features**: **Board TUI (`tsk`, no args):** Three persistent destinations on `1/2/3`: `desk` (projectless `global` scope), selected-project, and `projects` index. Sections `NEEDS YOU` (`blocked`+`review`), `IN MO
+
+### [2026-09-01] fantoine/herdr-run-targets
+- **Overview**: **`fantoine.run-targets` (`Run Targets`, v0.3.2, `min_herdr_version 0.8.2`, `linux`/`macos`)** is a dev-service launcher, not a todo/kanban board despite its Task & Project Management ledger placement.
+- **Key Features**: **Declaration model:** * `[[target]]` tables with `name`, `command`, optional `cwd` (relative, traversal-safe) and `env = {K="V"}`. Local file layers over team file by `name` — whole-target replacemen
+
+### [2026-09-12] DnzzL/herdr-docket
+- **Overview**: `Herdr-Docket` (`dnzzl.herdr-docket`, v0.5.0, `min_herdr_version 0.8.0`, `linux`/`macos`) is a shared task queue worked by coding agents. The queue is Backlog.md by default, or Basecamp or GitHub Projects where work already lives; workers are `AGENT.md` personas in `~/fleet/agents/<name>/`; a long-lived daemon routes every open task to the named agent and runs it as a real Herdr agent in its own workspace.
+- **Key Features**: **Queue backends:** `backlogmd` (default, local markdown via `backlog` CLI), `basecamp` (to-do lists via `https://3.basecampapi.com`), `github` (Projects board via `https://api.github.com/graphql`). `
+
+### [2026-09-15] AmoabaKelvin/herdr-focus
+- **Overview**: **Focus** (`id = "focus"`, v0.1.0, `min_herdr_version 0.9.0`, `linux`/`macos`) is a workspace declutter plugin for Herdr. It lets the user pick one or more *projects* and hides everything else: panes from all other spaces are physically moved into a single space labeled `📦 parked` (one tab per original tab), the Agents sidebar is filtered to exclude the parked space, and on exit everything is moved back, with split layouts, worktree grouping, and space order restored.
+- **Key Features**: What the user actually gets is one workflow with five entrypoints, all dispatched by `focus.py toggle | pick | exit | startup | enter <name> <workspace_id>...`:  * **Project picker (`pick` / `panes.pi
+
+### [2026-09-16] virtualboard/herdr-virtualboard
+- **Overview**: `herdr-virtualboard` turns a VirtualBoard workspace into a kanban board inside Herdr. Columns are the VirtualBoard lifecycle (`backlog → in-progress → review → done`, with `in-progress ↔ blocked`), cards are markdown feature specs under `.virtualboard/features/`, and dispatching a card starts a VirtualBoard role agent in a visible Herdr pane.
+- **Key Features**: **Board TUI (`hvb tui` / `hvb board`):** Hand-drawn, no TUI framework. Renders one column per `feature.Statuses`, cards sorted by `P0→P3` then ID. Polls every `--refresh` (default in `internal/tui`), 
+
+### [2026-09-17] nidhi-singh02/agent-router
+- **Overview**: **Agent Router** (`nidhi-singh02.agent-router`, v0.1.0, `min_herdr_version 0.9.0`, `linux`/`macos`) is a local-first, quota-aware dispatcher for AI coding agents inside Herdr. In 2–3 sentences: you describe a task once via `router run "<task>"`, the tool filters your configured agent logins by deterministic policy (enabled models, freshness, quota, 40% reserve on shared accounts), asks the external TypeSafe ranking service to pick the best eligible agent/model plus reasoning effort and workflow phase, then launches that agent in a new Herdr pane and hands it a structured prompt.
+- **Key Features**: ### What the user gets  **Herdr surfaces (declared in `herdr-plugin.toml`):**  * 4 overlay panes: `route` (`herdr-plugin/route.sh`), `status` (`status.sh`), `resume` (`resume.sh`), `sessions` (`sessio
+
+### [2026-09-18] panayiotis-constantinou/herdr-plugin-qmk
+- **Overview**: `panayiotis-constantinou/herdr-plugin-qmk` (`panayiotis.qmk-herdr`, v0.3.0, `min_herdr_version 0.8.0`) is not a task manager despite its Task & Project Management ledger placement. It is a hardware peripheral bridge: it mirrors live Herdr agent state onto a QMK keyboard over USB MIDI.
+- **Key Features**: What the user gets is ambient, eyes-off status — no board, no TUI, no panes:  **Keyboard display (firmware contract, documented in `README.md`):** * Six center LEDs: blue comet while any agent is `wor
+
