@@ -16,6 +16,7 @@
     "eval": "node scripts/run_llm_evaluations.js"
   },
   "dependencies": {
+    "better-sqlite3": "^8.7.0",
     "express": "^4.19.2"
   }
 }

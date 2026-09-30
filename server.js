@@ -4,9 +4,9 @@
  */
 
 const express = require('express');
-const { execFileSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
+const Database = require('better-sqlite3');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,16 +15,14 @@ const DB_PATH = path.resolve(__dirname, 'plugins.db');
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const db = new Database(DB_PATH, { readonly: true, fileMustExist: true });
+
 function queryDb(sql) {
   try {
-    const output = execFileSync('sqlite3', ['-json', DB_PATH, sql], {
-      maxBuffer: 35 * 1024 * 1024,
-      encoding: 'utf8'
-    });
-    if (!output || !output.trim()) return [];
-    return JSON.parse(output);
+    const stmt = db.prepare(sql);
+    return stmt.all();
   } catch (err) {
-    throw new Error(err.stderr || err.message);
+    throw new Error(err.message);
   }
 }
 
