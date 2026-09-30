@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: herdr-plugins-survey
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/stats
+    envVars:
+      - key: NODE_ENV
+        value: production
