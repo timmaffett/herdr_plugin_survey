@@ -2,6 +2,7 @@
   "name": "herdr-plugins-survey-app",
   "version": "1.0.0",
   "description": "Herdr Plugins Ecosystem Survey & Live Query Intelligence Server",
+  "license": "Apache-2.0",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

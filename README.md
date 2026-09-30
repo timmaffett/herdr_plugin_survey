@@ -1,8 +1,8 @@
-# Herdr Plugins Intelligence Survey, Growth Visualizer & Remote Infra Engine (All 903 Plugins)
+# Herdr Plugins Intelligence Observatory, Growth Visualizer & Ecosystem Survey
 
-An exhaustive survey, static code analysis, and live interactive query and graphing platform covering the **entire universe of 903 Herdr community plugins** from [herdr.dev](https://herdr.dev).
+An exhaustive architectural census, static code analysis platform, and live interactive query and graphing engine covering the **entire universe of 1,479+ Herdr community plugins** from [herdr.dev](https://herdr.dev).
 
-Every plugin repository has been shallow checked out (`--depth 1`), analyzed across **8,716,978 lines of code**, and indexed into an SQLite database (`plugins.db`). An interactive Node.js web application is included to explore, filter, run live SQL queries, visualize **historical growth rate line plots** with **trending velocity**, inspect **remote infrastructure setup requirements**, analyze **layered weekly plugin release rates**, and explore **official Herdr Core API socket and CLI endpoints** with official `herdr.dev` styling.
+Every plugin repository has been shallow checked out (`--depth 1`), analyzed across **17.0M+ lines of code**, and indexed into a native SQLite database (`plugins.db`). An interactive Node.js web application is included to explore, filter, run live SQL queries, visualize **historical growth rate line plots** with **trending velocity**, inspect **remote infrastructure setup requirements**, analyze **layered weekly plugin release rates**, and explore **official Herdr Core API socket and CLI endpoints** with official `herdr.dev` styling.
 
 ---
 
@@ -133,5 +133,6 @@ python3 scripts/ingest_plugin.py alvinunreal/oh-my-opencode-slim --reanalyze
 ---
 
 ## License & Attribution
+- Licensed under the [Apache License 2.0](./LICENSE) (matching Herdr's license).
 - Plugins and manifests are copyrighted by their respective open-source authors on GitHub.
 - Herdr is maintained by the Herdr team at [herdr.dev](https://herdr.dev).
