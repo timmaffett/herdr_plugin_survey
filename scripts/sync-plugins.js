@@ -37,9 +37,19 @@ class HerdrPluginSync {
   }
 
   fetchMarketplaceData() {
+    try {
+      const jsonStr = execSync('curl -sL https://assets.herdr.dev/plugins/index.json', { encoding: 'utf8', maxBuffer: 25 * 1024 * 1024 });
+      const data = JSON.parse(jsonStr);
+      if (Array.isArray(data.plugins) && data.plugins.length > 0) {
+        return data.plugins;
+      }
+    } catch (e) {
+      console.warn('[Sync] Primary assets.herdr.dev/plugins/index.json failed, trying fallback...');
+    }
+
     const html = execSync('curl -sL https://herdr.dev/plugins/', { encoding: 'utf8', maxBuffer: 20 * 1024 * 1024 });
     const match = html.match(/const initialData = (\{.*?\});/);
-    if (!match) throw new Error('Failed to find initialData on herdr.dev/plugins/');
+    if (!match) throw new Error('Failed to find marketplace data on herdr.dev/plugins/');
     const data = JSON.parse(match[1]);
     return data.plugins || [];
   }

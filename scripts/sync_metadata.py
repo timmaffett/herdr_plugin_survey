@@ -27,16 +27,29 @@ from scripts.analyzer import analyze_repository
 DB_PATH = "plugins.db"
 
 def fetch_live_marketplace_data():
-    url = "https://herdr.dev/plugins/"
+    primary_url = "https://assets.herdr.dev/plugins/index.json"
     try:
-        cmd = ["curl", "-sL", url]
-        res = subprocess.run(cmd, capture_output=True, text=True, timeout=15)
+        cmd = ["curl", "-sL", primary_url]
+        res = subprocess.run(cmd, capture_output=True, text=True, timeout=25)
+        if res.returncode == 0 and res.stdout.strip():
+            data = json.loads(res.stdout)
+            plugins = data.get("plugins", [])
+            if plugins:
+                return plugins
+    except Exception as e:
+        print(f"[Warning] Could not fetch primary endpoint: {e}")
+
+    # Fallback to scraping HTML if direct JSON endpoint fails
+    fallback_url = "https://herdr.dev/plugins/"
+    try:
+        cmd = ["curl", "-sL", fallback_url]
+        res = subprocess.run(cmd, capture_output=True, text=True, timeout=25)
         if res.returncode == 0 and "initialData" in res.stdout:
             m = re.search(r"const initialData = (\{.*?\});", res.stdout)
             if m:
                 return json.loads(m.group(1)).get("plugins", [])
     except Exception as e:
-        print(f"[Warning] Could not fetch live marketplace data: {e}")
+        print(f"[Warning] Could not fetch fallback marketplace data: {e}")
     return None
 
 def check_staleness(conn):
@@ -69,7 +82,7 @@ def check_staleness(conn):
 
 def update_repo_stats(conn, live_plugins=None):
     if live_plugins is None:
-        print("[Sync] Fetching latest marketplace metadata from https://herdr.dev/plugins/...")
+        print("[Sync] Fetching latest marketplace metadata from https://assets.herdr.dev/plugins/index.json...")
         live_plugins = fetch_live_marketplace_data()
         
     if not live_plugins:

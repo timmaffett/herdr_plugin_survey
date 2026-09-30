@@ -29,20 +29,39 @@ REPOS_DIR = "repos"
 os.makedirs(REPOS_DIR, exist_ok=True)
 
 def fetch_live_marketplace():
-    print("[1/6] Fetching live marketplace catalog from https://herdr.dev/plugins/...")
-    cmd = ["curl", "-sL", "https://herdr.dev/plugins/"]
-    res = subprocess.run(cmd, capture_output=True, text=True, timeout=20)
-    if res.returncode != 0 or "initialData" not in res.stdout:
-        raise RuntimeError("Failed to download or parse initialData from herdr.dev/plugins/")
+    print("[1/6] Fetching live marketplace catalog from https://assets.herdr.dev/plugins/index.json...")
+    primary_url = "https://assets.herdr.dev/plugins/index.json"
+    cmd = ["curl", "-sL", primary_url]
+    res = subprocess.run(cmd, capture_output=True, text=True, timeout=25)
     
-    m = re.search(r"const initialData = (\{.*?\});", res.stdout)
-    if not m:
-        raise RuntimeError("Regex match failed for initialData JSON payload")
+    plugins = []
+    if res.returncode == 0 and res.stdout.strip():
+        try:
+            data = json.loads(res.stdout)
+            plugins = data.get("plugins", [])
+            print(f"      Successfully fetched {len(plugins)} plugins from {primary_url}.")
+        except Exception:
+            pass
+
+    # Fallback to scraping HTML if direct JSON endpoint fails
+    if not plugins:
+        fallback_url = "https://herdr.dev/plugins/"
+        print(f"      Fallback: Fetching from {fallback_url}...")
+        cmd = ["curl", "-sL", fallback_url]
+        res = subprocess.run(cmd, capture_output=True, text=True, timeout=25)
+        if res.returncode == 0:
+            m = re.search(r"const initialData = (\{.*?\});", res.stdout)
+            if m:
+                try:
+                    data = json.loads(m.group(1))
+                    plugins = data.get("plugins", [])
+                    print(f"      Successfully extracted {len(plugins)} plugins from {fallback_url}.")
+                except Exception:
+                    pass
+
+    if not plugins:
+        raise RuntimeError("Failed to fetch or parse marketplace catalog from herdr.dev")
         
-    data = json.loads(m.group(1))
-    plugins = data.get("plugins", [])
-    print(f"      Successfully fetched {len(plugins)} plugins from marketplace.")
-    
     # Save to all_plugins.json
     with open("all_plugins.json", "w") as f:
         json.dump(plugins, f, indent=2)
