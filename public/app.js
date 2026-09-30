@@ -145,11 +145,14 @@ async function loadStats() {
     const totalLoc = data.total_loc || 0;
     const totalStars = data.total_stars || 0;
     const totalForks = data.total_forks || 0;
+    const totalDays = data.total_days || 0;
+    const totalBreakthroughs = data.total_breakthroughs || 0;
+    const totalEndpoints = data.endpoints_summary?.total || 233;
 
     // Synchronize page title
     document.title = `Herdr Plugins Intelligence & Ecosystem Survey (${totalPlugins.toLocaleString()} Plugins)`;
 
-    // Synchronize stat boxes
+    // Synchronize 6 stat boxes
     const elPlugins = document.getElementById('stat-total-plugins');
     if (elPlugins) elPlugins.textContent = totalPlugins.toLocaleString();
 
@@ -167,12 +170,14 @@ async function loadStats() {
         : totalStars.toLocaleString();
     }
 
-    const elForks = document.getElementById('stat-total-forks');
-    if (elForks) {
-      elForks.textContent = totalForks >= 1000 
-        ? (totalForks / 1000).toFixed(1) + 'K' 
-        : totalForks.toLocaleString();
-    }
+    const elDays = document.getElementById('stat-total-days');
+    if (elDays) elDays.textContent = totalDays.toLocaleString();
+
+    const elBreakthroughs = document.getElementById('stat-total-breakthroughs');
+    if (elBreakthroughs) elBreakthroughs.textContent = totalBreakthroughs.toLocaleString();
+
+    const elEndpoints = document.getElementById('stat-total-endpoints');
+    if (elEndpoints) elEndpoints.textContent = totalEndpoints.toLocaleString();
 
     // Synchronize nav button tag text
     const navTag = document.getElementById('nav-tag-total-plugins') || document.querySelector('.nav-tag');
@@ -183,7 +188,7 @@ async function loadStats() {
     // Synchronize hero eyebrow
     const heroEyebrow = document.getElementById('hero-eyebrow') || document.querySelector('.hero-eyebrow');
     if (heroEyebrow && totalRepos > 0) {
-      heroEyebrow.textContent = `Ecosystem Intelligence · All ${totalPlugins.toLocaleString()} Plugins across ${totalRepos.toLocaleString()} Repositories`;
+      heroEyebrow.textContent = `Autonomous Intelligence & Architectural Observatory · ${totalPlugins.toLocaleString()} Plugins across ${totalRepos.toLocaleString()} Repositories`;
     }
 
     // Synchronize hero intro text paragraph (100% dynamic live numbers)
@@ -192,8 +197,14 @@ async function loadStats() {
       const locFormatted = totalLoc >= 1000000 
         ? `${(totalLoc / 1000000).toFixed(1)}M+` 
         : `${totalLoc.toLocaleString()}+`;
-      heroIntro.innerHTML = `An exhaustive architectural census of the entire universe of <strong id="hero-intro-plugins">${totalPlugins.toLocaleString()}</strong> published Herdr community plugins across <strong id="hero-intro-repos">${totalRepos.toLocaleString()}</strong> repositories. Every repository was shallow checked out, statically scanned across <strong id="hero-intro-loc">${locFormatted}</strong> LOC, and cataloged with exact Herdr socket/CLI endpoints, commit timestamps, and AI agent integrations.`;
+      heroIntro.innerHTML = `The definitive real-time intelligence hub and architectural observatory for the Herdr plugin ecosystem. We continuously shallow-clone and statically inspect <strong id="hero-intro-plugins">${totalPlugins.toLocaleString()}</strong> community plugins across <strong id="hero-intro-repos">${totalRepos.toLocaleString()}</strong> repositories (<strong id="hero-intro-loc">${locFormatted}</strong> LOC), mapping exact socket APIs, CLI commands, and AI agent hooks. Autonomous AI agents conduct deep architectural code reviews on each extension, chronicling <strong id="hero-intro-days">${totalDays.toLocaleString()}</strong> daily dispatches, <strong id="hero-intro-breakthroughs">${totalBreakthroughs.toLocaleString()}</strong> historical capability breakthroughs, multi-metric growth charts, and an in-browser SQL studio.`;
     }
+
+    // Synchronize hero badge live counts
+    const badgeDays = document.getElementById('badge-days-count');
+    if (badgeDays && totalDays > 0) badgeDays.textContent = `${totalDays} Daily Reports`;
+    const badgeEndpoints = document.getElementById('badge-endpoints-count');
+    if (badgeEndpoints && totalEndpoints > 0) badgeEndpoints.textContent = `${totalEndpoints} Core Endpoints`;
 
     // Synchronize search input placeholder
     const searchInput = document.getElementById('search-input');

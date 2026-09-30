@@ -47,17 +47,48 @@
           <span class="lbl">Stars ★</span>
         </div>
         <div class="stat-box">
-          <span class="num" id="stat-total-forks">-</span>
-          <span class="lbl">Forks ⑂</span>
+          <span class="num" id="stat-total-days">-</span>
+          <span class="lbl">Daily Reports</span>
+        </div>
+        <div class="stat-box">
+          <span class="num" id="stat-total-breakthroughs">-</span>
+          <span class="lbl">Breakthroughs</span>
+        </div>
+        <div class="stat-box">
+          <span class="num" id="stat-total-endpoints">-</span>
+          <span class="lbl">Core Endpoints</span>
         </div>
       </div>
-      <div class="hero-eyebrow" id="hero-eyebrow">Ecosystem Intelligence · Comprehensive Census</div>
-      <h1>Built by the herd. Surveyed by agents.</h1>
+      <div class="hero-eyebrow" id="hero-eyebrow">Autonomous Intelligence & Architectural Observatory</div>
+      <h1>Built by the herd. Surveyed by autonomous agents.</h1>
       <p id="hero-intro-text">
-        An exhaustive architectural census of the entire universe of <strong id="hero-intro-plugins">-</strong> published Herdr community plugins across <strong id="hero-intro-repos">-</strong> repositories.
-        Every repository was shallow checked out, statically scanned across <strong id="hero-intro-loc">-</strong> LOC, 
-        and cataloged with exact Herdr socket/CLI endpoints, commit timestamps, and AI agent integrations.
+        The definitive real-time intelligence hub and architectural observatory for the Herdr plugin ecosystem.
+        We continuously shallow-clone and statically inspect <strong id="hero-intro-plugins">-</strong> community plugins across <strong id="hero-intro-repos">-</strong> repositories (<strong id="hero-intro-loc">-</strong> LOC), mapping exact socket APIs, CLI commands, and AI agent hooks.
+        Autonomous AI agents conduct deep architectural code reviews on each extension, chronicling <strong id="hero-intro-days">-</strong> daily dispatches, <strong id="hero-intro-breakthroughs">-</strong> historical capability breakthroughs, multi-metric growth charts, and an in-browser SQL studio.
       </p>
+
+      <div class="hero-badges">
+        <a class="hero-badge" href="javascript:void(0)" onclick="switchView('reports'); if (window.initDailyReports) initDailyReports();" title="Jump to chronological daily newspaper dispatches">
+          <span class="badge-icon">📰</span>
+          <span class="badge-text"><strong id="badge-days-count">Daily Reports</strong> & Breakthroughs ↗</span>
+        </a>
+        <a class="hero-badge" href="javascript:void(0)" onclick="switchView('reports'); if (window.initDailyReports) initDailyReports();" title="Toggle AI architectural survey commentary in daily reports">
+          <span class="badge-icon">🤖</span>
+          <span class="badge-text"><strong>AI Source Code Reviews</strong> ↗</span>
+        </a>
+        <a class="hero-badge" href="javascript:void(0)" onclick="switchView('growth');" title="Open multi-metric 36-week interactive growth charts">
+          <span class="badge-icon">📈</span>
+          <span class="badge-text"><strong>36-Week Growth Timelines</strong> ↗</span>
+        </a>
+        <a class="hero-badge" href="javascript:void(0)" onclick="switchView('sql');" title="Open interactive in-browser SQLite console">
+          <span class="badge-icon">🗄️</span>
+          <span class="badge-text"><strong>Live SQL Query Runner</strong> ↗</span>
+        </a>
+        <a class="hero-badge" href="javascript:void(0)" onclick="switchView('analytics');" title="Explore official socket and CLI endpoints utilization">
+          <span class="badge-icon">⚡</span>
+          <span class="badge-text"><strong id="badge-endpoints-count">Core Endpoints</strong> Explorer ↗</span>
+        </a>
+      </div>
     </header>
 
     <!-- VIEW 1: Browse Index -->

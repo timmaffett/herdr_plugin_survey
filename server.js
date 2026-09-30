@@ -101,6 +101,7 @@ app.get('/api/stats', (req, res) => {
     `)[0];
 
     const tunnels = queryDb("SELECT tunnel_service, COUNT(*) as cnt FROM plugins WHERE tunnel_service != 'none' GROUP BY tunnel_service ORDER BY cnt DESC;");
+    const reportSummary = queryDb("SELECT COUNT(*) as total_days, (SELECT COUNT(*) FROM ecosystem_capabilities_ledger) as total_breakthroughs, (SELECT COUNT(*) FROM herdr_core_events) as total_events FROM daily_reports;")[0] || {};
 
     const totalPlugins = totalRow.total_manifests || (latestReport ? latestReport.cumulative_plugins_count : totalRow.count);
     const totalStars = totalRow.total_stars || (latestReport ? latestReport.cumulative_stars_count : 0);
@@ -112,6 +113,9 @@ app.get('/api/stats', (req, res) => {
       total_loc: totalRow.total_loc,
       total_stars: totalStars,
       total_forks: totalForks,
+      total_days: reportSummary.total_days || 0,
+      total_breakthroughs: reportSummary.total_breakthroughs || 0,
+      total_events: reportSummary.total_events || 0,
       categories,
       languages,
       features,
