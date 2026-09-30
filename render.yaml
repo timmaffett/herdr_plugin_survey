@@ -9,3 +9,6 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+    domains:
+      - herdrplugins.dev
+      - www.herdrplugins.dev
