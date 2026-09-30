@@ -140,35 +140,99 @@ async function loadStats() {
     const res = await fetch('/api/stats');
     const data = await res.json();
 
-    const totalPlugins = data.total_plugins || 994;
-    document.getElementById('stat-total-plugins').textContent = totalPlugins;
-    document.getElementById('stat-total-loc').textContent = (Math.round((data.total_loc || 8700000) / 100000) / 10).toFixed(1) + 'M';
-    document.getElementById('stat-total-stars').textContent = (Math.round((data.total_stars || 22000) / 100) / 10).toFixed(1) + 'K';
-    document.getElementById('stat-total-forks').textContent = (Math.round((data.total_forks || 1780) / 100) / 10).toFixed(1) + 'K';
+    const totalPlugins = data.total_plugins || 0;
+    const totalRepos = data.total_repos || 0;
+    const totalLoc = data.total_loc || 0;
+    const totalStars = data.total_stars || 0;
+    const totalForks = data.total_forks || 0;
+
+    // Synchronize page title
+    document.title = `Herdr Plugins Intelligence & Ecosystem Survey (${totalPlugins.toLocaleString()} Plugins)`;
+
+    // Synchronize stat boxes
+    const elPlugins = document.getElementById('stat-total-plugins');
+    if (elPlugins) elPlugins.textContent = totalPlugins.toLocaleString();
+
+    const elLoc = document.getElementById('stat-total-loc');
+    if (elLoc) {
+      elLoc.textContent = totalLoc >= 1000000 
+        ? (totalLoc / 1000000).toFixed(1) + 'M' 
+        : (totalLoc >= 1000 ? (totalLoc / 1000).toFixed(1) + 'K' : totalLoc.toLocaleString());
+    }
+
+    const elStars = document.getElementById('stat-total-stars');
+    if (elStars) {
+      elStars.textContent = totalStars >= 1000 
+        ? (totalStars / 1000).toFixed(1) + 'K' 
+        : totalStars.toLocaleString();
+    }
+
+    const elForks = document.getElementById('stat-total-forks');
+    if (elForks) {
+      elForks.textContent = totalForks >= 1000 
+        ? (totalForks / 1000).toFixed(1) + 'K' 
+        : totalForks.toLocaleString();
+    }
 
     // Synchronize nav button tag text
     const navTag = document.getElementById('nav-tag-total-plugins') || document.querySelector('.nav-tag');
     if (navTag) {
-      navTag.textContent = `Complete Marketplace Index (${totalPlugins} Plugins)`;
+      navTag.textContent = `Complete Marketplace Index (${totalPlugins.toLocaleString()} Plugins)`;
     }
 
-    // Synchronize hero eyebrow if repos present
-    const heroEyebrow = document.querySelector('.hero-eyebrow');
-    if (heroEyebrow && data.total_repos) {
-      heroEyebrow.textContent = `Ecosystem Intelligence · All ${totalPlugins} Plugins across ${data.total_repos} Repositories`;
+    // Synchronize hero eyebrow
+    const heroEyebrow = document.getElementById('hero-eyebrow') || document.querySelector('.hero-eyebrow');
+    if (heroEyebrow && totalRepos > 0) {
+      heroEyebrow.textContent = `Ecosystem Intelligence · All ${totalPlugins.toLocaleString()} Plugins across ${totalRepos.toLocaleString()} Repositories`;
+    }
+
+    // Synchronize hero intro text paragraph (100% dynamic live numbers)
+    const heroIntro = document.getElementById('hero-intro-text');
+    if (heroIntro) {
+      const locFormatted = totalLoc >= 1000000 
+        ? `${(totalLoc / 1000000).toFixed(1)}M+` 
+        : `${totalLoc.toLocaleString()}+`;
+      heroIntro.innerHTML = `An exhaustive architectural census of the entire universe of <strong id="hero-intro-plugins">${totalPlugins.toLocaleString()}</strong> published Herdr community plugins across <strong id="hero-intro-repos">${totalRepos.toLocaleString()}</strong> repositories. Every repository was shallow checked out, statically scanned across <strong id="hero-intro-loc">${locFormatted}</strong> LOC, and cataloged with exact Herdr socket/CLI endpoints, commit timestamps, and AI agent integrations.`;
     }
 
     // Synchronize search input placeholder
     const searchInput = document.getElementById('search-input');
     if (searchInput) {
-      searchInput.placeholder = `Search ${totalPlugins} plugins by name, owner, description, API endpoint, or topic...`;
+      searchInput.placeholder = `Search ${totalPlugins.toLocaleString()} plugins by name, owner, description, API endpoint, or topic...`;
     }
 
     // Synchronize growth timelines 'All' button
-    const growthBtnAll = document.getElementById('growth-btn-all') || document.querySelector('#growth-scope-group button[data-limit="994"]') || document.querySelector('#growth-scope-group button[data-limit="903"]');
+    const growthBtnAll = document.getElementById('growth-btn-all') || document.querySelector('#growth-scope-group button[data-limit="all"]');
     if (growthBtnAll) {
       growthBtnAll.dataset.limit = totalPlugins;
-      growthBtnAll.textContent = `All (${totalPlugins})`;
+      growthBtnAll.textContent = `All (${totalPlugins.toLocaleString()})`;
+    }
+
+    // Synchronize filter chips with live feature counts
+    if (data.features) {
+      const chipRaw = document.querySelector('.chip[data-filter="raw_socket"]');
+      if (chipRaw && data.features.raw_socket != null) {
+        chipRaw.textContent = `⚡ Raw Socket (${data.features.raw_socket.toLocaleString()})`;
+      }
+      const chipAgent = document.querySelector('.chip[data-filter="agent_skills"]');
+      if (chipAgent && data.features.agent_skills != null) {
+        chipAgent.textContent = `🧩 Agent Skills (${data.features.agent_skills.toLocaleString()})`;
+      }
+    }
+
+    // Synchronize Endpoints Explorer summary and buttons if available
+    if (data.endpoints_summary) {
+      const s = data.endpoints_summary;
+      const summaryBar = document.getElementById('endpoints-summary-bar');
+      if (summaryBar) {
+        summaryBar.innerHTML = `Official Core Endpoints: <strong>${s.total}</strong> · Active in Plugins: <strong style="color: var(--done);">${s.used_count}</strong> (${((s.used_count/s.total)*100).toFixed(1)}%) · Zero Usage in Ecosystem: <strong style="color: #fab387;">${s.zero_count}</strong> (${((s.zero_count/s.total)*100).toFixed(1)}%)`;
+      }
+      const epBtnAll = document.querySelector('#endpoints-scope-group button[data-ep-scope="all"]');
+      if (epBtnAll) epBtnAll.textContent = `All Official (${s.total})`;
+      const epBtnUsed = document.querySelector('#endpoints-scope-group button[data-ep-scope="used"]');
+      if (epBtnUsed) epBtnUsed.textContent = `Active in Plugins (${s.used_count})`;
+      const epBtnZero = document.querySelector('#endpoints-scope-group button[data-ep-scope="zero"]');
+      if (epBtnZero) epBtnZero.textContent = `⚠️ Zero Usage (${s.zero_count})`;
     }
 
     const catSelect = document.getElementById('category-select');
@@ -1415,13 +1479,19 @@ function renderAnalyticsCharts() {
     };
   }
 
-  // Update summary bar
+  // Update summary bar and scope buttons
   if (stats.endpoints_summary) {
     const s = stats.endpoints_summary;
     const summaryBar = document.getElementById('endpoints-summary-bar');
     if (summaryBar) {
       summaryBar.innerHTML = `Official Core Endpoints: <strong>${s.total}</strong> · Active in Plugins: <strong style="color: var(--done);">${s.used_count}</strong> (${((s.used_count/s.total)*100).toFixed(1)}%) · Zero Usage in Ecosystem: <strong style="color: #fab387;">${s.zero_count}</strong> (${((s.zero_count/s.total)*100).toFixed(1)}%)`;
     }
+    const epBtnAll = document.querySelector('#endpoints-scope-group button[data-ep-scope="all"]');
+    if (epBtnAll) epBtnAll.textContent = `All Official (${s.total})`;
+    const epBtnUsed = document.querySelector('#endpoints-scope-group button[data-ep-scope="used"]');
+    if (epBtnUsed) epBtnUsed.textContent = `Active in Plugins (${s.used_count})`;
+    const epBtnZero = document.querySelector('#endpoints-scope-group button[data-ep-scope="zero"]');
+    if (epBtnZero) epBtnZero.textContent = `⚠️ Zero Usage (${s.zero_count})`;
   }
 
   renderEndpointsChart();
@@ -1487,7 +1557,7 @@ function renderEndpointsChart() {
       typeBadge = `<span class="tag-badge" style="font-size: 0.65rem; padding: 1px 4px; color: #a6e3a1; background: rgba(166, 227, 161, 0.12); margin-left: 6px;">Socket</span>`;
     }
 
-    const totalEcoPlugins = window._ecosystemStats?.total_plugins || 994;
+    const totalEcoPlugins = window._ecosystemStats?.total_plugins || 1;
     const valueHtml = (e.cnt === 0)
       ? `<span style="color: #fab387; background: rgba(250, 179, 135, 0.15); border: 1px solid rgba(250, 179, 135, 0.25); padding: 1px 7px; border-radius: 4px; font-family: var(--mono); font-size: 0.72rem; font-weight: 700;">0 plugins (Unused)</span>`
       : `<span style="font-family: var(--mono); font-size: 0.8rem; color: var(--ink);">${e.cnt} <span style="color: var(--faint2); font-size: 0.7rem;">(${((e.cnt / totalEcoPlugins) * 100).toFixed(1)}%)</span></span>`;
@@ -1677,6 +1747,11 @@ async function renderReleasesChart() {
       const d = new Date(parts[0], parts[1] - 1, parts[2]);
       return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     });
+
+    const releasesStatus = document.getElementById('releases-status-text');
+    if (releasesStatus && weeks.length > 0) {
+      releasesStatus.textContent = `Timeline: Launch of Herdr (${weeks[0]}) to Present (${weeks[weeks.length - 1]}) · ${weeks.length} Weekly Intervals`;
+    }
 
     const option = {
       backgroundColor: 'transparent',

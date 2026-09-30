@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Herdr Plugins Intelligence & Ecosystem Survey (994 Plugins)</title>
+  <title>Herdr Plugins Intelligence & Ecosystem Survey</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
     <div class="hd-brand">
       <span class="ram-icon">🐑</span>
       <span>herdr plugins survey</span>
-      <span class="nav-tag" id="nav-tag-total-plugins">Complete Marketplace Index (994 Plugins)</span>
+      <span class="nav-tag" id="nav-tag-total-plugins">Complete Marketplace Index</span>
     </div>
     <div class="nav-links">
       <span class="nav-link active" data-view="browse">Browse Index</span>
@@ -35,27 +35,27 @@
     <header class="hero">
       <div class="hero-stats">
         <div class="stat-box">
-          <span class="num" id="stat-total-plugins">994</span>
+          <span class="num" id="stat-total-plugins">-</span>
           <span class="lbl">Plugins</span>
         </div>
         <div class="stat-box">
-          <span class="num" id="stat-total-loc">9.8M</span>
+          <span class="num" id="stat-total-loc">-</span>
           <span class="lbl">Lines of Code</span>
         </div>
         <div class="stat-box">
-          <span class="num" id="stat-total-stars">23.2K</span>
+          <span class="num" id="stat-total-stars">-</span>
           <span class="lbl">Stars ★</span>
         </div>
         <div class="stat-box">
-          <span class="num" id="stat-total-forks">1.9K</span>
+          <span class="num" id="stat-total-forks">-</span>
           <span class="lbl">Forks ⑂</span>
         </div>
       </div>
-      <div class="hero-eyebrow">Ecosystem Intelligence · All 994 Plugins across 977 Repositories</div>
+      <div class="hero-eyebrow" id="hero-eyebrow">Ecosystem Intelligence · Comprehensive Census</div>
       <h1>Built by the herd. Surveyed by agents.</h1>
-      <p>
-        An exhaustive architectural census of the entire universe of 994 published Herdr community plugins across 977 repositories.
-        Every repository was shallow checked out, statically scanned across 9,790,000+ LOC, 
+      <p id="hero-intro-text">
+        An exhaustive architectural census of the entire universe of <strong id="hero-intro-plugins">-</strong> published Herdr community plugins across <strong id="hero-intro-repos">-</strong> repositories.
+        Every repository was shallow checked out, statically scanned across <strong id="hero-intro-loc">-</strong> LOC, 
         and cataloged with exact Herdr socket/CLI endpoints, commit timestamps, and AI agent integrations.
       </p>
     </header>
@@ -70,7 +70,7 @@
         <div class="controls-main-row">
           <div class="search-wrap">
             <span class="search-icon">/</span>
-            <input type="text" id="search-input" placeholder="Search 994 plugins by name, owner, description, API endpoint, or topic...">
+            <input type="text" id="search-input" placeholder="Search plugins by name, owner, description, API endpoint, or topic...">
           </div>
           <select id="category-select" class="filter-select">
             <option value="">All Categories</option>
@@ -99,8 +99,8 @@
         <!-- Collapsible Filter Chips Container -->
         <div class="filter-chips-wrapper" id="filter-chips-wrapper">
           <div class="filter-chips" id="filter-chips-container">
-            <span class="chip" data-filter="raw_socket">⚡ Raw Socket (352)</span>
-            <span class="chip" data-filter="agent_skills">🧩 Agent Skills (228)</span>
+            <span class="chip" data-filter="raw_socket">⚡ Raw Socket</span>
+            <span class="chip" data-filter="agent_skills">🧩 Agent Skills</span>
             <span class="chip" data-filter="remote_infra">🌐 Remote Infra</span>
             <span class="chip" data-filter="ssh">🔑 SSH Tunnel</span>
             <span class="chip" data-filter="mosh">📡 Mosh</span>
@@ -225,7 +225,7 @@
               <button class="scope-btn" data-limit="50">Top 50</button>
               <button class="scope-btn" data-limit="100">Top 100</button>
               <button class="scope-btn" data-limit="250">Top 250</button>
-              <button class="scope-btn" id="growth-btn-all" data-limit="994">All (994)</button>
+              <button class="scope-btn" id="growth-btn-all" data-limit="all">All</button>
             </div>
           </div>
 
@@ -315,7 +315,7 @@
         <div id="echarts-growth-container"></div>
 
         <div class="chart-meta-bar">
-          <span id="growth-status-text">Timeline: Launch of Herdr (Jan 2026) to Present (Sep 2026) · 36 Weekly Milestones</span>
+          <span id="growth-status-text">Timeline: Launch of Herdr (Jan 2026) to Present · Weekly Milestones</span>
           <span>Tip: Hover over any curve to focus. Use bottom scrubber to zoom in time.</span>
         </div>
       </div>
@@ -334,7 +334,7 @@
 
         <div class="chart-meta-bar">
           <span>🟣 Left Axis: New Plugins Published Per Week (Bar) · 🟢 Right Axis: Cumulative Ecosystem Size (Step Line)</span>
-          <span>Timeline: 36 Weekly Intervals</span>
+          <span id="releases-status-text">Timeline: Weekly Intervals</span>
         </div>
       </div>
 
@@ -395,7 +395,7 @@
             <div>
               <h2 style="margin-bottom: 0.2rem;">Herdr CLI & Socket Endpoints Explorer</h2>
               <div style="font-family: var(--mono); font-size: 0.8rem; color: var(--faint2);" id="endpoints-summary-bar">
-                Official Core Endpoints: 233 · Active in Plugins: 133 · Zero Usage: 100
+                Official Core Endpoints Explorer
               </div>
             </div>
 
@@ -405,9 +405,9 @@
               
               <div class="button-group" id="endpoints-scope-group">
                 <button class="scope-btn active" data-ep-scope="top20">Top 20</button>
-                <button class="scope-btn" data-ep-scope="all">All Official (233)</button>
-                <button class="scope-btn" data-ep-scope="used">Active in Plugins (133)</button>
-                <button class="scope-btn" data-ep-scope="zero" style="color: #fab387;">⚠️ Zero Usage (100)</button>
+                <button class="scope-btn" data-ep-scope="all">All Official</button>
+                <button class="scope-btn" data-ep-scope="used">Active in Plugins</button>
+                <button class="scope-btn" data-ep-scope="zero" style="color: #fab387;">⚠️ Zero Usage</button>
               </div>
 
               <div class="button-group" id="endpoints-type-group">

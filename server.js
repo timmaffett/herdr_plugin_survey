@@ -30,7 +30,7 @@ function queryDb(sql) {
 
 app.get('/api/stats', (req, res) => {
   try {
-    const totalRow = queryDb("SELECT COUNT(*) as count, SUM(total_loc) as total_loc, SUM(stars) as total_stars, SUM(forks) as total_forks FROM plugins;")[0];
+    const totalRow = queryDb("SELECT COUNT(*) as count, SUM(total_loc) as total_loc, SUM(stars) as total_stars, SUM(forks) as total_forks, SUM(CASE WHEN manifest_raw_json IS NOT NULL AND json_valid(manifest_raw_json) THEN json_array_length(manifest_raw_json) ELSE 1 END) as total_manifests FROM plugins;")[0];
     const latestReport = queryDb("SELECT cumulative_plugins_count, cumulative_stars_count, cumulative_forks_count FROM daily_reports ORDER BY report_date DESC LIMIT 1;")[0];
     const categories = queryDb("SELECT broad_category, COUNT(*) as cnt FROM plugins GROUP BY broad_category ORDER BY cnt DESC;");
     const languages = queryDb("SELECT primary_language, COUNT(*) as cnt, SUM(total_loc) as loc FROM plugins GROUP BY primary_language ORDER BY cnt DESC;");
@@ -102,9 +102,9 @@ app.get('/api/stats', (req, res) => {
 
     const tunnels = queryDb("SELECT tunnel_service, COUNT(*) as cnt FROM plugins WHERE tunnel_service != 'none' GROUP BY tunnel_service ORDER BY cnt DESC;");
 
-    const totalPlugins = latestReport ? latestReport.cumulative_plugins_count : totalRow.count;
-    const totalStars = latestReport ? latestReport.cumulative_stars_count : totalRow.total_stars;
-    const totalForks = latestReport ? latestReport.cumulative_forks_count : totalRow.total_forks;
+    const totalPlugins = totalRow.total_manifests || (latestReport ? latestReport.cumulative_plugins_count : totalRow.count);
+    const totalStars = totalRow.total_stars || (latestReport ? latestReport.cumulative_stars_count : 0);
+    const totalForks = totalRow.total_forks || (latestReport ? latestReport.cumulative_forks_count : 0);
 
     res.json({
       total_plugins: totalPlugins,
@@ -790,10 +790,15 @@ app.post('/api/query', (req, res) => {
 });
 
 app.listen(PORT, () => {
+  let statsStr = '';
+  try {
+    const row = queryDb("SELECT COUNT(*) as repos, SUM(CASE WHEN manifest_raw_json IS NOT NULL AND json_valid(manifest_raw_json) THEN json_array_length(manifest_raw_json) ELSE 1 END) as plugins FROM plugins;")[0];
+    if (row) statsStr = ` (All ${row.plugins} Community Plugins across ${row.repos} Repositories)`;
+  } catch (e) {}
   console.log(`====================================================`);
   console.log(`Herdr Plugins Intelligence & Growth Server is live!`);
   console.log(`URL: http://localhost:${PORT}`);
-  console.log(`Survey Scope: Entire Ecosystem (All 994 Community Plugins across 977 Repositories)`);
+  console.log(`Survey Scope: Entire Ecosystem${statsStr}`);
   console.log(`Database: ${DB_PATH}`);
   console.log(`====================================================`);
 });
