@@ -224,7 +224,7 @@ Across the ecosystem, **{cum_stats['plugins']} published plugins** continued ser
 ├───────────────────────────────┬──────────────────────────┤
 │ Calendar Day                  │ Day {day_num:<21}│
 │ Total Published Plugins       │ {cum_stats['plugins']:<25}│
-│ Cumulative Ecosystem Stars    │ {cum_stats['stars']:<25,f}│
+│ Cumulative Ecosystem Stars    │ {int(cum_stats['stars']):<25}│
 │ Distinct Platform Capabilities│ {seen_caps_count:<25}│
 └───────────────────────────────┴──────────────────────────┘
 ```
