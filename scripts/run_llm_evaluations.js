@@ -87,6 +87,10 @@ function findRepoPath(repoFullName) {
   const directPath = path.join(REPOS_DIR, folderName);
   if (fs.existsSync(directPath)) return directPath;
 
+  if (!fs.existsSync(REPOS_DIR)) {
+    fs.mkdirSync(REPOS_DIR, { recursive: true });
+  }
+
   // Case-insensitive fallback
   const entries = fs.readdirSync(REPOS_DIR);
   const lower = folderName.toLowerCase();
@@ -95,6 +99,19 @@ function findRepoPath(repoFullName) {
       return path.join(REPOS_DIR, ent);
     }
   }
+
+  // On-demand shallow clone for fresh CI environments
+  try {
+    console.log(`📥 Shallow cloning https://github.com/${repoFullName}.git for evaluation...`);
+    execFileSync('git', ['clone', '--depth', '1', `https://github.com/${repoFullName}.git`, directPath], {
+      timeout: 30000,
+      stdio: 'ignore'
+    });
+    if (fs.existsSync(directPath)) return directPath;
+  } catch (e) {
+    console.warn(`⚠️ Failed to shallow clone ${repoFullName}: ${e.message}`);
+  }
+
   return null;
 }
 

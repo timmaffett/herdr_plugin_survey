@@ -7,3 +7,5 @@ __pycache__/
 meta_llm_key.txt
 .env
 *.env
+*.swp
+.*.swp
