@@ -1,0 +1,60 @@
+name: Ecosystem Intelligence Sync & Deploy
+
+on:
+  schedule:
+    # Runs automatically daily at 03:00 UTC
+    - cron: '0 3 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions UI anytime
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Node Dependencies
+        run: npm install
+
+      - name: Run Full Sync Pipeline
+        run: npm run update
+
+      - name: Run AI Evaluations (if META_API_KEY secret configured)
+        env:
+          META_API_KEY: ${{ secrets.META_API_KEY }}
+        run: |
+          if [ -n "$META_API_KEY" ]; then
+            echo "Running AI evaluations with META_API_KEY..."
+            npm run survey:llm
+          else
+            echo "META_API_KEY not configured in repository secrets. Skipping LLM evaluations."
+          fi
+
+      - name: Commit and Push Updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain all_plugins.json plugins.db)" ]; then
+            git add all_plugins.json plugins.db
+            git commit -m "chore(data): auto-sync ecosystem updates and daily reports [skip ci]"
+            git push origin main
+            echo "Successfully committed and pushed ecosystem dataset updates to main."
+          else
+            echo "Dataset is fully up to date. No changes detected."
+          fi

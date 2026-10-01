@@ -10,7 +10,11 @@ import json
 import glob
 import subprocess
 from datetime import datetime
-import tomli
+try:
+    import tomllib as tomli
+except ImportError:
+    import tomli
+
 from scripts.taxonomy import classify_plugin
 
 LANG_EXT_MAP = {
