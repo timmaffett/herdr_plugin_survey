@@ -8,9 +8,13 @@ const path = require('path');
 const fs = require('fs');
 const Database = require('better-sqlite3');
 
+const { Worker } = require('worker_threads');
+
 const app = express();
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 3000;
 const DB_PATH = path.resolve(__dirname, 'plugins.db');
+const SQL_WORKER_PATH = path.resolve(__dirname, 'scripts/sql_worker.js');
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -763,29 +767,105 @@ app.get('/api/herdr-events', (req, res) => {
   }
 });
 
-app.post('/api/query', (req, res) => {
+// Rate limiter for custom SQL endpoint (Max 5 queries per minute per IP)
+const sqlRateLimitMap = new Map();
+const SQL_RATE_LIMIT = 5;
+const SQL_RATE_WINDOW_MS = 60 * 1000;
+
+function checkSqlRateLimit(ip) {
+  const now = Date.now();
+  const entry = sqlRateLimitMap.get(ip);
+  if (!entry || now > entry.resetTime) {
+    sqlRateLimitMap.set(ip, { count: 1, resetTime: now + SQL_RATE_WINDOW_MS });
+    return { allowed: true, remaining: SQL_RATE_LIMIT - 1 };
+  }
+  if (entry.count >= SQL_RATE_LIMIT) {
+    const waitSec = Math.ceil((entry.resetTime - now) / 1000);
+    return { allowed: false, waitSec };
+  }
+  entry.count++;
+  return { allowed: true, remaining: SQL_RATE_LIMIT - entry.count };
+}
+
+// Periodic cleanup of stale rate-limit entries
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, entry] of sqlRateLimitMap.entries()) {
+    if (now > entry.resetTime) sqlRateLimitMap.delete(ip);
+  }
+}, 5 * 60 * 1000).unref();
+
+function runUserSqlInWorker(sql, timeoutMs = 2000) {
+  return new Promise((resolve, reject) => {
+    const worker = new Worker(SQL_WORKER_PATH, {
+      workerData: { sql }
+    });
+
+    let settled = false;
+    const timer = setTimeout(() => {
+      if (!settled) {
+        settled = true;
+        worker.terminate();
+        reject(new Error(`Query execution timed out (${timeoutMs / 1000}s limit). Please optimize the query or add a LIMIT clause.`));
+      }
+    }, timeoutMs);
+
+    worker.on('message', msg => {
+      if (!settled) {
+        settled = true;
+        clearTimeout(timer);
+        if (msg.success) resolve(msg);
+        else reject(new Error(msg.error));
+      }
+    });
+
+    worker.on('error', err => {
+      if (!settled) {
+        settled = true;
+        clearTimeout(timer);
+        reject(err);
+      }
+    });
+  });
+}
+
+app.post('/api/query', async (req, res) => {
+  const clientIp = req.ip || req.connection.remoteAddress || 'unknown';
+  const rateCheck = checkSqlRateLimit(clientIp);
+  if (!rateCheck.allowed) {
+    return res.status(429).json({
+      error: `Rate limit reached: Max ${SQL_RATE_LIMIT} custom SQL queries per minute. Please try again in ${rateCheck.waitSec}s.`
+    });
+  }
+
   const { sql } = req.body;
   if (!sql || typeof sql !== 'string') {
     return res.status(400).json({ error: 'Missing SQL query parameter' });
   }
 
-  const trimmed = sql.trim().toLowerCase();
-  const forbidden = ['drop', 'delete', 'update', 'insert', 'alter', 'create', 'replace', 'truncate'];
-  if (forbidden.some(word => trimmed.startsWith(word) || trimmed.includes(` ${word} `))) {
+  const trimmed = sql.trim();
+  const lower = trimmed.toLowerCase();
+
+  // 1. Strict read-only check
+  const forbidden = ['drop', 'delete', 'update', 'insert', 'alter', 'create', 'replace', 'truncate', 'attach', 'detach', 'vacuum', 'reindex'];
+  if (forbidden.some(word => lower.startsWith(word) || new RegExp(`\\b${word}\\b`, 'i').test(trimmed))) {
     return res.status(403).json({ error: 'Security constraint: Only SELECT and PRAGMA read-only queries are permitted.' });
   }
 
-  const t0 = Date.now();
+  // 2. Reject recursive CTEs to prevent infinite loop execution
+  if (/\brecursive\b/i.test(trimmed)) {
+    return res.status(403).json({ error: 'Security constraint: Recursive queries (WITH RECURSIVE) are disabled to protect server performance.' });
+  }
+
+  // 3. Reject multiple statements
+  const statements = trimmed.split(';').map(s => s.trim()).filter(s => s.length > 0);
+  if (statements.length > 1) {
+    return res.status(400).json({ error: 'Security constraint: Multiple statements separated by semicolons are not permitted.' });
+  }
+
   try {
-    const results = queryDb(sql);
-    const durationMs = Date.now() - t0;
-    res.json({
-      success: true,
-      duration_ms: durationMs,
-      row_count: results.length,
-      columns: results.length > 0 ? Object.keys(results[0]) : [],
-      rows: results
-    });
+    const result = await runUserSqlInWorker(trimmed, 2000);
+    res.json(result);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

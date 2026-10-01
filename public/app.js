@@ -1401,7 +1401,8 @@ async function runQuery() {
       return;
     }
 
-    meta.textContent = `Returned ${data.row_count} rows in ${data.duration_ms}ms.`;
+    const truncMsg = data.truncated ? ` (capped at ${data.row_count} of ${data.total_found})` : '';
+    meta.textContent = `Returned ${data.row_count} rows${truncMsg} in ${data.duration_ms}ms.`;
     meta.style.color = 'var(--st-working)';
 
     if (data.columns && data.columns.length > 0) {
